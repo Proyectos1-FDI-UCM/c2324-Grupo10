@@ -37,15 +37,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Shot"",
-                    ""type"": ""Button"",
-                    ""id"": ""0614ce67-ce19-4879-9c4d-8cfc2ec047a5"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Down_Shot"",
                     ""type"": ""Button"",
                     ""id"": ""abc21013-dd8e-4eda-aabb-f63d158edbc4"",
@@ -76,6 +67,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Up_Shot"",
                     ""type"": ""Button"",
                     ""id"": ""72394227-90e7-4960-8038-27c327583b71"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shot"",
+                    ""type"": ""Button"",
+                    ""id"": ""69274e50-d53e-4493-8eea-40830c7fbddb"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -142,17 +142,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f605e824-a1fb-45e5-8794-343a05c871e2"",
-                    ""path"": ""<Keyboard>/p"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""Down_Shot_Log"",
@@ -329,6 +318,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Recharge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1400a6c9-8f8a-4f2d-891a-ee9c66713dae"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -338,11 +338,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Shot = m_Player.FindAction("Shot", throwIfNotFound: true);
         m_Player_Down_Shot = m_Player.FindAction("Down_Shot", throwIfNotFound: true);
         m_Player_Left_Shot = m_Player.FindAction("Left_Shot", throwIfNotFound: true);
         m_Player_Right_Shot = m_Player.FindAction("Right_Shot", throwIfNotFound: true);
         m_Player_Up_Shot = m_Player.FindAction("Up_Shot", throwIfNotFound: true);
+        m_Player_Shot = m_Player.FindAction("Shot", throwIfNotFound: true);
         m_Player_Slide = m_Player.FindAction("Slide", throwIfNotFound: true);
         m_Player_Potion = m_Player.FindAction("Potion", throwIfNotFound: true);
         m_Player_Recharge = m_Player.FindAction("Recharge", throwIfNotFound: true);
@@ -408,11 +408,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Shot;
     private readonly InputAction m_Player_Down_Shot;
     private readonly InputAction m_Player_Left_Shot;
     private readonly InputAction m_Player_Right_Shot;
     private readonly InputAction m_Player_Up_Shot;
+    private readonly InputAction m_Player_Shot;
     private readonly InputAction m_Player_Slide;
     private readonly InputAction m_Player_Potion;
     private readonly InputAction m_Player_Recharge;
@@ -421,11 +421,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         private @InputActions m_Wrapper;
         public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Shot => m_Wrapper.m_Player_Shot;
         public InputAction @Down_Shot => m_Wrapper.m_Player_Down_Shot;
         public InputAction @Left_Shot => m_Wrapper.m_Player_Left_Shot;
         public InputAction @Right_Shot => m_Wrapper.m_Player_Right_Shot;
         public InputAction @Up_Shot => m_Wrapper.m_Player_Up_Shot;
+        public InputAction @Shot => m_Wrapper.m_Player_Shot;
         public InputAction @Slide => m_Wrapper.m_Player_Slide;
         public InputAction @Potion => m_Wrapper.m_Player_Potion;
         public InputAction @Recharge => m_Wrapper.m_Player_Recharge;
@@ -441,9 +441,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Shot.started += instance.OnShot;
-            @Shot.performed += instance.OnShot;
-            @Shot.canceled += instance.OnShot;
             @Down_Shot.started += instance.OnDown_Shot;
             @Down_Shot.performed += instance.OnDown_Shot;
             @Down_Shot.canceled += instance.OnDown_Shot;
@@ -456,6 +453,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Up_Shot.started += instance.OnUp_Shot;
             @Up_Shot.performed += instance.OnUp_Shot;
             @Up_Shot.canceled += instance.OnUp_Shot;
+            @Shot.started += instance.OnShot;
+            @Shot.performed += instance.OnShot;
+            @Shot.canceled += instance.OnShot;
             @Slide.started += instance.OnSlide;
             @Slide.performed += instance.OnSlide;
             @Slide.canceled += instance.OnSlide;
@@ -472,9 +472,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Shot.started -= instance.OnShot;
-            @Shot.performed -= instance.OnShot;
-            @Shot.canceled -= instance.OnShot;
             @Down_Shot.started -= instance.OnDown_Shot;
             @Down_Shot.performed -= instance.OnDown_Shot;
             @Down_Shot.canceled -= instance.OnDown_Shot;
@@ -487,6 +484,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Up_Shot.started -= instance.OnUp_Shot;
             @Up_Shot.performed -= instance.OnUp_Shot;
             @Up_Shot.canceled -= instance.OnUp_Shot;
+            @Shot.started -= instance.OnShot;
+            @Shot.performed -= instance.OnShot;
+            @Shot.canceled -= instance.OnShot;
             @Slide.started -= instance.OnSlide;
             @Slide.performed -= instance.OnSlide;
             @Slide.canceled -= instance.OnSlide;
@@ -516,11 +516,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnShot(InputAction.CallbackContext context);
         void OnDown_Shot(InputAction.CallbackContext context);
         void OnLeft_Shot(InputAction.CallbackContext context);
         void OnRight_Shot(InputAction.CallbackContext context);
         void OnUp_Shot(InputAction.CallbackContext context);
+        void OnShot(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
         void OnPotion(InputAction.CallbackContext context);
         void OnRecharge(InputAction.CallbackContext context);

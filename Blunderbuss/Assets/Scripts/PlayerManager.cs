@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     private InputManager _inputManager;
     private Transform _myTransform;
     private Rigidbody2D _rb;
+    private SpriteRenderer _spriteR;
     public int state;
     private float _speed = 2.5f;
     private GameManager _gameManager;
@@ -18,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _myTransform = _rb.transform;
+        _spriteR = GetComponent<SpriteRenderer>();
 
         _gameManager = GameManager.Instance;
         _inputManager = _gameManager.InputManager;
@@ -26,6 +28,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        print(state);
         if(state < 2)
             Move(_inputManager.axisX);
     }
@@ -75,8 +78,66 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    private IEnumerator ShotTemp(Vector2 _impulse)
+    {
+        state = 2;
+        _shotEnable = false;
+        _slideEnable = false;
+
+        float _shotCD = 0.3f;
+
+        _rb.velocity = new Vector2(_rb.velocity.x, 0);
+        _rb.AddForce(_impulse, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(_shotCD);
+        _shotEnable = true;
+        _slideEnable = true;
+        if (_rb.velocity.y == 0)
+            state = 0;
+        else
+            state = 1;
+    }
+
     public void Shot(int dir)
     {
+        float _impulse = 8f;
 
+        if (_shotEnable)
+        {
+            switch (dir)
+            {
+                case 0:
+                    if (!_spriteR.flipX)
+                    {
+                        StartCoroutine(ShotTemp(new Vector2(-_impulse, 0)));
+                    }
+                    else
+                    {
+                        StartCoroutine(ShotTemp(new Vector2(_impulse, 0)));
+                    }
+                    break;
+                case 1:
+                    StartCoroutine(ShotTemp(new Vector2(0, _impulse)));
+                    break;
+                case 2:
+                    StartCoroutine(ShotTemp(new Vector2(_impulse, 0)));
+                    break;
+                case 3:
+                    StartCoroutine(ShotTemp(new Vector2(-_impulse, 0)));
+                    break;
+                case 4:
+                    if (state == 1)
+                    {
+                        StartCoroutine(ShotTemp(new Vector2(0, -_impulse)));
+                    }
+                    break;
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Suelo")
+            state = 0;
     }
 }
