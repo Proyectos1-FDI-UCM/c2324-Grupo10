@@ -21,9 +21,7 @@ public class InputManager : MonoBehaviour
         //Dano
         _inputActions.Player.Shot.started += ctx => _playerManager.Shot(0);
         _inputActions.Player.Down_Shot.started += ctx => _playerManager.Shot(1);
-        _inputActions.Player.Left_Shot.started += ctx => _playerManager.Shot(2);
-        _inputActions.Player.Right_Shot.started += ctx => _playerManager.Shot(3);
-        _inputActions.Player.Up_Shot.started += ctx => _playerManager.Shot(4);
+        _inputActions.Player.Up_Shot.started += ctx => _playerManager.Shot(2);
 
         //Dani
         _inputActions.Player.Recharge.started += ctx =>  StartCoroutine(_playerManager.Slide());

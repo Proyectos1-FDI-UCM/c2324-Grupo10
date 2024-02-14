@@ -46,24 +46,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Left_Shot"",
-                    ""type"": ""Button"",
-                    ""id"": ""84a6697a-02c7-4fd2-8e6f-552918b2dbd6"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Right_Shot"",
-                    ""type"": ""Button"",
-                    ""id"": ""db88f8d3-fcbd-47ad-8d76-c94f1790359b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Up_Shot"",
                     ""type"": ""Button"",
                     ""id"": ""72394227-90e7-4960-8038-27c327583b71"",
@@ -188,72 +170,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Left_Shot_Log"",
-                    ""id"": ""14e23771-d1f6-42b3-a6e9-28d892e3f011"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left_Shot"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""f3da6700-8d31-4456-828d-999f157909e2"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left_Shot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""721d47f4-97a2-46c9-a6ac-18279fd7f8b4"",
-                    ""path"": ""<Keyboard>/p"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left_Shot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Right_Shot_Log"",
-                    ""id"": ""0f46271c-00ed-44c9-b5f5-c4f65456625f"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right_Shot"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""e5441f64-08fa-4888-aa79-1affec58ea95"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right_Shot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""65ca7534-03c1-4815-bfe9-079d20904084"",
-                    ""path"": ""<Keyboard>/p"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right_Shot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""Up_Shot_Log"",
                     ""id"": ""9acfd939-17b5-4493-97c4-3c5f00fe0433"",
                     ""path"": ""OneModifier"",
@@ -339,8 +255,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Down_Shot = m_Player.FindAction("Down_Shot", throwIfNotFound: true);
-        m_Player_Left_Shot = m_Player.FindAction("Left_Shot", throwIfNotFound: true);
-        m_Player_Right_Shot = m_Player.FindAction("Right_Shot", throwIfNotFound: true);
         m_Player_Up_Shot = m_Player.FindAction("Up_Shot", throwIfNotFound: true);
         m_Player_Shot = m_Player.FindAction("Shot", throwIfNotFound: true);
         m_Player_Slide = m_Player.FindAction("Slide", throwIfNotFound: true);
@@ -409,8 +323,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Down_Shot;
-    private readonly InputAction m_Player_Left_Shot;
-    private readonly InputAction m_Player_Right_Shot;
     private readonly InputAction m_Player_Up_Shot;
     private readonly InputAction m_Player_Shot;
     private readonly InputAction m_Player_Slide;
@@ -422,8 +334,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Down_Shot => m_Wrapper.m_Player_Down_Shot;
-        public InputAction @Left_Shot => m_Wrapper.m_Player_Left_Shot;
-        public InputAction @Right_Shot => m_Wrapper.m_Player_Right_Shot;
         public InputAction @Up_Shot => m_Wrapper.m_Player_Up_Shot;
         public InputAction @Shot => m_Wrapper.m_Player_Shot;
         public InputAction @Slide => m_Wrapper.m_Player_Slide;
@@ -444,12 +354,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Down_Shot.started += instance.OnDown_Shot;
             @Down_Shot.performed += instance.OnDown_Shot;
             @Down_Shot.canceled += instance.OnDown_Shot;
-            @Left_Shot.started += instance.OnLeft_Shot;
-            @Left_Shot.performed += instance.OnLeft_Shot;
-            @Left_Shot.canceled += instance.OnLeft_Shot;
-            @Right_Shot.started += instance.OnRight_Shot;
-            @Right_Shot.performed += instance.OnRight_Shot;
-            @Right_Shot.canceled += instance.OnRight_Shot;
             @Up_Shot.started += instance.OnUp_Shot;
             @Up_Shot.performed += instance.OnUp_Shot;
             @Up_Shot.canceled += instance.OnUp_Shot;
@@ -475,12 +379,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Down_Shot.started -= instance.OnDown_Shot;
             @Down_Shot.performed -= instance.OnDown_Shot;
             @Down_Shot.canceled -= instance.OnDown_Shot;
-            @Left_Shot.started -= instance.OnLeft_Shot;
-            @Left_Shot.performed -= instance.OnLeft_Shot;
-            @Left_Shot.canceled -= instance.OnLeft_Shot;
-            @Right_Shot.started -= instance.OnRight_Shot;
-            @Right_Shot.performed -= instance.OnRight_Shot;
-            @Right_Shot.canceled -= instance.OnRight_Shot;
             @Up_Shot.started -= instance.OnUp_Shot;
             @Up_Shot.performed -= instance.OnUp_Shot;
             @Up_Shot.canceled -= instance.OnUp_Shot;
@@ -517,8 +415,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnDown_Shot(InputAction.CallbackContext context);
-        void OnLeft_Shot(InputAction.CallbackContext context);
-        void OnRight_Shot(InputAction.CallbackContext context);
         void OnUp_Shot(InputAction.CallbackContext context);
         void OnShot(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
