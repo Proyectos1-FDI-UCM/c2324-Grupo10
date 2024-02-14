@@ -16,6 +16,17 @@ public class InputManager : MonoBehaviour
         _inputActions.Player.Move.canceled += _ => axisX = 0;
 
         _inputActions.Player.Slide.started += ctx => StartCoroutine(_playerManager.Slide());
+
+        //Dano
+        _inputActions.Player.Shot.started += ctx => _playerManager.Shot(0);
+        _inputActions.Player.Down_Shot.started += ctx => _playerManager.Shot(1);
+        _inputActions.Player.Left_Shot.started += ctx => _playerManager.Shot(2);
+        _inputActions.Player.Right_Shot.started += ctx => _playerManager.Shot(3);
+        _inputActions.Player.Up_Shot.started += ctx => _playerManager.Shot(4);
+
+        //Dani
+        _inputActions.Player.Recharge.started += ctx => StartCoroutine(_playerManager.Slide());
+        _inputActions.Player.Potion.started += ctx => StartCoroutine(_playerManager.Slide());
     }
 
     // Start is called before the first frame update

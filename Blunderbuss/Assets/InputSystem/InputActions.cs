@@ -89,6 +89,24 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Potion"",
+                    ""type"": ""Button"",
+                    ""id"": ""05371793-993e-4102-a8dc-eeec01f53049"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Recharge"",
+                    ""type"": ""Button"",
+                    ""id"": ""82e43dbc-ef83-421c-be0b-0bc7975e378e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -289,6 +307,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Slide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efb63828-e6b7-4b38-8c94-647f38fa53d4"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Potion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2341bb43-84c6-4fed-9615-47eb04a94df2"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Recharge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -304,6 +344,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_Right_Shot = m_Player.FindAction("Right_Shot", throwIfNotFound: true);
         m_Player_Up_Shot = m_Player.FindAction("Up_Shot", throwIfNotFound: true);
         m_Player_Slide = m_Player.FindAction("Slide", throwIfNotFound: true);
+        m_Player_Potion = m_Player.FindAction("Potion", throwIfNotFound: true);
+        m_Player_Recharge = m_Player.FindAction("Recharge", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -372,6 +414,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Right_Shot;
     private readonly InputAction m_Player_Up_Shot;
     private readonly InputAction m_Player_Slide;
+    private readonly InputAction m_Player_Potion;
+    private readonly InputAction m_Player_Recharge;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -383,6 +427,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Right_Shot => m_Wrapper.m_Player_Right_Shot;
         public InputAction @Up_Shot => m_Wrapper.m_Player_Up_Shot;
         public InputAction @Slide => m_Wrapper.m_Player_Slide;
+        public InputAction @Potion => m_Wrapper.m_Player_Potion;
+        public InputAction @Recharge => m_Wrapper.m_Player_Recharge;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -413,6 +459,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Slide.started += instance.OnSlide;
             @Slide.performed += instance.OnSlide;
             @Slide.canceled += instance.OnSlide;
+            @Potion.started += instance.OnPotion;
+            @Potion.performed += instance.OnPotion;
+            @Potion.canceled += instance.OnPotion;
+            @Recharge.started += instance.OnRecharge;
+            @Recharge.performed += instance.OnRecharge;
+            @Recharge.canceled += instance.OnRecharge;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -438,6 +490,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Slide.started -= instance.OnSlide;
             @Slide.performed -= instance.OnSlide;
             @Slide.canceled -= instance.OnSlide;
+            @Potion.started -= instance.OnPotion;
+            @Potion.performed -= instance.OnPotion;
+            @Potion.canceled -= instance.OnPotion;
+            @Recharge.started -= instance.OnRecharge;
+            @Recharge.performed -= instance.OnRecharge;
+            @Recharge.canceled -= instance.OnRecharge;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -464,5 +522,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnRight_Shot(InputAction.CallbackContext context);
         void OnUp_Shot(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
+        void OnPotion(InputAction.CallbackContext context);
+        void OnRecharge(InputAction.CallbackContext context);
     }
 }

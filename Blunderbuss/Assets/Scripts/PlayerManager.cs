@@ -74,4 +74,9 @@ public class PlayerManager : MonoBehaviour
             _slideEnable = true;
         }
     }
+
+    public void Shot(int dir)
+    {
+
+    }
 }
