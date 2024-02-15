@@ -19,6 +19,7 @@ public class ResourceManager : MonoBehaviour
     #endregion
 
     #region methods
+    //Esta es una primera version de los metodos que se aplican de forma instantanea, mas adelante tenemos que meter cooldowns y si queremos una forma pata que la vida suba/baje progresivamente
     public void Curarse()
     {
         if (HealQuantity > 0)
@@ -30,7 +31,19 @@ public class ResourceManager : MonoBehaviour
     public void Recargar()
     {
         BalaQuantity = maxBalas; 
-    }  
+    }
+    //El take damage tiene que ser testeado todavia, tenemos que hacer un enemigo que le quite vida al personaje
+    public IEnumerator takeDamage(float damage, float delaySeconds)
+    {
+        //Podemos tambien declarar delay seconds al principio del codigo para cambiar el tiempo de invulnerabilidad en funcion del boss
+        if (_playerManager.state != 5)
+        {
+            health -= damage;
+            _playerManager.state = 5;
+            yield return new WaitForSeconds(delaySeconds);
+            _playerManager.state = 0;
+        }
+    }
     #endregion
 
     // Start is called before the first frame update
