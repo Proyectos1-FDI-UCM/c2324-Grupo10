@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     public int state;
     private float _speedGround = 2.5f;
     private float _speedAir = 5f;
+    private float _speedWall = 2f;
     private float _airForce = 500f;
     private GameManager _gameManager;
     private bool _slideEnable = true;
@@ -33,6 +34,8 @@ public class PlayerManager : MonoBehaviour
         //print(state);
         if(state < 2)
             Move(_inputManager.axisX);
+
+        print(state);
     }
 
     public void Move(float axis)
@@ -52,7 +55,7 @@ public class PlayerManager : MonoBehaviour
                 _rb.velocity = new Vector2(0, _rb.velocity.y);
             }
         }
-        else if (state == 1)
+        else if (state == 1 || state == 4)
         {
             if (axis > 0.5f && _rb.velocity.x < _speedAir)
             {
@@ -76,11 +79,11 @@ public class PlayerManager : MonoBehaviour
             state = 3;
             _slideEnable = false;
             
-            if(_rb.velocity.x > 0)
+            if(!_spriteR.flipX)
             {
                 _rb.AddForce(new Vector2(_impulse, 0), ForceMode2D.Impulse);
             }
-            else if(_rb.velocity.x < 0)
+            else
             {
                 _rb.AddForce(new Vector2(-_impulse, 0), ForceMode2D.Impulse);
             }
@@ -120,41 +123,48 @@ public class PlayerManager : MonoBehaviour
 
         if (_shotEnable)
         {
-            switch (dir)
+            if (state != 4)
             {
-                case 0:
-                    if (state == 0)
-                        _impulse = 600;
-                    else
-                        _impulse = 800f;
+                switch (dir)
+                {
+                    case 0:
+                        if (state == 0)
+                            _impulse = 600;
+                        else
+                            _impulse = 800f;
 
-                    if (!_spriteR.flipX)
-                    {
-                        StartCoroutine(ShotTemp(new Vector2(_rb.velocity.x, 0), new Vector2(-_impulse, 0)));
-                    }
-                    else
-                    {
-                        StartCoroutine(ShotTemp(new Vector2(_rb.velocity.x, 0), new Vector2(_impulse, 0)));
-                    }
-                    break;
-                case 1:
-                    if (state == 0)
-                        _impulse = 900;
-                    else if (state == 3)
+                        if (!_spriteR.flipX)
+                        {
+                            StartCoroutine(ShotTemp(new Vector2(_rb.velocity.x, 0), new Vector2(-_impulse, 0)));
+                        }
+                        else
+                        {
+                            StartCoroutine(ShotTemp(new Vector2(_rb.velocity.x, 0), new Vector2(_impulse, 0)));
+                        }
+                        break;
+                    case 1:
+                        if (state == 0)
+                            _impulse = 900;
+                        else if (state == 3)
+                            _impulse = 1200f;
+                        else
+                            _impulse = 800f;
+
+                        StartCoroutine(ShotTemp(new Vector2(_rb.velocity.x, 0), new Vector2(0, _impulse)));
+
+                        break;
+                    case 2:
                         _impulse = 1400f;
-                    else
-                        _impulse = 800f;
-
-                    StartCoroutine(ShotTemp(new Vector2(_rb.velocity.x, 0), new Vector2(0, _impulse)));
-                    
-                    break;
-                case 2:
-                    _impulse = 1400f;
-                    if (state == 1)
-                    {
-                        StartCoroutine(ShotTemp(Vector2.zero, new Vector2(0, -_impulse)));
-                    }
-                    break;
+                        if (state == 1)
+                        {
+                            StartCoroutine(ShotTemp(Vector2.zero, new Vector2(0, -_impulse)));
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                //StartCoroutine(ShotTemp(Vector2.zero, new Vector2(0, -_impulse)));
             }
         }
     }
@@ -163,5 +173,22 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Suelo")
             state = 0;
+
+        if (collision.gameObject.tag == "Pared" && state != 0)
+        {
+            state = 4;
+            Physics2D.gravity = new Vector2(0, -_speedWall);
+        }
+    }
+
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Pared")
+        {
+            if (_rb.velocity.y != 0)
+                state = 1;
+            Physics2D.gravity = new Vector2(0, -19.62f);
+        }
     }
 }
