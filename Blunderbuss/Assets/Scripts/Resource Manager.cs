@@ -9,11 +9,13 @@ public class ResourceManager : MonoBehaviour
     #endregion
 
     #region parameters
+    public bool debug = false;
     private float maxHealth;                        // Por si queremos mejorar la vida del personaje
-    private float health;                     
+    private float health;
     public float healingValue = 50f;               // Por si queremos meter una mejora de que las pociones curan mas
     public int maxBalas = 4;                       // Por si queremos meter una mejora de mas balas
     private int BalaQuantity;
+    public float reloadTime = 0.5f;                // Por si queremos cambiar la recarga
     public int maxHeal = 1;                        // Por si queremos meter una mejora de mas curas
     private int HealQuantity;
     public float tiempoInvulnerable = 0.5f;        // Para que podamos ajustar sl tiempo de invulnerabilidad
@@ -29,9 +31,16 @@ public class ResourceManager : MonoBehaviour
             HealQuantity--;
         }
     }
-    public void Recargar()
+    public void restaBala()
     {
-        BalaQuantity = maxBalas; 
+        BalaQuantity--;
+    }
+    public IEnumerator Recargar()
+    {
+        _playerManager.state = 2;
+        yield return new WaitForSeconds(reloadTime);  //Tiempo mientras se ejecuta la animacion de recarga
+        BalaQuantity = maxBalas;                      // Se puede volver a disparar
+        _playerManager.state = 0;
     }
     //El take damage tiene que ser testeado todavia, tenemos que hacer un enemigo que le quite vida al personaje
     public IEnumerator takeDamage(float damage, float delaySeconds)
@@ -62,14 +71,14 @@ public class ResourceManager : MonoBehaviour
     {
         
     }
-
-    /*void FixedUpdate()
+    void FixedUpdate()
     {
-        //Temas de debug para ver si rulan las cosas
-        print("Salud = " + health);      
-        print("Curas disponibles = " + HealQuantity);      
-        print("Disparos disponibles = " + BalaQuantity);      
+        if (debug)
+        {
+            //Temas de debug para ver si rulan las cosas
+            print("Salud = " + health);
+            print("Curas disponibles = " + HealQuantity);
+            print("Disparos disponibles = " + BalaQuantity);
+        }
     }
-    */
-
 }
