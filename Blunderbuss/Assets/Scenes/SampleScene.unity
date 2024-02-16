@@ -425,6 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19403a4d417f10c4eb6d0849850e075d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myTransform: {fileID: 0}
   state: 0
 --- !u!114 &489448016
 MonoBehaviour:
@@ -449,6 +450,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -530,6 +532,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625fdb39577329f478e66f54aeac68b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetTransform: {fileID: 489448014}
+  camState: 0
+  limitLeft: 3.8
+  limitRight: 10.8
 --- !u!1 &799750237
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +704,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ae94fe27d633c409596fae8477264b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
+  healingValue: 50
+  maxBalas: 4
+  BalaQuantity: 0
+  reloadTime: 0.5
+  maxHeal: 1
+  tiempoInvulnerable: 0.5
 --- !u!1 &1483490557
 GameObject:
   m_ObjectHideFlags: 0

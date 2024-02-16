@@ -14,8 +14,8 @@ public class ResourceManager : MonoBehaviour
     private float health;
     public float healingValue = 50f;               // Por si queremos meter una mejora de que las pociones curan mas
     public int maxBalas = 4;                       // Por si queremos meter una mejora de mas balas
-    private int BalaQuantity;
-    public float reloadTime = 0.5f;                // Por si queremos cambiar la recarga
+    public int BalaQuantity;
+    public float reloadTime = 0.4f;                // Por si queremos cambiar la recarga
     public int maxHeal = 1;                        // Por si queremos meter una mejora de mas curas
     private int HealQuantity;
     public float tiempoInvulnerable = 0.5f;        // Para que podamos ajustar sl tiempo de invulnerabilidad
@@ -37,10 +37,8 @@ public class ResourceManager : MonoBehaviour
     }
     public IEnumerator Recargar()
     {
-        _playerManager.state = 2;
         yield return new WaitForSeconds(reloadTime);  //Tiempo mientras se ejecuta la animacion de recarga
         BalaQuantity = maxBalas;                      // Se puede volver a disparar
-        _playerManager.state = 0;
     }
     //El take damage tiene que ser testeado todavia, tenemos que hacer un enemigo que le quite vida al personaje
     public IEnumerator takeDamage(float damage, float delaySeconds)

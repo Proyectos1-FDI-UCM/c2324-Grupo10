@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    #region references
     private Transform _myTransform;
     [SerializeField]
     private Transform _targetTransform;
+    #endregion
 
+    #region parameters
     private float _offsetY = 0;
     private float _offsetZ = -10;
 
@@ -17,6 +20,7 @@ public class CameraController : MonoBehaviour
     float limitLeft = 3.8f;
     [SerializeField]
     float limitRight = 10.8f;
+    #endregion
 
     // Start is called before the first frame update
     void Start()

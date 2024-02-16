@@ -1,21 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    #region references
+    private GameManager _gameManager;
     private InputManager _inputManager;
+    private ResourceManager _resourceManager;
+
     public Transform _myTransform;
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteR;
+    #endregion
+
+    #region parameters
     public int state;
+
     private float _speedGround = 2.5f;
     private float _speedAir = 5f;
     private float _speedWall = 2f;
     private float _airForce = 500f;
-    private GameManager _gameManager;
     private bool _slideEnable = true;
     private bool _shotEnable = true;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +35,7 @@ public class PlayerManager : MonoBehaviour
 
         _gameManager = GameManager.Instance;
         _inputManager = _gameManager.InputManager;
+        _resourceManager = _gameManager.ResourceManager;
     }
 
     // Update is called once per frame
@@ -99,22 +109,26 @@ public class PlayerManager : MonoBehaviour
 
     private IEnumerator ShotTemp(Vector2 _stop, Vector2 _impulse)
     {
-        state = 2;
-        _shotEnable = false;
-        _slideEnable = false;
+        if (_resourceManager.BalaQuantity > 0)
+        {
+            state = 2;
+            _shotEnable = false;
+            _slideEnable = false;
 
-        float _shotCD = 0.3f;
+            float _shotCD = 0.3f;
 
-        _rb.velocity = _stop;
-        _rb.AddForce(_impulse, ForceMode2D.Impulse);
+            _rb.velocity = _stop;
+            _rb.AddForce(_impulse, ForceMode2D.Impulse);
+            _resourceManager.restaBala();
 
-        yield return new WaitForSeconds(_shotCD);
-        _shotEnable = true;
-        _slideEnable = true;
-        if (_rb.velocity.y == 0)
-            state = 0;
-        else
-            state = 1;
+            yield return new WaitForSeconds(_shotCD);
+            _shotEnable = true;
+            _slideEnable = true;
+            if (_rb.velocity.y == 0)
+                state = 0;
+            else
+                state = 1;
+        }
     }
 
     public void Shot(int dir)
@@ -166,6 +180,19 @@ public class PlayerManager : MonoBehaviour
             {
                 //StartCoroutine(ShotTemp(Vector2.zero, new Vector2(0, -_impulse)));
             }
+        }
+    }
+
+    public IEnumerator Recarga()
+    {
+        float reloadCD = 0.75f;
+        if (state == 0 && _resourceManager.BalaQuantity != _resourceManager.maxBalas)
+        {
+            state = 2;
+            _rb.velocity = Vector2.zero;
+            StartCoroutine(_resourceManager.Recargar());
+            yield return new WaitForSeconds(reloadCD);
+            state = 0;
         }
     }
 

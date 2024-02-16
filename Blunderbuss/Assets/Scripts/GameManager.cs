@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region references
     static private GameManager _instance;
     private InputManager _inputManager;
+    private ResourceManager _resourceManager;
 
     static public GameManager Instance
     {
@@ -17,6 +19,12 @@ public class GameManager : MonoBehaviour
         get { return _inputManager; }
     }
 
+    public ResourceManager ResourceManager
+    {
+        get { return _resourceManager; }
+    }
+    #endregion
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -27,6 +35,7 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
             _inputManager = GetComponent<InputManager>();
+            _resourceManager = GetComponent<ResourceManager>();
             DontDestroyOnLoad(gameObject);
         }
     }
