@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     private InputManager _inputManager;
-    private Transform _myTransform;
+    public Transform _myTransform;
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteR;
     public int state;
