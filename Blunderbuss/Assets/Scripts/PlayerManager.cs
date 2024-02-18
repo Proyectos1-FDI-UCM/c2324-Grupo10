@@ -18,8 +18,8 @@ public class PlayerManager : MonoBehaviour
     #region parameters
     public int state;
 
-    private float _speedGround = 2.5f;
-    private float _speedAir = 5f;
+    private float _speedGround = 3f;
+    private float _speedAir = 3f;
     private float _speedWall = 2f;
     private float _airForce = 500f;
     private bool _slideEnable = true;
@@ -41,8 +41,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //print(state);
-        if(state < 2)
+        if(state < 3)
             Move(_inputManager.axisX);
 
         print(state);
@@ -65,7 +64,7 @@ public class PlayerManager : MonoBehaviour
                 _rb.velocity = new Vector2(0, _rb.velocity.y);
             }
         }
-        else if (state == 1 || state == 4)
+        else if (state == 1 || state == 2)
         {
             if (axis > 0.5f && _rb.velocity.x < _speedAir)
             {
@@ -86,7 +85,7 @@ public class PlayerManager : MonoBehaviour
 
         if (state == 0 && _slideEnable)
         {
-            state = 3;
+            state = 4;
             _slideEnable = false;
             
             if(!_spriteR.flipX)
@@ -99,7 +98,7 @@ public class PlayerManager : MonoBehaviour
             }
 
             yield return new WaitForSeconds(_slideDur);
-            if (state == 3)
+            if (state == 4)
                 state = 0;
 
             yield return new WaitForSeconds(_slideCD);
@@ -111,7 +110,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (_resourceManager.BalaQuantity > 0)
         {
-            state = 2;
+            state = 3;
             _shotEnable = false;
             _slideEnable = false;
 
@@ -137,7 +136,7 @@ public class PlayerManager : MonoBehaviour
 
         if (_shotEnable)
         {
-            if (state != 4)
+            if (state != 2)
             {
                 switch (dir)
                 {
@@ -159,7 +158,7 @@ public class PlayerManager : MonoBehaviour
                     case 1:
                         if (state == 0)
                             _impulse = 900;
-                        else if (state == 3)
+                        else if (state == 4)
                             _impulse = 1200f;
                         else
                             _impulse = 800f;
@@ -178,7 +177,12 @@ public class PlayerManager : MonoBehaviour
             }
             else
             {
-                //StartCoroutine(ShotTemp(Vector2.zero, new Vector2(0, -_impulse)));
+                _impulse = 1000f;
+
+                if (_spriteR.flipX)
+                    StartCoroutine(ShotTemp(Vector2.zero, new Vector2(_impulse, _impulse/2f)));
+                else
+                    StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-_impulse, _impulse / 2f)));
             }
         }
     }
@@ -188,7 +192,7 @@ public class PlayerManager : MonoBehaviour
         float reloadCD = 0.75f;
         if (state == 0 && _resourceManager.BalaQuantity != _resourceManager.maxBalas)
         {
-            state = 2;
+            state = 3;
             _rb.velocity = Vector2.zero;
             StartCoroutine(_resourceManager.Recargar());
             yield return new WaitForSeconds(reloadCD);
@@ -201,21 +205,32 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.tag == "Suelo")
             state = 0;
 
-        if (collision.gameObject.tag == "Pared" && state != 0)
+        if (collision.gameObject.tag == "Pared")
         {
-            state = 4;
-            Physics2D.gravity = new Vector2(0, -_speedWall);
+            if (collision.contacts[0].normal.x < 0)
+                _spriteR.flipX = false;
+            else
+                _spriteR.flipX = true;
         }
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Pared" && state != 0)
+        {
+            state = 2;
+
+            if (_rb.velocity.y < 0)
+                _rb.velocity = new Vector2(_rb.velocity.x, -_speedWall);
+        }
+    }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Pared")
         {
-            if (_rb.velocity.y != 0)
+            if (_rb.velocity.y != 0 && state != 0)
                 state = 1;
-            Physics2D.gravity = new Vector2(0, -19.62f);
         }
     }
 }
