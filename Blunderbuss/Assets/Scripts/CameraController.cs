@@ -17,9 +17,9 @@ public class CameraController : MonoBehaviour
     public int camState;
 
     [SerializeField]
-    float limitLeft = 3.8f;
+    float limitLeft;
     [SerializeField]
-    float limitRight = 10.8f;
+    float limitRight;
     #endregion
 
     // Start is called before the first frame update
