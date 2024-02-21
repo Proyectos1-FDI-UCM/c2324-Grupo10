@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour
     private GameManager _gameManager;
     private InputManager _inputManager;
     private ResourceManager _resourceManager;
+    [SerializeField]
+    private CameraController _cameraController;
 
     public Transform _myTransform;
     private Rigidbody2D _rb;
@@ -108,6 +110,8 @@ public class PlayerManager : MonoBehaviour
 
     private IEnumerator ShotTemp(Vector2 _stop, Vector2 _impulse)
     {
+        StartCoroutine(_cameraController.ShakeBegin());
+
         if (_resourceManager.BalaQuantity > 0)
         {
             state = 3;
