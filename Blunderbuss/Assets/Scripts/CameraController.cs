@@ -20,6 +20,8 @@ public class CameraController : MonoBehaviour
     float limitLeft;
     [SerializeField]
     float limitRight;
+
+    private float _nextShake = 0.0f;
     #endregion
 
     // Start is called before the first frame update
@@ -48,17 +50,17 @@ public class CameraController : MonoBehaviour
     private void CameraShake()
     {
         float _cameraPosX = Mathf.Clamp(_targetTransform.position.x, limitLeft, limitRight);
-        float _shakeamtX = 0.05f;
-        float _shakeamtY = 0.05f;
+        float _shakeamtX = 0.07f;
+        float _shakeamtY = 0.07f;
 
 
         float _shakeRX;
         float _shakeRY;
 
-        float _nextShake = 0.0f;
-        float _frequencyShake = 20f;
+        float _frequencyShake = 0.006f;
 
-        print(Time.time);
+        print("Tiempo: " + Time.time);
+        print("Next: " + _nextShake);
 
         if (Time.time > _nextShake)
         {
@@ -69,6 +71,9 @@ public class CameraController : MonoBehaviour
 
             _myTransform.position = new Vector3(_cameraPosX + _shakeRX, _offsetY + _shakeRY, _offsetZ);
         }
+        else
+            _myTransform.position = new Vector3(_cameraPosX, _offsetY, _offsetZ);
+
     }
 
     public IEnumerator ShakeBegin()
