@@ -110,10 +110,10 @@ public class PlayerManager : MonoBehaviour
 
     private IEnumerator ShotTemp(Vector2 _stop, Vector2 _impulse)
     {
-        StartCoroutine(_cameraController.ShakeBegin());
-
         if (_resourceManager.BalaQuantity > 0)
         {
+            StartCoroutine(_cameraController.ShakeBegin());
+
             state = 3;
             _shotEnable = false;
             _slideEnable = false;

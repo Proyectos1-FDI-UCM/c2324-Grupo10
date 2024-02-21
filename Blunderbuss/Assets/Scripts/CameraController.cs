@@ -55,20 +55,20 @@ public class CameraController : MonoBehaviour
         float _shakeRX;
         float _shakeRY;
 
-        _shakeRX = Random.Range(-1f, 1f) * _shakeamtX;
-        _shakeRY = Random.Range(-1f, 1f) * _shakeamtY;
+        float _nextShake = 0.0f;
+        float _frequencyShake = 20f;
 
-        _myTransform.position = new Vector3(_cameraPosX + _shakeRX, _offsetY + _shakeRY, _offsetZ);
-
-        /*float _nextShake = 0.0f;
-        float _frequencyShake = 0.5f;
+        print(Time.time);
 
         if (Time.time > _nextShake)
         {
             _nextShake = Time.time + _frequencyShake;
 
-            
-        }*/
+            _shakeRX = Random.Range(-1f, 1f) * _shakeamtX;
+            _shakeRY = Random.Range(-1f, 1f) * _shakeamtY;
+
+            _myTransform.position = new Vector3(_cameraPosX + _shakeRX, _offsetY + _shakeRY, _offsetZ);
+        }
     }
 
     public IEnumerator ShakeBegin()
