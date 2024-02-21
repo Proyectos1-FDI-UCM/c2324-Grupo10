@@ -24,13 +24,13 @@ public class ShotManager : MonoBehaviour
 
     void Update()
     {
-        if (_playerManager.state == 2 || (_playerManager.state == 4 && dir == 1) || (_playerManager.state == 0 && dir == 1))
+        /*if (_playerManager.state == 2 || (_playerManager.state == 4 && dir == 1) || (_playerManager.state == 0 && dir == 1))
         {
             _escopetaColliderSuperficie.SetActive(true);
         }
         else
         {
             _escopetaColliderAire.SetActive(true);
-        }
+        }*/
     }
 }
