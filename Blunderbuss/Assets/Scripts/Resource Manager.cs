@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
@@ -12,8 +13,8 @@ public class ResourceManager : MonoBehaviour
 
     #region parameters
     public bool debug = false;
-    private float maxHealth;                        // Por si queremos mejorar la vida del personaje
-    private float health;
+    public float maxHealth;                        // Por si queremos mejorar la vida del personaje
+    public float health;
     public float healingValue = 50f;               // Por si queremos meter una mejora de que las pociones curan mas
     public int maxBalas = 6;                       // Por si queremos meter una mejora de mas balas
     public int BalaQuantity;
@@ -32,6 +33,8 @@ public class ResourceManager : MonoBehaviour
             health += healingValue;
             HealQuantity--;
         }
+        _UIManager.gestionRambutan();
+        _UIManager.actualizaVida();
     }
     public void restaBala()
     {
@@ -56,6 +59,7 @@ public class ResourceManager : MonoBehaviour
             yield return new WaitForSeconds(delaySeconds);
             _playerManager.state = 0;
         }
+        _UIManager.actualizaVida();
     }
     #endregion
 

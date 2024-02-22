@@ -10,7 +10,9 @@ public class UIManager : MonoBehaviour
     private ResourceManager _resourceManager;
     private SpriteRenderer _spriteRendererRam;
     private SpriteRenderer [] _spriteRendererSac;
+    private Transform _transformVida;
 
+    public GameObject _healthBar;
     public GameObject  _rambutan;
     public GameObject [] _sacos;
     #endregion
@@ -22,9 +24,13 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region methods
-    public void gestionRambutan()
+    public void gestionRambutan()                       //Gestionar si hay curacion disponible o no
     {
-        if (_resourceManager.HealQuantity == 0)
+        if (_resourceManager.HealQuantity == 1)
+        {
+            _spriteRendererRam.enabled = true;
+        }
+        else if (_resourceManager.HealQuantity == 0)
         {
             healAviable = false;
         }
@@ -44,6 +50,11 @@ public class UIManager : MonoBehaviour
         {
             _spriteRendererSac[i].enabled = true;
         }
+        sacosAviable = _resourceManager.maxBalas-1;
+    }
+    public void actualizaVida()
+    {
+        _transformVida.localScale = new Vector3 (_resourceManager.health / _resourceManager.maxHealth,0,0);
     }
     #endregion
 
@@ -56,6 +67,9 @@ public class UIManager : MonoBehaviour
 
         _rambutan = GameObject.FindGameObjectWithTag("Rambutan");
         _spriteRendererRam = _rambutan.GetComponent<SpriteRenderer>();
+
+        _healthBar = GameObject.FindGameObjectWithTag("Vida");
+        _transformVida = _healthBar.transform;
 
         sacosAviable = _resourceManager.maxBalas - 1;
 
