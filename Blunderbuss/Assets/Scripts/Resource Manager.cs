@@ -17,7 +17,7 @@ public class ResourceManager : MonoBehaviour
     public int BalaQuantity;
     public float reloadTime = 0.4f;                // Por si queremos cambiar la recarga
     public int maxHeal = 1;                        // Por si queremos meter una mejora de mas curas
-    private int HealQuantity;
+    public int HealQuantity;
     public float tiempoInvulnerable = 0.5f;        // Para que podamos ajustar sl tiempo de invulnerabilidad
     #endregion
 
