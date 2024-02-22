@@ -17,8 +17,6 @@ public class ShotManager : MonoBehaviour
     private BoxCollider2D _boxCollFA;
     private BoxCollider2D _boxCollFS;
 
-    private float _faDist = 4f;
-    private float _fsDist = 4f;
     #endregion
 
     #region parameters
@@ -26,6 +24,8 @@ public class ShotManager : MonoBehaviour
 
     void Start()
     {
+        _myTransform = transform;
+
         _spriteRFA = _fuegoAire.GetComponent<SpriteRenderer>();
         _spriteRFS = _fuegoSuelo.GetComponent<SpriteRenderer>();
 
@@ -41,7 +41,32 @@ public class ShotManager : MonoBehaviour
 
     public IEnumerator FireSpawn(bool suelo, Vector2 position, Quaternion rotation)
     {
-        yield return new WaitForSeconds(0); //Lo pongo para que no de error. La corrutina siempre pide mínimo uno de estos.
+        float _faDist = 4f;
+        float _fsDist = 4f;
+        float intervalo = 0.3f;
+
+        if(!suelo)
+        {
+            _fuegoAire.transform.position = _myTransform.position + new Vector3 (position.x * _faDist, position.y * _faDist, 0f);
+            _fuegoAire.transform.rotation = rotation;
+            _boxCollFA.enabled = true;
+            _spriteRFA.enabled = true;
+            yield return new WaitForSeconds(intervalo);
+            _boxCollFA.enabled = false;
+            _spriteRFA.enabled = false;
+        }
+        else
+        {
+            _fuegoSuelo.transform.position = _myTransform.position + new Vector3(position.x * _fsDist, position.y * _faDist, 0f);
+            _fuegoSuelo.transform.rotation = rotation;
+            _boxCollFS.enabled = true;
+            _spriteRFS.enabled = true;
+            yield return new WaitForSeconds(intervalo);
+            _boxCollFS.enabled = false;
+            _spriteRFS.enabled = false;
+        }
+
+        //Lo pongo para que no dé error. La corrutina siempre pide mínimo uno de estos.
 
         //El metodo consta de un if y un else. En ambos caso se hace exactamente lo mismo salvo que multiplicamos las componentes del vector2 por las diferentes dists.
         //Respectivamente activar boxColl y spriteR para desactivarlo despues del intervalo.
