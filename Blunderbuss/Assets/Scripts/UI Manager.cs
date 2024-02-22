@@ -8,13 +8,17 @@ public class UIManager : MonoBehaviour
     #region references
     private GameManager _gameManager;
     private ResourceManager _resourceManager;
-    private SpriteRenderer _spriteRenderer;
+    private SpriteRenderer _spriteRendererRam;
+    private SpriteRenderer [] _spriteRendererSac;
+
     public GameObject  _rambutan;
+    public GameObject [] _sacos;
     #endregion
 
     #region parameters
-    private bool[] balas;
+    public bool[] balas;
     private bool healAviable;
+    private int sacosAviable;
     #endregion
 
     #region methods
@@ -26,12 +30,20 @@ public class UIManager : MonoBehaviour
         }
         if (!healAviable)
         {
-            _spriteRenderer.enabled = false;
+            _spriteRendererRam.enabled = false;
         }
     }  
-    public void gestionaBalas()
+    public void quitaBala()
+    {     
+          _spriteRendererSac[sacosAviable].enabled = false;  // test orden sacos
+          sacosAviable--;         
+    }
+    public void reiniciaBalas()
     {
-
+        for (int i = 0; i < balas.Length; i++)
+        {
+            _spriteRendererSac[i].enabled = true;
+        }
     }
     #endregion
 
@@ -41,8 +53,17 @@ public class UIManager : MonoBehaviour
         _gameManager = GameManager.Instance;   
         _resourceManager = _gameManager.ResourceManager;
         balas = new bool[_resourceManager.maxBalas];
+
         _rambutan = GameObject.FindGameObjectWithTag("Rambutan");
-        _spriteRenderer = _rambutan.GetComponent<SpriteRenderer>();       
+        _spriteRendererRam = _rambutan.GetComponent<SpriteRenderer>();
+
+        sacosAviable = _resourceManager.maxBalas - 1;
+
+        _spriteRendererSac = new SpriteRenderer[_sacos.Length];
+        for (int i = 0;i < _sacos.Length; i++)
+        {
+            _spriteRendererSac[i] = _sacos[i].GetComponent<SpriteRenderer>();
+        }
     }
 
     // Update is called once per frame

@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 344486700}
   m_Layer: 0
   m_Name: Bala4
-  m_TagString: Untagged
+  m_TagString: Sacos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,11 +363,11 @@ Transform:
   m_GameObject: {fileID: 344486698}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -247.6, y: 159.3, z: 0}
-  m_LocalScale: {x: 27.39192, y: 28.327671, z: 0.75}
+  m_LocalPosition: {x: -247.59999, y: 159.3, z: 0}
+  m_LocalScale: {x: 27.391918, y: 28.327671, z: 0.74999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1529776408}
+  m_Father: {fileID: 379388032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &344486700
 SpriteRenderer:
@@ -421,6 +421,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &379388031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 379388032}
+  m_Layer: 5
+  m_Name: Sacos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &379388032
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379388031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1327810804}
+  - {fileID: 1800055084}
+  - {fileID: 1859853822}
+  - {fileID: 344486699}
+  - {fileID: 1592730626}
+  - {fileID: 400619457}
+  m_Father: {fileID: 1529776408}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &400619456
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +474,7 @@ GameObject:
   - component: {fileID: 400619458}
   m_Layer: 0
   m_Name: Bala6
-  m_TagString: Untagged
+  m_TagString: Sacos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -447,11 +488,11 @@ Transform:
   m_GameObject: {fileID: 400619456}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -174.62, y: 159.14001, z: 0}
-  m_LocalScale: {x: 27.39192, y: 28.327671, z: 0.75}
+  m_LocalPosition: {x: -174.62, y: 159.14, z: 0}
+  m_LocalScale: {x: 27.391918, y: 28.327671, z: 0.74999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1529776408}
+  m_Father: {fileID: 379388032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &400619458
 SpriteRenderer:
@@ -1257,9 +1298,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ae94fe27d633c409596fae8477264b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _UIManager: {fileID: 1529776409}
   debug: 0
   healingValue: 50
-  maxBalas: 4
+  maxBalas: 6
   BalaQuantity: 0
   reloadTime: 0.5
   maxHeal: 1
@@ -1361,7 +1403,7 @@ GameObject:
   - component: {fileID: 1327810805}
   m_Layer: 0
   m_Name: Bala1
-  m_TagString: Untagged
+  m_TagString: Sacos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1375,11 +1417,11 @@ Transform:
   m_GameObject: {fileID: 1327810803}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -357.08002, y: 159.3, z: 0}
-  m_LocalScale: {x: 27.39192, y: 28.327671, z: 0.5}
+  m_LocalPosition: {x: -357.08, y: 159.3, z: 0}
+  m_LocalScale: {x: 27.391918, y: 28.327671, z: 0.49999997}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1529776408}
+  m_Father: {fileID: 379388032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1327810805
 SpriteRenderer:
@@ -1726,15 +1768,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1327810804}
-  - {fileID: 1800055084}
-  - {fileID: 1859853822}
-  - {fileID: 344486699}
-  - {fileID: 1592730626}
-  - {fileID: 400619457}
+  - {fileID: 379388032}
   - {fileID: 570128967}
-  - {fileID: 2029087267}
   - {fileID: 1081654675}
+  - {fileID: 2029087267}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1755,6 +1792,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rambutan: {fileID: 570128966}
+  _sacos:
+  - {fileID: 1327810803}
+  - {fileID: 1800055083}
+  - {fileID: 1859853821}
+  - {fileID: 344486698}
+  - {fileID: 1592730625}
+  - {fileID: 400619456}
+  balas: 
 --- !u!1 &1592730625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,7 +1812,7 @@ GameObject:
   - component: {fileID: 1592730627}
   m_Layer: 0
   m_Name: Bala5
-  m_TagString: Untagged
+  m_TagString: Sacos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1781,11 +1826,11 @@ Transform:
   m_GameObject: {fileID: 1592730625}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -211.12, y: 159.3, z: 0}
-  m_LocalScale: {x: 27.39192, y: 28.327671, z: 0.75}
+  m_LocalPosition: {x: -211.11998, y: 159.3, z: 0}
+  m_LocalScale: {x: 27.391918, y: 28.327671, z: 0.74999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1529776408}
+  m_Father: {fileID: 379388032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1592730627
 SpriteRenderer:
@@ -1851,7 +1896,7 @@ GameObject:
   - component: {fileID: 1800055085}
   m_Layer: 0
   m_Name: Bala2
-  m_TagString: Untagged
+  m_TagString: Sacos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1865,11 +1910,11 @@ Transform:
   m_GameObject: {fileID: 1800055083}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -320.59, y: 159.3, z: 0}
-  m_LocalScale: {x: 27.39192, y: 28.327671, z: 0.75}
+  m_LocalPosition: {x: -320.58997, y: 159.3, z: 0}
+  m_LocalScale: {x: 27.391918, y: 28.327671, z: 0.74999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1529776408}
+  m_Father: {fileID: 379388032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1800055085
 SpriteRenderer:
@@ -1935,7 +1980,7 @@ GameObject:
   - component: {fileID: 1859853823}
   m_Layer: 0
   m_Name: Bala3
-  m_TagString: Untagged
+  m_TagString: Sacos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1949,11 +1994,11 @@ Transform:
   m_GameObject: {fileID: 1859853821}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -284.1, y: 159.3, z: 0}
-  m_LocalScale: {x: 27.39192, y: 28.327671, z: 0.75}
+  m_LocalPosition: {x: -284.09998, y: 159.3, z: 0}
+  m_LocalScale: {x: 27.391918, y: 28.327671, z: 0.74999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1529776408}
+  m_Father: {fileID: 379388032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1859853823
 SpriteRenderer:
