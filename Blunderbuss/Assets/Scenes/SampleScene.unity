@@ -511,7 +511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19403a4d417f10c4eb6d0849850e075d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _myTransform: {fileID: 0}
+  _cameraController: {fileID: 519420033}
+  _myTransform: {fileID: 489448014}
   state: 0
 --- !u!114 &489448016
 MonoBehaviour:
