@@ -250,7 +250,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pared" && state != 0)
+        if (collision.gameObject.tag == "Pared" && state != 0 && state != 4)
         {
             state = 2;
 
