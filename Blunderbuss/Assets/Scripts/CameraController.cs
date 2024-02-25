@@ -59,9 +59,6 @@ public class CameraController : MonoBehaviour
 
         float _frequencyShake = 0.006f;
 
-        print("Tiempo: " + Time.time);
-        print("Next: " + _nextShake);
-
         if (Time.time > _nextShake)
         {
             _nextShake = Time.time + _frequencyShake;

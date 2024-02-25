@@ -241,9 +241,9 @@ public class PlayerManager : MonoBehaviour
 
         if (collision.gameObject.tag == "Pared")
         {
-            if (collision.contacts[0].normal.x < 0)
+            if (collision.contacts[0].normal.x < 0 && _rb.velocity.y != 0)
                 _spriteR.flipX = false;
-            else
+            else if (_rb.velocity.y != 0)
                 _spriteR.flipX = true;
         }
     }
