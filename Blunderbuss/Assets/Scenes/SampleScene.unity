@@ -1405,17 +1405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ae94fe27d633c409596fae8477264b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UIManager: {fileID: 1529776409}
-  debug: 0
-  maxHealth: 0
-  health: 0
-  healingValue: 50
-  maxBalas: 6
-  BalaQuantity: 0
-  reloadTime: 0.5
-  maxHeal: 1
-  HealQuantity: 0
-  tiempoInvulnerable: 0.5
 --- !u!1 &1081654674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,15 +1889,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31ecf8ec8cdffc4bb9712ad29fa6cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBar: {fileID: 0}
+  _balasManager: {fileID: 0}
+  _vidaManager: {fileID: 0}
+  _healthBar: {fileID: 2018678854}
   _rambutan: {fileID: 570128966}
   _sacos:
-  - {fileID: 1327810803}
-  - {fileID: 1800055083}
-  - {fileID: 1859853821}
-  - {fileID: 344486698}
-  - {fileID: 1592730625}
-  - {fileID: 400619456}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   balas: 
 --- !u!1 &1592730625
 GameObject:

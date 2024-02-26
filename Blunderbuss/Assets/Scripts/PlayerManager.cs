@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour
 
         _gameManager = GameManager.Instance;
         _inputManager = _gameManager.InputManager;
-        //_resourceManager = _gameManager.ResourceManager;
+        _balasManager = GetComponent<BalasManager>();
         _shotManager = GetComponent<ShotManager>();
     }
 

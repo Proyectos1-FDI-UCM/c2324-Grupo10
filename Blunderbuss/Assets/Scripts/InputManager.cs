@@ -31,7 +31,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //_resourceManager = GetComponent<ResourceManager>();
+        _vidaManager = GetComponent<VidaManager>();
     }
 
     // Update is called once per frame

@@ -7,8 +7,13 @@ public class UIManager : MonoBehaviour
 {
     #region references
     private GameManager _gameManager;
-    private BalasManager _balasManager;
-    private VidaManager _vidaManager;
+
+    [SerializeField]
+    BalasManager _balasManager;
+
+    [SerializeField]
+    VidaManager _vidaManager;
+
     private SpriteRenderer _spriteRendererRam;
     private SpriteRenderer [] _spriteRendererSac;
     private Transform _transformVida;
@@ -63,7 +68,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _gameManager = GameManager.Instance;   
-        //_resourceManager = _gameManager.ResourceManager;
 
         _rambutan = GameObject.FindGameObjectWithTag("Rambutan");
         _spriteRendererRam = _rambutan.GetComponent<SpriteRenderer>();
