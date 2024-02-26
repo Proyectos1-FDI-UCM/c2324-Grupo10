@@ -5,7 +5,8 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     private InputActions _inputActions;
-    [SerializeField] PlayerManager _playerManager;
+    private GameManager _gameManager;
+    private PlayerManager _playerManager;
     private VidaManager _vidaManager;
     public float axisX = 0;
 
@@ -31,6 +32,8 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _gameManager = GameManager.Instance;
+        _playerManager = _gameManager.Player.GetComponent<PlayerManager>();
         _vidaManager = GetComponent<VidaManager>();
     }
 

@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     #region references
+    private GameManager _gameManager;
     private Transform _myTransform;
-    [SerializeField]
     private Transform _targetTransform;
     #endregion
 
@@ -28,6 +28,8 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         camState = 1;
+        _gameManager = GameManager.Instance;
+        _targetTransform = _gameManager.Player.transform;
         _myTransform = transform;
     }
 

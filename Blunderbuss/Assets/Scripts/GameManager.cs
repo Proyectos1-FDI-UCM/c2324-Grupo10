@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour
     #region references
     static private GameManager _instance;
     private InputManager _inputManager;
-    [SerializeField] 
-    GameObject _player;
+    public GameObject Player;
     private VidaManager _vidaManager;
     private BalasManager _balasManager;
     private PlayerManager _playerManager;
@@ -41,9 +40,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _playerManager=_player.GetComponentInParent<PlayerManager>();
-        _vidaManager=_player.GetComponentInParent<VidaManager>();
-        _balasManager=_player.GetComponentInParent<BalasManager>();
+        _playerManager = Player.GetComponentInParent<PlayerManager>();
+        _vidaManager = Player.GetComponentInParent<VidaManager>();
+        _balasManager = Player.GetComponentInParent<BalasManager>();
     }
 
     // Update is called once per frame
