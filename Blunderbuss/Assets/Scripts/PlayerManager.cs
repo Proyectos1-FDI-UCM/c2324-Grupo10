@@ -27,6 +27,7 @@ public class PlayerManager : MonoBehaviour
     private float _airForce = 500f;
     private bool _slideEnable = true;
     public bool shotEnable = true;
+    public float _groundHeight;
     #endregion
 
     // Start is called before the first frame update
@@ -48,7 +49,7 @@ public class PlayerManager : MonoBehaviour
         if(state < 3)
             Move(_inputManager.axisX);
 
-        print(state);
+        print(state + " " + _rb.velocity + " " + _myTransform.position.y);
     }
 
     public void Move(float axis)
@@ -241,9 +242,9 @@ public class PlayerManager : MonoBehaviour
 
         if (collision.gameObject.tag == "Pared")
         {
-            if (collision.contacts[0].normal.x < 0 && _rb.velocity.y != 0)
+            if (collision.contacts[0].normal.x < 0 && _myTransform.position.y >= _groundHeight)
                 _spriteR.flipX = false;
-            else if (_rb.velocity.y != 0)
+            else if (_myTransform.position.y >= _groundHeight)
                 _spriteR.flipX = true;
         }
     }
@@ -261,10 +262,9 @@ public class PlayerManager : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pared")
+        if (collision.gameObject.tag == "Pared" && state != 0 && state != 4)
         {
-            if (_rb.velocity.y != 0 && state != 0)
-                state = 1;
+            state = 1;
         }
     }
 }
