@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     #region references
     private GameManager _gameManager;
     private InputManager _inputManager;
-    private ResourceManager _resourceManager;
+    private BalasManager _balasManager;
     [SerializeField]
     private CameraController _cameraController;
     private ShotManager _shotManager;
@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour
 
         _gameManager = GameManager.Instance;
         _inputManager = _gameManager.InputManager;
-        _resourceManager = _gameManager.ResourceManager;
+        //_resourceManager = _gameManager.ResourceManager;
         _shotManager = GetComponent<ShotManager>();
     }
 
@@ -122,7 +122,7 @@ public class PlayerManager : MonoBehaviour
 
         _rb.velocity = _stop;
         _rb.AddForce(_impulse, ForceMode2D.Impulse);
-        _resourceManager.restaBala();
+        _balasManager.restaBala();
 
         yield return new WaitForSeconds(_shotCD);
         shotEnable = true;
@@ -138,7 +138,7 @@ public class PlayerManager : MonoBehaviour
         float _impulse;
         bool _suelo;
 
-        if (shotEnable && _resourceManager.BalaQuantity > 0)
+        if (shotEnable && _balasManager.BalaQuantity > 0)
         {
             if (state != 2)
             {
@@ -224,11 +224,11 @@ public class PlayerManager : MonoBehaviour
     public IEnumerator Recarga()
     {
         float reloadCD = 0.75f;
-        if (state == 0 && _resourceManager.BalaQuantity != _resourceManager.maxBalas)
+        if (state == 0 && _balasManager.BalaQuantity != _balasManager.maxBalas)
         {
             state = 3;
             _rb.velocity = Vector2.zero;
-            StartCoroutine(_resourceManager.Recargar());
+            StartCoroutine(_balasManager.Recargar());
             yield return new WaitForSeconds(reloadCD);
             state = 0;
         }

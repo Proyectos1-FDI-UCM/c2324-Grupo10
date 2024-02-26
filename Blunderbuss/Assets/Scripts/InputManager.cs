@@ -6,7 +6,7 @@ public class InputManager : MonoBehaviour
 {
     private InputActions _inputActions;
     [SerializeField] PlayerManager _playerManager;
-    private ResourceManager _resourceManager;
+    private VidaManager _vidaManager;
     public float axisX = 0;
 
     public void Awake()
@@ -25,13 +25,13 @@ public class InputManager : MonoBehaviour
 
         //Dani
         _inputActions.Player.Recharge.started += ctx =>  StartCoroutine(_playerManager.Recarga());
-        _inputActions.Player.Potion.started += ctx => _resourceManager.Curarse();
+        _inputActions.Player.Potion.started += ctx => _vidaManager.Curarse();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        _resourceManager = GetComponent<ResourceManager>();
+        //_resourceManager = GetComponent<ResourceManager>();
     }
 
     // Update is called once per frame

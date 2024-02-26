@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     #region references
     static private GameManager _instance;
     private InputManager _inputManager;
-    private ResourceManager _resourceManager;
+    //private ResourceManager _resourceManager;
 
     static public GameManager Instance
     {
@@ -19,10 +19,11 @@ public class GameManager : MonoBehaviour
         get { return _inputManager; }
     }
 
-    public ResourceManager ResourceManager
+    /*public ResourceManager ResourceManager
     {
         get { return _resourceManager; }
     }
+    */
     #endregion
 
     private void Awake()
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
             _inputManager = GetComponent<InputManager>();
-            _resourceManager = GetComponent<ResourceManager>();
+            //_resourceManager = GetComponent<ResourceManager>();
             DontDestroyOnLoad(gameObject);
         }
     }
