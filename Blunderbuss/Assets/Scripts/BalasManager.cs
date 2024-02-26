@@ -6,7 +6,7 @@ public class BalasManager : MonoBehaviour
 {
     #region references
     [SerializeField]
-    private UIManager _UIManager;
+    UIManager _UIManager;
     #endregion
 
     #region parameters

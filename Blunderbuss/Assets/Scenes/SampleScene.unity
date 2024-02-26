@@ -607,6 +607,8 @@ GameObject:
   - component: {fileID: 489448015}
   - component: {fileID: 489448016}
   - component: {fileID: 489448017}
+  - component: {fileID: 489448019}
+  - component: {fileID: 489448018}
   m_Layer: 0
   m_Name: Colega
   m_TagString: Player
@@ -796,6 +798,41 @@ MonoBehaviour:
   _myTransform: {fileID: 0}
   _fuegoAire: {fileID: 317469186}
   _fuegoSuelo: {fileID: 858581562}
+--- !u!114 &489448018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489448010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aea55e52b04aff449d169d89e775a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _UIManager: {fileID: 1529776409}
+  maxBalas: 6
+  BalaQuantity: 0
+  reloadTime: 0.4
+--- !u!114 &489448019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489448010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86a10a1d74ae0040aa8a37811b6f9e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  maxHealth: 0
+  health: 0
+  healingValue: 50
+  maxHeal: 1
+  HealQuantity: 0
+  tiempoInvulnerable: 0.5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,7 +1381,6 @@ GameObject:
   - component: {fileID: 869617153}
   - component: {fileID: 869617155}
   - component: {fileID: 869617154}
-  - component: {fileID: 869617156}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1393,18 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a5ebdb667e5ad439f481d9686984b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &869617156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869617151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46ae94fe27d633c409596fae8477264b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _player: {fileID: 489448010}
 --- !u!1 &1081654674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,17 +1914,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31ecf8ec8cdffc4bb9712ad29fa6cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _balasManager: {fileID: 0}
-  _vidaManager: {fileID: 0}
+  _balasManager: {fileID: 489448018}
+  _vidaManager: {fileID: 489448019}
   _healthBar: {fileID: 2018678854}
   _rambutan: {fileID: 570128966}
   _sacos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1327810803}
+  - {fileID: 1800055083}
+  - {fileID: 1859853821}
+  - {fileID: 344486698}
+  - {fileID: 1592730625}
+  - {fileID: 400619456}
   balas: 
 --- !u!1 &1592730625
 GameObject:
