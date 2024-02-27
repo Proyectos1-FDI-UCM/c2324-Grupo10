@@ -34,7 +34,7 @@ public class InputManager : MonoBehaviour
     {
         _gameManager = GameManager.Instance;
         _playerManager = _gameManager.Player.GetComponent<PlayerManager>();
-        _vidaManager = GetComponent<VidaManager>();
+        _vidaManager = _gameManager.Player.GetComponent<VidaManager>();
     }
 
     // Update is called once per frame

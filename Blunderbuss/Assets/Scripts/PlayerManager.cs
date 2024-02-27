@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region parameters
-    public int state;
+    public int state; //Estado 0: Suelo; Estado 1: Aire; Estado 2: Pared; Estado 3: Mov Bloqueado/Evento; Estado 4: Deslizamiento;
 
     private float _speedGround = 3f;
     private float _speedAir = 3f;
@@ -128,10 +128,10 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(_shotCD);
         shotEnable = true;
         _slideEnable = true;
-        if (_rb.velocity.y == 0)
-            state = 0;
-        else
+        if (_myTransform.position.y >= _groundHeight)
             state = 1;
+        else
+            state = 0;
     }
 
     public void Shot(int dir)
@@ -149,23 +149,23 @@ public class PlayerManager : MonoBehaviour
                         if (state == 0)
                         {
                             _suelo = false;
-                            _impulse = 600;
+                            _impulse = 700;
                         }
                         else
                         {
                             _suelo = false;
-                            _impulse = 800f;
+                            _impulse = 1000f;
                         }
 
                         if (!_spriteR.flipX)
                         {
                             StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.right, Quaternion.Euler(0, 0, 90)));
-                            StartCoroutine(ShotTemp(new Vector2(_rb.velocity.x, 0), new Vector2(-_impulse, 0)));
+                            StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-_impulse, 0)));
                         }
                         else
                         {
                             StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.left, Quaternion.Euler(0 ,0, -90)));
-                            StartCoroutine(ShotTemp(new Vector2(_rb.velocity.x, 0), new Vector2(_impulse, 0)));
+                            StartCoroutine(ShotTemp(Vector2.zero, new Vector2(_impulse, 0)));
                         }
                         break;
                     case 1:
@@ -174,15 +174,15 @@ public class PlayerManager : MonoBehaviour
                             _suelo = true;
                             _impulse = 900;
                         }
-                        else if (state == 4)
+                        else if (state == 1)
                         {
                             _suelo = true;
-                            _impulse = 1200f;
+                            _impulse = 800f;
                         }
                         else
                         {
                             _suelo = false;
-                            _impulse = 800f;
+                            _impulse = 1200f;
                         }
 
                         StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.down, Quaternion.identity));
@@ -224,13 +224,13 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator Recarga()
     {
-        float reloadCD = 0.75f;
+        float _reloadCD = 0.75f;
         if (state == 0 && _balasManager.BalaQuantity != _balasManager.maxBalas)
         {
             state = 3;
             _rb.velocity = Vector2.zero;
             StartCoroutine(_balasManager.Recargar());
-            yield return new WaitForSeconds(reloadCD);
+            yield return new WaitForSeconds(_reloadCD);
             state = 0;
         }
     }
