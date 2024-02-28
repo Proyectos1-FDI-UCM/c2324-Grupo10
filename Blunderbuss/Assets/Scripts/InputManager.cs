@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class InputManager : MonoBehaviour
         _gameManager = GameManager.Instance;
         _playerManager = _gameManager.Player.GetComponent<PlayerManager>();
         _vidaManager = _gameManager.Player.GetComponent<VidaManager>();
+        _pauseMenu = EventSystem.current.GetComponent<PauseMenu>();
     }
 
     // Update is called once per frame
