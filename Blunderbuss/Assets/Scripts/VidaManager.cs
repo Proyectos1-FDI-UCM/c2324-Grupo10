@@ -5,7 +5,8 @@ using UnityEngine;
 public class VidaManager : MonoBehaviour
 {
     #region references
-    private UIManager _UIManager;
+    [SerializeField]
+    UIManager _UIManager;
     private PlayerManager _playerManager;
     #endregion
 
