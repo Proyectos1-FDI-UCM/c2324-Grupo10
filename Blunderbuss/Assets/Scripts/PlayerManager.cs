@@ -177,12 +177,12 @@ public class PlayerManager : MonoBehaviour
                         else if (state == 4)
                         {
                             _suelo = true;
-                            _impulse = 800f;
+                            _impulse = 1200f;
                         }
                         else
                         {
                             _suelo = false;
-                            _impulse = 1200f;
+                            _impulse = 800f;
                         }
 
                         StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.down, Quaternion.identity));
