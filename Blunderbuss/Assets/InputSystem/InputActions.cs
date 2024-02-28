@@ -89,6 +89,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9a43a295-8e6c-41c1-ba7f-b39bc184da46"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -245,6 +254,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Shot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee1b4d88-f2af-43b7-a6c2-944918049c0a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -260,6 +280,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_Slide = m_Player.FindAction("Slide", throwIfNotFound: true);
         m_Player_Potion = m_Player.FindAction("Potion", throwIfNotFound: true);
         m_Player_Recharge = m_Player.FindAction("Recharge", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +349,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Slide;
     private readonly InputAction m_Player_Potion;
     private readonly InputAction m_Player_Recharge;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -339,6 +361,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Slide => m_Wrapper.m_Player_Slide;
         public InputAction @Potion => m_Wrapper.m_Player_Potion;
         public InputAction @Recharge => m_Wrapper.m_Player_Recharge;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -369,6 +392,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Recharge.started += instance.OnRecharge;
             @Recharge.performed += instance.OnRecharge;
             @Recharge.canceled += instance.OnRecharge;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -394,6 +420,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Recharge.started -= instance.OnRecharge;
             @Recharge.performed -= instance.OnRecharge;
             @Recharge.canceled -= instance.OnRecharge;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -420,5 +449,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnSlide(InputAction.CallbackContext context);
         void OnPotion(InputAction.CallbackContext context);
         void OnRecharge(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

@@ -8,6 +8,8 @@ public class InputManager : MonoBehaviour
     private GameManager _gameManager;
     private PlayerManager _playerManager;
     private VidaManager _vidaManager;
+    private PauseMenu _pauseMenu;
+
     public float axisX = 0;
 
     public void Awake()
@@ -27,6 +29,7 @@ public class InputManager : MonoBehaviour
         //Dani
         _inputActions.Player.Recharge.started += ctx =>  StartCoroutine(_playerManager.Recarga());
         _inputActions.Player.Potion.started += ctx => _vidaManager.Curarse();
+        _inputActions.Player.Pause.started += ctx => _pauseMenu.pause();
     }
 
     // Start is called before the first frame update
