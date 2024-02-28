@@ -174,7 +174,7 @@ public class PlayerManager : MonoBehaviour
                             _suelo = true;
                             _impulse = 900;
                         }
-                        else if (state == 1)
+                        else if (state == 4)
                         {
                             _suelo = true;
                             _impulse = 800f;

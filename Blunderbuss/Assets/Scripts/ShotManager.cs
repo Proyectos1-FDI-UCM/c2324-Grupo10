@@ -40,13 +40,13 @@ public class ShotManager : MonoBehaviour
 
     public IEnumerator FireSpawn(bool suelo, Vector2 position, Quaternion rotation)
     {
-        float _faDist = 0.3f;
-        float _fsDist = 0.3f;
+        float _faDist = 1.6f;
+        float _fsDist = 0.8f;
         float intervalo = 0.3f;
 
         if (!suelo)
         {
-            _fuegoAire.transform.position = _myTransform.position + new Vector3(position.x * _faDist, position.y * _faDist, 0f);
+            _fuegoAire.transform.position = _myTransform.position + new Vector3(position.x * _faDist, position.y * _faDist, -1f);
             _fuegoAire.transform.rotation = rotation;
             _boxCollFA.enabled = true;
             _spriteRFA.enabled = true;
@@ -56,7 +56,7 @@ public class ShotManager : MonoBehaviour
         }
         else
         {
-            _fuegoSuelo.transform.position = _myTransform.position + new Vector3(position.x * _fsDist, position.y * _fsDist, 0f);
+            _fuegoSuelo.transform.position = _myTransform.position + new Vector3(position.x * _fsDist, position.y * _fsDist, -1f);
             _fuegoSuelo.transform.rotation = rotation;
             _boxCollFS.enabled = true;
             _spriteRFS.enabled = true;
