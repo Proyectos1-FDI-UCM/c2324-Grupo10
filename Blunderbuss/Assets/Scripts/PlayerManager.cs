@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region parameters
-    public int state; //Estado 0: Suelo; Estado 1: Aire; Estado 2: Pared; Estado 3: Mov Bloqueado/Evento; Estado 4: Deslizamiento; Estado 5: Pelotazo;
+    public int state; //Estado 0: Suelo; Estado 1: Aire; Estado 2: Pared; Estado 3: Mov Bloqueado/Evento; Estado 4: Deslizamiento; Estado 5: Invulnerable; Estado 6: Pelotazo; 
 
     private float _speedGround = 3f;
     private float _speedAir = 3f;
@@ -229,7 +229,7 @@ public class PlayerManager : MonoBehaviour
         if (ballBlowEnable && _balasManager.BalaQuantity > 0)
         {
             ballBlowEnable = false;
-            state = 5;
+            state = 6;
             shotEnable = false;
             _slideEnable = false;
 
@@ -362,7 +362,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Suelo")
         {
-            if (state != 3 && state != 5)
+            if (state != 3 && state != 6)
             {
                 state = 0;
                 _slideEnable = true;
@@ -376,7 +376,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pared" && _myTransform.position.y >= _groundHeight && state != 5)
+        if (collision.gameObject.tag == "Pared" && _myTransform.position.y >= _groundHeight && state != 6)
         {
             state = 2;
 
@@ -385,14 +385,14 @@ public class PlayerManager : MonoBehaviour
 
             if (collision.contacts[0].normal.x < 0)
                 spriteR.flipX = false;
-            else if (_myTransform.position.y >= _groundHeight && state != 5)
+            else if (_myTransform.position.y >= _groundHeight && state != 6)
                 spriteR.flipX = true;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pared" && state != 0 && state != 4 && state != 5)
+        if (collision.gameObject.tag == "Pared" && state != 0 && state != 4 && state != 6)
         {
             state = 1;
         }
