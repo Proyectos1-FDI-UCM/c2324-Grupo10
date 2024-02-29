@@ -10,23 +10,25 @@ public class PlayerManager : MonoBehaviour
     private InputManager _inputManager;
     private BalasManager _balasManager;
     [SerializeField]
-    private CameraController _cameraController;
+    CameraController _cameraController;
     private ShotManager _shotManager;
 
     public Transform _myTransform;
     private Rigidbody2D _rb;
-    private SpriteRenderer _spriteR;
+    public SpriteRenderer spriteR;
+    public Transform targetEnemy;
     #endregion
 
     #region parameters
-    public int state; //Estado 0: Suelo; Estado 1: Aire; Estado 2: Pared; Estado 3: Mov Bloqueado/Evento; Estado 4: Deslizamiento;
+    public int state; //Estado 0: Suelo; Estado 1: Aire; Estado 2: Pared; Estado 3: Mov Bloqueado/Evento; Estado 4: Deslizamiento; Estado 5: Pelotazo;
 
     private float _speedGround = 3f;
     private float _speedAir = 3f;
     private float _speedWall = 2f;
     private float _airForce = 500f;
-    private bool _slideEnable = true;
+    private bool _slideEnable = false;
     public bool shotEnable = true;
+    public bool ballBlowEnable = true;
     public float _groundHeight;
     #endregion
 
@@ -35,7 +37,7 @@ public class PlayerManager : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _myTransform = _rb.transform;
-        _spriteR = GetComponent<SpriteRenderer>();
+        spriteR = GetComponent<SpriteRenderer>();
 
         _gameManager = GameManager.Instance;
         _inputManager = _gameManager.InputManager;
@@ -93,7 +95,7 @@ public class PlayerManager : MonoBehaviour
             state = 4;
             _slideEnable = false;
             
-            if(!_spriteR.flipX)
+            if(!spriteR.flipX)
             {
                 _rb.AddForce(new Vector2(_impulse, 0), ForceMode2D.Impulse);
             }
@@ -111,9 +113,9 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ShotTemp(Vector2 _stop, Vector2 _impulse)
+    private IEnumerator ShotTemp(Vector2 stop, Vector2 impulse)
     {
-        StartCoroutine(_cameraController.ShakeBegin());
+        StartCoroutine(_cameraController.ShakeBegin(2));
 
         state = 3;
         shotEnable = false;
@@ -121,8 +123,8 @@ public class PlayerManager : MonoBehaviour
 
         float _shotCD = 0.3f;
 
-        _rb.velocity = _stop;
-        _rb.AddForce(_impulse, ForceMode2D.Impulse);
+        _rb.velocity = stop;
+        _rb.AddForce(impulse, ForceMode2D.Impulse);
         _balasManager.restaBala();
 
         yield return new WaitForSeconds(_shotCD);
@@ -157,7 +159,7 @@ public class PlayerManager : MonoBehaviour
                             _impulse = 1000f;
                         }
 
-                        if (!_spriteR.flipX)
+                        if (!spriteR.flipX)
                         {
                             StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.right, Quaternion.Euler(0, 0, 90)));
                             StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-_impulse, 0)));
@@ -205,7 +207,7 @@ public class PlayerManager : MonoBehaviour
                 _impulse = 1000f;
                 _suelo = true;
 
-                if (_spriteR.flipX)
+                if (spriteR.flipX)
                 {
                     StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.left, Quaternion.Euler(0, 0, -90)));
                     StartCoroutine(ShotTemp(Vector2.zero, new Vector2(_impulse, _impulse / 2f)));
@@ -219,6 +221,127 @@ public class PlayerManager : MonoBehaviour
                 }
                     
             }
+        }
+    }
+
+    public IEnumerator BallBlow()
+    {
+        if (ballBlowEnable && _balasManager.BalaQuantity > 0)
+        {
+            ballBlowEnable = false;
+            state = 5;
+            shotEnable = false;
+            _slideEnable = false;
+
+            float shotCD = 0.3f;
+            float buildUp = 0.3f;
+            float smallJump = 300f;
+            float rotationSpeed = 300f;
+            float rotationSpeed2 = 2000f;
+            float jumpStop = 0.1f;
+            float impulse = 1500f;
+            Vector3 dir = (targetEnemy.position - transform.position).normalized;
+            Vector3 impDir;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Quaternion targetRotation;
+            Quaternion targetRotation2;
+            Quaternion targetRotation3;
+
+            if (dir.x < 0)
+            {
+                spriteR.flipX = true;
+                targetRotation = Quaternion.Euler(0, 0, angle + 180);
+                impDir = _myTransform.right;
+            }
+            else
+            {
+                spriteR.flipX = false;
+                targetRotation = Quaternion.Euler(0, 0, angle);
+                impDir = -_myTransform.right;
+            }
+
+            _rb.velocity = Vector3.zero;
+            _rb.gravityScale = 0;
+
+            if (_myTransform.position.y < _groundHeight)
+            {
+                _rb.AddForce(new Vector2(0, smallJump), ForceMode2D.Impulse);
+                yield return new WaitForSeconds(jumpStop);
+                _rb.velocity = Vector3.zero;
+            }
+            else if (state == 2)
+            {
+                if (!spriteR.flipX)
+                {
+                    _rb.AddForce(new Vector2(smallJump, 0), ForceMode2D.Impulse);
+                    yield return new WaitForSeconds(jumpStop);
+                    _rb.velocity = Vector3.zero;
+                }
+                else
+                {
+                    _rb.AddForce(new Vector2(-smallJump, 0), ForceMode2D.Impulse);
+                    yield return new WaitForSeconds(jumpStop);
+                    _rb.velocity = Vector3.zero;
+                }
+            }
+
+            if (!spriteR.flipX)
+            {
+                targetRotation = Quaternion.Euler(0, 0, angle);
+                targetRotation2 = Quaternion.Euler(0, 0, angle + 135f);
+                targetRotation3 = Quaternion.Euler(0, 0, angle + 270f);
+                while (_myTransform.rotation != targetRotation)
+                {
+                    transform.rotation = Quaternion.RotateTowards(_myTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                    yield return null;
+                }
+                impDir = _myTransform.right;
+            }
+            else
+            {
+                targetRotation = Quaternion.Euler(0, 0, angle + 180f);
+                targetRotation2 = Quaternion.Euler(0, 0, angle + 45f);
+                targetRotation3 = Quaternion.Euler(0, 0, angle - 90f);
+                while (_myTransform.rotation != targetRotation)
+                {
+                    transform.rotation = Quaternion.RotateTowards(_myTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                    yield return null;
+                }
+                impDir = -_myTransform.right;
+            }
+            yield return new WaitForSeconds(buildUp);
+            _rb.gravityScale = 1;
+
+            StartCoroutine(_cameraController.ShakeBegin(3));
+            _shotManager.BallBlowSpawn(impDir);
+            _balasManager.restaBala();
+
+            _rb.AddForce(-impDir * impulse, ForceMode2D.Impulse);
+            while (_myTransform.rotation != targetRotation2)
+            {
+                transform.rotation = Quaternion.RotateTowards(_myTransform.rotation, targetRotation2, rotationSpeed2 * Time.deltaTime);
+                yield return null;
+            }
+            while (_myTransform.rotation != targetRotation3)
+            {
+                transform.rotation = Quaternion.RotateTowards(_myTransform.rotation, targetRotation3, rotationSpeed2 * Time.deltaTime);
+                yield return null;
+            }
+            while (_myTransform.rotation != Quaternion.identity)
+            {
+                transform.rotation = Quaternion.RotateTowards(_myTransform.rotation, Quaternion.identity, rotationSpeed2 * Time.deltaTime);
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(shotCD);
+            shotEnable = true;
+            _slideEnable = true;
+            if (_myTransform.position.y >= _groundHeight)
+                state = 1;
+            else
+                state = 0;
+
+            ballBlowEnable = true;
         }
     }
 
@@ -238,31 +361,38 @@ public class PlayerManager : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Suelo")
-            state = 0;
-
+        {
+            if (state != 3 && state != 5)
+            {
+                state = 0;
+                _slideEnable = true;
+            }
+        }
         if (collision.gameObject.tag == "Pared")
         {
-            if (collision.contacts[0].normal.x < 0 && _myTransform.position.y >= _groundHeight)
-                _spriteR.flipX = false;
-            else if (_myTransform.position.y >= _groundHeight)
-                _spriteR.flipX = true;
+            
         }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pared" && state != 0 && state != 4)
+        if (collision.gameObject.tag == "Pared" && _myTransform.position.y >= _groundHeight && state != 5)
         {
             state = 2;
 
             if (_rb.velocity.y < 0)
                 _rb.velocity = new Vector2(_rb.velocity.x, -_speedWall);
+
+            if (collision.contacts[0].normal.x < 0)
+                spriteR.flipX = false;
+            else if (_myTransform.position.y >= _groundHeight && state != 5)
+                spriteR.flipX = true;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pared" && state != 0 && state != 4)
+        if (collision.gameObject.tag == "Pared" && state != 0 && state != 4 && state != 5)
         {
             state = 1;
         }

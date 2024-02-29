@@ -9,12 +9,18 @@ public class ShotManager : MonoBehaviour
 
     [SerializeField] GameObject _fuegoAire;
     [SerializeField] GameObject _fuegoSuelo;
+    [SerializeField] GameObject _pelotazo;
+
+    private PlayerManager _playerManager;
+    private PelotazoManager _pelotazoManager;
 
     private SpriteRenderer _spriteRFA;
     private SpriteRenderer _spriteRFS;
+    private SpriteRenderer _spriteP;
 
     private BoxCollider2D _boxCollFA;
     private BoxCollider2D _boxCollFS;
+    private CircleCollider2D _cirCollP;
 
     #endregion
 
@@ -24,12 +30,16 @@ public class ShotManager : MonoBehaviour
     void Start()
     {
         _myTransform = transform;
+        _playerManager = GetComponent<PlayerManager>();
+        _pelotazoManager = _pelotazo.GetComponent<PelotazoManager>();
 
         _spriteRFA = _fuegoAire.GetComponent<SpriteRenderer>();
         _spriteRFS = _fuegoSuelo.GetComponent<SpriteRenderer>();
+        _spriteP = _pelotazo.GetComponent<SpriteRenderer>();
 
         _boxCollFA = _fuegoAire.GetComponent<BoxCollider2D>();
         _boxCollFS = _fuegoSuelo.GetComponent<BoxCollider2D>();
+        _cirCollP = _pelotazo.GetComponent<CircleCollider2D>();
     }
 
 
@@ -64,5 +74,16 @@ public class ShotManager : MonoBehaviour
             _boxCollFS.enabled = false;
             _spriteRFS.enabled = false;
         }
+    }
+
+    public void BallBlowSpawn(Vector3 impDir)
+    {
+        float _pDist = 1.5f;
+        _pelotazo.transform.position = _myTransform.position + (impDir * _pDist + Vector3.back);
+
+        _spriteP.enabled = true;
+        _cirCollP.enabled = true;
+
+        StartCoroutine(_pelotazoManager.Movement());
     }
 }

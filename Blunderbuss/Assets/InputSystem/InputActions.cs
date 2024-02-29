@@ -98,6 +98,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ball_Blow"",
+                    ""type"": ""Button"",
+                    ""id"": ""95ff1171-5adc-4725-afd5-a5c90075fa48"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -265,6 +274,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""093b0f4a-297c-4197-a03a-43fad6b7d9d7"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ball_Blow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -281,6 +301,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_Potion = m_Player.FindAction("Potion", throwIfNotFound: true);
         m_Player_Recharge = m_Player.FindAction("Recharge", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_Ball_Blow = m_Player.FindAction("Ball_Blow", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -350,6 +371,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Potion;
     private readonly InputAction m_Player_Recharge;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_Ball_Blow;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -362,6 +384,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Potion => m_Wrapper.m_Player_Potion;
         public InputAction @Recharge => m_Wrapper.m_Player_Recharge;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @Ball_Blow => m_Wrapper.m_Player_Ball_Blow;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -395,6 +418,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Ball_Blow.started += instance.OnBall_Blow;
+            @Ball_Blow.performed += instance.OnBall_Blow;
+            @Ball_Blow.canceled += instance.OnBall_Blow;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -423,6 +449,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Ball_Blow.started -= instance.OnBall_Blow;
+            @Ball_Blow.performed -= instance.OnBall_Blow;
+            @Ball_Blow.canceled -= instance.OnBall_Blow;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -450,5 +479,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnPotion(InputAction.CallbackContext context);
         void OnRecharge(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnBall_Blow(InputAction.CallbackContext context);
     }
 }

@@ -39,7 +39,9 @@ public class CameraController : MonoBehaviour
         if (camState == 1)
             CameraFollow();
         else if (camState == 2)
-            CameraShake();
+            CameraShake(0.07f);
+        else if (camState == 3)
+            CameraShake(0.22f);
     }
 
     private void CameraFollow()
@@ -49,12 +51,9 @@ public class CameraController : MonoBehaviour
         _myTransform.position = new Vector3 (_cameraPosX, _offsetY, _offsetZ);
     }
 
-    private void CameraShake()
+    private void CameraShake(float shakeAmt)
     {
         float _cameraPosX = Mathf.Clamp(_targetTransform.position.x, limitLeft, limitRight);
-        float _shakeamtX = 0.07f;
-        float _shakeamtY = 0.07f;
-
 
         float _shakeRX;
         float _shakeRY;
@@ -65,8 +64,8 @@ public class CameraController : MonoBehaviour
         {
             _nextShake = Time.time + _frequencyShake;
 
-            _shakeRX = Random.Range(-1f, 1f) * _shakeamtX;
-            _shakeRY = Random.Range(-1f, 1f) * _shakeamtY;
+            _shakeRX = Random.Range(-1f, 1f) * shakeAmt;
+            _shakeRY = Random.Range(-1f, 1f) * shakeAmt;
 
             _myTransform.position = new Vector3(_cameraPosX + _shakeRX, _offsetY + _shakeRY, _offsetZ);
         }
@@ -75,11 +74,11 @@ public class CameraController : MonoBehaviour
 
     }
 
-    public IEnumerator ShakeBegin()
+    public IEnumerator ShakeBegin(int cam)
     {
         float timeShake = 0.3f;
 
-        camState = 2;
+        camState = cam;
 
         yield return new WaitForSeconds(timeShake);
 
