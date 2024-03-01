@@ -48,6 +48,7 @@ public class VidaManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _playerManager = GameManager.Instance.Player.GetComponent<PlayerManager>();
         HealQuantity = maxHeal;
         maxHealth = 100f;
         health = maxHealth;

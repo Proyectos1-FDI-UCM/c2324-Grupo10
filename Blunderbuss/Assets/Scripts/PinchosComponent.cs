@@ -21,7 +21,7 @@ public class PinchosComponent : MonoBehaviour
         PlayerManager playerManager = other.gameObject.GetComponent<PlayerManager>();
         if (playerManager)
         {
-            _vidaManager.takeDamage(damage, delaySeconds);
+            StartCoroutine(_vidaManager.takeDamage(damage, delaySeconds));
             print("pene");
         }
     }

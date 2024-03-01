@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     public bool[] balas;
     private bool healAviable;
     private int sacosAviable;
+    private float _vidaLength = 17.37f;
     #endregion
 
     #region methods
@@ -60,7 +61,7 @@ public class UIManager : MonoBehaviour
     }
     public void actualizaVida()
     {
-        _transformVida.localScale = new Vector3 (_vidaManager.health / _vidaManager.maxHealth,0,0);
+        _transformVida.localScale = new Vector3 (_vidaManager.health / _vidaManager.maxHealth * _vidaLength, _transformVida.localScale.y, _transformVida.localScale.z);
     }
     #endregion
 
