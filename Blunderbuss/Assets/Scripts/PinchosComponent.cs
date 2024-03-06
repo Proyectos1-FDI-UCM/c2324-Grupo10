@@ -8,6 +8,7 @@ public class PinchosComponent : MonoBehaviour
     #region references
     private VidaManager _vidaManager;
     private GameObject _player;
+    private Rigidbody _rb;
     #endregion
 
     #region parameters
@@ -32,6 +33,7 @@ public class PinchosComponent : MonoBehaviour
     {
         _player = GameManager.Instance.Player;
         _vidaManager = _player.GetComponent<VidaManager>();
+        _rb = _player.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
