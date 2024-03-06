@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     #region parameters
     [SerializeField]
     GameObject CanvasPausa;
+    [SerializeField]
+    GameObject CanvasOpcionesPausa;
     #endregion
 
     #region methods
@@ -23,6 +25,11 @@ public class PauseMenu : MonoBehaviour
     {
         CanvasPausa.SetActive(false);
         Time.timeScale = 1f;
+    }
+    public void Opciones()
+    {
+        CanvasPausa.SetActive(false);
+        CanvasOpcionesPausa.SetActive(true);
     }
     #endregion 
     // Start is called before the first frame update
@@ -40,5 +47,6 @@ public class PauseMenu : MonoBehaviour
     private void Awake()
     {
         CanvasPausa.SetActive(false);
+        CanvasOpcionesPausa.SetActive(false) ;
     }
 }
