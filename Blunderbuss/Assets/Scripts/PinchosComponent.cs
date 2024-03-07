@@ -31,6 +31,14 @@ public class PinchosComponent : MonoBehaviour
     private void Rebound(Rigidbody2D rb) //Empuja al Colega hacia arriba.
     {
         Vector2 rebound = new(0,750);
+        if(rb.velocity.x>=0)
+        {
+            rebound.x = -200;
+        }
+        else
+        {
+            rebound.x = +200;
+        }
         rb.velocity = Vector2.zero;
         rb.AddForce(rebound, ForceMode2D.Impulse);
     }
