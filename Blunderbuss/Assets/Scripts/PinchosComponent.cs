@@ -8,7 +8,7 @@ public class PinchosComponent : MonoBehaviour
     #region references
     private VidaManager _vidaManager;
     private GameObject _player;
-    private Rigidbody _rb;
+    private Rigidbody2D _rb;
     #endregion
 
     #region parameters
@@ -23,8 +23,16 @@ public class PinchosComponent : MonoBehaviour
         if (playerManager)
         {
             StartCoroutine(_vidaManager.takeDamage(damage, delaySeconds));
+            Rebound(playerManager.playerRB);
             print("pene");
         }
+    }
+
+    private void Rebound(Rigidbody2D rb) //Empuja al Colega hacia arriba.
+    {
+        Vector2 rebound = new(0,750);
+        rb.velocity = Vector2.zero;
+        rb.AddForce(rebound, ForceMode2D.Impulse);
     }
     #endregion
 
@@ -33,7 +41,7 @@ public class PinchosComponent : MonoBehaviour
     {
         _player = GameManager.Instance.Player;
         _vidaManager = _player.GetComponent<VidaManager>();
-        _rb = _player.GetComponent<Rigidbody>();
+        _rb = _player.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame

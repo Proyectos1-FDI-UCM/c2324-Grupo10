@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     private ShotManager _shotManager;
 
     public Transform _myTransform;
-    private Rigidbody2D _rb;
+    public Rigidbody2D playerRB;
     public SpriteRenderer spriteR;
     public Transform targetEnemy;
     #endregion
@@ -35,8 +35,8 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _myTransform = _rb.transform;
+        playerRB = GetComponent<Rigidbody2D>();
+        _myTransform = playerRB.transform;
         spriteR = GetComponent<SpriteRenderer>();
 
         _gameManager = GameManager.Instance;
@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
         if(state < 3)
             Move(_inputManager.axisX);
 
-        print(state + " " + _rb.velocity + " " + _myTransform.position.y);
+        print(state + " " + playerRB.velocity + " " + _myTransform.position.y);
     }
 
     public void Move(float axis)
@@ -60,26 +60,26 @@ public class PlayerManager : MonoBehaviour
         {
             if (axis > 0.5f)
             {
-                _rb.velocity = new Vector2(_speedGround, _rb.velocity.y);
+                playerRB.velocity = new Vector2(_speedGround, playerRB.velocity.y);
             }
             else if (axis < -0.5f)
             {
-                _rb.velocity = new Vector2(-_speedGround, _rb.velocity.y);
+                playerRB.velocity = new Vector2(-_speedGround, playerRB.velocity.y);
             }
             else
             {
-                _rb.velocity = new Vector2(0, _rb.velocity.y);
+                playerRB.velocity = new Vector2(0, playerRB.velocity.y);
             }
         }
         else if (state == 1 || state == 2)
         {
-            if (axis > 0.5f && _rb.velocity.x < _speedAir)
+            if (axis > 0.5f && playerRB.velocity.x < _speedAir)
             {
-                _rb.AddForce(new Vector2(_airForce, 0), ForceMode2D.Force);
+                playerRB.AddForce(new Vector2(_airForce, 0), ForceMode2D.Force);
             }
-            else if (axis < -0.5f && _rb.velocity.x > -_speedAir)
+            else if (axis < -0.5f && playerRB.velocity.x > -_speedAir)
             {
-                _rb.AddForce(new Vector2(-_airForce, 0), ForceMode2D.Force);
+                playerRB.AddForce(new Vector2(-_airForce, 0), ForceMode2D.Force);
             }
         }
     }
@@ -97,11 +97,11 @@ public class PlayerManager : MonoBehaviour
             
             if(!spriteR.flipX)
             {
-                _rb.AddForce(new Vector2(_impulse, 0), ForceMode2D.Impulse);
+                playerRB.AddForce(new Vector2(_impulse, 0), ForceMode2D.Impulse);
             }
             else
             {
-                _rb.AddForce(new Vector2(-_impulse, 0), ForceMode2D.Impulse);
+                playerRB.AddForce(new Vector2(-_impulse, 0), ForceMode2D.Impulse);
             }
 
             yield return new WaitForSeconds(_slideDur);
@@ -123,8 +123,8 @@ public class PlayerManager : MonoBehaviour
 
         float _shotCD = 0.3f;
 
-        _rb.velocity = stop;
-        _rb.AddForce(impulse, ForceMode2D.Impulse);
+        playerRB.velocity = stop;
+        playerRB.AddForce(impulse, ForceMode2D.Impulse);
         _balasManager.restaBala();
 
         yield return new WaitForSeconds(_shotCD);
@@ -188,7 +188,7 @@ public class PlayerManager : MonoBehaviour
                         }
 
                         StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.down, Quaternion.identity));
-                        StartCoroutine(ShotTemp(new Vector2(_rb.velocity.x, 0), new Vector2(0, _impulse)));
+                        StartCoroutine(ShotTemp(new Vector2(playerRB.velocity.x, 0), new Vector2(0, _impulse)));
 
                         break;
                     case 2:
@@ -260,28 +260,28 @@ public class PlayerManager : MonoBehaviour
                 impDir = -_myTransform.right;
             }
 
-            _rb.velocity = Vector3.zero;
-            _rb.gravityScale = 0;
+            playerRB.velocity = Vector3.zero;
+            playerRB.gravityScale = 0;
 
             if (_myTransform.position.y < _groundHeight)
             {
-                _rb.AddForce(new Vector2(0, smallJump), ForceMode2D.Impulse);
+                playerRB.AddForce(new Vector2(0, smallJump), ForceMode2D.Impulse);
                 yield return new WaitForSeconds(jumpStop);
-                _rb.velocity = Vector3.zero;
+                playerRB.velocity = Vector3.zero;
             }
             else if (state == 2)
             {
                 if (!spriteR.flipX)
                 {
-                    _rb.AddForce(new Vector2(smallJump, 0), ForceMode2D.Impulse);
+                    playerRB.AddForce(new Vector2(smallJump, 0), ForceMode2D.Impulse);
                     yield return new WaitForSeconds(jumpStop);
-                    _rb.velocity = Vector3.zero;
+                    playerRB.velocity = Vector3.zero;
                 }
                 else
                 {
-                    _rb.AddForce(new Vector2(-smallJump, 0), ForceMode2D.Impulse);
+                    playerRB.AddForce(new Vector2(-smallJump, 0), ForceMode2D.Impulse);
                     yield return new WaitForSeconds(jumpStop);
-                    _rb.velocity = Vector3.zero;
+                    playerRB.velocity = Vector3.zero;
                 }
             }
 
@@ -310,13 +310,13 @@ public class PlayerManager : MonoBehaviour
                 impDir = -_myTransform.right;
             }
             yield return new WaitForSeconds(buildUp);
-            _rb.gravityScale = 1;
+            playerRB.gravityScale = 1;
 
             StartCoroutine(_cameraController.ShakeBegin(3));
             _shotManager.BallBlowSpawn(impDir);
             _balasManager.restaBala();
 
-            _rb.AddForce(-impDir * impulse, ForceMode2D.Impulse);
+            playerRB.AddForce(-impDir * impulse, ForceMode2D.Impulse);
             while (_myTransform.rotation != targetRotation2)
             {
                 transform.rotation = Quaternion.RotateTowards(_myTransform.rotation, targetRotation2, rotationSpeed2 * Time.deltaTime);
@@ -351,7 +351,7 @@ public class PlayerManager : MonoBehaviour
         if (state == 0 && _balasManager.BalaQuantity != _balasManager.maxBalas)
         {
             state = 3;
-            _rb.velocity = Vector2.zero;
+            playerRB.velocity = Vector2.zero;
             StartCoroutine(_balasManager.Recargar());
             yield return new WaitForSeconds(_reloadCD);
             state = 0;
@@ -380,8 +380,8 @@ public class PlayerManager : MonoBehaviour
         {
             state = 2;
 
-            if (_rb.velocity.y < 0)
-                _rb.velocity = new Vector2(_rb.velocity.x, -_speedWall);
+            if (playerRB.velocity.y < 0)
+                playerRB.velocity = new Vector2(playerRB.velocity.x, -_speedWall);
 
             if (collision.contacts[0].normal.x < 0)
                 spriteR.flipX = false;
