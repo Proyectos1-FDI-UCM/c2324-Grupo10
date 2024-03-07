@@ -44,8 +44,17 @@ public class VidaManager : MonoBehaviour
             yield return new WaitForSeconds(delaySeconds);
             _playerManager.state = 0;
         }
+        if (health <= 0)
+        {
+            morir();
+        }
         _UIManager.actualizaVida();
     }   
+    public void morir()
+    {      
+         _UIManager.hasMuerto();       
+        _playerManager.spriteR.enabled = false;
+    }
     #endregion
     // Start is called before the first frame update
     void Start()

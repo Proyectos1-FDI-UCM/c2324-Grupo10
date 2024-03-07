@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     VidaManager _vidaManager;
 
+    [SerializeField]
+    GameObject DeathCanvas;
+
     private SpriteRenderer _spriteRendererRam;
     private SpriteRenderer [] _spriteRendererSac;
     private Transform _transformVida;
@@ -63,12 +66,17 @@ public class UIManager : MonoBehaviour
     {
         _transformVida.localScale = new Vector3 (_vidaManager.health / _vidaManager.maxHealth * _vidaLength, _transformVida.localScale.y, _transformVida.localScale.z);
     }
+    public void hasMuerto()
+    {
+        DeathCanvas.SetActive(true);
+    }
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         _gameManager = GameManager.Instance;   
+        DeathCanvas.SetActive(false);
 
         _rambutan = GameObject.FindGameObjectWithTag("Rambutan");
         _spriteRendererRam = _rambutan.GetComponent<SpriteRenderer>();
