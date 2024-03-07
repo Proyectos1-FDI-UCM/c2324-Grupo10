@@ -17,7 +17,7 @@ public class VidaManager : MonoBehaviour
     public float healingValue = 50f;               // Por si queremos meter una mejora de que las pociones curan mas
     public int maxHeal = 1;                        // Por si queremos meter una mejora de mas curas
     public int HealQuantity;
-    public float tiempoInvulnerable = 0.5f;        // Para que podamos ajustar sl tiempo de invulnerabilidad
+    public float tiempoInvulnerable = 0.4f;        // Para que podamos ajustar sl tiempo de invulnerabilidad
     #endregion
 
     #region methods
@@ -42,7 +42,10 @@ public class VidaManager : MonoBehaviour
             health = Mathf.Clamp(health, 0, 100);
             _playerManager.state = 5;
             yield return new WaitForSeconds(delaySeconds);
-            _playerManager.state = 0;
+            if (_playerManager.myTransform.position.y < _playerManager.groundHeight)
+                _playerManager.state = 0;
+            else
+                _playerManager.state = 1;
         }
         if (health <= 0)
         {

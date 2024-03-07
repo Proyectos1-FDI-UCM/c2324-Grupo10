@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     CameraController _cameraController;
     private ShotManager _shotManager;
 
-    public Transform _myTransform;
+    public Transform myTransform;
     public Rigidbody2D playerRB;
     public SpriteRenderer spriteR;
     public Transform targetEnemy;
@@ -29,14 +29,14 @@ public class PlayerManager : MonoBehaviour
     private bool _slideEnable = false;
     public bool shotEnable = true;
     public bool ballBlowEnable = true;
-    public float _groundHeight;
+    public float groundHeight;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
-        _myTransform = playerRB.transform;
+        myTransform = playerRB.transform;
         spriteR = GetComponent<SpriteRenderer>();
 
         _gameManager = GameManager.Instance;
@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
         if(state < 3)
             Move(_inputManager.axisX);
 
-        print(state + " " + playerRB.velocity + " " + _myTransform.position.y);
+        print(state + " " + playerRB.velocity + " " + myTransform.position.y);
     }
 
     public void Move(float axis)
@@ -130,7 +130,7 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(_shotCD);
         shotEnable = true;
         _slideEnable = true;
-        if (_myTransform.position.y >= _groundHeight)
+        if (myTransform.position.y >= groundHeight)
             state = 1;
         else
             state = 0;
@@ -251,19 +251,19 @@ public class PlayerManager : MonoBehaviour
             {
                 spriteR.flipX = true;
                 targetRotation = Quaternion.Euler(0, 0, angle + 180);
-                impDir = _myTransform.right;
+                impDir = myTransform.right;
             }
             else
             {
                 spriteR.flipX = false;
                 targetRotation = Quaternion.Euler(0, 0, angle);
-                impDir = -_myTransform.right;
+                impDir = -myTransform.right;
             }
 
             playerRB.velocity = Vector3.zero;
             playerRB.gravityScale = 0;
 
-            if (_myTransform.position.y < _groundHeight)
+            if (myTransform.position.y < groundHeight)
             {
                 playerRB.AddForce(new Vector2(0, smallJump), ForceMode2D.Impulse);
                 yield return new WaitForSeconds(jumpStop);
@@ -290,24 +290,24 @@ public class PlayerManager : MonoBehaviour
                 targetRotation = Quaternion.Euler(0, 0, angle);
                 targetRotation2 = Quaternion.Euler(0, 0, angle + 135f);
                 targetRotation3 = Quaternion.Euler(0, 0, angle + 270f);
-                while (_myTransform.rotation != targetRotation)
+                while (myTransform.rotation != targetRotation)
                 {
-                    transform.rotation = Quaternion.RotateTowards(_myTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                    transform.rotation = Quaternion.RotateTowards(myTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
                     yield return null;
                 }
-                impDir = _myTransform.right;
+                impDir = myTransform.right;
             }
             else
             {
                 targetRotation = Quaternion.Euler(0, 0, angle + 180f);
                 targetRotation2 = Quaternion.Euler(0, 0, angle + 45f);
                 targetRotation3 = Quaternion.Euler(0, 0, angle - 90f);
-                while (_myTransform.rotation != targetRotation)
+                while (myTransform.rotation != targetRotation)
                 {
-                    transform.rotation = Quaternion.RotateTowards(_myTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                    transform.rotation = Quaternion.RotateTowards(myTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
                     yield return null;
                 }
-                impDir = -_myTransform.right;
+                impDir = -myTransform.right;
             }
             yield return new WaitForSeconds(buildUp);
             playerRB.gravityScale = 1;
@@ -317,26 +317,26 @@ public class PlayerManager : MonoBehaviour
             _balasManager.restaBala();
 
             playerRB.AddForce(-impDir * impulse, ForceMode2D.Impulse);
-            while (_myTransform.rotation != targetRotation2)
+            while (myTransform.rotation != targetRotation2)
             {
-                transform.rotation = Quaternion.RotateTowards(_myTransform.rotation, targetRotation2, rotationSpeed2 * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(myTransform.rotation, targetRotation2, rotationSpeed2 * Time.deltaTime);
                 yield return null;
             }
-            while (_myTransform.rotation != targetRotation3)
+            while (myTransform.rotation != targetRotation3)
             {
-                transform.rotation = Quaternion.RotateTowards(_myTransform.rotation, targetRotation3, rotationSpeed2 * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(myTransform.rotation, targetRotation3, rotationSpeed2 * Time.deltaTime);
                 yield return null;
             }
-            while (_myTransform.rotation != Quaternion.identity)
+            while (myTransform.rotation != Quaternion.identity)
             {
-                transform.rotation = Quaternion.RotateTowards(_myTransform.rotation, Quaternion.identity, rotationSpeed2 * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(myTransform.rotation, Quaternion.identity, rotationSpeed2 * Time.deltaTime);
                 yield return null;
             }
 
             yield return new WaitForSeconds(shotCD);
             shotEnable = true;
             _slideEnable = true;
-            if (_myTransform.position.y >= _groundHeight)
+            if (myTransform.position.y >= groundHeight)
                 state = 1;
             else
                 state = 0;
@@ -376,7 +376,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pared" && _myTransform.position.y >= _groundHeight && state != 6)
+        if (collision.gameObject.tag == "Pared" && myTransform.position.y >= groundHeight && state != 6)
         {
             state = 2;
 
@@ -385,7 +385,7 @@ public class PlayerManager : MonoBehaviour
 
             if (collision.contacts[0].normal.x < 0)
                 spriteR.flipX = false;
-            else if (_myTransform.position.y >= _groundHeight && state != 6)
+            else if (myTransform.position.y >= groundHeight && state != 6)
                 spriteR.flipX = true;
         }
     }
