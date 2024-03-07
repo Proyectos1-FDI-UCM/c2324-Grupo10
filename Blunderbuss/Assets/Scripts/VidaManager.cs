@@ -26,6 +26,7 @@ public class VidaManager : MonoBehaviour
         if (HealQuantity > 0)
         {
             health += healingValue;
+            health = Mathf.Clamp(health, 0, 100);
             HealQuantity--;
         }
         _UIManager.gestionRambutan();
@@ -38,12 +39,13 @@ public class VidaManager : MonoBehaviour
         if (_playerManager.state != 5)
         {
             health -= damage;
+            health = Mathf.Clamp(health, 0, 100);
             _playerManager.state = 5;
             yield return new WaitForSeconds(delaySeconds);
             _playerManager.state = 0;
         }
         _UIManager.actualizaVida();
-    }
+    }   
     #endregion
     // Start is called before the first frame update
     void Start()
