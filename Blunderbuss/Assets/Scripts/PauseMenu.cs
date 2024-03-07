@@ -31,6 +31,15 @@ public class PauseMenu : MonoBehaviour
         CanvasPausa.SetActive(false);
         CanvasOpcionesPausa.SetActive(true);
     }
+    public void Volver()
+    {
+        CanvasOpcionesPausa.SetActive(false) ;
+        CanvasPausa.SetActive(true);
+    }
+    public void Salir()
+    {
+        Application.Quit();
+    }
     #endregion 
     // Start is called before the first frame update
     void Start()

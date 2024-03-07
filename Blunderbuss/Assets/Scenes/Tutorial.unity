@@ -435,6 +435,34 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8989252438564626591, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989252438564626591, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989252438564626591, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 508182160}
+    - target: {fileID: 8989252438564626591, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989252438564626591, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Volver
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989252438564626591, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989252438564626591, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -839,7 +867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasPausa: {fileID: 418241498}
-  CanvasOpcionesPausa: {fileID: 0}
+  CanvasOpcionesPausa: {fileID: 2028948416}
 --- !u!114 &508182161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2132,7 +2160,19 @@ PrefabInstance:
     - target: {fileID: 5830095011862833322, guid: 3788c76fecbfa684eabe05cf46d15161, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 508182159}
+      objectReference: {fileID: 508182160}
+    - target: {fileID: 5830095011862833322, guid: 3788c76fecbfa684eabe05cf46d15161, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Salir
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830095011862833322, guid: 3788c76fecbfa684eabe05cf46d15161, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830095011862833322, guid: 3788c76fecbfa684eabe05cf46d15161, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2681,6 +2721,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2028948416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1603044562478122703, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
+  m_PrefabInstance: {fileID: 199816371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5170755837486629294
 PrefabInstance:
   m_ObjectHideFlags: 0
