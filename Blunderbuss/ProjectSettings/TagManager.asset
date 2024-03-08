@@ -10,6 +10,7 @@ TagManager:
   - Sacos
   - Vida
   - Fuego
+  - Boss
   layers:
   - Default
   - TransparentFX

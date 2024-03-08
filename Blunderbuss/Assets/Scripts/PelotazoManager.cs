@@ -45,4 +45,13 @@ public class PelotazoManager : MonoBehaviour
         _spriteP.enabled = false;
         _cirCollP.enabled = false;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Boss"))
+        {
+            _spriteP.enabled = false;
+            _cirCollP.enabled = false;
+        }
+    }
 }

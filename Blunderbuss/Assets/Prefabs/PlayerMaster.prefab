@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camState: 0
   limitLeft: -9.7
-  limitRight: 9.7
+  limitRight: 41
 --- !u!1 &1226551123374820990
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,13 +359,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraController: {fileID: 475144425948208288}
-  _myTransform: {fileID: 8565158532359425491}
+  _UIManager: {fileID: 8862047602277012874}
+  myTransform: {fileID: 0}
+  playerRB: {fileID: 0}
   spriteR: {fileID: 0}
   targetEnemy: {fileID: 0}
   state: 0
   shotEnable: 1
   ballBlowEnable: 1
-  _groundHeight: -2.43
+  groundHeight: -3
+  chargeFinish: 0
 --- !u!114 &6753391244722091872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +544,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -370.8, y: 189.579, z: 0}
-  m_LocalScale: {x: 17.372612, y: 15.963231, z: 44.98823}
+  m_LocalScale: {x: 17.37, y: 15.963231, z: 44.98823}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6273007646879122211}
@@ -693,10 +696,11 @@ GameObject:
   - component: {fileID: 2946151778741972079}
   - component: {fileID: 3655840234869822949}
   - component: {fileID: 4938450365779690779}
+  - component: {fileID: 4071443940032518248}
   - component: {fileID: 173246579006047052}
   m_Layer: 0
   m_Name: Pelotazo
-  m_TagString: Untagged
+  m_TagString: Fuego
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,9 +758,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1846971227
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.7921569, g: 0.16078432, b: 0.16078432, a: 1}
   m_FlipX: 0
@@ -803,6 +807,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!50 &4071443940032518248
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2548031959841458015}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &173246579006047052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,7 +920,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1846971227
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: f2fe37a5ebea1f54d811fa4374b25402, type: 3}
   m_Color: {r: 0.79215693, g: 0.16470589, b: 0.16470589, a: 1}
   m_FlipX: 0
@@ -1047,7 +1078,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1846971227
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 4aa9f1e1dc8cf5b4ab6bb63fdbaef78e, type: 3}
   m_Color: {r: 0.7924528, g: 0.16073336, b: 0.16073336, a: 1}
   m_FlipX: 0
@@ -1538,6 +1569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _balasManager: {fileID: 6376780440383250816}
   _vidaManager: {fileID: 5159803577154833808}
+  DeathCanvas: {fileID: 0}
   _healthBar: {fileID: 1560327212677968070}
   _rambutan: {fileID: 8978183822985835359}
   _sacos:

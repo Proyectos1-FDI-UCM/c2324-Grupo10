@@ -54,8 +54,7 @@ public class PlayerManager : MonoBehaviour
         if(state < 3)
             Move(_inputManager.axisX);
 
-        //print(state + " " + playerRB.velocity + " " + myTransform.position.y);
-        print(chargeFinish);
+        print(state + " " + playerRB.velocity + " " + myTransform.position.y);
     }
 
     public void Move(float axis)

@@ -12,8 +12,7 @@ public class FondoMovement : MonoBehaviour
     [SerializeField]
     private Vector2 _fondoVelocity;
 
-    private Vector2 _offset;
-    private Material _material;
+    private Vector3 _offset;
     #endregion
 
     #region methods
@@ -22,7 +21,6 @@ public class FondoMovement : MonoBehaviour
 
     private void Awake()
     {
-        _material = GetComponent<SpriteRenderer>().material;
         _playerRB = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
     }
 
@@ -35,7 +33,7 @@ public class FondoMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _offset = (_playerRB.velocity.x * 0.1f) * _fondoVelocity * Time.deltaTime;
-        _material.mainTextureOffset += _offset;
+        _offset = (_playerRB.velocity.x * 0.1f) * -_fondoVelocity * Time.deltaTime;
+        transform.position += _offset;
     }
 }
