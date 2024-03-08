@@ -66,6 +66,22 @@ public class UIManager : MonoBehaviour
     {
         _transformVida.localScale = new Vector3 (_vidaManager.health / _vidaManager.maxHealth * _vidaLength, _transformVida.localScale.y, _transformVida.localScale.z);
     }
+
+    public void Rojo(bool eq)
+    {
+        if (_balasManager.BalaQuantity > 0)
+        {
+            SpriteRenderer spriteR = _sacos[_balasManager.BalaQuantity - 1].GetComponent<SpriteRenderer>();
+
+            string colorT;
+
+            if (eq)
+                spriteR.color = new Color(1, 0.1f, 0, 1);
+            else
+                spriteR.color = new Color(0.8f, 0.33f, 0, 1);
+        }
+    }
+
     public void hasMuerto()
     {
         DeathCanvas.SetActive(true);

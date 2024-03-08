@@ -12,6 +12,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     CameraController _cameraController;
     private ShotManager _shotManager;
+    [SerializeField]
+    UIManager _UIManager;
 
     public Transform myTransform;
     public Rigidbody2D playerRB;
@@ -30,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     public bool shotEnable = true;
     public bool ballBlowEnable = true;
     public float groundHeight;
+    public bool chargeFinish = false;
     #endregion
 
     // Start is called before the first frame update
@@ -51,7 +54,8 @@ public class PlayerManager : MonoBehaviour
         if(state < 3)
             Move(_inputManager.axisX);
 
-        print(state + " " + playerRB.velocity + " " + myTransform.position.y);
+        //print(state + " " + playerRB.velocity + " " + myTransform.position.y);
+        print(chargeFinish);
     }
 
     public void Move(float axis)
@@ -224,9 +228,26 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public IEnumerator BallBlow()
+    public IEnumerator BallBlowTemp(bool chargeFinish)
     {
         if (ballBlowEnable && _balasManager.BalaQuantity > 0)
+        {
+            _UIManager.Rojo(true);
+            int count = 3;
+
+            yield return new WaitForSeconds(count);
+
+            SetBoolBB(true);
+        }
+    }
+    private void SetBoolBB(bool eq)
+    {
+        chargeFinish = eq;
+    }
+    public IEnumerator BallBlow(bool chargeFinish)
+    {
+        SetBoolBB(false);
+        if (chargeFinish && ballBlowEnable && _balasManager.BalaQuantity > 0)
         {
             ballBlowEnable = false;
             state = 6;
@@ -314,6 +335,7 @@ public class PlayerManager : MonoBehaviour
 
             StartCoroutine(_cameraController.ShakeBegin(3));
             _shotManager.BallBlowSpawn(impDir);
+            _UIManager.Rojo(false);
             _balasManager.restaBala();
 
             playerRB.AddForce(-impDir * impulse, ForceMode2D.Impulse);
@@ -343,6 +365,8 @@ public class PlayerManager : MonoBehaviour
 
             ballBlowEnable = true;
         }
+        else
+            _UIManager.Rojo(false);
     }
 
     public IEnumerator Recarga()

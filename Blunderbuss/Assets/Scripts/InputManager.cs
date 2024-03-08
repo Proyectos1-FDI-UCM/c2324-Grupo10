@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
     private VidaManager _vidaManager;
     private PauseMenu _pauseMenu;
 
+    private Coroutine BBT;
+
     public float axisX = 0;
 
     public void Awake()
@@ -26,7 +28,12 @@ public class InputManager : MonoBehaviour
         _inputActions.Player.Shot.started += ctx => _playerManager.Shot(0);
         _inputActions.Player.Down_Shot.started += ctx => _playerManager.Shot(1);
         _inputActions.Player.Up_Shot.started += ctx => _playerManager.Shot(2);
-        _inputActions.Player.Ball_Blow.started += ctx => StartCoroutine(_playerManager.BallBlow());
+        _inputActions.Player.Ball_Blow.started += ctx => BBT = StartCoroutine(_playerManager.BallBlowTemp(_playerManager.chargeFinish));
+        _inputActions.Player.Ball_Blow.canceled += ctx =>
+        {
+            StopCoroutine(BBT);
+            StartCoroutine(_playerManager.BallBlow(_playerManager.chargeFinish));
+        };
 
         //Dani
         _inputActions.Player.Recharge.started += ctx =>  StartCoroutine(_playerManager.Recarga());

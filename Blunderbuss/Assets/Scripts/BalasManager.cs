@@ -22,8 +22,20 @@ public class BalasManager : MonoBehaviour
 
     public void restaBala()
     {
+        SpriteRenderer spriteR = _UIManager._sacos[BalaQuantity-1].GetComponent<SpriteRenderer>();
+        bool aux = false;
+        if (spriteR.color == new Color (1, 0.1f, 0, 1))
+        {
+            _UIManager.Rojo(false);
+            aux = true;
+        }
+        _UIManager.Rojo(false);
         BalaQuantity--;
         _UIManager.quitaBala();
+        if (aux)
+        {
+            _UIManager.Rojo(true);
+        }
     }
     public IEnumerator Recargar()
     {
@@ -32,7 +44,6 @@ public class BalasManager : MonoBehaviour
         _UIManager.reiniciaBalas();                   // Puedes ver que puedes disparar otra vez
     }
     // El take damage tiene que ser testeado todavia, tenemos que hacer un enemigo que le quite vida al personaje
-
     #endregion
 
     // Start is called before the first frame update
