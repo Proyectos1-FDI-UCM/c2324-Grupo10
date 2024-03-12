@@ -56,8 +56,9 @@ public class SerpicolManager : MonoBehaviour
             print(_myTransform.rotation.eulerAngles.z);
             print(rotDest);
             print(vueltas);
+            print((_myTransform.rotation.eulerAngles.z + 1) % 120);
 
-            if (Mathf.Abs(_myTransform.rotation.eulerAngles.z - rotDest) < 0.01f)
+            if (_myTransform.rotation.eulerAngles.z % 120 < 3 || _myTransform.rotation.eulerAngles.z % 120 > 117)
             {
                 if (rotDest == 358)
                 {
