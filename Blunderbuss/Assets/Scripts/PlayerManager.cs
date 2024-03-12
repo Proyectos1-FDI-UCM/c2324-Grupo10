@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
 
     public Transform myTransform;
     public Rigidbody2D playerRB;
+    public BoxCollider2D EnemyBC;
     public SpriteRenderer spriteR;
     public Transform targetEnemy;
     #endregion
@@ -54,7 +55,7 @@ public class PlayerManager : MonoBehaviour
         if(state < 3)
             Move(_inputManager.axisX);
 
-        print(state + " " + playerRB.velocity + " " + myTransform.position.y);
+        //print(state + " " + playerRB.velocity + " " + myTransform.position.y);
     }
 
     public void Move(float axis)
@@ -177,12 +178,12 @@ public class PlayerManager : MonoBehaviour
                         if (state == 0)
                         {
                             _suelo = true;
-                            _impulse = 900;
+                            _impulse = 1000;
                         }
                         else if (state == 4)
                         {
                             _suelo = true;
-                            _impulse = 1200f;
+                            _impulse = 1300f;
                         }
                         else
                         {
@@ -380,6 +381,15 @@ public class PlayerManager : MonoBehaviour
             state = 0;
         }
     }
+
+    public void Invulnerabilidad()
+    {
+        if (state == 5)
+            EnemyBC.enabled = false;
+        else
+            EnemyBC.enabled = true;
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

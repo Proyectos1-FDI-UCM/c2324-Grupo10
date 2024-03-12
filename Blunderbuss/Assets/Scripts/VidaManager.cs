@@ -32,27 +32,29 @@ public class VidaManager : MonoBehaviour
         _UIManager.gestionRambutan();
         _UIManager.actualizaVida();
     }
-    public IEnumerator takeDamage(float damage, float delaySeconds)
+    public IEnumerator takeDamage(float damage)
     {
-        delaySeconds = tiempoInvulnerable;
         // Podemos tambien declarar delay seconds al principio del codigo para cambiar el tiempo de invulnerabilidad en funcion del boss
         if (_playerManager.state != 5)
         {
             health -= damage;
             health = Mathf.Clamp(health, 0, 100);
             _playerManager.state = 5;
-            yield return new WaitForSeconds(delaySeconds);
+            _playerManager.Invulnerabilidad();
+            _UIManager.actualizaVida();
+            yield return new WaitForSeconds(tiempoInvulnerable);
             if (_playerManager.myTransform.position.y < _playerManager.groundHeight)
                 _playerManager.state = 0;
             else
                 _playerManager.state = 1;
+            _playerManager.Invulnerabilidad();
         }
         if (health <= 0)
         {
+            _UIManager.actualizaVida();
             morir();
         }
-        _UIManager.actualizaVida();
-    }   
+    }
     public void morir()
     {      
          _UIManager.hasMuerto();       

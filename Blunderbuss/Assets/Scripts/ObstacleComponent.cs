@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PinchosComponent : MonoBehaviour
+public class ObstacleComponent : MonoBehaviour
 {
     #region references
     private VidaManager _vidaManager;
@@ -12,19 +12,18 @@ public class PinchosComponent : MonoBehaviour
     #endregion
 
     #region parameters
+    public float pDamage;
     #endregion
 
     #region methods
     private void OnTriggerEnter2D(Collider2D other)
     {
-        float damage = 20;
         float delaySeconds = 0.5f;
         PlayerManager playerManager = other.gameObject.GetComponent<PlayerManager>();
         if (playerManager)
         {
-            StartCoroutine(_vidaManager.takeDamage(damage, delaySeconds));
+            StartCoroutine(_vidaManager.takeDamage(pDamage));
             Rebound(playerManager.playerRB);
-            print("pene");
         }
     }
 
@@ -33,11 +32,12 @@ public class PinchosComponent : MonoBehaviour
         Vector2 rebound = new(0,750);
         if(rb.velocity.x>=0)
         {
-            rebound.x = -200;
+            rebound.x = -500;
         }
         else
         {
-            rebound.x = +200;
+            rebound.x = +500;
+            print("humbleada");
         }
         rb.velocity = Vector2.zero;
         rb.AddForce(rebound, ForceMode2D.Impulse);
