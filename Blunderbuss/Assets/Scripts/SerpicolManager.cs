@@ -10,6 +10,10 @@ public class SerpicolManager : MonoBehaviour
     private Transform _myTransform;
     private SpriteRenderer _spriteS;
     private BoxCollider2D _boxColl;
+    [SerializeField]
+    Transform paredIzq;
+    [SerializeField]
+    Transform paredDer;
     #endregion
 
     #region parameters
