@@ -25,7 +25,7 @@ public class SerpicolManager : MonoBehaviour
 
         _obstacleComponent.pDamage = 5;
 
-        StartCoroutine(Caracola(-1));
+        StartCoroutine(Mordisco(-1));
     }
 
     // Update is called once per frame
@@ -57,9 +57,9 @@ public class SerpicolManager : MonoBehaviour
 
             print("rot " + _myTransform.rotation.eulerAngles.z);
             print("rotD " + rotDest);
-            print("resto " + _myTransform.rotation.eulerAngles.z % 120);
+            print("resto " + (360 - _myTransform.rotation.eulerAngles.z) % 120);
             //if (_myTransform.rotation.eulerAngles.z % 120 < 3 || _myTransform.rotation.eulerAngles.z % 120 > 117)
-            if ((_myTransform.rotation.eulerAngles.z % 120 < 3 && direction > 0) || ((360 - _myTransform.rotation.eulerAngles.z) % 120 < 3) && direction < 0)
+            if ((_myTransform.rotation.eulerAngles.z % 120 < 3 && direction >= 0) || ((360 - _myTransform.rotation.eulerAngles.z + 1) % 120 < 4) && direction <= 0)
             {
 
                 if (rotDest == 358)
@@ -88,10 +88,10 @@ public class SerpicolManager : MonoBehaviour
         Vector2 scDest = _boxColl.size * new Vector2 (2f, 0.7f);
 
         Vector2 offBase = _boxColl.offset;
-        Vector2 offDest = _boxColl.offset + new Vector2(-direction * 2f, -0.5f);
+        Vector2 offDest = _boxColl.offset + new Vector2(direction * 2f, -0.5f);
 
-        float scSpeed = 200f;
-        float offSpeed = 150f;
+        float scSpeed = 60f;
+        float offSpeed = 30f;
 
         _obstacleComponent.pDamage = 15;
 
@@ -103,11 +103,11 @@ public class SerpicolManager : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
 
         _obstacleComponent.pDamage = 5;
 
-        while (_boxColl.offset != offDest)
+        while (_boxColl.offset != offBase)
         {
             _boxColl.size = Vector3.MoveTowards(_boxColl.size, scBase, scSpeed * Time.deltaTime);
             _boxColl.offset = Vector3.MoveTowards(_boxColl.offset, offBase, offSpeed * Time.deltaTime);
