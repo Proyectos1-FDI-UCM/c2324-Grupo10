@@ -16,10 +16,9 @@ public class CameraController : MonoBehaviour
 
     public int camState;
 
-    [SerializeField]
-    float limitLeft;
-    [SerializeField]
-    float limitRight;
+    public float limitLeft;
+
+    public float limitRight;
 
     private float _nextShake = 0.0f;
     #endregion

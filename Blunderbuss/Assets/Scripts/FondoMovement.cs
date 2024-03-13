@@ -6,6 +6,8 @@ public class FondoMovement : MonoBehaviour
 {
     #region references
     private Camera _camera;
+    private Rigidbody2D _rb;
+    private CameraController _cameraController;
     #endregion
 
     #region parameters
@@ -22,6 +24,8 @@ public class FondoMovement : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
+        _rb = GameManager.Instance.Player.GetComponent<Rigidbody2D>();
+        _cameraController = _camera.GetComponent<CameraController>();
     }
 
     // Start is called before the first frame update
@@ -33,7 +37,10 @@ public class FondoMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _offset = (_camera.velocity.x * 0.1f) * -_fondoVelocity * Time.deltaTime;
-        transform.position += _offset;
+        if(_camera.transform.position.x != _cameraController.limitLeft && _camera.transform.position.x != _cameraController.limitRight)
+        {
+            _offset = (_rb.velocity.x * 0.1f) * -_fondoVelocity * Time.deltaTime;
+            transform.position += _offset;
+        }
     }
 }
