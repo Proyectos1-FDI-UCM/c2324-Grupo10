@@ -5,7 +5,7 @@ using UnityEngine;
 public class FondoMovement : MonoBehaviour
 {
     #region references
-    private Rigidbody2D _playerRB;
+    private Camera _camera;
     #endregion
 
     #region parameters
@@ -21,19 +21,19 @@ public class FondoMovement : MonoBehaviour
 
     private void Awake()
     {
-        _playerRB = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        _camera = Camera.main;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        _offset = (_playerRB.velocity.x * 0.1f) * -_fondoVelocity * Time.deltaTime;
+        _offset = (_camera.velocity.x * 0.1f) * -_fondoVelocity * Time.deltaTime;
         transform.position += _offset;
     }
 }
