@@ -9,6 +9,7 @@ public class SerpicolManager : MonoBehaviour
     private Rigidbody2D _serpiRB;
     private Transform _myTransform;
     private SpriteRenderer _spriteS;
+    private BoxCollider2D _boxColl;
     #endregion
 
     #region parameters
@@ -20,6 +21,7 @@ public class SerpicolManager : MonoBehaviour
         _serpiRB = GetComponent<Rigidbody2D>();
         _myTransform = transform;
         _spriteS = GetComponent<SpriteRenderer>();
+        _boxColl = GetComponent<BoxCollider2D>();
 
         _obstacleComponent.pDamage = 5;
 
@@ -40,7 +42,7 @@ public class SerpicolManager : MonoBehaviour
         float rotSpeed = 2000f;
         float transSpeed = 15f;
 
-        _obstacleComponent.pDamage = 15;
+        _obstacleComponent.pDamage = 20;
         float rotDest = 120;
         float transDist = 8f;
         Vector3 transVec = _myTransform.position + new Vector3(direction * transDist, 0, 0);
@@ -53,13 +55,13 @@ public class SerpicolManager : MonoBehaviour
                 _myTransform.rotation = Quaternion.RotateTowards(_myTransform.rotation, Quaternion.Euler(0, 0, -direction * rotDest), rotSpeed * Time.deltaTime);
             yield return null;
 
-            print(_myTransform.rotation.eulerAngles.z);
-            print(rotDest);
-            print(vueltas);
-            print((_myTransform.rotation.eulerAngles.z + 1) % 120);
-
-            if (_myTransform.rotation.eulerAngles.z % 120 < 3 || _myTransform.rotation.eulerAngles.z % 120 > 117)
+            print("rot " + _myTransform.rotation.eulerAngles.z);
+            print("rotD " + rotDest);
+            print("resto " + _myTransform.rotation.eulerAngles.z % 120);
+            //if (_myTransform.rotation.eulerAngles.z % 120 < 3 || _myTransform.rotation.eulerAngles.z % 120 > 117)
+            if ((_myTransform.rotation.eulerAngles.z % 120 < 3 && direction > 0) || ((360 - _myTransform.rotation.eulerAngles.z) % 120 < 3) && direction < 0)
             {
+
                 if (rotDest == 358)
                 {
                     vueltas++;
@@ -72,10 +74,45 @@ public class SerpicolManager : MonoBehaviour
             }
         }
 
+        _obstacleComponent.pDamage = 5;
         yield return new WaitForSeconds(0.3f);
 
         _myTransform.rotation = Quaternion.identity;
         _spriteS.flipX = !_spriteS.flipX;
         yield return new WaitForSeconds(esconderS);
+    }
+
+    public IEnumerator Mordisco(int direction)
+    {
+        Vector2 scBase = _boxColl.size;
+        Vector2 scDest = _boxColl.size * new Vector2 (2f, 0.7f);
+
+        Vector2 offBase = _boxColl.offset;
+        Vector2 offDest = _boxColl.offset + new Vector2(-direction * 2f, -0.5f);
+
+        float scSpeed = 200f;
+        float offSpeed = 150f;
+
+        _obstacleComponent.pDamage = 15;
+
+        while (_boxColl.offset != offDest)
+        {
+            _boxColl.size = Vector3.MoveTowards(_boxColl.size, scDest, scSpeed * Time.deltaTime);
+            _boxColl.offset = Vector3.MoveTowards(_boxColl.offset, offDest, offSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.3f);
+
+        _obstacleComponent.pDamage = 5;
+
+        while (_boxColl.offset != offDest)
+        {
+            _boxColl.size = Vector3.MoveTowards(_boxColl.size, scBase, scSpeed * Time.deltaTime);
+            _boxColl.offset = Vector3.MoveTowards(_boxColl.offset, offBase, offSpeed * Time.deltaTime);
+
+            yield return null;
+        }
     }
 }

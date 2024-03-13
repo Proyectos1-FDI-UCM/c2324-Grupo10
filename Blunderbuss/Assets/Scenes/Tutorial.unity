@@ -319,14 +319,6 @@ PrefabInstance:
       propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 499704648273527091, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 800
-      objectReference: {fileID: 0}
-    - target: {fileID: 499704648273527091, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 600
-      objectReference: {fileID: 0}
     - target: {fileID: 555218090329383976, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -422,10 +414,6 @@ PrefabInstance:
     - target: {fileID: 1603044562478122703, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
       propertyPath: m_Name
       value: PausedOptionsCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603044562478122703, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4716493843314495179, guid: cdf1345295afd80448d0b0768ae67c9f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2421,10 +2409,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenuCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1794199912763966449, guid: 3788c76fecbfa684eabe05cf46d15161, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5759396282607280590, guid: 3788c76fecbfa684eabe05cf46d15161, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2524,14 +2508,6 @@ PrefabInstance:
     - target: {fileID: 7779237876651789044, guid: 3788c76fecbfa684eabe05cf46d15161, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7779237876651789044, guid: 3788c76fecbfa684eabe05cf46d15161, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 800
-      objectReference: {fileID: 0}
-    - target: {fileID: 7779237876651789044, guid: 3788c76fecbfa684eabe05cf46d15161, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 600
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
