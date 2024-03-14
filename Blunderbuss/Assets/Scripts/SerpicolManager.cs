@@ -11,9 +11,15 @@ public class SerpicolManager : MonoBehaviour
     private SpriteRenderer _spriteS;
     private BoxCollider2D _boxColl;
     [SerializeField]
-    Transform paredIzq;
+    float _paredIzq;
     [SerializeField]
-    Transform paredDer;
+    float _paredDer;
+
+    public GameObject[] HipnoSpawn = new GameObject[3];
+    public GameObject[] HipnoArea = new GameObject[3];
+
+    public GameObject[] Gapo = new GameObject[3];
+    private GapoManager[] _gapoManager = new GapoManager[3];
     #endregion
 
     #region parameters
@@ -27,9 +33,14 @@ public class SerpicolManager : MonoBehaviour
         _spriteS = GetComponent<SpriteRenderer>();
         _boxColl = GetComponent<BoxCollider2D>();
 
+        for (int i = 0; i < Gapo.Length; i++)
+        {
+            _gapoManager[i] = Gapo[i].GetComponent<GapoManager>();
+        }
+
         _obstacleComponent.pDamage = 5;
 
-        StartCoroutine(Mordisco(-1));
+        StartCoroutine(Hipnosis(-1));
     }
 
     // Update is called once per frame
@@ -118,5 +129,78 @@ public class SerpicolManager : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public IEnumerator Hipnosis(int direction)
+    {
+        float initPos = 6.5f;
+        float spawnDist = 6f;
+        float umbral = 5f;
+        int spawnQ = 3;
+        float wait = 0.3f;
+        float limitLeftH = _paredIzq + umbral;
+        float limitRightH = _paredDer - umbral;
+
+        float currentPos = _myTransform.position.x + (direction * initPos);
+        yield return new WaitForSeconds(wait);
+
+        for (int i = 0; i < spawnQ; i++)
+        {
+            if (currentPos > limitLeftH || currentPos < limitRightH)
+            {
+                HipnoSpawn[i].transform.position = new Vector3(currentPos, HipnoSpawn[i].transform.position.y, 0);
+                HipnoSpawn[i].SetActive(true);
+            }
+            currentPos += direction * spawnDist;
+            yield return new WaitForSeconds(wait);
+        }
+
+        currentPos = _myTransform.position.x + (direction * initPos);
+        yield return new WaitForSeconds(wait*3);
+
+        for (int i = 0; i < spawnQ; i++)
+        {
+            if (currentPos > limitLeftH || currentPos < limitRightH)
+            {
+                HipnoArea[i].transform.position = new Vector3(currentPos, HipnoArea[i].transform.position.y, 0);
+                HipnoArea[i].SetActive(true);
+            }
+            currentPos += direction * spawnDist;
+        }
+
+        yield return new WaitForSeconds(1);
+
+        for (int i = 0; i < spawnQ; i++)
+        {
+            HipnoSpawn[i].SetActive(false);
+            HipnoArea[i].SetActive(false);
+        }
+
+    }
+
+    public IEnumerator Disparo(int direction)
+    {
+        bool turn;
+
+        Vector3 relPos = new Vector3(direction * 1.4f, 1f, 0);
+        Vector2 dir = new Vector2(direction * 5, 1);
+        float force = 130;
+
+        if (direction == 1)
+            turn = false;
+        else
+            turn = true;
+
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < Gapo.Length; i++)
+        {
+            _gapoManager[i].spriteR.flipX = turn;
+            Gapo[i].transform.position = _myTransform.position + relPos;
+            Gapo[i].SetActive(true);
+            _gapoManager[i].rb.AddForce(dir.normalized * force, ForceMode2D.Impulse);
+
+            force += 30;
+        }
+        yield return null;
     }
 }
