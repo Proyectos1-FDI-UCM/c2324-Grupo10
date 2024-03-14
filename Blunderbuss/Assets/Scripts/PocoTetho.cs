@@ -8,20 +8,21 @@ public class NewBehaviourCript : MonoBehaviour
     #region parameters
     [SerializeField] 
     private GameObject _Canvas;
-    private float tiempoActivo = 5f;
+    [SerializeField]
+    private GameObject _Button;
     #endregion
 
     #region methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _Canvas.SetActive(true);
-        StartCoroutine(mantente());
-       
+        _Button.SetActive(true);
     }
-    public IEnumerator mantente()
+
+   public void Desactiva()
     {
-        yield return new WaitForSeconds(tiempoActivo);
-        _Canvas.SetActive(false);
+        _Canvas.SetActive(false); 
+        _Button.SetActive(false);
     }
     #endregion
 
