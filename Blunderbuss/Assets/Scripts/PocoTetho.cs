@@ -22,6 +22,7 @@ public class NewBehaviourCript : MonoBehaviour
     {
         yield return new WaitForSeconds(tiempoActivo);
         _Canvas.SetActive(false);
+        gameObject.SetActive(false);
     }
     #endregion
 
