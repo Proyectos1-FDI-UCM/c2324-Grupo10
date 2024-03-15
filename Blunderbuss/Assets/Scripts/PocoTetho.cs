@@ -3,32 +3,37 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewBehaviourCript : MonoBehaviour
+public class PocoTehto : MonoBehaviour
 {
     #region parameters
     [SerializeField] 
-    private GameObject _Canvas;
+    private GameObject _canvas;
     [SerializeField]
-    private GameObject _Button;
+    private GameObject _trigger;
+
+    private InputManager _inputManager;
     #endregion
 
     #region methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _Canvas.SetActive(true);
-        _Button.SetActive(true);
+        _canvas.SetActive(true);
+        _trigger.SetActive(true);
+        _inputManager.enabled = false;
     }
 
    public void Desactiva()
     {
-        _Canvas.SetActive(false); 
-        _Button.SetActive(false);
+        _canvas.SetActive(false);
+        _trigger.SetActive(false);
+        _inputManager.enabled = true;
     }
     #endregion
 
     private void Start()
     {
-       _Canvas.SetActive(false );
+       _inputManager = GameManager.Instance.InputManager;
+       _canvas.SetActive(false );
     }
     void Update()
     {

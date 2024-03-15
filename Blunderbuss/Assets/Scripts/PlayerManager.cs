@@ -384,10 +384,13 @@ public class PlayerManager : MonoBehaviour
 
     public void Invulnerabilidad()
     {
-        if (state == 5)
-            EnemyBC.enabled = false;
-        else
-            EnemyBC.enabled = true;
+        if (EnemyBC)
+        {
+            if (state == 5)
+                EnemyBC.enabled = false;
+            else
+                EnemyBC.enabled = true;
+        }
     }
 
 
