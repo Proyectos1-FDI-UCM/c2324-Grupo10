@@ -10,20 +10,27 @@ public class GapoManager : MonoBehaviour
 
     Vector2 velocityNorm;
     float angulo;
+    bool baba = false;
     // Start is called before the first frame update
     void Start()
     {
         _myTransform = transform;
-        /*spriteR = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();*/
+        if (_myTransform.position.y >= 7)
+        {
+            baba = true;
+            _myTransform.rotation = Quaternion.Euler(0, 0, -90);
+        }
     }
 
     void Update()
     {
-        Rotacion();
+        if (!baba)
+            Rotacion();
+        else
+            print("baba");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Suelo"))
             gameObject.SetActive(false);
