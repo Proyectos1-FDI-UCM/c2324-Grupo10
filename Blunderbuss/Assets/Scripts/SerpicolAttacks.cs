@@ -22,6 +22,7 @@ public class SerpicolAttacks : MonoBehaviour
     private GapoManager[] _gapoManager = new GapoManager[3];
 
     private CameraController _camera;
+    private SerpicolAnimator _serpicolAnimator;
 
     private GameObject[] _babas = new GameObject[30];
     [SerializeField]
@@ -37,6 +38,7 @@ public class SerpicolAttacks : MonoBehaviour
         _obstacleComponent = GetComponent<ObstacleComponent>();
         _serpiRB = GetComponent<Rigidbody2D>();
         _myTransform = transform;
+        _serpicolAnimator = GetComponent<SerpicolAnimator>();
         _spriteS = GetComponent<SpriteRenderer>();
         _boxColl = GetComponent<BoxCollider2D>();
 
@@ -53,7 +55,7 @@ public class SerpicolAttacks : MonoBehaviour
             obj.SetActive(false);
             _babas[i] = obj;
         }
-        StartCoroutine(Disparo(-1));
+        StartCoroutine(Hipnosis(-1));
     }
 
     // Update is called once per frame
@@ -104,7 +106,7 @@ public class SerpicolAttacks : MonoBehaviour
 
         _obstacleComponent.pDamage = 5;
         yield return new WaitForSeconds(0.3f);
-
+        //sale
         _myTransform.rotation = Quaternion.identity;
         _spriteS.flipX = !_spriteS.flipX;
         yield return new WaitForSeconds(esconderS);
@@ -154,6 +156,8 @@ public class SerpicolAttacks : MonoBehaviour
         float limitLeftH = _paredIzq + umbral;
         float limitRightH = _paredDer - umbral;
 
+        _serpicolAnimator.HipnosisAnimation();
+
         float currentPos = _myTransform.position.x + (direction * initPos);
         yield return new WaitForSeconds(wait);
 
@@ -189,6 +193,7 @@ public class SerpicolAttacks : MonoBehaviour
             HipnoArea[i].SetActive(false);
         }
 
+        _serpicolAnimator.IdleAnimation();
     }
 
     public IEnumerator Disparo(int direction)
@@ -203,7 +208,7 @@ public class SerpicolAttacks : MonoBehaviour
             turn = false;
         else
             turn = true;
-
+        //aqui
         yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < Gapo.Length; i++)
         {
