@@ -55,7 +55,7 @@ public class SerpicolAttacks : MonoBehaviour
             obj.SetActive(false);
             _babas[i] = obj;
         }
-        StartCoroutine(Hipnosis(-1));
+        StartCoroutine(Disparo(-1));
     }
 
     // Update is called once per frame
@@ -66,9 +66,10 @@ public class SerpicolAttacks : MonoBehaviour
 
     public IEnumerator Caracola(int direction)
     {
-        float esconderS = 0.4f;
-        yield return new WaitForSeconds(esconderS);
+        _serpicolAnimator.CaracolaAnimation();
 
+        float esconderS = 2f;
+        yield return new WaitForSeconds(esconderS);
         float rotSpeed = 2000f;
         float transSpeed = 15f;
 
@@ -106,7 +107,7 @@ public class SerpicolAttacks : MonoBehaviour
 
         _obstacleComponent.pDamage = 5;
         yield return new WaitForSeconds(0.3f);
-        //sale
+        _serpicolAnimator.IdleAnimation();
         _myTransform.rotation = Quaternion.identity;
         _spriteS.flipX = !_spriteS.flipX;
         yield return new WaitForSeconds(esconderS);
@@ -122,6 +123,8 @@ public class SerpicolAttacks : MonoBehaviour
 
         float scSpeed = 60f;
         float offSpeed = 30f;
+
+        _serpicolAnimator.BocaoAnimation();
 
         _obstacleComponent.pDamage = 15;
 
@@ -144,6 +147,9 @@ public class SerpicolAttacks : MonoBehaviour
 
             yield return null;
         }
+
+        _serpicolAnimator.IdleAnimation();
+        print("bocao");
     }
 
     public IEnumerator Hipnosis(int direction)
@@ -194,10 +200,12 @@ public class SerpicolAttacks : MonoBehaviour
         }
 
         _serpicolAnimator.IdleAnimation();
+        print("hipnosis");
     }
 
     public IEnumerator Disparo(int direction)
     {
+        _serpicolAnimator.GaposAnimation();
         bool turn;
 
         Vector3 relPos = new Vector3(direction * 1.4f, 1f, 0);
@@ -220,6 +228,7 @@ public class SerpicolAttacks : MonoBehaviour
             force += 30;
         }
         yield return null;
+        _serpicolAnimator.IdleAnimation();
     }
 
     public IEnumerator Lluvia()
