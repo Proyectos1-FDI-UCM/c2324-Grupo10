@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SerpicolAttacks : MonoBehaviour
+public class SerpicolManager : MonoBehaviour
 {
     #region references
     private ObstacleComponent _obstacleComponent;
@@ -31,44 +31,16 @@ public class SerpicolAttacks : MonoBehaviour
 
     #region parameters
     #endregion
-    // Start is called before the first frame update
-    void Start()
-    {
-        _camera = Camera.main.GetComponent<CameraController>();
-        _obstacleComponent = GetComponent<ObstacleComponent>();
-        _serpiRB = GetComponent<Rigidbody2D>();
-        _myTransform = transform;
-        _serpicolAnimator = GetComponent<SerpicolAnimator>();
-        _spriteS = GetComponent<SpriteRenderer>();
-        _boxColl = GetComponent<BoxCollider2D>();
 
-        _obstacleComponent.pDamage = 5;
+    #region methods
 
-        for (int i = 0; i < Gapo.Length; i++)
-        {
-            _gapoManager[i] = Gapo[i].GetComponent<GapoManager>();
-        }
-
-        for (int i = 0; i < _babas.Length; i++)
-        {
-            GameObject obj = Instantiate(_baba);
-            obj.SetActive(false);
-            _babas[i] = obj;
-        }
-        StartCoroutine(Disparo(-1));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #region attacks
 
     public IEnumerator Caracola(int direction)
     {
         _serpicolAnimator.CaracolaAnimation();
 
-        float esconderS = 2f;
+        float esconderS = 1.3f;
         yield return new WaitForSeconds(esconderS);
         float rotSpeed = 2000f;
         float transSpeed = 15f;
@@ -79,7 +51,7 @@ public class SerpicolAttacks : MonoBehaviour
         Vector3 transVec = _myTransform.position + new Vector3(direction * transDist, 0, 0);
         int vueltas = 0;
 
-        while(vueltas != 3)
+        while (vueltas != 3)
         {
             _myTransform.position = Vector3.MoveTowards(_myTransform.position, transVec, transSpeed * Time.deltaTime);
             if (vueltas != 3)
@@ -107,22 +79,22 @@ public class SerpicolAttacks : MonoBehaviour
 
         _obstacleComponent.pDamage = 5;
         yield return new WaitForSeconds(0.3f);
-        _serpicolAnimator.IdleAnimation();
         _myTransform.rotation = Quaternion.identity;
         _spriteS.flipX = !_spriteS.flipX;
+        _serpicolAnimator.IdleAnimation();
         yield return new WaitForSeconds(esconderS);
     }
 
     public IEnumerator Mordisco(int direction)
     {
         Vector2 scBase = _boxColl.size;
-        Vector2 scDest = _boxColl.size * new Vector2 (2f, 0.7f);
+        Vector2 scDest = _boxColl.size * new Vector2(2f, 0.7f);
 
         Vector2 offBase = _boxColl.offset;
         Vector2 offDest = _boxColl.offset + new Vector2(direction * 2f, -0.5f);
 
-        float scSpeed = 60f;
-        float offSpeed = 30f;
+        float scSpeed = 10f;
+        float offSpeed = 5f;
 
         _serpicolAnimator.BocaoAnimation();
 
@@ -179,7 +151,7 @@ public class SerpicolAttacks : MonoBehaviour
         }
 
         currentPos = _myTransform.position.x + (direction * initPos);
-        yield return new WaitForSeconds(wait*3);
+        yield return new WaitForSeconds(wait * 3);
 
         for (int i = 0; i < spawnQ; i++)
         {
@@ -191,16 +163,15 @@ public class SerpicolAttacks : MonoBehaviour
             currentPos += direction * spawnDist;
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.7f);
+        _serpicolAnimator.IdleAnimation();
 
+        yield return new WaitForSeconds(0.3f);
         for (int i = 0; i < spawnQ; i++)
         {
             HipnoSpawn[i].SetActive(false);
             HipnoArea[i].SetActive(false);
         }
-
-        _serpicolAnimator.IdleAnimation();
-        print("hipnosis");
     }
 
     public IEnumerator Disparo(int direction)
@@ -208,7 +179,7 @@ public class SerpicolAttacks : MonoBehaviour
         _serpicolAnimator.GaposAnimation();
         bool turn;
 
-        Vector3 relPos = new Vector3(direction * 1.4f, 1f, 0);
+        Vector3 relPos = new Vector3(direction * 0.1f, 0.6f, 0);
         Vector2 dir = new Vector2(direction * 5, 1);
         float force = 130;
 
@@ -217,7 +188,7 @@ public class SerpicolAttacks : MonoBehaviour
         else
             turn = true;
         //aqui
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         for (int i = 0; i < Gapo.Length; i++)
         {
             _gapoManager[i].spriteR.flipX = turn;
@@ -227,7 +198,7 @@ public class SerpicolAttacks : MonoBehaviour
 
             force += 30;
         }
-        yield return null;
+        yield return new WaitForSeconds(1.8f);
         _serpicolAnimator.IdleAnimation();
     }
 
@@ -247,5 +218,45 @@ public class SerpicolAttacks : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
         }
+    }
+
+    #endregion
+
+    #region AI
+    #endregion
+
+    #endregion
+    // Start is called before the first frame update
+    void Start()
+    {
+        _camera = Camera.main.GetComponent<CameraController>();
+        _obstacleComponent = GetComponent<ObstacleComponent>();
+        _serpiRB = GetComponent<Rigidbody2D>();
+        _myTransform = transform;
+        _serpicolAnimator = GetComponent<SerpicolAnimator>();
+        _spriteS = GetComponent<SpriteRenderer>();
+        _boxColl = GetComponent<BoxCollider2D>();
+
+        _obstacleComponent.pDamage = 5;
+
+        for (int i = 0; i < Gapo.Length; i++)
+        {
+            _gapoManager[i] = Gapo[i].GetComponent<GapoManager>();
+        }
+
+        for (int i = 0; i < _babas.Length; i++)
+        {
+            GameObject obj = Instantiate(_baba);
+            obj.SetActive(false);
+            _babas[i] = obj;
+        }
+
+        StartCoroutine(Caracola(-1));
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
