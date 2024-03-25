@@ -2630,7 +2630,7 @@ GameObject:
   - component: {fileID: 577679374}
   - component: {fileID: 577679373}
   - component: {fileID: 577679372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pinchos tutorial (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2650,6 +2650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pDamage: 20
+  multiplier: 1
 --- !u!61 &577679373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2988,7 +2989,7 @@ GameObject:
   - component: {fileID: 686869940}
   - component: {fileID: 686869939}
   - component: {fileID: 686869938}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pinchos tutorial (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3008,6 +3009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pDamage: 20
+  multiplier: 1
 --- !u!61 &686869939
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3403,7 +3405,7 @@ GameObject:
   - component: {fileID: 869622326}
   - component: {fileID: 869622325}
   - component: {fileID: 869622324}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dianas tutorial (5)
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -4768,7 +4770,7 @@ GameObject:
   - component: {fileID: 1222087412}
   - component: {fileID: 1222087411}
   - component: {fileID: 1222087410}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pinchos tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4788,6 +4790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pDamage: 20
+  multiplier: 1
 --- !u!61 &1222087411
 BoxCollider2D:
   m_ObjectHideFlags: 0

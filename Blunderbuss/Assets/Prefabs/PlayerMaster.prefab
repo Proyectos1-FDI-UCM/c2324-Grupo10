@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 146753438590768382}
   - component: {fileID: 5159803577154833808}
   - component: {fileID: 6376780440383250816}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Colega
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -362,6 +362,7 @@ MonoBehaviour:
   _UIManager: {fileID: 8862047602277012874}
   myTransform: {fileID: 0}
   playerRB: {fileID: 0}
+  EnemyBC: {fileID: 0}
   spriteR: {fileID: 0}
   targetEnemy: {fileID: 0}
   state: 0

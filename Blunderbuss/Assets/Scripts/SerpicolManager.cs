@@ -27,6 +27,9 @@ public class SerpicolManager : MonoBehaviour
     private GameObject[] _babas = new GameObject[30];
     [SerializeField]
     GameObject _baba;
+
+    private GameObject _player;
+    private int direction = -1;
     #endregion
 
     #region parameters
@@ -34,35 +37,97 @@ public class SerpicolManager : MonoBehaviour
 
     #region methods
 
+    private void Orient()
+    {
+        Vector3 dist = _player.transform.position - _myTransform.position;
+
+        if (dist.x < -2)
+        {
+            direction = -1;
+
+            if (_serpicolAnimator.serpicolAnimator.GetCurrentAnimatorStateInfo(0).IsName("idle") && !_spriteS.flipX)
+            {
+                Mirror();
+                _myTransform.position += Vector3.left * 3f;
+            }
+        }
+
+        else if (dist.x > 2)
+        {
+            direction = 1;
+
+            if (_serpicolAnimator.serpicolAnimator.GetCurrentAnimatorStateInfo(0).IsName("idle") && _spriteS.flipX)
+            {
+                Mirror();
+                _myTransform.position += Vector3.right * 3f;
+            }
+        }
+    }
+
+    private void Mirror()
+    {
+        _spriteS.flipX = !_spriteS.flipX;
+        _boxColl.offset = new Vector2(-_boxColl.offset.x, _boxColl.offset.y);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_serpicolAnimator.serpicolAnimator.GetInteger("AnimState") == 1 && collision.CompareTag("Pared"))
+        {
+            print("paredon");
+            StopAllCoroutines();
+            StartCoroutine("ChoqueP");
+        }
+
+        if (collision.CompareTag("Suelo"))
+        {
+            _serpiRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            _serpicolAnimator.Suelo(true);
+        }
+    }
+
     #region attacks
 
-    public IEnumerator Caracola(int direction)
+    public IEnumerator Caracola()
     {
-        _serpicolAnimator.CaracolaAnimation();
+        int directionAux = direction;
 
-        float esconderS = 1.3f;
-        yield return new WaitForSeconds(esconderS);
-        float rotSpeed = 2000f;
-        float transSpeed = 15f;
+        Vector2 finalBoxCollS = _boxColl.size;
+        Vector2 finalBoxCollO = _boxColl.offset;
+
+        Vector2 secureOff = finalBoxCollO + new Vector2(directionAux * -1, 0);
+
+        _serpicolAnimator.CaracolaAnimation();
+        _boxColl.offset = secureOff;
+
+        float esconderS = 1f;
+        Vector3 carPos = new Vector3(directionAux * -3f, -1, 0);
+
+        float rotSpeed = 1600f;
+        float transSpeed = 18f;
 
         _obstacleComponent.pDamage = 20;
         float rotDest = 120;
-        float transDist = 8f;
-        Vector3 transVec = _myTransform.position + new Vector3(direction * transDist, 0, 0);
+        float transDist = 22f;
+        
         int vueltas = 0;
 
-        while (vueltas != 3)
+        yield return new WaitForSeconds(esconderS);
+        _myTransform.position += carPos;
+        _boxColl.size = Vector2.one * 4;
+        _boxColl.offset = Vector2.zero;
+
+        Vector3 transVec = _myTransform.position + new Vector3(directionAux * transDist, 0, 0);
+
+        yield return new WaitForSeconds(0.3f);
+        _obstacleComponent.multiplier = 3;
+        while (vueltas != 5)
         {
             _myTransform.position = Vector3.MoveTowards(_myTransform.position, transVec, transSpeed * Time.deltaTime);
-            if (vueltas != 3)
-                _myTransform.rotation = Quaternion.RotateTowards(_myTransform.rotation, Quaternion.Euler(0, 0, -direction * rotDest), rotSpeed * Time.deltaTime);
+            _myTransform.rotation = Quaternion.RotateTowards(_myTransform.rotation, Quaternion.Euler(0, 0, -directionAux * rotDest), rotSpeed * Time.deltaTime);
             yield return null;
 
-            print("rot " + _myTransform.rotation.eulerAngles.z);
-            print("rotD " + rotDest);
-            print("resto " + (360 - _myTransform.rotation.eulerAngles.z) % 120);
-            //if (_myTransform.rotation.eulerAngles.z % 120 < 3 || _myTransform.rotation.eulerAngles.z % 120 > 117)
-            if ((_myTransform.rotation.eulerAngles.z % 120 < 3 && direction >= 0) || ((360 - _myTransform.rotation.eulerAngles.z + 1) % 120 < 4) && direction <= 0)
+            if ((_myTransform.rotation.eulerAngles.z % 120 < 3 && directionAux >= 0) || ((360 - _myTransform.rotation.eulerAngles.z + 1) % 120 < 4) && directionAux <= 0)
             {
 
                 if (rotDest == 358)
@@ -77,21 +142,29 @@ public class SerpicolManager : MonoBehaviour
             }
         }
 
+        _obstacleComponent.multiplier = 1;
         _obstacleComponent.pDamage = 5;
+
         yield return new WaitForSeconds(0.3f);
         _myTransform.rotation = Quaternion.identity;
-        _spriteS.flipX = !_spriteS.flipX;
+        _boxColl.size = finalBoxCollS;
+        _boxColl.offset = secureOff;
+        Mirror();
         _serpicolAnimator.IdleAnimation();
+        _myTransform.position += new Vector3(carPos.x, -carPos.y, 0);
         yield return new WaitForSeconds(esconderS);
+        _boxColl.offset = new Vector2(-finalBoxCollO.x, finalBoxCollO.y);
     }
 
-    public IEnumerator Mordisco(int direction)
+    public IEnumerator Mordisco()
     {
+        int directionAux = direction;
+
         Vector2 scBase = _boxColl.size;
         Vector2 scDest = _boxColl.size * new Vector2(2f, 0.7f);
 
         Vector2 offBase = _boxColl.offset;
-        Vector2 offDest = _boxColl.offset + new Vector2(direction * 2f, -0.5f);
+        Vector2 offDest = _boxColl.offset + new Vector2(directionAux * 2f, -0.5f);
 
         float scSpeed = 10f;
         float offSpeed = 5f;
@@ -121,11 +194,12 @@ public class SerpicolManager : MonoBehaviour
         }
 
         _serpicolAnimator.IdleAnimation();
-        print("bocao");
     }
 
-    public IEnumerator Hipnosis(int direction)
+    public IEnumerator Hipnosis()
     {
+        int directionAux = direction;
+
         float initPos = 6.5f;
         float spawnDist = 6f;
         float umbral = 5f;
@@ -136,7 +210,7 @@ public class SerpicolManager : MonoBehaviour
 
         _serpicolAnimator.HipnosisAnimation();
 
-        float currentPos = _myTransform.position.x + (direction * initPos);
+        float currentPos = _myTransform.position.x + (directionAux * initPos);
         yield return new WaitForSeconds(wait);
 
         for (int i = 0; i < spawnQ; i++)
@@ -146,11 +220,11 @@ public class SerpicolManager : MonoBehaviour
                 HipnoSpawn[i].transform.position = new Vector3(currentPos, HipnoSpawn[i].transform.position.y, 0);
                 HipnoSpawn[i].SetActive(true);
             }
-            currentPos += direction * spawnDist;
+            currentPos += directionAux * spawnDist;
             yield return new WaitForSeconds(wait);
         }
 
-        currentPos = _myTransform.position.x + (direction * initPos);
+        currentPos = _myTransform.position.x + (directionAux * initPos);
         yield return new WaitForSeconds(wait * 3);
 
         for (int i = 0; i < spawnQ; i++)
@@ -160,7 +234,7 @@ public class SerpicolManager : MonoBehaviour
                 HipnoArea[i].transform.position = new Vector3(currentPos, HipnoArea[i].transform.position.y, 0);
                 HipnoArea[i].SetActive(true);
             }
-            currentPos += direction * spawnDist;
+            currentPos += directionAux * spawnDist;
         }
 
         yield return new WaitForSeconds(0.7f);
@@ -174,16 +248,18 @@ public class SerpicolManager : MonoBehaviour
         }
     }
 
-    public IEnumerator Disparo(int direction)
+    public IEnumerator Disparo()
     {
+        int directionAux = direction;
+
         _serpicolAnimator.GaposAnimation();
         bool turn;
 
-        Vector3 relPos = new Vector3(direction * 0.1f, 0.6f, 0);
-        Vector2 dir = new Vector2(direction * 5, 1);
+        Vector3 relPos = new Vector3(directionAux * 0.1f, 0.6f, 0);
+        Vector2 dir = new Vector2(directionAux * 5, 1);
         float force = 130;
 
-        if (direction == 1)
+        if (directionAux == 1)
             turn = false;
         else
             turn = true;
@@ -200,6 +276,64 @@ public class SerpicolManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1.8f);
         _serpicolAnimator.IdleAnimation();
+    }
+
+    public IEnumerator ChoqueP()
+    {
+        _obstacleComponent.multiplier = 1;
+        _obstacleComponent.pDamage = 5;
+
+        _serpiRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+        _serpicolAnimator.Suelo(false);
+
+        Vector3 impulse;
+
+        if (!_spriteS.flipX)
+            impulse = new Vector3(-2000, 5000, 0);
+        else
+            impulse = new Vector3(2000, 5000, 0);
+
+        _serpiRB.AddForce(impulse, ForceMode2D.Impulse);
+        StartCoroutine(Lluvia());
+
+        int directionAux;
+
+        if (_myTransform.position.x > 0)
+            directionAux = 1;
+        else
+            directionAux = -1;
+
+        Vector3 carPos = new Vector3(directionAux * -3f, -1, 0);
+
+        //_myTransform.rotation = Quaternion.Euler(0, 0, 60);
+
+        float rotSpeed = 800f;
+        float rotDest = 120;
+
+        int vueltas = 0;
+
+        while (vueltas != 2)
+        {
+            _myTransform.rotation = Quaternion.RotateTowards(_myTransform.rotation, Quaternion.Euler(0, 0, directionAux * rotDest), rotSpeed * Time.deltaTime);
+            yield return null;
+
+            if ((_myTransform.rotation.eulerAngles.z % 120 < 3 && -directionAux > 0) || ((360 - _myTransform.rotation.eulerAngles.z + 1) % 120 < 4) && -directionAux < 0)
+            {
+
+                if (rotDest == 358)
+                {
+                    vueltas++;
+                    rotDest = 120;
+                }
+                else
+                {
+                    rotDest += 119;
+                }
+            }
+
+            _myTransform.rotation = Quaternion.identity;
+            print(rotDest);
+        }
     }
 
     public IEnumerator Lluvia()
@@ -236,6 +370,7 @@ public class SerpicolManager : MonoBehaviour
         _serpicolAnimator = GetComponent<SerpicolAnimator>();
         _spriteS = GetComponent<SpriteRenderer>();
         _boxColl = GetComponent<BoxCollider2D>();
+        _player = GameManager.Instance.Player;
 
         _obstacleComponent.pDamage = 5;
 
@@ -251,12 +386,12 @@ public class SerpicolManager : MonoBehaviour
             _babas[i] = obj;
         }
 
-        StartCoroutine(Caracola(-1));
+        StartCoroutine(Caracola());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Orient();
     }
 }

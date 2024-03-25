@@ -13,6 +13,7 @@ public class ObstacleComponent : MonoBehaviour
 
     #region parameters
     public float pDamage;
+    public float multiplier = 1;
     #endregion
 
     #region methods
@@ -37,10 +38,9 @@ public class ObstacleComponent : MonoBehaviour
         else
         {
             rebound.x = +500;
-            print("humbleada");
         }
         rb.velocity = Vector2.zero;
-        rb.AddForce(rebound, ForceMode2D.Impulse);
+        rb.AddForce(rebound * multiplier, ForceMode2D.Impulse);
     }
     #endregion
 

@@ -39,6 +39,11 @@ public class SerpicolAnimator : MonoBehaviour
         serpicolAnimator.SetInteger("AnimState", 1);
     }
 
+    public void Suelo(bool state)
+    {
+        serpicolAnimator.SetBool("suelo",state);
+    }
+
     #endregion
 
     void Start()

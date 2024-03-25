@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region parameters
-    public int state; //Estado 0: Suelo; Estado 1: Aire; Estado 2: Pared; Estado 3: Mov Bloqueado/Evento; Estado 4: Deslizamiento; Estado 5: Invulnerable; Estado 6: Pelotazo; 
+    public int state = 1; //Estado 0: Suelo; Estado 1: Aire; Estado 2: Pared; Estado 3: Mov Bloqueado/Evento; Estado 4: Deslizamiento; Estado 5: Invulnerable; Estado 6: Pelotazo; 
 
     private float _speedGround = 3f;
     private float _speedAir = 3f;
@@ -387,9 +387,15 @@ public class PlayerManager : MonoBehaviour
         if (EnemyBC)
         {
             if (state == 5)
+            {
                 EnemyBC.enabled = false;
+                _inputManager.enabled = false;
+            }
             else
+            {
                 EnemyBC.enabled = true;
+                _inputManager.enabled = true;
+            }
         }
     }
 

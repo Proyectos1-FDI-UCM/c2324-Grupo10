@@ -26,8 +26,6 @@ public class GapoManager : MonoBehaviour
     {
         if (!baba)
             Rotacion();
-        else
-            print("baba");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
