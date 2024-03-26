@@ -31,6 +31,10 @@ public class SerpicolManager : MonoBehaviour
     private GameObject _player;
     private int _direction = -1;
     private int _currLay = -1;
+
+    private Vector2 _boxCollAuxS;
+    private Vector2 _boxCollAuxO;
+    private Vector2 _secureOff;
     #endregion
 
     #region parameters
@@ -105,13 +109,13 @@ public class SerpicolManager : MonoBehaviour
     {
         int directionAux = _direction;
 
-        Vector2 finalBoxCollS = _boxColl.size;
-        Vector2 finalBoxCollO = _boxColl.offset;
+        _boxCollAuxS = _boxColl.size;
+        _boxCollAuxO = _boxColl.offset;
 
-        Vector2 secureOff = finalBoxCollO + new Vector2(directionAux * -1, 0);
+        _secureOff = _boxCollAuxO + new Vector2(directionAux * -1, 0);
 
         _serpicolAnimator.CaracolaAnimation();
-        _boxColl.offset = secureOff;
+        _boxColl.offset = _secureOff;
 
         float esconderS = 1f;
         Vector3 carPos = new Vector3(directionAux * -3f, -1, 0);
@@ -159,13 +163,13 @@ public class SerpicolManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         _myTransform.rotation = Quaternion.identity;
-        _boxColl.size = finalBoxCollS;
-        _boxColl.offset = secureOff;
+        _boxColl.size = _boxCollAuxS;
+        _boxColl.offset = _secureOff;
         Mirror();
         _serpicolAnimator.IdleAnimation();
         _myTransform.position += new Vector3(carPos.x, -carPos.y, 0);
         yield return new WaitForSeconds(esconderS);
-        _boxColl.offset = new Vector2(-finalBoxCollO.x, finalBoxCollO.y);
+        _boxColl.offset = new Vector2(-_boxCollAuxO.x, _boxCollAuxO.y);
     }
 
     public IEnumerator Mordisco()
@@ -292,6 +296,7 @@ public class SerpicolManager : MonoBehaviour
 
     public IEnumerator ChoqueP()
     {
+        float esconderS = 1;
         _obstacleComponent.multiplier = 1;
         _obstacleComponent.pDamage = 5;
 
@@ -318,7 +323,7 @@ public class SerpicolManager : MonoBehaviour
 
         Vector3 carPos = new Vector3(directionAux * -3f, -1, 0);
 
-        float rotSpeed = 800f;
+        float rotSpeed = 850f;
         float rotDest = 120;
 
         int vueltas = 0;
@@ -342,6 +347,15 @@ public class SerpicolManager : MonoBehaviour
         }
 
         _myTransform.rotation = Quaternion.identity;
+
+        yield return new WaitForSeconds(0.3f);
+        _myTransform.rotation = Quaternion.identity;
+        _boxColl.size = _boxCollAuxS;
+        _boxColl.offset = _secureOff;
+        _serpicolAnimator.IdleAnimation();
+        _myTransform.position += -carPos;
+        yield return new WaitForSeconds(esconderS);
+        _boxColl.offset = _boxCollAuxO;
     }
 
     public IEnumerator Lluvia()
