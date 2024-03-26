@@ -9,23 +9,36 @@ public class ObstacleComponent : MonoBehaviour
     private VidaManager _vidaManager;
     private GameObject _player;
     private Rigidbody2D _rb;
+    private BoxCollider2D _boxColl;
     #endregion
 
     #region parameters
     public float pDamage;
     public float multiplier = 1;
+    public int currLay = -1;
     #endregion
 
     #region methods
     private void OnTriggerEnter2D(Collider2D other)
     {
-        float delaySeconds = 0.5f;
-        PlayerManager playerManager = other.gameObject.GetComponent<PlayerManager>();
-        if (playerManager)
+        if (other.gameObject.layer != currLay && gameObject.activeSelf)
         {
-            StartCoroutine(_vidaManager.takeDamage(pDamage));
-            Rebound(playerManager.playerRB);
+            StartCoroutine(CollDes(other));
+            PlayerManager playerManager = other.gameObject.GetComponent<PlayerManager>();
+            if (playerManager)
+            {
+                StartCoroutine(_vidaManager.takeDamage(pDamage));
+                Rebound(playerManager.playerRB);
+            }
         }
+    }
+
+    private IEnumerator CollDes(Collider2D other)
+    {
+        currLay = other.gameObject.layer;
+        yield return new WaitForSeconds(0.4f);
+        if (other.gameObject.layer == currLay)
+            currLay = -1;
     }
 
     private void Rebound(Rigidbody2D rb) //Empuja al Colega hacia arriba.
@@ -50,6 +63,7 @@ public class ObstacleComponent : MonoBehaviour
         _player = GameManager.Instance.Player;
         _vidaManager = _player.GetComponent<VidaManager>();
         _rb = _player.GetComponent<Rigidbody2D>();
+        _boxColl = _player.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame

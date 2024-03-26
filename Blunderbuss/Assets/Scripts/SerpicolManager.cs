@@ -29,7 +29,8 @@ public class SerpicolManager : MonoBehaviour
     GameObject _baba;
 
     private GameObject _player;
-    private int direction = -1;
+    private int _direction = -1;
+    private int _currLay = -1;
     #endregion
 
     #region parameters
@@ -43,7 +44,7 @@ public class SerpicolManager : MonoBehaviour
 
         if (dist.x < -2)
         {
-            direction = -1;
+            _direction = -1;
 
             if (_serpicolAnimator.serpicolAnimator.GetCurrentAnimatorStateInfo(0).IsName("idle") && !_spriteS.flipX)
             {
@@ -54,7 +55,7 @@ public class SerpicolManager : MonoBehaviour
 
         else if (dist.x > 2)
         {
-            direction = 1;
+            _direction = 1;
 
             if (_serpicolAnimator.serpicolAnimator.GetCurrentAnimatorStateInfo(0).IsName("idle") && _spriteS.flipX)
             {
@@ -72,25 +73,37 @@ public class SerpicolManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_serpicolAnimator.serpicolAnimator.GetInteger("AnimState") == 1 && collision.CompareTag("Pared"))
+        if (collision.gameObject.layer != _currLay)
         {
-            print("paredon");
-            StopAllCoroutines();
-            StartCoroutine("ChoqueP");
-        }
+            StartCoroutine(CollDes(collision));
 
-        if (collision.CompareTag("Suelo"))
-        {
-            _serpiRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-            _serpicolAnimator.Suelo(true);
+            if (_serpicolAnimator.serpicolAnimator.GetInteger("AnimState") == 1 && collision.CompareTag("Pared"))
+            {
+                StopAllCoroutines();
+                StartCoroutine("ChoqueP");
+            }
+
+            if (collision.CompareTag("Suelo"))
+            {
+                _serpiRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                _serpicolAnimator.Suelo(true);
+            }
         }
+    }
+
+    private IEnumerator CollDes(Collider2D collision)
+    {
+        _currLay = collision.gameObject.layer;
+        yield return new WaitForSeconds(0.4f);
+        if (collision.gameObject.layer == _currLay)
+            _currLay = -1;
     }
 
     #region attacks
 
     public IEnumerator Caracola()
     {
-        int directionAux = direction;
+        int directionAux = _direction;
 
         Vector2 finalBoxCollS = _boxColl.size;
         Vector2 finalBoxCollO = _boxColl.offset;
@@ -127,9 +140,8 @@ public class SerpicolManager : MonoBehaviour
             _myTransform.rotation = Quaternion.RotateTowards(_myTransform.rotation, Quaternion.Euler(0, 0, -directionAux * rotDest), rotSpeed * Time.deltaTime);
             yield return null;
 
-            if ((_myTransform.rotation.eulerAngles.z % 120 < 3 && directionAux >= 0) || ((360 - _myTransform.rotation.eulerAngles.z + 1) % 120 < 4) && directionAux <= 0)
+            if ((System.Convert.ToInt32(_myTransform.rotation.eulerAngles.z) == rotDest && directionAux < 0) || ((360 - System.Convert.ToInt32(_myTransform.rotation.eulerAngles.z)) == rotDest) && directionAux > 0)
             {
-
                 if (rotDest == 358)
                 {
                     vueltas++;
@@ -158,7 +170,7 @@ public class SerpicolManager : MonoBehaviour
 
     public IEnumerator Mordisco()
     {
-        int directionAux = direction;
+        int directionAux = _direction;
 
         Vector2 scBase = _boxColl.size;
         Vector2 scDest = _boxColl.size * new Vector2(2f, 0.7f);
@@ -198,7 +210,7 @@ public class SerpicolManager : MonoBehaviour
 
     public IEnumerator Hipnosis()
     {
-        int directionAux = direction;
+        int directionAux = _direction;
 
         float initPos = 6.5f;
         float spawnDist = 6f;
@@ -250,7 +262,7 @@ public class SerpicolManager : MonoBehaviour
 
     public IEnumerator Disparo()
     {
-        int directionAux = direction;
+        int directionAux = _direction;
 
         _serpicolAnimator.GaposAnimation();
         bool turn;
@@ -289,10 +301,11 @@ public class SerpicolManager : MonoBehaviour
         Vector3 impulse;
 
         if (!_spriteS.flipX)
-            impulse = new Vector3(-2000, 5000, 0);
+            impulse = new Vector3(-2100, 5300, 0);
         else
-            impulse = new Vector3(2000, 5000, 0);
+            impulse = new Vector3(2100, 5300, 0);
 
+        _myTransform.rotation = Quaternion.identity;
         _serpiRB.AddForce(impulse, ForceMode2D.Impulse);
         StartCoroutine(Lluvia());
 
@@ -305,21 +318,17 @@ public class SerpicolManager : MonoBehaviour
 
         Vector3 carPos = new Vector3(directionAux * -3f, -1, 0);
 
-        //_myTransform.rotation = Quaternion.Euler(0, 0, 60);
-
         float rotSpeed = 800f;
         float rotDest = 120;
 
         int vueltas = 0;
 
-        while (vueltas != 2)
+        while (vueltas != 4)
         {
             _myTransform.rotation = Quaternion.RotateTowards(_myTransform.rotation, Quaternion.Euler(0, 0, directionAux * rotDest), rotSpeed * Time.deltaTime);
             yield return null;
-
-            if ((_myTransform.rotation.eulerAngles.z % 120 < 3 && -directionAux > 0) || ((360 - _myTransform.rotation.eulerAngles.z + 1) % 120 < 4) && -directionAux < 0)
+            if ((System.Convert.ToInt32(_myTransform.rotation.eulerAngles.z) == rotDest && directionAux > 0) || (360 - (System.Convert.ToInt32(_myTransform.rotation.eulerAngles.z)) == rotDest) && directionAux < 0)
             {
-
                 if (rotDest == 358)
                 {
                     vueltas++;
@@ -330,16 +339,18 @@ public class SerpicolManager : MonoBehaviour
                     rotDest += 119;
                 }
             }
-
-            _myTransform.rotation = Quaternion.identity;
-            print(rotDest);
         }
+
+        _myTransform.rotation = Quaternion.identity;
     }
 
     public IEnumerator Lluvia()
     {
         float fallWait = 1;
         StartCoroutine(_camera.ShakeBegin(3));
+
+        yield return new WaitForSeconds(0.1f);
+        _currLay = -1;
 
         yield return new WaitForSeconds(fallWait);
 

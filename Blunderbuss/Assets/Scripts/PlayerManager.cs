@@ -17,7 +17,6 @@ public class PlayerManager : MonoBehaviour
 
     public Transform myTransform;
     public Rigidbody2D playerRB;
-    public BoxCollider2D EnemyBC;
     public SpriteRenderer spriteR;
     public Transform targetEnemy;
     #endregion
@@ -382,20 +381,15 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void Invulnerabilidad()
+    public void Aturdimiento()
     {
-        if (EnemyBC)
+        if (state == 5)
         {
-            if (state == 5)
-            {
-                EnemyBC.enabled = false;
-                _inputManager.enabled = false;
-            }
-            else
-            {
-                EnemyBC.enabled = true;
-                _inputManager.enabled = true;
-            }
+            _inputManager.enabled = false;
+        }
+        else
+        {
+            _inputManager.enabled = true;
         }
     }
 

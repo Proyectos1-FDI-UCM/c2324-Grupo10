@@ -31,7 +31,7 @@ public class GapoManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Suelo"))
-            gameObject.SetActive(false);
+            StartCoroutine(Desactivar());
     }
 
     private void Rotacion()
@@ -39,5 +39,13 @@ public class GapoManager : MonoBehaviour
         velocityNorm = rb.velocity.normalized;
         angulo = Mathf.Atan2(velocityNorm.y, velocityNorm.x) * Mathf.Rad2Deg;
         _myTransform.rotation = Quaternion.AngleAxis(angulo, Vector3.forward);
+    }
+
+    private IEnumerator Desactivar()
+    {
+        spriteR.enabled = false;
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(false);
+        spriteR.enabled = true;
     }
 }

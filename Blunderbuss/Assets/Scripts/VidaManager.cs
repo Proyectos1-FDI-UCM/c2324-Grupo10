@@ -40,14 +40,14 @@ public class VidaManager : MonoBehaviour
             health -= damage;
             health = Mathf.Clamp(health, 0, 100);
             _playerManager.state = 5;
-            _playerManager.Invulnerabilidad();
+            _playerManager.Aturdimiento();
             _UIManager.actualizaVida();
             yield return new WaitForSeconds(tiempoInvulnerable);
-            if (_playerManager.myTransform.position.y < _playerManager.groundHeight)
+            if (_playerManager.playerRB.velocity.y == 0)
                 _playerManager.state = 0;
             else
                 _playerManager.state = 1;
-            _playerManager.Invulnerabilidad();
+            _playerManager.Aturdimiento();
         }
         if (health <= 0)
         {
