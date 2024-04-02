@@ -21,13 +21,16 @@ public class PocoTehto : MonoBehaviour
     #region methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _canvas.SetActive(true);
-        _trigger.SetActive(true);
-        _inputManager.enabled = false;
-
-        if (gameObject.CompareTag("Rambutan"))
+        if (collision.CompareTag("Player"))
         {
-            _vidaManager.RambutanTutorial();
+            _canvas.SetActive(true);
+            _trigger.SetActive(true);
+            _inputManager.enabled = false;
+
+            if (gameObject.CompareTag("RambutanG"))
+            {
+                _vidaManager.RambutanTutorial();
+            }
         }
     }
 

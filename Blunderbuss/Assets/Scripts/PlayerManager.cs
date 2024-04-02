@@ -53,6 +53,8 @@ public class PlayerManager : MonoBehaviour
     {
         if(state < 3)
             Move(_inputManager.axisX);
+
+        print(suelo);
     }
 
     public void Move(float axis)
@@ -289,6 +291,7 @@ public class PlayerManager : MonoBehaviour
             playerRB.velocity = Vector3.zero;
             playerRB.gravityScale = 0;
 
+            suelo = false;
             if (suelo)
             {
                 playerRB.AddForce(new Vector2(0, smallJump), ForceMode2D.Impulse);
@@ -363,7 +366,8 @@ public class PlayerManager : MonoBehaviour
             yield return new WaitForSeconds(shotCD);
             shotEnable = true;
             _slideEnable = true;
-            if (suelo)
+
+            if (!suelo)
                 state = 1;
             else
                 state = 0;
