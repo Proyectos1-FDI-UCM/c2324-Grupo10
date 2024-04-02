@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6812938101534534271}
+  - component: {fileID: 7046135342271734877}
   m_Layer: 0
   m_Name: PlayerMaster
   m_TagString: Untagged
@@ -34,6 +35,18 @@ Transform:
   - {fileID: 927215594833495654}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7046135342271734877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41183480566546429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7feca6ee52ae8604a8479b0b12ecbed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1037159372569506221
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,13 +375,12 @@ MonoBehaviour:
   _UIManager: {fileID: 8862047602277012874}
   myTransform: {fileID: 0}
   playerRB: {fileID: 0}
-  EnemyBC: {fileID: 0}
   spriteR: {fileID: 0}
   targetEnemy: {fileID: 0}
   state: 0
+  suelo: 0
   shotEnable: 1
   ballBlowEnable: 1
-  groundHeight: -3
   chargeFinish: 0
 --- !u!114 &6753391244722091872
 MonoBehaviour:

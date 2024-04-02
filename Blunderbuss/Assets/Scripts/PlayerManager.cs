@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour
     #region parameters
     public int state = 1; //Estado 0: Suelo; Estado 1: Aire; Estado 2: Pared; Estado 3: Mov Bloqueado/Evento; Estado 4: Deslizamiento; Estado 5: Invulnerable; Estado 6: Pelotazo; 
 
+    public bool suelo;
     private float _speedGround = 3f;
     private float _speedAir = 3f;
     private float _speedWall = 2f;
@@ -31,7 +32,6 @@ public class PlayerManager : MonoBehaviour
     private bool _slideEnable = false;
     public bool shotEnable = true;
     public bool ballBlowEnable = true;
-    public float groundHeight;
     public bool chargeFinish = false;
     #endregion
 
@@ -53,8 +53,6 @@ public class PlayerManager : MonoBehaviour
     {
         if(state < 3)
             Move(_inputManager.axisX);
-
-        //print(state + " " + playerRB.velocity + " " + myTransform.position.y);
     }
 
     public void Move(float axis)
@@ -133,7 +131,7 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(_shotCD);
         shotEnable = true;
         _slideEnable = true;
-        if (myTransform.position.y >= groundHeight)
+        if (!suelo)
             state = 1;
         else
             state = 0;
@@ -141,8 +139,8 @@ public class PlayerManager : MonoBehaviour
 
     public void Shot(int dir)
     {
-        float _impulse;
-        bool _suelo;
+        float impulse;
+        bool dispSuelo;
 
         if (shotEnable && _balasManager.BalaQuantity > 0)
         {
@@ -153,74 +151,82 @@ public class PlayerManager : MonoBehaviour
                     case 0:
                         if (state == 0)
                         {
-                            _suelo = false;
-                            _impulse = 700;
+                            dispSuelo = false;
+                            impulse = 700;
                         }
                         else
                         {
-                            _suelo = false;
-                            _impulse = 1000f;
+                            dispSuelo = false;
+                            impulse = 1000f;
                         }
 
                         if (!spriteR.flipX)
                         {
-                            StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.right, Quaternion.Euler(0, 0, 90)));
-                            StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-_impulse, 0)));
+                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.right, Quaternion.Euler(0, 0, 90)));
+                            StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-impulse, 0)));
                         }
                         else
                         {
-                            StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.left, Quaternion.Euler(0 ,0, -90)));
-                            StartCoroutine(ShotTemp(Vector2.zero, new Vector2(_impulse, 0)));
+                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.left, Quaternion.Euler(0 ,0, -90)));
+                            StartCoroutine(ShotTemp(Vector2.zero, new Vector2(impulse, 0)));
                         }
                         break;
                     case 1:
                         if (state == 0)
                         {
-                            _suelo = true;
-                            _impulse = 1000;
+                            suelo = false;
+                            dispSuelo = true;
+                            impulse = 1000;
                         }
                         else if (state == 4)
                         {
-                            _suelo = true;
-                            _impulse = 1300f;
+                            suelo = false;
+                            dispSuelo = true;
+                            impulse = 1300f;
                         }
                         else
                         {
-                            _suelo = false;
-                            _impulse = 800f;
+                            dispSuelo = false;
+                            impulse = 800f;
                         }
 
-                        StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.down, Quaternion.identity));
-                        StartCoroutine(ShotTemp(new Vector2(playerRB.velocity.x, 0), new Vector2(0, _impulse)));
+                        StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.down, Quaternion.identity));
+                        StartCoroutine(ShotTemp(new Vector2(playerRB.velocity.x, 0), new Vector2(0, impulse)));
 
                         break;
                     case 2:
-                        _impulse = 1400f;
+                        impulse = 1400f;
                         if (state == 1)
                         {
-                            _suelo = false;
-                            StartCoroutine (_shotManager.FireSpawn(_suelo, Vector2.up, Quaternion.Euler(0, 0, 180)));
-                            StartCoroutine (ShotTemp(Vector2.zero, new Vector2(0, -_impulse)));
+                            dispSuelo = false;
+                            StartCoroutine (_shotManager.FireSpawn(dispSuelo, Vector2.up, Quaternion.Euler(0, 0, 180)));
+                            StartCoroutine (ShotTemp(Vector2.zero, new Vector2(0, -impulse)));
+                        }
+                        else if (state == 0)
+                        {
+                            dispSuelo = false;
+                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.up, Quaternion.Euler(0, 0, 180)));
+                            StartCoroutine(ShotTemp(Vector2.zero, Vector2.zero));
                         }
                         break;
                 }
             }
             else
             {
-                _impulse = 1000f;
-                _suelo = true;
+                impulse = 1000f;
+                dispSuelo = true;
 
                 if (spriteR.flipX)
                 {
-                    StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.left, Quaternion.Euler(0, 0, -90)));
-                    StartCoroutine(ShotTemp(Vector2.zero, new Vector2(_impulse, _impulse / 2f)));
+                    StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.left, Quaternion.Euler(0, 0, -90)));
+                    StartCoroutine(ShotTemp(Vector2.zero, new Vector2(impulse, impulse / 2f)));
                 }
 
 
                 else
                 {
-                    StartCoroutine(_shotManager.FireSpawn(_suelo, Vector2.right, Quaternion.Euler(0, 0, 90)));
-                    StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-_impulse, _impulse / 2f)));
+                    StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.right, Quaternion.Euler(0, 0, 90)));
+                    StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-impulse, impulse / 2f)));
                 }
                     
             }
@@ -283,7 +289,7 @@ public class PlayerManager : MonoBehaviour
             playerRB.velocity = Vector3.zero;
             playerRB.gravityScale = 0;
 
-            if (myTransform.position.y < groundHeight)
+            if (suelo)
             {
                 playerRB.AddForce(new Vector2(0, smallJump), ForceMode2D.Impulse);
                 yield return new WaitForSeconds(jumpStop);
@@ -357,7 +363,7 @@ public class PlayerManager : MonoBehaviour
             yield return new WaitForSeconds(shotCD);
             shotEnable = true;
             _slideEnable = true;
-            if (myTransform.position.y >= groundHeight)
+            if (suelo)
                 state = 1;
             else
                 state = 0;
@@ -398,21 +404,18 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Suelo")
         {
+            suelo = true;
             if (state != 3 && state != 6)
             {
                 state = 0;
                 _slideEnable = true;
             }
         }
-        if (collision.gameObject.tag == "Pared")
-        {
-            
-        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pared" && myTransform.position.y >= groundHeight && state != 6)
+        if (collision.gameObject.tag == "Pared" && !suelo && state != 6)
         {
             state = 2;
 
@@ -421,7 +424,7 @@ public class PlayerManager : MonoBehaviour
 
             if (collision.contacts[0].normal.x < 0)
                 spriteR.flipX = false;
-            else if (myTransform.position.y >= groundHeight && state != 6)
+            else if (!suelo && state != 6)
                 spriteR.flipX = true;
         }
     }

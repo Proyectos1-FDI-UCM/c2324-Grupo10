@@ -43,6 +43,12 @@ public class BalasManager : MonoBehaviour
         BalaQuantity = maxBalas;                      // Se puede volver a disparar
         _UIManager.reiniciaBalas();                   // Puedes ver que puedes disparar otra vez
     }
+
+    public void RecargarInsta()
+    {
+        BalaQuantity = maxBalas;                      // Se puede volver a disparar
+        _UIManager.reiniciaBalas();                   // Puedes ver que puedes disparar otra vez
+    }
     // El take damage tiene que ser testeado todavia, tenemos que hacer un enemigo que le quite vida al personaje
     #endregion
 

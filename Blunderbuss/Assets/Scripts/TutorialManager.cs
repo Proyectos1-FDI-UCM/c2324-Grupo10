@@ -4,26 +4,14 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-    static TutorialManager _instance;
+    #region references
     [SerializeField] GameObject _puerta1;
-    static public TutorialManager Instance
-    {
-        get { return _instance; }
-    }
-    public int Dianas;
+    [SerializeField] GameObject _puerta2;
+    #endregion
 
-    private void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
+    #region parameters
+    public int Dianas;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +38,19 @@ public class TutorialManager : MonoBehaviour
                 _puerta1.transform.position = Vector3.MoveTowards(_puerta1.transform.position, _targetPos, _speedD * Time.deltaTime);
                 yield return null;
             }
+        }
+    }
+
+    public IEnumerator SegundaPuerta()
+    {
+        float _speedD = 1f;
+        float _distD = 3f;
+        Vector3 _targetPos = new Vector3(_puerta2.transform.position.x, _puerta2.transform.position.y + _distD, _puerta2.transform.position.z);
+        yield return new WaitForSeconds(1);
+        while (_puerta2.transform.position != _targetPos)
+        {
+            _puerta2.transform.position = Vector3.MoveTowards(_puerta2.transform.position, _targetPos, _speedD * Time.deltaTime);
+            yield return null;
         }
     }
 }

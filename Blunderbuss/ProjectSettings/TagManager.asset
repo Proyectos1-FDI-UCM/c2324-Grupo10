@@ -12,6 +12,7 @@ TagManager:
   - Fuego
   - Boss
   - PlayerMaster
+  - Fuego2
   layers:
   - Default
   - TransparentFX

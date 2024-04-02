@@ -6,6 +6,7 @@ using UnityEngine;
 public class ObstacleComponent : MonoBehaviour
 {
     #region references
+    private PlayerManager _playerManager;
     private VidaManager _vidaManager;
     private GameObject _player;
     private Rigidbody2D _rb;
@@ -43,6 +44,7 @@ public class ObstacleComponent : MonoBehaviour
 
     private void Rebound(Rigidbody2D rb) //Empuja al Colega hacia arriba.
     {
+        _playerManager.suelo = false;
         Vector2 rebound = new(0,750);
         if(rb.velocity.x>=0)
         {
@@ -62,6 +64,7 @@ public class ObstacleComponent : MonoBehaviour
     {
         _player = GameManager.Instance.Player;
         _vidaManager = _player.GetComponent<VidaManager>();
+        _playerManager = _player.GetComponent<PlayerManager>();
         _rb = _player.GetComponent<Rigidbody2D>();
         _boxColl = _player.GetComponent<BoxCollider2D>();
     }

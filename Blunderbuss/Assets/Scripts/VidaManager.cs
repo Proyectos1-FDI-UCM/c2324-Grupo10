@@ -26,11 +26,18 @@ public class VidaManager : MonoBehaviour
         if (HealQuantity > 0)
         {
             health += healingValue;
-            health = Mathf.Clamp(health, 0, 100);
+            health = Mathf.Clamp(health, 0, maxHealth);
             HealQuantity--;
         }
-        _UIManager.gestionRambutan();
+        _UIManager.gestionRambutan(true);
         _UIManager.actualizaVida();
+    }
+
+    public void ResetVida()
+    {
+        health = maxHealth;
+        _UIManager.actualizaVida();
+        _UIManager.gestionRambutan(false);
     }
     public IEnumerator takeDamage(float damage)
     {
@@ -38,7 +45,7 @@ public class VidaManager : MonoBehaviour
         if (_playerManager.state != 5)
         {
             health -= damage;
-            health = Mathf.Clamp(health, 0, 100);
+            health = Mathf.Clamp(health, 0, maxHealth);
             _playerManager.state = 5;
             _playerManager.Aturdimiento();
             _UIManager.actualizaVida();
@@ -59,6 +66,15 @@ public class VidaManager : MonoBehaviour
     {      
          _UIManager.hasMuerto();       
         _playerManager.spriteR.enabled = false;
+    }
+
+    public void RambutanTutorial()
+    {
+        if(health == maxHealth)
+        {
+            health = maxHealth / 2;
+            _UIManager.actualizaVida();
+        }
     }
     #endregion
     // Start is called before the first frame update

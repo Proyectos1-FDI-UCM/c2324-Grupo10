@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class PocoTehto : MonoBehaviour
 {
+    #region references
+    private VidaManager _vidaManager;
+    #endregion
+
     #region parameters
     [SerializeField] 
     private GameObject _canvas;
@@ -20,6 +24,11 @@ public class PocoTehto : MonoBehaviour
         _canvas.SetActive(true);
         _trigger.SetActive(true);
         _inputManager.enabled = false;
+
+        if (gameObject.CompareTag("Rambutan"))
+        {
+            _vidaManager.RambutanTutorial();
+        }
     }
 
    public void Desactiva()
@@ -33,6 +42,7 @@ public class PocoTehto : MonoBehaviour
     private void Start()
     {
        _inputManager = GameManager.Instance.InputManager;
+       _vidaManager = GameManager.Instance.Player.GetComponent<VidaManager>();
        _canvas.SetActive(false );
     }
     void Update()

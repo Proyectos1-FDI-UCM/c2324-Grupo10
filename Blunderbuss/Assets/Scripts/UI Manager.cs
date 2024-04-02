@@ -34,19 +34,28 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region methods
-    public void gestionRambutan()                       //Gestionar si hay curacion disponible o no
+    public void gestionRambutan(bool inGame)                       //Gestionar si hay curacion disponible o no
     {
-        if (_vidaManager.HealQuantity == 1)
+        if (inGame)
+        {
+            if (_vidaManager.HealQuantity == 1)
+            {
+                _spriteRendererRam.enabled = true;
+            }
+            else if (_vidaManager.HealQuantity == 0)
+            {
+                healAviable = false;
+            }
+            if (!healAviable)
+            {
+                _spriteRendererRam.enabled = false;
+            }
+        }
+
+        else
         {
             _spriteRendererRam.enabled = true;
-        }
-        else if (_vidaManager.HealQuantity == 0)
-        {
-            healAviable = false;
-        }
-        if (!healAviable)
-        {
-            _spriteRendererRam.enabled = false;
+            _vidaManager.HealQuantity = 1;
         }
     }  
     public void quitaBala()

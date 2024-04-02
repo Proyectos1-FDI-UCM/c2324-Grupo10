@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class GameManager : MonoBehaviour
     static private GameManager _instance;
     private InputManager _inputManager;
     public GameObject Player;
-    private VidaManager _vidaManager;
-    private BalasManager _balasManager;
-    private PlayerManager _playerManager;
+    public VidaManager vidaManager;
+    public BalasManager balasManager;
+    public PlayerManager playerManager;
     static public GameManager Instance
     {
         get { return _instance; }
@@ -21,6 +22,10 @@ public class GameManager : MonoBehaviour
         get { return _inputManager; }
     }
 
+    #endregion
+
+    #region parameters
+    bool first = true;
     #endregion
 
     private void Awake()
@@ -35,14 +40,38 @@ public class GameManager : MonoBehaviour
             _inputManager = GetComponent<InputManager>();
             DontDestroyOnLoad(gameObject);
         }
+
+        Player = GameObject.FindGameObjectWithTag("Player");
+
+        playerManager = Player.GetComponent<PlayerManager>();
+        vidaManager = Player.GetComponent<VidaManager>();
+        balasManager = Player.GetComponent<BalasManager>();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!first)
+        {
+            vidaManager.ResetVida();
+            balasManager.RecargarInsta();
+        }
+        first = false;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        _playerManager = Player.GetComponentInParent<PlayerManager>();
-        _vidaManager = Player.GetComponentInParent<VidaManager>();
-        _balasManager = Player.GetComponentInParent<BalasManager>();
+
     }
 
     // Update is called once per frame
