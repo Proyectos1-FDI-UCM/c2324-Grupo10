@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     #region references
-
+    static private GameObject _playerMaster;
     #endregion
 
     #region parameters
@@ -57,5 +57,14 @@ public class PauseMenu : MonoBehaviour
     {
         CanvasPausa.SetActive(false);
         CanvasOpcionesPausa.SetActive(false) ;
+        if (_playerMaster != null && _playerMaster != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _playerMaster = gameObject;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }
