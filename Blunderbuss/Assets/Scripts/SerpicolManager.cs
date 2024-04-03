@@ -172,6 +172,8 @@ public class SerpicolManager : MonoBehaviour
         _myTransform.position += new Vector3(carPos.x, -carPos.y, 0);
         yield return new WaitForSeconds(esconderS);
         _boxColl.offset = new Vector2(-_boxCollAuxO.x, _boxCollAuxO.y);
+
+        StartCoroutine(SerpicolAI());
     }
 
     public IEnumerator Mordisco()
@@ -212,6 +214,8 @@ public class SerpicolManager : MonoBehaviour
         }
 
         _serpicolAnimator.IdleAnimation();
+
+        StartCoroutine(SerpicolAI());
     }
 
     public IEnumerator Hipnosis()
@@ -274,6 +278,8 @@ public class SerpicolManager : MonoBehaviour
             HipnoAB[i].enabled = true;
             HipnoAS[i].enabled = true;
         }
+
+        StartCoroutine(SerpicolAI());
     }
 
     public IEnumerator Disparo()
@@ -283,9 +289,18 @@ public class SerpicolManager : MonoBehaviour
         _serpicolAnimator.GaposAnimation();
         bool turn;
 
-        Vector3 relPos = new Vector3(directionAux * 0.1f, 0.6f, 0);
-        Vector2 dir = new Vector2(directionAux * 5, 1);
         float force = 130;
+        Vector3 relPos = new Vector3(directionAux * 0.1f, 0.6f, 0);
+        Vector2 dir;
+        if(_player.transform.position.y > 1)
+        {
+            dir = new Vector2(directionAux * 5, 10);
+        }
+        else
+        {
+            dir = new Vector2(directionAux * 5, 1);
+        }
+        
 
         if (directionAux == 1)
             turn = false;
@@ -304,6 +319,8 @@ public class SerpicolManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1.8f);
         _serpicolAnimator.IdleAnimation();
+
+        StartCoroutine(SerpicolAI());
     }
 
     public IEnumerator ChoqueP()
@@ -389,11 +406,38 @@ public class SerpicolManager : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
         }
+
+        StartCoroutine(SerpicolAI());
     }
 
     #endregion
 
     #region AI
+
+    public IEnumerator SerpicolAI()
+    {
+        float range1 = 4;
+        float range2 = 7;
+        float distX;
+
+        yield return new WaitForSeconds(2);
+
+        distX = Mathf.Abs(_myTransform.position.x - _player.transform.position.x);
+
+        if (distX <= range1)
+        {
+            StartCoroutine(Mordisco());
+        }
+        else if (distX <= range2)
+        {
+            StartCoroutine(Disparo());
+        }
+        else
+        {
+            StartCoroutine(Caracola());
+        }
+    }
+
     #endregion
 
     #endregion
@@ -429,7 +473,7 @@ public class SerpicolManager : MonoBehaviour
             _babas[i] = obj;
         }
 
-        StartCoroutine(Hipnosis());
+        StartCoroutine(SerpicolAI());
     }
 
     // Update is called once per frame
