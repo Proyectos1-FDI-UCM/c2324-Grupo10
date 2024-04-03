@@ -66,31 +66,31 @@ public class GameManager : MonoBehaviour
         {
             vidaManager.ResetVida();
             balasManager.RecargarInsta();
+
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                Player.transform.position = new Vector3(-16, 6.3f, 0);
+                cameraController.limitLeft = -9.7f;
+                cameraController.limitRight = 45.89f;
+            }
+
+            if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                Player.transform.position = new Vector3(0, -2.76f, 0);
+                cameraController.limitLeft = 0;
+                cameraController.limitRight = 0;
+                print("3");
+            }
+
+            if (SceneManager.GetActiveScene().buildIndex == 4)
+            {
+                Player.transform.position = new Vector3(-15, 9, 0);
+                playerManager.spriteR.flipX = false;
+                cameraController.limitLeft = -9;
+                cameraController.limitRight = 9;
+            }
         }
         first = false;
-
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            Player.transform.position = new Vector3(-16, 6.3f, 0);
-            cameraController.limitLeft = -9.7f;
-            cameraController.limitRight = 45.89f;
-        }
-
-        if (SceneManager.GetActiveScene().buildIndex == 3)
-        {
-            Player.transform.position = new Vector3(0, -2.76f, 0);
-            cameraController.limitLeft = 0;
-            cameraController.limitRight = 0;
-            print("3");
-        }
-
-        if (SceneManager.GetActiveScene().buildIndex == 4)
-        {
-            Player.transform.position = new Vector3(-15, 9, 0);
-            playerManager.spriteR.flipX = false;
-            cameraController.limitLeft = -9;
-            cameraController.limitRight = 9;
-        }
     }
 
     // Start is called before the first frame update

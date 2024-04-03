@@ -17,6 +17,8 @@ public class SerpicolManager : MonoBehaviour
 
     public GameObject[] HipnoSpawn = new GameObject[3];
     public GameObject[] HipnoArea = new GameObject[3];
+    public SpriteRenderer[] HipnoAS = new SpriteRenderer[3];
+    public BoxCollider2D[] HipnoAB = new BoxCollider2D[3];
 
     public GameObject[] Gapo = new GameObject[3];
     private GapoManager[] _gapoManager = new GapoManager[3];
@@ -231,7 +233,7 @@ public class SerpicolManager : MonoBehaviour
 
         for (int i = 0; i < spawnQ; i++)
         {
-            if (currentPos > limitLeftH || currentPos < limitRightH)
+            if (currentPos > limitLeftH && currentPos < limitRightH)
             {
                 HipnoSpawn[i].transform.position = new Vector3(currentPos, HipnoSpawn[i].transform.position.y, 0);
                 HipnoSpawn[i].SetActive(true);
@@ -245,7 +247,7 @@ public class SerpicolManager : MonoBehaviour
 
         for (int i = 0; i < spawnQ; i++)
         {
-            if (currentPos > limitLeftH || currentPos < limitRightH)
+            if (currentPos > limitLeftH && currentPos < limitRightH)
             {
                 HipnoArea[i].transform.position = new Vector3(currentPos, HipnoArea[i].transform.position.y, 0);
                 HipnoArea[i].SetActive(true);
@@ -260,7 +262,17 @@ public class SerpicolManager : MonoBehaviour
         for (int i = 0; i < spawnQ; i++)
         {
             HipnoSpawn[i].SetActive(false);
+            HipnoAB[i].enabled = false;
+            HipnoAS[i].enabled = false;
+        }
+
+        yield return new WaitForSeconds(0.6f);
+
+        for (int i = 0; i < spawnQ; i++)
+        {
             HipnoArea[i].SetActive(false);
+            HipnoAB[i].enabled = true;
+            HipnoAS[i].enabled = true;
         }
     }
 
@@ -396,6 +408,12 @@ public class SerpicolManager : MonoBehaviour
         _spriteS = GetComponent<SpriteRenderer>();
         _boxColl = GetComponent<BoxCollider2D>();
         _player = GameManager.Instance.Player;
+        
+        for (int i = 0; i < HipnoArea.Length; i++)
+        {
+            HipnoAS[i] = HipnoArea[i].GetComponent<SpriteRenderer>();
+            HipnoAB[i] = HipnoArea[i].GetComponent<BoxCollider2D>();
+        }
 
         _obstacleComponent.pDamage = 5;
 
@@ -411,7 +429,7 @@ public class SerpicolManager : MonoBehaviour
             _babas[i] = obj;
         }
 
-        StartCoroutine(Caracola());
+        StartCoroutine(Hipnosis());
     }
 
     // Update is called once per frame

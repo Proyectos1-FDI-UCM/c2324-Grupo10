@@ -55,6 +55,7 @@ public class PlayerManager : MonoBehaviour
             Move(_inputManager.axisX);
 
         print(suelo);
+        print(state);
     }
 
     public void Move(float axis)
