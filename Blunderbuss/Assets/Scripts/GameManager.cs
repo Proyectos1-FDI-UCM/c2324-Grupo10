@@ -89,6 +89,14 @@ public class GameManager : MonoBehaviour
                 cameraController.limitLeft = -9;
                 cameraController.limitRight = 9;
             }
+
+            if (SceneManager.GetActiveScene().buildIndex == 5)
+            {
+                Player.transform.position = new Vector3(-15, 9, 0);
+                playerManager.spriteR.flipX = false;
+                cameraController.limitLeft = -9;
+                cameraController.limitRight = 9;
+            }
         }
         first = false;
     }
