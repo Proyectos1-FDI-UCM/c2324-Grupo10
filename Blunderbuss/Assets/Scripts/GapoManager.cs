@@ -43,8 +43,9 @@ public class GapoManager : MonoBehaviour
 
     private IEnumerator Desactivar()
     {
+        yield return new WaitForSeconds(2.5f);
+        
         spriteR.enabled = false;
-        yield return new WaitForSeconds(1);
         gameObject.SetActive(false);
         spriteR.enabled = true;
     }

@@ -131,14 +131,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6608865587678079314, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -5453249942256305489, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
-      propertyPath: _serpicolAnimator
-      value: 
-      objectReference: {fileID: 1822998255}
     - target: {fileID: 2248994785938971108, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
       propertyPath: m_Size.x
       value: 5.9263253
@@ -155,18 +147,6 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.47
       objectReference: {fileID: 0}
-    - target: {fileID: 2248994785938971108, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 12.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2248994785938971108, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 7.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3962138982689891353, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
-      propertyPath: _baba
-      value: 
-      objectReference: {fileID: 3908578927611522890, guid: d41da1e9f82d10d42ba6a01efff5dd55, type: 3}
     - target: {fileID: 3962138982689891353, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
       propertyPath: Gapo.Array.data[0]
       value: 
@@ -214,10 +194,6 @@ PrefabInstance:
     - target: {fileID: 4880201536311912620, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
       propertyPath: m_Constraints
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4880201536311912620, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5916768043708753779, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -267,14 +243,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 7687447756722582006, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7687447756722582006, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1512404303, guid: 7c6e400f794bf494e8411d5519220738, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -792,6 +760,10 @@ PrefabInstance:
     - target: {fileID: 3908578927611522890, guid: d41da1e9f82d10d42ba6a01efff5dd55, type: 3}
       propertyPath: m_Name
       value: Gapo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6769854040834501173, guid: d41da1e9f82d10d42ba6a01efff5dd55, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7534325943590501081, guid: d41da1e9f82d10d42ba6a01efff5dd55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2738,11 +2710,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 990852198}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1822998255 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: -6608865587678079314, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
-  m_PrefabInstance: {fileID: 97824966}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1846498389
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,6 +2914,10 @@ PrefabInstance:
     - target: {fileID: 3908578927611522890, guid: d41da1e9f82d10d42ba6a01efff5dd55, type: 3}
       propertyPath: m_Name
       value: Gapo (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6769854040834501173, guid: d41da1e9f82d10d42ba6a01efff5dd55, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7534325943590501081, guid: d41da1e9f82d10d42ba6a01efff5dd55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3264,6 +3235,10 @@ PrefabInstance:
     - target: {fileID: 3908578927611522890, guid: d41da1e9f82d10d42ba6a01efff5dd55, type: 3}
       propertyPath: m_Name
       value: Gapo (0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6769854040834501173, guid: d41da1e9f82d10d42ba6a01efff5dd55, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7534325943590501081, guid: d41da1e9f82d10d42ba6a01efff5dd55, type: 3}
       propertyPath: m_LocalPosition.x

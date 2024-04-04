@@ -6,7 +6,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     #region references
-    private GameManager _gameManager;
+    private InputManager _inputManager;
 
     [SerializeField]
     BalasManager _balasManager;
@@ -94,13 +94,15 @@ public class UIManager : MonoBehaviour
     public void hasMuerto()
     {
         DeathCanvas.SetActive(true);
+        _inputManager.enabled = false;
     }
     #endregion
 
     // Start is called before the first frame update
     void Start()
-    {
-        _gameManager = GameManager.Instance;   
+    { 
+        _inputManager = GameManager.Instance.GetComponent<InputManager>();
+
         DeathCanvas.SetActive(false);
 
         _rambutan = GameObject.FindGameObjectWithTag("Rambutan");

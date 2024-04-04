@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     private GameManager _gameManager;
     private InputManager _inputManager;
     private BalasManager _balasManager;
+    private VidaManager _vidaManager;
     [SerializeField]
     CameraController _cameraController;
     private ShotManager _shotManager;
@@ -18,11 +19,13 @@ public class PlayerManager : MonoBehaviour
     public Transform myTransform;
     public Rigidbody2D playerRB;
     public SpriteRenderer spriteR;
+    public BoxCollider2D boxColl;
     public Transform targetEnemy;
     #endregion
 
     #region parameters
     public int state = 1; //Estado 0: Suelo; Estado 1: Aire; Estado 2: Pared; Estado 3: Mov Bloqueado/Evento; Estado 4: Deslizamiento; Estado 5: Invulnerable; Estado 6: Pelotazo; 
+    public bool invulnerable = false;
 
     public bool suelo;
     private float _speedGround = 3f;
@@ -41,10 +44,12 @@ public class PlayerManager : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         myTransform = playerRB.transform;
         spriteR = GetComponent<SpriteRenderer>();
+        boxColl = GetComponent<BoxCollider2D>();
 
         _gameManager = GameManager.Instance;
         _inputManager = _gameManager.InputManager;
         _balasManager = GetComponent<BalasManager>();
+        _vidaManager = GetComponent<VidaManager>();
         _shotManager = GetComponent<ShotManager>();
     }
 
@@ -54,8 +59,7 @@ public class PlayerManager : MonoBehaviour
         if(state < 3)
             Move(_inputManager.axisX);
 
-        print(suelo);
-        print(state);
+        print(invulnerable);
     }
 
     public void Move(float axis)
@@ -381,26 +385,57 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator Recarga()
     {
-        float _reloadCD = 0.75f;
+        float reloadCD = 0.75f;
         if (state == 0 && _balasManager.BalaQuantity != _balasManager.maxBalas)
         {
             state = 3;
             playerRB.velocity = Vector2.zero;
             StartCoroutine(_balasManager.Recargar());
-            yield return new WaitForSeconds(_reloadCD);
+            yield return new WaitForSeconds(reloadCD);
             state = 0;
         }
     }
 
-    public void Aturdimiento()
+    public IEnumerator Cura()
     {
-        if (state == 5)
+        float healCD = 0.75f;
+        if (state == 0 && _balasManager.BalaQuantity != _balasManager.maxBalas)
         {
-            _inputManager.enabled = false;
+            state = 3;
+            playerRB.velocity = Vector2.zero;
+            _vidaManager.Curarse();
+            yield return new WaitForSeconds(healCD);
+            state = 0;
         }
+    }
+
+    public void Aturdimiento(bool aturdimiento)
+    {
+        _inputManager.enabled = aturdimiento;
+    }
+
+    public void Invulnerable(bool inv)
+    {
+        invulnerable = inv;
+    }
+
+    public IEnumerator Parpadeo()
+    {
+        if (_vidaManager.health != 0)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                spriteR.enabled = !spriteR.enabled;
+                yield return new WaitForSeconds(0.2f);
+            }
+
+            spriteR.enabled = true;
+        }
+
         else
         {
-            _inputManager.enabled = true;
+            spriteR.enabled = false;
+            boxColl.enabled = false;
         }
     }
 

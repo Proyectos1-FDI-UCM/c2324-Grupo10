@@ -75,6 +75,7 @@ public class SerpicolManager : MonoBehaviour
     {
         _spriteS.flipX = !_spriteS.flipX;
         _boxColl.offset = new Vector2(-_boxColl.offset.x, _boxColl.offset.y);
+        print("mirror");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -96,7 +97,6 @@ public class SerpicolManager : MonoBehaviour
             }
         }
     }
-
     private IEnumerator CollDes(Collider2D collision)
     {
         _currLay = collision.gameObject.layer;
@@ -170,7 +170,7 @@ public class SerpicolManager : MonoBehaviour
         Mirror();
         _serpicolAnimator.IdleAnimation();
         _myTransform.position += new Vector3(carPos.x, -carPos.y, 0);
-        yield return new WaitForSeconds(esconderS);
+        yield return new WaitForSeconds(0.7f);
         _boxColl.offset = new Vector2(-_boxCollAuxO.x, _boxCollAuxO.y);
 
         StartCoroutine(SerpicolAI());
@@ -270,7 +270,7 @@ public class SerpicolManager : MonoBehaviour
             HipnoAS[i].enabled = false;
         }
 
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(2.5f);
 
         for (int i = 0; i < spawnQ; i++)
         {
@@ -289,7 +289,7 @@ public class SerpicolManager : MonoBehaviour
         _serpicolAnimator.GaposAnimation();
         bool turn;
 
-        float force = 130;
+        float force = 90;
         Vector3 relPos = new Vector3(directionAux * 0.1f, 0.6f, 0);
         Vector2 dir;
         if(_player.transform.position.y > 1)
@@ -325,7 +325,7 @@ public class SerpicolManager : MonoBehaviour
 
     public IEnumerator ChoqueP()
     {
-        float esconderS = 1;
+        float esconderS = 1f;
         _obstacleComponent.multiplier = 1;
         _obstacleComponent.pDamage = 5;
 
@@ -383,7 +383,7 @@ public class SerpicolManager : MonoBehaviour
         _boxColl.offset = _secureOff;
         _serpicolAnimator.IdleAnimation();
         _myTransform.position += -carPos;
-        yield return new WaitForSeconds(esconderS);
+        yield return new WaitForSeconds(0.7f);
         _boxColl.offset = _boxCollAuxO;
     }
 
@@ -416,11 +416,11 @@ public class SerpicolManager : MonoBehaviour
 
     public IEnumerator SerpicolAI()
     {
-        float range1 = 4;
+        float range1 = 3.5f;
         float range2 = 7;
         float distX;
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         distX = Mathf.Abs(_myTransform.position.x - _player.transform.position.x);
 

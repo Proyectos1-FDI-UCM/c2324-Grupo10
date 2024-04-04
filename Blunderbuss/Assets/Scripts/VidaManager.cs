@@ -17,7 +17,6 @@ public class VidaManager : MonoBehaviour
     public float healingValue = 50f;               // Por si queremos meter una mejora de que las pociones curan mas
     public int maxHeal = 1;                        // Por si queremos meter una mejora de mas curas
     public int HealQuantity;
-    public float tiempoInvulnerable = 0.4f;        // Para que podamos ajustar sl tiempo de invulnerabilidad
     #endregion
 
     #region methods
@@ -41,31 +40,31 @@ public class VidaManager : MonoBehaviour
     }
     public IEnumerator takeDamage(float damage)
     {
-        // Podemos tambien declarar delay seconds al principio del codigo para cambiar el tiempo de invulnerabilidad en funcion del boss
-        if (_playerManager.state != 5)
-        {
-            health -= damage;
-            health = Mathf.Clamp(health, 0, maxHealth);
-            _playerManager.state = 5;
-            _playerManager.Aturdimiento();
-            _UIManager.actualizaVida();
-            yield return new WaitForSeconds(tiempoInvulnerable);
-            if (_playerManager.playerRB.velocity.y == 0)
-                _playerManager.state = 0;
-            else
-                _playerManager.state = 1;
-            _playerManager.Aturdimiento();
-        }
+        float tiempoInvulnerable = 1.6f;
+        float tiempoAturdido = 0.4f;
+
+        health -= damage;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        _playerManager.Aturdimiento(false);
+        _playerManager.Invulnerable(true);
+        StartCoroutine(_playerManager.Parpadeo());
+        _UIManager.actualizaVida();
+        yield return new WaitForSeconds(tiempoAturdido);
+        _playerManager.Aturdimiento(true);
         if (health <= 0)
         {
-            _UIManager.actualizaVida();
             morir();
         }
+        if (_playerManager.playerRB.velocity.y == 0)
+            _playerManager.state = 0;
+        else
+            _playerManager.state = 1;
+        yield return new WaitForSeconds(tiempoInvulnerable);
+        _playerManager.Invulnerable(false);
     }
     public void morir()
     {      
-         _UIManager.hasMuerto();       
-        _playerManager.spriteR.enabled = false;
+         _UIManager.hasMuerto();
     }
 
     public void RambutanTutorial()

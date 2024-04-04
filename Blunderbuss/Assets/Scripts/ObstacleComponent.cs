@@ -20,26 +20,14 @@ public class ObstacleComponent : MonoBehaviour
     #endregion
 
     #region methods
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.layer != currLay && gameObject.activeSelf)
+        PlayerManager playerManager = other.gameObject.GetComponent<PlayerManager>();
+        if (playerManager && !playerManager.invulnerable)
         {
-            StartCoroutine(CollDes(other));
-            PlayerManager playerManager = other.gameObject.GetComponent<PlayerManager>();
-            if (playerManager)
-            {
-                StartCoroutine(_vidaManager.takeDamage(pDamage));
-                Rebound(playerManager.playerRB);
-            }
+            StartCoroutine(_vidaManager.takeDamage(pDamage));
+            Rebound(playerManager.playerRB);
         }
-    }
-
-    private IEnumerator CollDes(Collider2D other)
-    {
-        currLay = other.gameObject.layer;
-        yield return new WaitForSeconds(0.4f);
-        if (other.gameObject.layer == currLay)
-            currLay = -1;
     }
 
     private void Rebound(Rigidbody2D rb) //Empuja al Colega hacia arriba.
