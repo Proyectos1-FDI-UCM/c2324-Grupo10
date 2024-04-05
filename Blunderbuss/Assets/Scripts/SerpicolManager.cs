@@ -6,6 +6,7 @@ public class SerpicolManager : MonoBehaviour
 {
     #region references
     private ObstacleComponent _obstacleComponent;
+    private BossHealth _bossHealth;
     private Rigidbody2D _serpiRB;
     private Transform _myTransform;
     private SpriteRenderer _spriteS;
@@ -431,14 +432,34 @@ public class SerpicolManager : MonoBehaviour
         }
         else if (distX <= range2)
         {
-            if (rnd == 0)
-                StartCoroutine(Caracola());
+            if (_bossHealth.health > (_bossHealth.maxHealth/2))
+            {
+                if (rnd == 0)
+                    StartCoroutine(Caracola());
+                else
+                    StartCoroutine(Disparo());
+            }
             else
-                StartCoroutine(Disparo());
+            {
+                if (rnd == 0)
+                    StartCoroutine(Caracola());
+                else
+                    StartCoroutine(Hipnosis());
+            }
         }
         else
         {
-            StartCoroutine(Caracola());
+            if (_bossHealth.health > (_bossHealth.maxHealth/2))
+            {
+                StartCoroutine(Caracola());
+            }
+            else
+            {
+                if (rnd == 0)
+                    StartCoroutine(Hipnosis());
+                else
+                    StartCoroutine(Caracola());
+            }
         }
     }
 
@@ -450,6 +471,7 @@ public class SerpicolManager : MonoBehaviour
     {
         _camera = Camera.main.GetComponent<CameraController>();
         _obstacleComponent = GetComponent<ObstacleComponent>();
+        _bossHealth = GetComponent<BossHealth>();
         _serpiRB = GetComponent<Rigidbody2D>();
         _myTransform = transform;
         _serpicolAnimator = GetComponent<SerpicolAnimator>();

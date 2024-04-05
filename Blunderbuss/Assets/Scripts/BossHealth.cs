@@ -9,6 +9,8 @@ public class BossHealth : MonoBehaviour
     #endregion
 
     #region parameters
+    public float maxHealth;
+    public float health;
     #endregion
 
     #region methods
