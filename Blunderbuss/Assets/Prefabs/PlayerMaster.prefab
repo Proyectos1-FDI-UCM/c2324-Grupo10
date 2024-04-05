@@ -860,8 +860,10 @@ MonoBehaviour:
   myTransform: {fileID: 0}
   playerRB: {fileID: 0}
   spriteR: {fileID: 0}
+  boxColl: {fileID: 0}
   targetEnemy: {fileID: 0}
   state: 0
+  invulnerable: 0
   suelo: 0
   shotEnable: 1
   ballBlowEnable: 1
@@ -913,7 +915,6 @@ MonoBehaviour:
   healingValue: 50
   maxHeal: 1
   HealQuantity: 0
-  tiempoInvulnerable: 0.5
 --- !u!114 &6376780440383250816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2040,7 +2041,7 @@ GameObject:
   - component: {fileID: 173246579006047052}
   m_Layer: 0
   m_Name: Pelotazo
-  m_TagString: Fuego
+  m_TagString: Fuego2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

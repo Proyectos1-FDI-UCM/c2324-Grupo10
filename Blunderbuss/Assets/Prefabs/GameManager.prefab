@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  vidaManager: {fileID: 0}
+  balasManager: {fileID: 0}
+  playerManager: {fileID: 0}
+  cameraController: {fileID: 0}
 --- !u!114 &3150855909799693232
 MonoBehaviour:
   m_ObjectHideFlags: 0

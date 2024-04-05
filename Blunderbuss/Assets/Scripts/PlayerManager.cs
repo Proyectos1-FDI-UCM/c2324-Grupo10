@@ -399,7 +399,7 @@ public class PlayerManager : MonoBehaviour
     public IEnumerator Cura()
     {
         float healCD = 0.75f;
-        if (state == 0 && _balasManager.BalaQuantity != _balasManager.maxBalas)
+        if (state == 0 && _vidaManager.health < _vidaManager.maxHealth)
         {
             state = 3;
             playerRB.velocity = Vector2.zero;

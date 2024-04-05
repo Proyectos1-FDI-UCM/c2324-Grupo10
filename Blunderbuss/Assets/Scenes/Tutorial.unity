@@ -6604,6 +6604,10 @@ PrefabInstance:
       value: PlayerMaster
       objectReference: {fileID: 0}
     - target: {fileID: 475144425948208288, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: limitLeft
+      value: -9.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 475144425948208288, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
       propertyPath: limitRight
       value: 45.89
       objectReference: {fileID: 0}
@@ -6659,6 +6663,14 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 869622323}
+    - target: {fileID: 8565158532359425491, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8565158532359425491, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8862047602277012874, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
       propertyPath: DeathCanvas
       value: 

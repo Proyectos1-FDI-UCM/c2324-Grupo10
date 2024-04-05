@@ -43,11 +43,6 @@ public class GameManager : MonoBehaviour
         }
 
         Player = GameObject.FindGameObjectWithTag("Player");
-
-        playerManager = Player.GetComponent<PlayerManager>();
-        vidaManager = Player.GetComponent<VidaManager>();
-        balasManager = Player.GetComponent<BalasManager>();
-        cameraController = Camera.main.GetComponent<CameraController>();
     }
 
     private void OnEnable()
@@ -96,6 +91,20 @@ public class GameManager : MonoBehaviour
                 playerManager.spriteR.flipX = false;
                 cameraController.limitLeft = -9;
                 cameraController.limitRight = 9;
+            }
+        }
+        else
+        {
+            playerManager = Player.GetComponent<PlayerManager>();
+            vidaManager = Player.GetComponent<VidaManager>();
+            balasManager = Player.GetComponent<BalasManager>();
+            cameraController = Camera.main.GetComponent<CameraController>();
+
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                Player.transform.position = new Vector3(-16, 6.3f, 0);
+                cameraController.limitLeft = -9.7f;
+                cameraController.limitRight = 45.89f;
             }
         }
         first = false;

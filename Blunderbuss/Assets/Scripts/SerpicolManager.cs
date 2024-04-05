@@ -419,6 +419,7 @@ public class SerpicolManager : MonoBehaviour
         float range1 = 3.5f;
         float range2 = 7;
         float distX;
+        int rnd = Random.Range(0, 3);
 
         yield return new WaitForSeconds(1);
 
@@ -430,7 +431,10 @@ public class SerpicolManager : MonoBehaviour
         }
         else if (distX <= range2)
         {
-            StartCoroutine(Disparo());
+            if (rnd == 0)
+                StartCoroutine(Caracola());
+            else
+                StartCoroutine(Disparo());
         }
         else
         {
