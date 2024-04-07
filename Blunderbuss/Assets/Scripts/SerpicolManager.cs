@@ -124,7 +124,7 @@ public class SerpicolManager : MonoBehaviour
         StartCoroutine(MuerteAnim());
     }
 
-    public IEnumerator MuerteAnim()
+    private IEnumerator MuerteAnim()
     {
         _boxColl.enabled = false;
 
