@@ -41,33 +41,35 @@ public class SerpicolManager : MonoBehaviour
     #endregion
 
     #region parameters
+    private bool _alive = true;
     #endregion
 
     #region methods
 
     private void Orient()
     {
-        Vector3 dist = _player.transform.position - _myTransform.position;
-
-        if (dist.x < -2)
+        if (_alive)
         {
-            _direction = -1;
+            Vector3 dist = _player.transform.position - _myTransform.position;
 
-            if (_serpicolAnimator.serpicolAnimator.GetCurrentAnimatorStateInfo(0).IsName("idle") && !_spriteS.flipX)
+            if (dist.x < -2)
             {
-                Mirror();
-                _myTransform.position += Vector3.left * 3f;
+                _direction = -1;
+
+                if (_serpicolAnimator.serpicolAnimator.GetCurrentAnimatorStateInfo(0).IsName("idle") && !_spriteS.flipX)
+                {
+                    Mirror();
+                }
             }
-        }
 
-        else if (dist.x > 2)
-        {
-            _direction = 1;
-
-            if (_serpicolAnimator.serpicolAnimator.GetCurrentAnimatorStateInfo(0).IsName("idle") && _spriteS.flipX)
+            else if (dist.x > 2)
             {
-                Mirror();
-                _myTransform.position += Vector3.right * 3f;
+                _direction = 1;
+
+                if (_serpicolAnimator.serpicolAnimator.GetCurrentAnimatorStateInfo(0).IsName("idle") && _spriteS.flipX)
+                {
+                    Mirror();
+                }
             }
         }
     }
@@ -76,7 +78,11 @@ public class SerpicolManager : MonoBehaviour
     {
         _spriteS.flipX = !_spriteS.flipX;
         _boxColl.offset = new Vector2(-_boxColl.offset.x, _boxColl.offset.y);
-        print("mirror");
+
+        if (!_spriteS.flipX)
+            _myTransform.position += Vector3.right * 3f;
+        else
+            _myTransform.position += Vector3.left * 3f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -104,6 +110,59 @@ public class SerpicolManager : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         if (collision.gameObject.layer == _currLay)
             _currLay = -1;
+    }
+
+    public void Muerte()
+    {
+        _alive = false;
+        while (_serpicolAnimator.serpicolAnimator.GetCurrentAnimatorStateInfo(0).IsName("rueda"))
+        {
+            return;
+        }
+
+        StopAllCoroutines();
+        StartCoroutine(MuerteAnim());
+    }
+
+    public IEnumerator MuerteAnim()
+    {
+        _boxColl.enabled = false;
+
+        _serpicolAnimator.IdleAnimation();
+        _serpicolAnimator.serpicolAnimator.speed = 3;
+
+        yield return new WaitForSeconds(1);
+        Mirror();
+        yield return new WaitForSeconds(1);
+        Mirror();
+        yield return new WaitForSeconds(1);
+
+        _serpicolAnimator.serpicolAnimator.speed = 0;
+        yield return new WaitForSeconds(1);
+        _serpicolAnimator.serpicolAnimator.speed = 0.25f;
+        _serpicolAnimator.CaracolaAnimation();
+
+        yield return new WaitForSeconds(4);
+
+        Vector3 carPos;
+
+        if (!_spriteS.flipX)
+            carPos = new Vector3(-3f, -1, 0);
+        else
+            carPos = new Vector3(3f, -1, 0);
+
+        _myTransform.position += carPos;
+
+        yield return new WaitForSeconds(1.5f);
+
+        Vector3 tumba = new Vector3(_myTransform.position.x, _myTransform.position.y - 5, 0);
+        float tumbaSpeed = 1.2f;
+
+        while (_myTransform.position.y != tumba.y)
+        {
+            _myTransform.position = Vector3.MoveTowards(_myTransform.position, tumba, tumbaSpeed * Time.deltaTime);
+            yield return null;
+        }
     }
 
     #region attacks
@@ -499,7 +558,7 @@ public class SerpicolManager : MonoBehaviour
             _babas[i] = obj;
         }
 
-        StartCoroutine(SerpicolAI());
+        Muerte();
     }
 
     // Update is called once per frame

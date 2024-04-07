@@ -43,7 +43,7 @@ public class BossHealth : MonoBehaviour
 
     private void ActualizaVida()
     {
-        health -= DamageAmmount; 
+        health = Mathf.Clamp(health - DamageAmmount, 0, maxHealth); 
         _HealthBarTra.localScale = new Vector3(6.5122f*(health / maxHealth) , 0.27501f, 1);
         if (health <= 0)
         {
@@ -53,7 +53,7 @@ public class BossHealth : MonoBehaviour
 
     private void Muere()
     {
-         Boss.SetActive(false);
+
     }
     #endregion
 
