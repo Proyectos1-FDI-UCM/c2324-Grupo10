@@ -310,6 +310,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 688940659}
+    - target: {fileID: 2097213495523546843, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097213495523546843, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097213495523546843, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 5830095011862833322, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

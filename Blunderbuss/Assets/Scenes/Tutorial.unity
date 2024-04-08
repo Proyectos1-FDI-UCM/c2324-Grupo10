@@ -9172,11 +9172,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2097213495523546843, guid: 677320c4d752591458a5b0b2c38c204e, type: 3}
       propertyPath: m_ReferenceResolution.x
-      value: 800
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 2097213495523546843, guid: 677320c4d752591458a5b0b2c38c204e, type: 3}
       propertyPath: m_ReferenceResolution.y
-      value: 600
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 2899123207264159703, guid: 677320c4d752591458a5b0b2c38c204e, type: 3}
       propertyPath: m_Pivot.x
