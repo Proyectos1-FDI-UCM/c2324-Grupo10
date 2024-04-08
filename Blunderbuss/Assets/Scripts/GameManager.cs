@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
                 cameraController.limitLeft = -9.7f;
                 cameraController.limitRight = 45.89f;
                 playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
+                playerManager.invulnerable = false;
                 _inputManager.enabled = true;
             }
 
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
                 cameraController.limitLeft = -9;
                 cameraController.limitRight = 9;
                 playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
+                playerManager.invulnerable = false;
                 _inputManager.enabled = true;
             }
 
@@ -101,6 +103,7 @@ public class GameManager : MonoBehaviour
                 cameraController.limitLeft = -9;
                 cameraController.limitRight = 9;
                 playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
+                playerManager.invulnerable = false;
                 _inputManager.enabled = true;
             }
         }
@@ -117,6 +120,7 @@ public class GameManager : MonoBehaviour
                 cameraController.limitLeft = -9.7f;
                 cameraController.limitRight = 45.89f;
                 playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
+                playerManager.invulnerable = false;
                 _inputManager.enabled = true;
             }
         }
