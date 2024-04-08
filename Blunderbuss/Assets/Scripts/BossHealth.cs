@@ -18,7 +18,6 @@ public class BossHealth : MonoBehaviour
     public bool debug;
     public float maxHealth;
     public float health;
-    public float DamageAmmount;
     #endregion
 
     #region methods
@@ -26,34 +25,32 @@ public class BossHealth : MonoBehaviour
     {
         if (collision.CompareTag("Fuego"))
         {
-            StartCoroutine(Damage());
+            StartCoroutine(Damage(20));
+        }
+        if (collision.CompareTag("Fuego2"))
+        {
+            StartCoroutine(Damage(100));
         }
     }
 
-    private IEnumerator Damage()
+    private IEnumerator Damage(int damageAmmount)
     {
         _spriteBoss.color =  new Color(1, 0.1f, 0, 1);
-        DamageAmmount = 100f;
-        ActualizaVida();
+        ActualizaVida(damageAmmount);
 
         yield return new WaitForSeconds(0.3f);
 
         _spriteBoss.color = new Color(1, 1, 1, 1);
     }
 
-    private void ActualizaVida()
+    private void ActualizaVida(int damageAmmount)
     {
-        health = Mathf.Clamp(health - DamageAmmount, 0, maxHealth); 
+        health = Mathf.Clamp(health - damageAmmount, 0, maxHealth); 
         _HealthBarTra.localScale = new Vector3(6.5122f*(health / maxHealth) , 0.27501f, 1);
         if (health <= 0)
         {
-            Muere();
+            SendMessage("Muerte");
         }
-    }
-
-    private void Muere()
-    {
-
     }
     #endregion
 

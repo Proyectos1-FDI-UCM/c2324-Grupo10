@@ -1902,6 +1902,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8834267893000848395, guid: cec42c02eb936ac4098a45a2b7ba27c9, type: 3}
+      propertyPath: Escena
+      value: Serpicol
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

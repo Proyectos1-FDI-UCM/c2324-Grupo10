@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -6608865587678079314}
   - component: {fileID: -5453249942256305489}
   - component: {fileID: 1539192227583054048}
+  - component: {fileID: 433452894480383823}
   m_Layer: 0
   m_Name: Serpicol
   m_TagString: Boss
@@ -190,9 +191,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75560a933df39443b6824ee1e221af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _paredIzq: -18.7
-  _paredDer: 18.7
+  _paredIzq: -14.41
+  _paredDer: 21.37
   HipnoSpawn:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -200,11 +206,26 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   HipnoAS:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   HipnoAB:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -259,3 +280,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8593cb3e95f25064d9d2a64bf6a613be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthBar: {fileID: 0}
+  Boss: {fileID: 0}
+  debug: 1
+  maxHealth: 1000
+  health: 1000
+--- !u!114 &433452894480383823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992120470338313255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de81751bd6adce148b85863c409faa28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Escena: 

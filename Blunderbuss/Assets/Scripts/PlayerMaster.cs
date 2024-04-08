@@ -27,8 +27,17 @@ public class PlayerMaster : MonoBehaviour
             _playerMaster = gameObject;
             DontDestroyOnLoad(gameObject);
         }
+
+        SceneManager.activeSceneChanged += DestruirMenu;
     }
-    
+
+    void DestruirMenu(Scene oldScene, Scene newScene)
+    {
+        if (newScene.buildIndex == 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -65,6 +66,16 @@ public class PauseMenu : MonoBehaviour
         {
             _playerMaster = gameObject;
             DontDestroyOnLoad(gameObject);
+        }
+
+        SceneManager.activeSceneChanged += DestruirMenu;
+    }
+
+    void DestruirMenu(Scene oldScene, Scene newScene)
+    {
+        if (newScene.buildIndex == 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

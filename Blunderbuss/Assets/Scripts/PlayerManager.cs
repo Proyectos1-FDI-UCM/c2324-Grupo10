@@ -419,6 +419,13 @@ public class PlayerManager : MonoBehaviour
         invulnerable = inv;
     }
 
+    public void ResetColisiones()
+    {
+        spriteR.enabled = true;
+        boxColl.enabled = true;
+        playerRB.velocity = Vector2.zero;
+    }
+
     public IEnumerator Parpadeo()
     {
         if (_vidaManager.health != 0)
@@ -436,6 +443,7 @@ public class PlayerManager : MonoBehaviour
         {
             spriteR.enabled = false;
             boxColl.enabled = false;
+            playerRB.velocity = Vector2.zero;
         }
     }
 

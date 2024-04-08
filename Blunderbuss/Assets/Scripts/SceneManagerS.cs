@@ -4,7 +4,7 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LobbyTrigger : MonoBehaviour
+public class SceneManagerS : MonoBehaviour
 {
     #region parameters
     [SerializeField] private string Escena;
@@ -15,21 +15,21 @@ public class LobbyTrigger : MonoBehaviour
     {
         SceneManager.LoadScene(Escena);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void CargarEscenaActual()
     {
-        CargarEscena();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

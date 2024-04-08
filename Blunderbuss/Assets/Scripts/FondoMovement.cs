@@ -23,15 +23,15 @@ public class FondoMovement : MonoBehaviour
 
     private void Awake()
     {
-        _camera = Camera.main;
-        _rb = GameManager.Instance.Player.GetComponent<Rigidbody2D>();
-        _cameraController = _camera.GetComponent<CameraController>();
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _camera = Camera.main;
+        _rb = GameManager.Instance.Player.GetComponent<Rigidbody2D>();
+        _cameraController = _camera.GetComponent<CameraController>();
     }
 
     // Update is called once per frame

@@ -61,6 +61,12 @@ public class GameManager : MonoBehaviour
         {
             vidaManager.ResetVida();
             balasManager.RecargarInsta();
+            playerManager.ResetColisiones();
+
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                Destroy(gameObject);
+            }
 
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {

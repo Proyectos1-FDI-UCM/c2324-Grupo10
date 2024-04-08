@@ -16,10 +16,10 @@ public class SerpicolManager : MonoBehaviour
     [SerializeField]
     float _paredDer;
 
-    public GameObject[] HipnoSpawn = new GameObject[3];
-    public GameObject[] HipnoArea = new GameObject[3];
-    public SpriteRenderer[] HipnoAS = new SpriteRenderer[3];
-    public BoxCollider2D[] HipnoAB = new BoxCollider2D[3];
+    public GameObject[] HipnoSpawn = new GameObject[8];
+    public GameObject[] HipnoArea = new GameObject[8];
+    public SpriteRenderer[] HipnoAS = new SpriteRenderer[8];
+    public BoxCollider2D[] HipnoAB = new BoxCollider2D[8];
 
     public GameObject[] Gapo = new GameObject[3];
     private GapoManager[] _gapoManager = new GapoManager[3];
@@ -27,7 +27,7 @@ public class SerpicolManager : MonoBehaviour
     private CameraController _camera;
     private SerpicolAnimator _serpicolAnimator;
 
-    private GameObject[] _babas = new GameObject[30];
+    private GameObject[] _babas = new GameObject[25];
     [SerializeField]
     GameObject _baba;
 
@@ -80,9 +80,9 @@ public class SerpicolManager : MonoBehaviour
         _boxColl.offset = new Vector2(-_boxColl.offset.x, _boxColl.offset.y);
 
         if (!_spriteS.flipX)
-            _myTransform.position += Vector3.right * 3f;
+            _myTransform.position += Vector3.right * 4f;
         else
-            _myTransform.position += Vector3.left * 3f;
+            _myTransform.position += Vector3.left * 4f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -104,6 +104,7 @@ public class SerpicolManager : MonoBehaviour
             }
         }
     }
+
     private IEnumerator CollDes(Collider2D collision)
     {
         _currLay = collision.gameObject.layer;
@@ -121,11 +122,28 @@ public class SerpicolManager : MonoBehaviour
         }
 
         StopAllCoroutines();
+
         StartCoroutine(MuerteAnim());
     }
 
     private IEnumerator MuerteAnim()
     {
+        for (int i = 0; i < 8; i++)
+        {
+            HipnoSpawn[i].SetActive(false);
+            HipnoAB[i].enabled = false;
+            HipnoAS[i].enabled = false;
+        }
+
+        yield return new WaitForSeconds(2.5f);
+
+        for (int i = 0; i < 8; i++)
+        {
+            HipnoArea[i].SetActive(false);
+            HipnoAB[i].enabled = true;
+            HipnoAS[i].enabled = true;
+        }
+
         _boxColl.enabled = false;
 
         _serpicolAnimator.IdleAnimation();
@@ -163,6 +181,10 @@ public class SerpicolManager : MonoBehaviour
             _myTransform.position = Vector3.MoveTowards(_myTransform.position, tumba, tumbaSpeed * Time.deltaTime);
             yield return null;
         }
+
+        yield return new WaitForSeconds(2);
+
+        SendMessage("CargarEscena");
     }
 
     #region attacks
@@ -183,11 +205,11 @@ public class SerpicolManager : MonoBehaviour
         Vector3 carPos = new Vector3(directionAux * -3f, -1, 0);
 
         float rotSpeed = 1600f;
-        float transSpeed = 18f;
+        float transSpeed = 22f;
 
         _obstacleComponent.pDamage = 20;
         float rotDest = 120;
-        float transDist = 22f;
+        float transDist = 25f;
         
         int vueltas = 0;
 
@@ -227,11 +249,11 @@ public class SerpicolManager : MonoBehaviour
         _myTransform.rotation = Quaternion.identity;
         _boxColl.size = _boxCollAuxS;
         _boxColl.offset = _secureOff;
-        Mirror();
+        //Mirror(); // invertir carPos.x y _boxCollAuxO.x si se quiere mirror pero queda peor.
         _serpicolAnimator.IdleAnimation();
-        _myTransform.position += new Vector3(carPos.x, -carPos.y, 0);
+        _myTransform.position += -carPos;
         yield return new WaitForSeconds(0.7f);
-        _boxColl.offset = new Vector2(-_boxCollAuxO.x, _boxCollAuxO.y);
+        _boxColl.offset = _boxCollAuxO;
 
         StartCoroutine(SerpicolAI());
     }
@@ -282,17 +304,22 @@ public class SerpicolManager : MonoBehaviour
     {
         int directionAux = _direction;
 
-        float initPos = 6.5f;
+        float initPos = 5f;
+        float initPos2 = 10f;
         float spawnDist = 6f;
-        float umbral = 5f;
-        int spawnQ = 3;
+        float umbral = 6f;
+        int spawnQ = 4;
         float wait = 0.3f;
-        float limitLeftH = _paredIzq + umbral;
-        float limitRightH = _paredDer - umbral;
+        bool waitC1 = false;
+        bool waitC2 = false;
+        float limitLeftH = -15;
+        float limitRightH = 15;
 
         _serpicolAnimator.HipnosisAnimation();
 
         float currentPos = _myTransform.position.x + (directionAux * initPos);
+        float currentPos2 = _myTransform.position.x + (-directionAux * initPos2);
+
         yield return new WaitForSeconds(wait);
 
         for (int i = 0; i < spawnQ; i++)
@@ -302,11 +329,29 @@ public class SerpicolManager : MonoBehaviour
                 HipnoSpawn[i].transform.position = new Vector3(currentPos, HipnoSpawn[i].transform.position.y, 0);
                 HipnoSpawn[i].SetActive(true);
             }
+            else
+                waitC1 = true;
+
+            if (currentPos2 > limitLeftH && currentPos2 < limitRightH)
+            {
+                HipnoSpawn[HipnoSpawn.Length - i - 1].transform.position = new Vector3(currentPos2, HipnoSpawn[HipnoSpawn.Length - i - 1].transform.position.y, 0);
+                HipnoSpawn[HipnoSpawn.Length - i - 1].SetActive(true);
+            }
+            else
+                waitC2 = true;
+
+            if (waitC1 && waitC2)
+                wait = 0;
+
+            print ("waitC1: " + waitC1 + "  " + "waitC2: " + waitC2 + " " + "limitLeft: " + limitLeftH + " " + "limitRight: " + limitRightH);
+
             currentPos += directionAux * spawnDist;
+            currentPos2 += -directionAux * spawnDist;
             yield return new WaitForSeconds(wait);
         }
 
         currentPos = _myTransform.position.x + (directionAux * initPos);
+        currentPos2 = _myTransform.position.x + (-directionAux * initPos2);
         yield return new WaitForSeconds(wait * 3);
 
         for (int i = 0; i < spawnQ; i++)
@@ -316,14 +361,20 @@ public class SerpicolManager : MonoBehaviour
                 HipnoArea[i].transform.position = new Vector3(currentPos, HipnoArea[i].transform.position.y, 0);
                 HipnoArea[i].SetActive(true);
             }
+            if (currentPos2 > limitLeftH && currentPos2 < limitRightH)
+            {
+                HipnoArea[HipnoArea.Length - i - 1].transform.position = new Vector3(currentPos2, HipnoArea[HipnoArea.Length - i - 1].transform.position.y, 0);
+                HipnoArea[HipnoArea.Length - i - 1].SetActive(true);
+            }
             currentPos += directionAux * spawnDist;
+            currentPos2 += -directionAux * spawnDist;
         }
 
         yield return new WaitForSeconds(0.7f);
         _serpicolAnimator.IdleAnimation();
 
         yield return new WaitForSeconds(0.3f);
-        for (int i = 0; i < spawnQ; i++)
+        for (int i = 0; i < spawnQ * 2; i++)
         {
             HipnoSpawn[i].SetActive(false);
             HipnoAB[i].enabled = false;
@@ -332,7 +383,7 @@ public class SerpicolManager : MonoBehaviour
 
         yield return new WaitForSeconds(2.5f);
 
-        for (int i = 0; i < spawnQ; i++)
+        for (int i = 0; i < spawnQ * 2; i++)
         {
             HipnoArea[i].SetActive(false);
             HipnoAB[i].enabled = true;
@@ -558,7 +609,7 @@ public class SerpicolManager : MonoBehaviour
             _babas[i] = obj;
         }
 
-        Muerte();
+        StartCoroutine(SerpicolAI());
     }
 
     // Update is called once per frame
