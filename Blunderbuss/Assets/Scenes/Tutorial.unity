@@ -9129,6 +9129,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 570856284}
+    - target: {fileID: 8588165846115227866, guid: 06d4bd5f6b4cc674482ef98042aea1fd, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9092660561859346157, guid: 06d4bd5f6b4cc674482ef98042aea1fd, type: 3}
       propertyPath: m_Name
       value: CartelMove

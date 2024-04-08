@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 8588165846115227866}
   - component: {fileID: 4188840332852678977}
   - component: {fileID: 5027904351803122400}
+  - component: {fileID: 8939196192316063023}
   m_Layer: 5
   m_Name: Cartel
   m_TagString: Untagged
@@ -494,6 +495,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8939196192316063023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6308255221724647763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499a59ec8545cb94783d2e4355dbe321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8724935210840643399
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +520,7 @@ GameObject:
   - component: {fileID: 7659982987497898246}
   - component: {fileID: 1045338950525415212}
   - component: {fileID: 6855847781061567705}
+  - component: {fileID: 4929746313167904628}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -609,6 +623,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4929746313167904628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724935210840643399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499a59ec8545cb94783d2e4355dbe321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8759634777138296573
 GameObject:
   m_ObjectHideFlags: 0
