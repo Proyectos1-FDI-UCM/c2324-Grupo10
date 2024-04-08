@@ -451,6 +451,7 @@ public class SerpicolManager : MonoBehaviour
             impulse = new Vector3(2100, 5300, 0);
 
         _myTransform.rotation = Quaternion.identity;
+        _serpiRB.velocity = Vector2.zero;
         _serpiRB.AddForce(impulse, ForceMode2D.Impulse);
         StartCoroutine(Lluvia());
 

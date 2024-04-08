@@ -20,7 +20,6 @@ public class PelotazoManager : MonoBehaviour
     {
         _myTransform = transform;
         _playerManager = GameManager.Instance.Player.GetComponent<PlayerManager>();
-        _targetEnemy = _playerManager.targetEnemy;
 
         _spriteP = GetComponent<SpriteRenderer>();
         _cirCollP = GetComponent<CircleCollider2D>();
@@ -36,9 +35,9 @@ public class PelotazoManager : MonoBehaviour
     {
         float speedP = 50;
 
-        while (_myTransform.position != _targetEnemy.position)
+        while (_myTransform.position != _playerManager.targetEnemy.position)
         {
-            _myTransform.position = Vector3.MoveTowards(_myTransform.position, _targetEnemy.position, speedP * Time.deltaTime);
+            _myTransform.position = Vector3.MoveTowards(_myTransform.position, _playerManager.targetEnemy.position, speedP * Time.deltaTime);
             yield return null;
         }
 

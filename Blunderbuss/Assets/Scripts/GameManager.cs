@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
                 Player.transform.position = new Vector3(-16, 6.3f, 0);
                 cameraController.limitLeft = -9.7f;
                 cameraController.limitRight = 45.89f;
+                playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
             }
 
             if (SceneManager.GetActiveScene().buildIndex == 3)
@@ -89,6 +90,7 @@ public class GameManager : MonoBehaviour
                 playerManager.spriteR.flipX = false;
                 cameraController.limitLeft = -9;
                 cameraController.limitRight = 9;
+                playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
             }
 
             if (SceneManager.GetActiveScene().buildIndex == 5)
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
                 playerManager.spriteR.flipX = false;
                 cameraController.limitLeft = -9;
                 cameraController.limitRight = 9;
+                playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
             }
         }
         else
@@ -111,6 +114,7 @@ public class GameManager : MonoBehaviour
                 Player.transform.position = new Vector3(-16, 6.3f, 0);
                 cameraController.limitLeft = -9.7f;
                 cameraController.limitRight = 45.89f;
+                playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
             }
         }
         first = false;
