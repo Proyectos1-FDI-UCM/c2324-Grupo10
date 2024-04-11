@@ -11,6 +11,7 @@ public class SerpicolManager : MonoBehaviour
     private Transform _myTransform;
     private SpriteRenderer _spriteS;
     private BoxCollider2D _boxColl;
+    private CircleCollider2D _cirColl;
     [SerializeField]
     float _paredIzq;
     [SerializeField]
@@ -87,7 +88,7 @@ public class SerpicolManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer != _currLay)
+        /*if (collision.gameObject.layer != _currLay)
         {
             StartCoroutine(CollDes(collision));
 
@@ -102,16 +103,28 @@ public class SerpicolManager : MonoBehaviour
                 _serpiRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 _serpicolAnimator.Suelo(true);
             }
+        }*/
+
+        if (_serpicolAnimator.serpicolAnimator.GetInteger("AnimState") == 1 && collision.CompareTag("Pared"))
+        {
+            StopAllCoroutines();
+            StartCoroutine("ChoqueP");
+        }
+
+        if (collision.CompareTag("Suelo"))
+        {
+            _serpiRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            _serpicolAnimator.Suelo(true);
         }
     }
 
-    private IEnumerator CollDes(Collider2D collision)
+    /*private IEnumerator CollDes(Collider2D collision)
     {
         _currLay = collision.gameObject.layer;
         yield return new WaitForSeconds(0.4f);
         if (collision.gameObject.layer == _currLay)
             _currLay = -1;
-    }
+    }*/
 
     public void Muerte()
     {
@@ -215,8 +228,10 @@ public class SerpicolManager : MonoBehaviour
 
         yield return new WaitForSeconds(esconderS);
         _myTransform.position += carPos;
-        _boxColl.size = Vector2.one * 4;
-        _boxColl.offset = Vector2.zero;
+        _boxColl.enabled = false;
+        _cirColl.enabled = true;
+        /*_boxColl.size = Vector2.one * 4;
+        _boxColl.offset = Vector2.zero;*/
 
         Vector3 transVec = _myTransform.position + new Vector3(directionAux * transDist, 0, 0);
 
@@ -247,6 +262,8 @@ public class SerpicolManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         _myTransform.rotation = Quaternion.identity;
+        _cirColl.enabled = false;
+        _boxColl.enabled = true;
         _boxColl.size = _boxCollAuxS;
         _boxColl.offset = _secureOff;
         //Mirror(); // invertir carPos.x y _boxCollAuxO.x si se quiere mirror pero queda peor.
@@ -310,8 +327,6 @@ public class SerpicolManager : MonoBehaviour
         float umbral = 6f;
         int spawnQ = 4;
         float wait = 0.3f;
-        bool waitC1 = false;
-        bool waitC2 = false;
         float limitLeftH = -15;
         float limitRightH = 15;
 
@@ -329,21 +344,12 @@ public class SerpicolManager : MonoBehaviour
                 HipnoSpawn[i].transform.position = new Vector3(currentPos, HipnoSpawn[i].transform.position.y, 0);
                 HipnoSpawn[i].SetActive(true);
             }
-            else
-                waitC1 = true;
 
             if (currentPos2 > limitLeftH && currentPos2 < limitRightH)
             {
                 HipnoSpawn[HipnoSpawn.Length - i - 1].transform.position = new Vector3(currentPos2, HipnoSpawn[HipnoSpawn.Length - i - 1].transform.position.y, 0);
                 HipnoSpawn[HipnoSpawn.Length - i - 1].SetActive(true);
             }
-            else
-                waitC2 = true;
-
-            if (waitC1 && waitC2)
-                wait = 0;
-
-            print ("waitC1: " + waitC1 + "  " + "waitC2: " + waitC2 + " " + "limitLeft: " + limitLeftH + " " + "limitRight: " + limitRightH);
 
             currentPos += directionAux * spawnDist;
             currentPos2 += -directionAux * spawnDist;
@@ -352,7 +358,7 @@ public class SerpicolManager : MonoBehaviour
 
         currentPos = _myTransform.position.x + (directionAux * initPos);
         currentPos2 = _myTransform.position.x + (-directionAux * initPos2);
-        yield return new WaitForSeconds(wait * 3);
+        yield return new WaitForSeconds(wait * 2.5f);
 
         for (int i = 0; i < spawnQ; i++)
         {
@@ -491,6 +497,8 @@ public class SerpicolManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         _myTransform.rotation = Quaternion.identity;
+        _cirColl.enabled = false;
+        _boxColl.enabled = true;
         _boxColl.size = _boxCollAuxS;
         _boxColl.offset = _secureOff;
         _serpicolAnimator.IdleAnimation();
@@ -588,6 +596,7 @@ public class SerpicolManager : MonoBehaviour
         _serpicolAnimator = GetComponent<SerpicolAnimator>();
         _spriteS = GetComponent<SpriteRenderer>();
         _boxColl = GetComponent<BoxCollider2D>();
+        _cirColl = GetComponent<CircleCollider2D>();
         _player = GameManager.Instance.Player;
         
         for (int i = 0; i < HipnoArea.Length; i++)

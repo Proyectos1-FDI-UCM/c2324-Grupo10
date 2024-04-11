@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5916768043708753779}
   - component: {fileID: 7687447756722582006}
   - component: {fileID: 2248994785938971108}
+  - component: {fileID: 5999848901807750781}
   - component: {fileID: 4880201536311912620}
   - component: {fileID: 4005286469520863132}
   - component: {fileID: 3962138982689891353}
@@ -137,6 +138,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.9263253, y: 5.993606}
   m_EdgeRadius: 0
+--- !u!58 &5999848901807750781
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992120470338313255}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!50 &4880201536311912620
 Rigidbody2D:
   serializedVersion: 4
@@ -297,4 +333,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de81751bd6adce148b85863c409faa28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Escena: 
+  Escena: Inicio
