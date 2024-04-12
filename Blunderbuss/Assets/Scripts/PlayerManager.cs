@@ -58,8 +58,6 @@ public class PlayerManager : MonoBehaviour
     {
         if(state < 3)
             Move(_inputManager.axisX);
-
-        print(invulnerable);
     }
 
     public void Move(float axis)

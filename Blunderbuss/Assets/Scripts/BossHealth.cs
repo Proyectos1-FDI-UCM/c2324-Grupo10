@@ -18,18 +18,22 @@ public class BossHealth : MonoBehaviour
     public bool debug;
     public float maxHealth;
     public float health;
+    public bool invulnerable = false;
     #endregion
 
     #region methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Fuego"))
+        if (!invulnerable)
         {
-            StartCoroutine(Damage(20));
-        }
-        if (collision.CompareTag("Fuego2"))
-        {
-            StartCoroutine(Damage(100));
+            if (collision.CompareTag("Fuego"))
+            {
+                StartCoroutine(Damage(20));
+            }
+            if (collision.CompareTag("Fuego2"))
+            {
+                StartCoroutine(Damage(100));
+            }
         }
     }
 
@@ -75,7 +79,7 @@ public class BossHealth : MonoBehaviour
     {
         if (debug)
         {
-            print("Vida actual " + health);
+            print(invulnerable);
         }
     }
 

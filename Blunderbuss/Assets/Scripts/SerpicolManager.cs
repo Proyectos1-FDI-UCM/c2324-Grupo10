@@ -213,6 +213,7 @@ public class SerpicolManager : MonoBehaviour
 
         _serpicolAnimator.CaracolaAnimation();
         _boxColl.offset = _secureOff;
+        _bossHealth.invulnerable = true;
 
         float esconderS = 1f;
         Vector3 carPos = new Vector3(directionAux * -3f, -1, 0);
@@ -267,6 +268,7 @@ public class SerpicolManager : MonoBehaviour
         _boxColl.size = _boxCollAuxS;
         _boxColl.offset = _secureOff;
         //Mirror(); // invertir carPos.x y _boxCollAuxO.x si se quiere mirror pero queda peor.
+        _bossHealth.invulnerable = false;
         _serpicolAnimator.IdleAnimation();
         _myTransform.position += -carPos;
         yield return new WaitForSeconds(0.7f);
@@ -501,6 +503,7 @@ public class SerpicolManager : MonoBehaviour
         _boxColl.enabled = true;
         _boxColl.size = _boxCollAuxS;
         _boxColl.offset = _secureOff;
+        _bossHealth.invulnerable = false;
         _serpicolAnimator.IdleAnimation();
         _myTransform.position += -carPos;
         yield return new WaitForSeconds(0.7f);
