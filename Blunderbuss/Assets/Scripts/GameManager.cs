@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public BalasManager balasManager;
     public PlayerManager playerManager;
     public CameraController cameraController;
+
+    public Transform InitPosFaun;
     static public GameManager Instance
     {
         get { return _instance; }
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        GameObject initPos = GameObject.FindGameObjectWithTag("InitPos");
         if (!first)
         {
             vidaManager.ResetVida();
@@ -70,7 +73,7 @@ public class GameManager : MonoBehaviour
 
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
-                Player.transform.position = new Vector3(-16, 6.3f, 0);
+                Player.transform.position = initPos.transform.position;
                 cameraController.limitLeft = -9.7f;
                 cameraController.limitRight = 45.89f;
                 playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
@@ -80,14 +83,14 @@ public class GameManager : MonoBehaviour
 
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
-                Player.transform.position = new Vector3(0, -2.76f, 0);
+                Player.transform.position = initPos.transform.position;
                 cameraController.limitLeft = 0;
                 cameraController.limitRight = 0;
             }
 
             if (SceneManager.GetActiveScene().buildIndex == 4)
             {
-                Player.transform.position = new Vector3(-15, 9, 0);
+                Player.transform.position = initPos.transform.position;
                 playerManager.spriteR.flipX = false;
                 cameraController.limitLeft = -9;
                 cameraController.limitRight = 9;
@@ -98,7 +101,7 @@ public class GameManager : MonoBehaviour
 
             if (SceneManager.GetActiveScene().buildIndex == 5)
             {
-                Player.transform.position = new Vector3(-15, 9, 0);
+                Player.transform.position = initPos.transform.position;
                 playerManager.spriteR.flipX = false;
                 cameraController.limitLeft = -9;
                 cameraController.limitRight = 9;

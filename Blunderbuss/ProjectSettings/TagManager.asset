@@ -14,6 +14,7 @@ TagManager:
   - PlayerMaster
   - Fuego2
   - RambutanG
+  - InitPos
   layers:
   - Default
   - TransparentFX
