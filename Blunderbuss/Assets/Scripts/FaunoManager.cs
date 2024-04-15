@@ -76,8 +76,8 @@ public class FaunoManager : MonoBehaviour
     private int SetDirection() // calcula si el jugador esta a la derecha o izq del fauno.
     {
         float setDir = (_player.transform.position.x - _myTransform.position.x);
-        if(setDir > 0) { return -1; } // >0 es hacia izq
-        else return 1;
+        if(setDir > 0) { return 1; } // >0 es hacia izq
+        else return -1;
     }
 
     private Transform WalkTowards(float deltaTime) // provisionalmente que camine hacia el jugador.
@@ -112,7 +112,6 @@ public class FaunoManager : MonoBehaviour
         _faunoAnimator = GetComponent<FaunoAnimator>();
       
         _obstacleComponent = GetComponent<ObstacleComponent>();
-
     }
 
 
