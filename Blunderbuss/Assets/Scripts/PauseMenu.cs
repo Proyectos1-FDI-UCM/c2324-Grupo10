@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     #region references
     static private GameObject _playerMaster;
+    private string Inicio;
     #endregion
 
     #region parameters
@@ -39,7 +40,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Salir()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
     #endregion 
     // Start is called before the first frame update
