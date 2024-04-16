@@ -93,13 +93,45 @@ public class FaunoManager : MonoBehaviour
     }
 
     #region attacks
+    private void Embestida()
+    {
+        //determina si el jugador está a su derecha o izq, coge la posición de la pared específica y embiste hacia ese lado
+        //es un ataque de larga distancia 
 
+    }
+
+    private void SaltoVert()
+    {
+        //salta hacia arriba y se mantiene fuera de pantalla con una altura constante durante x segundos
+        //va cambiando su posición en x siguiendo al jugador hasta que cae sobre la ultima pos guardada
+        //onda expansiva al caer opcional
+    }
+
+    private void Cuchillada()
+    {
+        //a ver no se la verdad
+        //crear una hitbox donde se supone que esta la cuchilla para que el jugador reciba daño
+    }
+
+    private void CuchillaFloor()
+    {
+        //hacer que surjan a lo largo del mapa varias hitboxes verticales con un poco de retraso
+
+    }
+
+    private void Aliento()
+    {
+        //hacer que aparezca una hitbox horizontal desde el fauno a la pared a la que este mirando
+    }
     #endregion
 
     #region AI
 
     #endregion
+    private IEnumerator FaunoAI()
+    {
 
+    }
     #endregion
 
     private void Awake()
@@ -124,6 +156,7 @@ public class FaunoManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        WalkTowards(Time.deltaTime);
+        //WalkTowards(Time.deltaTime);
+        
     }
 }
