@@ -125,17 +125,24 @@ public class FaunoManager : MonoBehaviour
         yield return new WaitUntil(() => _hitWall == true);
     }
 
-    private IEnumerator SaltoVert()
+    private IEnumerator SaltoVert(float deltaTime)
     {
         //salta hacia arriba y se mantiene fuera de pantalla con una altura constante durante x segundos
         //va cambiando su posición en x siguiendo al jugador hasta que cae sobre la ultima pos guardada
         //onda expansiva al caer opcional
         //sombra movetowards
         _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;
-        _faunoRB.AddForce(transform.up*50, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(0.5f);
+        _faunoRB.AddForce(transform.up*_configuration.JumpForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.2f);
         _faunoRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-
+ 
+        float finalTime = Time.time + _configuration.AirTime;
+        while (Time.time < finalTime)
+        {
+            _myTransform.position = Vector3.MoveTowards(_myTransform.position, new Vector3(_player.transform.position.x, _myTransform.position.y, 0), _configuration.WalkSpeed);
+            yield return null;
+        }
+        _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     private void Cuchillada()
@@ -184,7 +191,7 @@ public class FaunoManager : MonoBehaviour
     void Start()
     {
         _player = GameManager.Instance.Player;
-        StartCoroutine(Embestida(Time.deltaTime));
+        StartCoroutine(SaltoVert(Time.deltaTime));
     }
 
     // Update is called once per frame
