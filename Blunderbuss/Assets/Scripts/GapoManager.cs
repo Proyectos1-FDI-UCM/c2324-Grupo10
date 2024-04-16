@@ -37,7 +37,8 @@ public class GapoManager : MonoBehaviour
     private void Rotacion()
     {
         velocityNorm = rb.velocity.normalized;
-        angulo = Mathf.Atan2(velocityNorm.y, velocityNorm.x) * Mathf.Rad2Deg;
+        //if (spriteR)
+        angulo = Mathf.Atan2(velocityNorm.y, velocityNorm.x) * Mathf.Rad2Deg + 180;
         _myTransform.rotation = Quaternion.AngleAxis(angulo, Vector3.forward);
     }
 

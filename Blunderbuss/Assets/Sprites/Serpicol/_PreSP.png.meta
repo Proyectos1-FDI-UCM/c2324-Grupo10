@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f054611f06ce63641b31fead0671edad
+guid: 8e17d0f099183f644a0a59d8078cebc4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_0
+      name: _PreSP_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f06efe18e4aea7f43b1dd134ed6ec79f
-      internalID: -449103348
+      spriteID: 3e56cde696250264796b409c7383ba76
+      internalID: 497243322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_1
+      name: _PreSP_1
       rect:
         serializedVersion: 2
         x: 300
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a44ae91d1a78844d97ebceeab59a0af
-      internalID: 389726002
+      spriteID: 9e99dc0155613194e89fa0513675cc03
+      internalID: 521526869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_2
+      name: _PreSP_2
       rect:
         serializedVersion: 2
         x: 600
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a340de4ee5fb1840adcef5eac7aee78
-      internalID: -833914528
+      spriteID: 85429392fd0e24e4f8adebf7b78a1124
+      internalID: 1973837727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_3
+      name: _PreSP_3
       rect:
         serializedVersion: 2
         x: 900
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8523a11430844640bf90b8a7d739b97
-      internalID: -995617439
+      spriteID: 893b539f00712e8429799155e7b4ec71
+      internalID: -1283566276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_4
+      name: _PreSP_4
       rect:
         serializedVersion: 2
         x: 1200
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36c61c00a71b6c74eb7a4d87cbedee5d
-      internalID: -2072708217
+      spriteID: 8f714989858ca974394a36ddca743bf5
+      internalID: 41304859
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_5
+      name: _PreSP_5
       rect:
         serializedVersion: 2
         x: 1500
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fff52785c86ce2d45b1207ac5856a9e5
-      internalID: 1331153035
+      spriteID: ebebd6313debad947a5a3a1c17dbc171
+      internalID: 48226479
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_6
+      name: _PreSP_6
       rect:
         serializedVersion: 2
         x: 1800
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d4c43dc590af34498427222c012ba91
-      internalID: -766749943
+      spriteID: 856af6a071c04d14486f25694a095b34
+      internalID: -1660544417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_7
+      name: _PreSP_7
       rect:
         serializedVersion: 2
         x: 2100
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42a27011630ade842bdc6a3b672a0d79
-      internalID: 788041310
+      spriteID: 68963adfdbfa104428049658482de026
+      internalID: 1452312021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_8
+      name: _PreSP_8
       rect:
         serializedVersion: 2
         x: 2400
@@ -292,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73d237ab0317cc444a0b492638c07d26
-      internalID: 31574620
+      spriteID: c0854f5e4f03fa0419b9cde4d62a1362
+      internalID: -240543000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_9
+      name: _PreSP_9
       rect:
         serializedVersion: 2
         x: 2700
@@ -313,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b3ebd96b5c4a0141981e4dd3bd76f24
-      internalID: 1962371145
+      spriteID: 8d0934e0cd6986b4a9ad6ea9acbe0b8b
+      internalID: -1102015940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_10
+      name: _PreSP_10
       rect:
         serializedVersion: 2
         x: 3000
@@ -334,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2bdb17832389134098f26d9c247c4fd
-      internalID: -1934811674
+      spriteID: 775390e6dae2439429aa70af9e8a1600
+      internalID: -411034715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_11
+      name: _PreSP_11
       rect:
         serializedVersion: 2
         x: 3300
@@ -355,14 +355,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c9f38063b74edd459c3227cc2a30797
-      internalID: -2014203402
+      spriteID: 97e3512508bdab041b03473b231c4135
+      internalID: 82895010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_12
+      name: _PreSP_12
       rect:
         serializedVersion: 2
         x: 3600
@@ -376,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: deeae64007cc1c94a9bfce7e2b77210e
-      internalID: -1379486847
+      spriteID: ddf23db3412f16a49afc779a7d4aa5d1
+      internalID: -1773732937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_13
+      name: _PreSP_13
       rect:
         serializedVersion: 2
         x: 3900
@@ -397,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01885bbef7f271d4e87cb56311ff6582
-      internalID: -916168808
+      spriteID: 03a98f9c5298a7d4881ae0104fb84668
+      internalID: 673984753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _PreRayoSerpicolSP_14
+      name: _PreSP_14
       rect:
         serializedVersion: 2
         x: 4200
@@ -418,8 +418,260 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6878425727c15146b183bcd12378986
-      internalID: 1090533671
+      spriteID: dd994e7837588aa4a84883fbba7d151b
+      internalID: -882875773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_15
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42cf7fbda9bcbfd438e1216bfe996393
+      internalID: 114999966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_16
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6220e9ceaf4ce345a51f056536d14c8
+      internalID: -2111465741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_17
+      rect:
+        serializedVersion: 2
+        x: 5100
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2688c6edc2369740b4b4eedc815c967
+      internalID: -818277329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_18
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33007e117ce99d246bc83db62db4efd4
+      internalID: -834848196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_19
+      rect:
+        serializedVersion: 2
+        x: 5700
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 986bbf4f903d2fa4fa62cf8f857a9094
+      internalID: 1642440799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_20
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f3d067d5e1fde7459f0f7bb49610444
+      internalID: 541888746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_21
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa40549480954ec46abc7d3ee06a7496
+      internalID: -2022450373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_22
+      rect:
+        serializedVersion: 2
+        x: 6600
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9d465f841c78874b8985b8d7983b4df
+      internalID: -363234566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_23
+      rect:
+        serializedVersion: 2
+        x: 6900
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c3d6345420cc3488a524c88bc7165a
+      internalID: -1230657090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_24
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af4c98680ae78ec4fb2e87996c27379d
+      internalID: -609173737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_25
+      rect:
+        serializedVersion: 2
+        x: 7500
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2da604ab4920a147818ac7d87ca6e5f
+      internalID: 737143634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _PreSP_26
+      rect:
+        serializedVersion: 2
+        x: 7800
+        y: 0
+        width: 300
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6407f663fdaa0c34b912c40c92356dbd
+      internalID: -675575705
       vertices: []
       indices: 
       edges: []
@@ -435,21 +687,33 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      _PreRayoSerpicolSP_0: -449103348
-      _PreRayoSerpicolSP_1: 389726002
-      _PreRayoSerpicolSP_10: -1934811674
-      _PreRayoSerpicolSP_11: -2014203402
-      _PreRayoSerpicolSP_12: -1379486847
-      _PreRayoSerpicolSP_13: -916168808
-      _PreRayoSerpicolSP_14: 1090533671
-      _PreRayoSerpicolSP_2: -833914528
-      _PreRayoSerpicolSP_3: -995617439
-      _PreRayoSerpicolSP_4: -2072708217
-      _PreRayoSerpicolSP_5: 1331153035
-      _PreRayoSerpicolSP_6: -766749943
-      _PreRayoSerpicolSP_7: 788041310
-      _PreRayoSerpicolSP_8: 31574620
-      _PreRayoSerpicolSP_9: 1962371145
+      _PreSP_0: 497243322
+      _PreSP_1: 521526869
+      _PreSP_10: -411034715
+      _PreSP_11: 82895010
+      _PreSP_12: -1773732937
+      _PreSP_13: 673984753
+      _PreSP_14: -882875773
+      _PreSP_15: 114999966
+      _PreSP_16: -2111465741
+      _PreSP_17: -818277329
+      _PreSP_18: -834848196
+      _PreSP_19: 1642440799
+      _PreSP_2: 1973837727
+      _PreSP_20: 541888746
+      _PreSP_21: -2022450373
+      _PreSP_22: -363234566
+      _PreSP_23: -1230657090
+      _PreSP_24: -609173737
+      _PreSP_25: 737143634
+      _PreSP_26: -675575705
+      _PreSP_3: -1283566276
+      _PreSP_4: 41304859
+      _PreSP_5: 48226479
+      _PreSP_6: -1660544417
+      _PreSP_7: 1452312021
+      _PreSP_8: -240543000
+      _PreSP_9: -1102015940
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
