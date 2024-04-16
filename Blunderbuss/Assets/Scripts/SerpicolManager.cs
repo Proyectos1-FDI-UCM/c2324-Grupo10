@@ -237,7 +237,7 @@ public class SerpicolManager : MonoBehaviour
         Vector3 transVec = _myTransform.position + new Vector3(directionAux * transDist, 0, 0);
 
         yield return new WaitForSeconds(0.3f);
-        _obstacleComponent.multiplier = 3;
+        _obstacleComponent.multiplier = 1.5f;
         while (vueltas != 5)
         {
             _myTransform.position = Vector3.MoveTowards(_myTransform.position, transVec, transSpeed * Time.deltaTime);

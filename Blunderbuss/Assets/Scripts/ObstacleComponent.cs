@@ -6,7 +6,6 @@ using UnityEngine;
 public class ObstacleComponent : MonoBehaviour
 {
     #region references
-    private PlayerManager _playerManager;
     private VidaManager _vidaManager;
     private GameObject _player;
     private Rigidbody2D _rb;
@@ -17,6 +16,7 @@ public class ObstacleComponent : MonoBehaviour
     public float pDamage;
     public float multiplier = 1;
     public int currLay = -1;
+    private Transform _myTransform;
     #endregion
 
     #region methods
@@ -26,15 +26,21 @@ public class ObstacleComponent : MonoBehaviour
         if (playerManager && !playerManager.invulnerable)
         {
             StartCoroutine(_vidaManager.takeDamage(pDamage));
-            Rebound(playerManager.playerRB);
+            Rebound(playerManager);
         }
     }
 
-    private void Rebound(Rigidbody2D rb) //Empuja al Colega hacia arriba.
+    private void Rebound(PlayerManager playerManager) //Empuja al Colega hacia arriba.
     {
-        _playerManager.suelo = false;
+        Vector3 dir = _player.transform.position - transform.position;
+        if (playerManager.suelo)
+        {
+            playerManager.suelo = false;
+            playerManager.state = 1;
+        }
+        
         Vector2 rebound = new(0,750);
-        if(rb.velocity.x>=0)
+        if(dir.x < 0)
         {
             rebound.x = -500;
         }
@@ -42,8 +48,8 @@ public class ObstacleComponent : MonoBehaviour
         {
             rebound.x = +500;
         }
-        rb.velocity = Vector2.zero;
-        rb.AddForce(rebound * multiplier, ForceMode2D.Impulse);
+        playerManager.playerRB.velocity = Vector2.zero;
+        playerManager.playerRB.AddForce(rebound * multiplier, ForceMode2D.Impulse);
     }
     #endregion
 
@@ -51,8 +57,8 @@ public class ObstacleComponent : MonoBehaviour
     void Start()
     {
         _player = GameManager.Instance.Player;
+        _myTransform = transform;
         _vidaManager = _player.GetComponent<VidaManager>();
-        _playerManager = _player.GetComponent<PlayerManager>();
         _rb = _player.GetComponent<Rigidbody2D>();
         _boxColl = _player.GetComponent<BoxCollider2D>();
     }
