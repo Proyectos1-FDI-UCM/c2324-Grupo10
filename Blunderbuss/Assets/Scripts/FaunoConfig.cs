@@ -7,4 +7,9 @@ public class FaunoConfig : ScriptableObject
 {
     [SerializeField][Range(1f, 10f)] private float _walkSpeed;
     public float WalkSpeed => _walkSpeed;
+
+    [SerializeField][Range(3f, 15f)] private float _runSpeed;
+    public float RunSpeed => _runSpeed;
+    [SerializeField][Range(1f, 4f)] private float _airTime;
+    public float AirTime => _airTime;
 }

@@ -31,6 +31,8 @@ public class FaunoManager : MonoBehaviour
 
     #region parameters
     private bool _alive = true;
+    private bool _hitWall = false;
+    private bool _hitGround = true;
     #endregion
 
     #region methods
@@ -92,19 +94,48 @@ public class FaunoManager : MonoBehaviour
         return _myTransform;
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Pared"))
+        {
+            _hitWall = true;
+        }
+        if (other.CompareTag("Suelo"))
+        {
+            _faunoRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            _hitGround = true;
+        }
+    }
+
+
     #region attacks
-    private void Embestida()
+    private IEnumerator Embestida(float deltaTime)
     {
         //determina si el jugador está a su derecha o izq, coge la posición de la pared específica y embiste hacia ese lado
         //es un ataque de larga distancia 
 
+       while(!_hitWall)
+        {
+            Vector3 newPos = Vector3.zero;
+            newPos = new Vector3((SetDirection() * _configuration.RunSpeed * deltaTime), 0, 0);
+            _myTransform.position += newPos;
+            yield return null;
+        }
+
+        yield return new WaitUntil(() => _hitWall == true);
     }
 
-    private void SaltoVert()
+    private IEnumerator SaltoVert()
     {
         //salta hacia arriba y se mantiene fuera de pantalla con una altura constante durante x segundos
         //va cambiando su posición en x siguiendo al jugador hasta que cae sobre la ultima pos guardada
         //onda expansiva al caer opcional
+        //sombra movetowards
+        _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+        _faunoRB.AddForce(transform.up*50, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.5f);
+        _faunoRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+
     }
 
     private void Cuchillada()
@@ -123,15 +154,17 @@ public class FaunoManager : MonoBehaviour
     {
         //hacer que aparezca una hitbox horizontal desde el fauno a la pared a la que este mirando
     }
+
+
     #endregion
 
     #region AI
 
     #endregion
-    private IEnumerator FaunoAI()
+    /*private IEnumerator FaunoAI()
     {
 
-    }
+    }*/
     #endregion
 
     private void Awake()
@@ -151,6 +184,7 @@ public class FaunoManager : MonoBehaviour
     void Start()
     {
         _player = GameManager.Instance.Player;
+        StartCoroutine(Embestida(Time.deltaTime));
     }
 
     // Update is called once per frame
