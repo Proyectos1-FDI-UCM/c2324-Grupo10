@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae3a64aa9d331b40b21d7d3559d0bdf, type: 3}
   m_Name: FaunoConfiguration
   m_EditorClassIdentifier: 
-  _walkSpeed: 6
+  _walkSpeed: 2
+  _runSpeed: 10
+  _airTime: 5
+  _jumpForce: 20000
