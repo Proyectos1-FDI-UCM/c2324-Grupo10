@@ -368,11 +368,13 @@ public class SerpicolManager : MonoBehaviour
             {
                 HipnoArea[i].transform.position = new Vector3(currentPos, HipnoArea[i].transform.position.y, 0);
                 HipnoArea[i].SetActive(true);
+                HipnoSpawn[i].SetActive(false);
             }
             if (currentPos2 > limitLeftH && currentPos2 < limitRightH)
             {
                 HipnoArea[HipnoArea.Length - i - 1].transform.position = new Vector3(currentPos2, HipnoArea[HipnoArea.Length - i - 1].transform.position.y, 0);
                 HipnoArea[HipnoArea.Length - i - 1].SetActive(true);
+                HipnoSpawn[HipnoSpawn.Length - i - 1].SetActive(false);
             }
             currentPos += directionAux * spawnDist;
             currentPos2 += -directionAux * spawnDist;
@@ -384,7 +386,6 @@ public class SerpicolManager : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         for (int i = 0; i < spawnQ * 2; i++)
         {
-            HipnoSpawn[i].SetActive(false);
             HipnoAB[i].enabled = false;
             HipnoAS[i].enabled = false;
         }
