@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class FaunoManager : MonoBehaviour
@@ -12,7 +14,13 @@ public class FaunoManager : MonoBehaviour
 
     [SerializeField] private GameObject _conjCuch;
 
+    [SerializeField] private GameObject _escupeMina;
+
     [SerializeField] private CuchillaManager[] _cuchillaManagers = new CuchillaManager[4];
+
+    [SerializeField] private GameObject[] _minas = new GameObject[4];
+
+    [SerializeField] private Rigidbody2D[] _minasRB = new Rigidbody2D[4];
 
     private ObstacleComponent _obstacleComponent;
     private BossHealth _bossHealth;
@@ -213,9 +221,30 @@ public class FaunoManager : MonoBehaviour
 
     }
 
-    private void Aliento()
+    private IEnumerator Mina()
     {
-        //hacer que aparezca una hitbox horizontal desde el fauno a la pared a la que este mirando
+        //Doble collider (trigger suelo/fisico player)
+        //Se activa fisico al tocar el suelo
+        //comprobar si hay mina libre, sino coger una maybe
+        //llevar la mina a la pos de escupeMina
+        //addforce con un vector y luego que lo maneja 
+        //se queda donde aterrize x segundos y se desactiva(setactive = false)
+        int dir = SetDirection();
+
+        int i = 0;
+        while(i<_minas.Length-1 && _minas[i].activeSelf == false)
+        {
+            i++;
+        }
+
+        _minas[i].SetActive(true);
+        _minas[i].transform.position = _escupeMina.transform.position;
+        _minasRB[i].AddForce(new Vector2(_configuration.VectMina.x*dir, _configuration.VectMina.y), ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(_configuration.MinaTime);
+
+        _minas[i].SetActive(false);
+
     }
 
 
@@ -238,6 +267,11 @@ public class FaunoManager : MonoBehaviour
         _boxColl = GetComponent<BoxCollider2D>();
         _spriteF = GetComponent<SpriteRenderer>();
         _faunoAnimator = GetComponent<FaunoAnimator>();
+
+        for(int i = 0; i<_minasRB.Length; i++)
+        {
+            _minasRB[i] = _minas[i].GetComponent<Rigidbody2D>(); 
+        }
       
         _obstacleComponent = GetComponent<ObstacleComponent>();
     }
@@ -247,7 +281,12 @@ public class FaunoManager : MonoBehaviour
     void Start()
     {
         _player = GameManager.Instance.Player;
-        StartCoroutine(CuchillaFloor());
+        for (int i = 0; i < _minas.Length; i++)
+        {
+            _minas[i].SetActive(false);
+        }
+        
+        StartCoroutine(Mina());
     }
 
     // Update is called once per frame
