@@ -36,6 +36,7 @@ public class ObstacleComponent : MonoBehaviour
         if (playerManager.suelo)
         {
             playerManager.suelo = false;
+            playerManager.playerAnim.Grounded(false);
             playerManager.state = 1;
         }
         
@@ -50,6 +51,7 @@ public class ObstacleComponent : MonoBehaviour
         }
         playerManager.playerRB.velocity = Vector2.zero;
         playerManager.playerRB.AddForce(rebound * multiplier, ForceMode2D.Impulse);
+        playerManager.HitB();
     }
     #endregion
 

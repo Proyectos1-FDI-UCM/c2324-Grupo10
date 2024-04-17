@@ -14,6 +14,7 @@ public class PelotazoManager : MonoBehaviour
     #endregion
 
     #region parameters
+    private float _angulo;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -33,11 +34,15 @@ public class PelotazoManager : MonoBehaviour
 
     public IEnumerator Movement()
     {
-        float speedP = 50;
+        float speedP = 15;
 
         while (_myTransform.position != _playerManager.targetEnemy.position)
         {
             _myTransform.position = Vector3.MoveTowards(_myTransform.position, _playerManager.targetEnemy.position, speedP * Time.deltaTime);
+            Vector3 dir = _playerManager.targetEnemy.position - _myTransform.position;
+            _angulo = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+            _myTransform.rotation = Quaternion.AngleAxis(_angulo, Vector3.forward);
             yield return null;
         }
 

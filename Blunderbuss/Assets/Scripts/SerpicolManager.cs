@@ -541,7 +541,7 @@ public class SerpicolManager : MonoBehaviour
     public IEnumerator SerpicolAI()
     {
         float range1 = 3.5f;
-        float range2 = 7;
+        float range2 = 8;
         float distX;
         int rnd = Random.Range(0, 3);
 

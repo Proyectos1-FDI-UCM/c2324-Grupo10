@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     private ShotManager _shotManager;
     [SerializeField]
     UIManager _UIManager;
+    public PlayerAnim playerAnim;
 
     public Transform myTransform;
     public Rigidbody2D playerRB;
@@ -28,7 +29,7 @@ public class PlayerManager : MonoBehaviour
     public bool invulnerable = false;
 
     public bool suelo;
-    private float _speedGround = 3f;
+    private float _speedGround = 4f;
     private float _speedAir = 3f;
     private float _speedWall = 2f;
     private float _airForce = 500f;
@@ -51,6 +52,7 @@ public class PlayerManager : MonoBehaviour
         _balasManager = GetComponent<BalasManager>();
         _vidaManager = GetComponent<VidaManager>();
         _shotManager = GetComponent<ShotManager>();
+        playerAnim = GetComponent<PlayerAnim>();
     }
 
     // Update is called once per frame
@@ -100,6 +102,7 @@ public class PlayerManager : MonoBehaviour
         {
             state = 4;
             _slideEnable = false;
+            playerAnim.Slide();
             
             if(!spriteR.flipX)
             {
@@ -119,7 +122,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ShotTemp(Vector2 stop, Vector2 impulse)
+    private IEnumerator ShotTemp(Vector2 stop, Vector2 impulse, int mode)
     {
         StartCoroutine(_cameraController.ShakeBegin(2));
 
@@ -129,6 +132,7 @@ public class PlayerManager : MonoBehaviour
 
         float _shotCD = 0.3f;
 
+        playerAnim.Shot(mode);
         playerRB.velocity = stop;
         playerRB.AddForce(impulse, ForceMode2D.Impulse);
         _balasManager.restaBala();
@@ -168,24 +172,26 @@ public class PlayerManager : MonoBehaviour
                         if (!spriteR.flipX)
                         {
                             StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.right, Quaternion.Euler(0, 0, 90)));
-                            StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-impulse, 0)));
+                            StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-impulse, 0), dir));
                         }
                         else
                         {
                             StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.left, Quaternion.Euler(0 ,0, -90)));
-                            StartCoroutine(ShotTemp(Vector2.zero, new Vector2(impulse, 0)));
+                            StartCoroutine(ShotTemp(Vector2.zero, new Vector2(impulse, 0), dir));
                         }
                         break;
                     case 1:
                         if (state == 0)
                         {
                             suelo = false;
+                            playerAnim.Grounded(false);
                             dispSuelo = true;
                             impulse = 1000;
                         }
                         else if (state == 4)
                         {
                             suelo = false;
+                            playerAnim.Grounded(false);
                             dispSuelo = true;
                             impulse = 1300f;
                         }
@@ -196,7 +202,7 @@ public class PlayerManager : MonoBehaviour
                         }
 
                         StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.down, Quaternion.identity));
-                        StartCoroutine(ShotTemp(new Vector2(playerRB.velocity.x, 0), new Vector2(0, impulse)));
+                        StartCoroutine(ShotTemp(new Vector2(playerRB.velocity.x, 0), new Vector2(0, impulse), dir));
 
                         break;
                     case 2:
@@ -205,13 +211,13 @@ public class PlayerManager : MonoBehaviour
                         {
                             dispSuelo = false;
                             StartCoroutine (_shotManager.FireSpawn(dispSuelo, Vector2.up, Quaternion.Euler(0, 0, 180)));
-                            StartCoroutine (ShotTemp(Vector2.zero, new Vector2(0, -impulse)));
+                            StartCoroutine (ShotTemp(Vector2.zero, new Vector2(0, -impulse), dir));
                         }
                         else if (state == 0)
                         {
                             dispSuelo = false;
                             StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.up, Quaternion.Euler(0, 0, 180)));
-                            StartCoroutine(ShotTemp(Vector2.zero, Vector2.zero));
+                            StartCoroutine(ShotTemp(Vector2.zero, Vector2.zero, dir));
                         }
                         break;
                 }
@@ -224,14 +230,14 @@ public class PlayerManager : MonoBehaviour
                 if (spriteR.flipX)
                 {
                     StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.left, Quaternion.Euler(0, 0, -90)));
-                    StartCoroutine(ShotTemp(Vector2.zero, new Vector2(impulse, impulse / 2f)));
+                    StartCoroutine(ShotTemp(Vector2.zero, new Vector2(impulse, impulse / 2f), dir));
                 }
 
 
                 else
                 {
                     StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.right, Quaternion.Euler(0, 0, 90)));
-                    StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-impulse, impulse / 2f)));
+                    StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-impulse, impulse / 2f), dir));
                 }
                     
             }
@@ -250,10 +256,12 @@ public class PlayerManager : MonoBehaviour
             SetBoolBB(true);
         }
     }
+
     private void SetBoolBB(bool eq)
     {
         chargeFinish = eq;
     }
+
     public IEnumerator BallBlow(bool chargeFinish)
     {
         SetBoolBB(false);
@@ -295,6 +303,8 @@ public class PlayerManager : MonoBehaviour
             playerRB.gravityScale = 0;
 
             suelo = false;
+            playerAnim.Grounded(false);
+            playerAnim.Pelotazo();
             if (suelo)
             {
                 playerRB.AddForce(new Vector2(0, smallJump), ForceMode2D.Impulse);
@@ -389,6 +399,7 @@ public class PlayerManager : MonoBehaviour
             state = 3;
             playerRB.velocity = Vector2.zero;
             StartCoroutine(_balasManager.Recargar());
+            playerAnim.Reload();
             yield return new WaitForSeconds(reloadCD);
             state = 0;
         }
@@ -397,12 +408,14 @@ public class PlayerManager : MonoBehaviour
     public IEnumerator Cura()
     {
         float healCD = 0.75f;
-        if (state == 0 && _vidaManager.health < _vidaManager.maxHealth)
+        if (state == 0 && _vidaManager.health < _vidaManager.maxHealth && _vidaManager.HealQuantity > 0)
         {
             state = 3;
             playerRB.velocity = Vector2.zero;
-            _vidaManager.Curarse();
+            playerAnim.Heal();
             yield return new WaitForSeconds(healCD);
+            if(!invulnerable)
+                _vidaManager.Curarse();
             state = 0;
         }
     }
@@ -415,6 +428,11 @@ public class PlayerManager : MonoBehaviour
     public void Invulnerable(bool inv)
     {
         invulnerable = inv;
+    }
+
+    public void HitB()
+    {
+        playerAnim.Hit();
     }
 
     public void ResetColisiones()
@@ -436,26 +454,24 @@ public class PlayerManager : MonoBehaviour
 
             spriteR.enabled = true;
         }
-
-        else
-        {
-            spriteR.enabled = false;
-            boxColl.enabled = false;
-            playerRB.velocity = Vector2.zero;
-        }
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Suelo")
+        if (collision.gameObject.CompareTag("Suelo"))
         {
             suelo = true;
+            playerAnim.Grounded(true);
             if (state != 3 && state != 6)
             {
                 state = 0;
                 _slideEnable = true;
             }
+        }
+        if (collision.gameObject.CompareTag("Pared"))
+        {
+            playerAnim.Wall(true);
         }
     }
 
@@ -477,9 +493,13 @@ public class PlayerManager : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pared" && state != 0 && state != 4 && state != 6)
+        if (collision.gameObject.tag == "Pared")
         {
-            state = 1;
+            playerAnim.Wall(false);
+            if (state != 0 && state != 4 && state != 6)
+            {
+                state = 1;
+            }
         }
     }
 }
