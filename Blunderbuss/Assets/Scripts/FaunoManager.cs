@@ -8,7 +8,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class FaunoManager : MonoBehaviour
 {
     #region references
-    [SerializeField] private FaunoConfig _configuration;
+    [SerializeField] private FaunoConfig _configuration; //configuración externa de las variables que va a usar el fauno
 
     private ObstacleComponent _obstacleComponent;
     private BossHealth _bossHealth;
@@ -30,9 +30,14 @@ public class FaunoManager : MonoBehaviour
     #endregion
 
     #region parameters
-    private bool _alive = true;
-    private bool _hitWall = false;
-    private bool _hitGround = true;
+    private bool _alive = true; //está vivo?
+    private bool _hitWall = false; //choca con pared?
+    private bool _hitGround = true;//choca con suelo?
+
+    private int _state = 0; //variable de control de estados del fauno
+                            //=0 ; blablabla
+                            //=1 ; blablabla
+                            //=2 ; blablabla
     #endregion
 
     #region methods
@@ -82,6 +87,11 @@ public class FaunoManager : MonoBehaviour
         else return -1;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="deltaTime"></param>
+    /// <returns></returns>
     private Transform WalkTowards(float deltaTime) // provisionalmente que camine hacia el jugador.
     {
         Vector3 newPos = Vector3.zero;
@@ -94,6 +104,10 @@ public class FaunoManager : MonoBehaviour
         return _myTransform;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Pared"))
