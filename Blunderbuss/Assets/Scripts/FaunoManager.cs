@@ -10,6 +10,10 @@ public class FaunoManager : MonoBehaviour
     #region references
     [SerializeField] private FaunoConfig _configuration; //configuración externa de las variables que va a usar el fauno
 
+    [SerializeField] private GameObject _conjCuch;
+
+    [SerializeField] private CuchillaManager[] _cuchillaManagers = new CuchillaManager[4];
+
     private ObstacleComponent _obstacleComponent;
     private BossHealth _bossHealth;
     private Rigidbody2D _faunoRB;
@@ -123,7 +127,7 @@ public class FaunoManager : MonoBehaviour
 
 
     #region attacks
-    private IEnumerator Embestida(float deltaTime)
+    private IEnumerator Embestida()
     {
         //determina si el jugador está a su derecha o izq, coge la posición de la pared específica y embiste hacia ese lado
         //es un ataque de larga distancia 
@@ -131,7 +135,7 @@ public class FaunoManager : MonoBehaviour
        while(!_hitWall)
         {
             Vector3 newPos = Vector3.zero;
-            newPos = new Vector3((SetDirection() * _configuration.RunSpeed * deltaTime), 0, 0);
+            newPos = new Vector3((SetDirection() * _configuration.RunSpeed * Time.deltaTime), 0, 0);
             _myTransform.position += newPos;
             yield return null;
         }
@@ -139,7 +143,7 @@ public class FaunoManager : MonoBehaviour
         yield return new WaitUntil(() => _hitWall == true);
     }
 
-    private IEnumerator SaltoVert(float deltaTime)
+    private IEnumerator SaltoVert()
     {
         //salta hacia arriba y se mantiene fuera de pantalla con una altura constante durante x segundos
         //va cambiando su posición en x siguiendo al jugador hasta que cae sobre la ultima pos guardada
@@ -159,16 +163,53 @@ public class FaunoManager : MonoBehaviour
         _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
-    private void Cuchillada()
+    private IEnumerator Cuchillada()
     {
         //a ver no se la verdad
         //expandir el hitbox del fauno para simular el tajo
-        int cuchDir = SetDirection();
+        int dir = SetDirection();
+
+        Vector2 scBase = _boxColl.size;
+        Vector2 scDest = _boxColl.size * new Vector2(2f, 0.7f);
+
+        Vector2 offBase = _boxColl.offset;
+        Vector2 offDest = _boxColl.offset * new Vector2(dir * 2f, -0.5f);
+
+        float scSpeed = 10f;
+        float offSpeed = 5f;
+
+        while (_boxColl.offset != offDest)
+        {
+            _boxColl.size = Vector3.MoveTowards(_boxColl.size, scDest, scSpeed * Time.deltaTime);
+            _boxColl.offset = Vector3.MoveTowards(_boxColl.offset, offDest, offSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+        
+        yield return new WaitForSeconds(0.2f);
+
+
+        while (_boxColl.offset != offBase)
+        {
+            _boxColl.size = Vector3.MoveTowards(_boxColl.size, scBase, scSpeed * Time.deltaTime);
+            _boxColl.offset = Vector3.MoveTowards(_boxColl.offset, offBase, offSpeed * Time.deltaTime);
+
+            yield return null;
+        }
     }
 
-    private void CuchillaFloor()
+    private IEnumerator CuchillaFloor()
     {
         //hacer que surjan a lo largo del mapa varias hitboxes verticales con un poco de retraso
+        int dir = SetDirection();
+
+        _conjCuch.transform.position = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla*dir), -7, 0);
+
+        for(int i = 0; i < _cuchillaManagers.Length; i++)
+        {
+            yield return new WaitForSeconds(0.2f);
+            StartCoroutine(_cuchillaManagers[i].SacaCuchilla());
+        }
 
     }
 
@@ -206,7 +247,7 @@ public class FaunoManager : MonoBehaviour
     void Start()
     {
         _player = GameManager.Instance.Player;
-        StartCoroutine(SaltoVert(Time.deltaTime));
+        StartCoroutine(CuchillaFloor());
     }
 
     // Update is called once per frame
