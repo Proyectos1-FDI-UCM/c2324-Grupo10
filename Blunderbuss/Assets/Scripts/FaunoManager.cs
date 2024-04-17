@@ -162,7 +162,8 @@ public class FaunoManager : MonoBehaviour
     private void Cuchillada()
     {
         //a ver no se la verdad
-        //crear una hitbox donde se supone que esta la cuchilla para que el jugador reciba daño
+        //expandir el hitbox del fauno para simular el tajo
+        int cuchDir = SetDirection();
     }
 
     private void CuchillaFloor()
