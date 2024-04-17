@@ -353,11 +353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19403a4d417f10c4eb6d0849850e075d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &574382116 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2548031959841458015, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
-  m_PrefabInstance: {fileID: 6482722967057712675}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &578291668
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +549,7 @@ SpriteRenderer:
   m_Size: {x: 38.399998, y: 21.599998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &799750239
@@ -806,7 +801,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -1422,10 +1417,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerMaster
       objectReference: {fileID: 0}
-    - target: {fileID: 146753438590768382, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
-      propertyPath: _pelotazo
-      value: 
-      objectReference: {fileID: 574382116}
+    - target: {fileID: 357280692350148912, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 357280692350148912, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 357280692350148912, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251041874327625336, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6812938101534534271, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -22,12 +22,9 @@ public class VidaManager : MonoBehaviour
     #region methods
     public void Curarse()
     {
-        if (HealQuantity > 0)
-        {
-            health += healingValue;
-            health = Mathf.Clamp(health, 0, maxHealth);
-            HealQuantity--;
-        }
+        health += healingValue;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        HealQuantity--;
         _UIManager.gestionRambutan(true);
         _UIManager.actualizaVida();
     }
@@ -60,7 +57,10 @@ public class VidaManager : MonoBehaviour
         else
             _playerManager.state = 1;
         yield return new WaitForSeconds(tiempoInvulnerable);
-        _playerManager.Invulnerable(false);
+        if (health != 0)
+        {
+            _playerManager.Invulnerable(false);
+        }
     }
     public void morir()
     {      
