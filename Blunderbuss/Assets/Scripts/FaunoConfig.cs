@@ -31,4 +31,10 @@ public class FaunoConfig : ScriptableObject
 
     [SerializeField][Range(5f, 20f)] private int _minaTime;
     public int MinaTime => _minaTime;
+
+    [SerializeField][Range(1f, 3.5f)] private float _closeRange;
+    public float CloseRange => _closeRange;
+
+    [SerializeField][Range(7f, 10f)] private float _longRange;
+    public float LongRange => _longRange;
 }

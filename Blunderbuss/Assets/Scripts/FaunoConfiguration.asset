@@ -19,5 +19,5 @@ MonoBehaviour:
   _distCuchilla: 3.75
   _subeSpeed: 50
   _bajaSpeed: 3
-  _vectMina: {x: 3, y: 2}
-  _minaTime: 10
+  _vectMina: {x: 8, y: 10}
+  _minaTime: 15

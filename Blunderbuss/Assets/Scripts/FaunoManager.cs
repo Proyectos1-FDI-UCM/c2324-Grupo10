@@ -99,21 +99,9 @@ public class FaunoManager : MonoBehaviour
         else return -1;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="deltaTime"></param>
-    /// <returns></returns>
-    private Transform WalkTowards(float deltaTime) // provisionalmente que camine hacia el jugador.
+    private float Distancia()
     {
-        Vector3 newPos = Vector3.zero;
-        newPos.x = (SetDirection() * _configuration.WalkSpeed * deltaTime);
-
-        if (_alive)
-        {
-            _myTransform.position += newPos;
-        }
-        return _myTransform;
+        return _player.transform.position.x - _myTransform.position.x;
     }
 
     /// <summary>
@@ -135,12 +123,31 @@ public class FaunoManager : MonoBehaviour
 
 
     #region attacks
+    private IEnumerator Walk()
+    {
+        while (Distancia() > _configuration.CloseRange)
+        {
+            Vector3 newPos = Vector3.zero;
+            newPos = new Vector3((SetDirection() * _configuration.WalkSpeed * Time.deltaTime), 0, 0);
+            _myTransform.position += newPos;
+            yield return null;
+        }
+        StartCoroutine(FaunoAI());
+    }
+
+    private IEnumerator Rugido()
+    {
+        yield return new WaitForSeconds(3);
+    }
+
     private IEnumerator Embestida()
     {
         //determina si el jugador está a su derecha o izq, coge la posición de la pared específica y embiste hacia ese lado
         //es un ataque de larga distancia 
+        StartCoroutine(Rugido());
+        yield return new WaitForSeconds(3);
 
-       while(!_hitWall)
+        while(!_hitWall)
         {
             Vector3 newPos = Vector3.zero;
             newPos = new Vector3((SetDirection() * _configuration.RunSpeed * Time.deltaTime), 0, 0);
@@ -149,6 +156,8 @@ public class FaunoManager : MonoBehaviour
         }
 
         yield return new WaitUntil(() => _hitWall == true);
+
+        StartCoroutine(FaunoAI());
     }
 
     private IEnumerator SaltoVert()
@@ -169,6 +178,8 @@ public class FaunoManager : MonoBehaviour
             yield return null;
         }
         _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        StartCoroutine(FaunoAI());
     }
 
     private IEnumerator Cuchillada()
@@ -204,6 +215,8 @@ public class FaunoManager : MonoBehaviour
 
             yield return null;
         }
+        
+        StartCoroutine(FaunoAI());
     }
 
     private IEnumerator CuchillaFloor()
@@ -219,13 +232,13 @@ public class FaunoManager : MonoBehaviour
             StartCoroutine(_cuchillaManagers[i].SacaCuchilla());
         }
 
+        StartCoroutine(FaunoAI());
     }
 
     private IEnumerator Mina()
     {
         //Doble collider (trigger suelo/fisico player)
         //Se activa fisico al tocar el suelo
-        //comprobar si hay mina libre, sino coger una maybe
         //llevar la mina a la pos de escupeMina
         //addforce con un vector y luego que lo maneja 
         //se queda donde aterrize x segundos y se desactiva(setactive = false)
@@ -245,6 +258,7 @@ public class FaunoManager : MonoBehaviour
 
         _minas[i].SetActive(false);
 
+        StartCoroutine(FaunoAI());
     }
 
 
@@ -253,10 +267,50 @@ public class FaunoManager : MonoBehaviour
     #region AI
 
     #endregion
-    /*private IEnumerator FaunoAI()
+    private IEnumerator FaunoAI()
     {
+        int rnd = Random.Range(0,3);
+        yield return new WaitForSeconds(0.5f);
 
-    }*/
+        if (Distancia() <= _configuration.CloseRange)
+        {
+            StartCoroutine(Cuchillada());
+        }
+        else if (Distancia() <= _configuration.LongRange)
+        {
+            if (_bossHealth.health > (_bossHealth.maxHealth / 2))
+            {
+                if (rnd == 0)
+                    StartCoroutine(CuchillaFloor());
+                else
+                    StartCoroutine(Mina());
+            }
+            else
+            {
+                if (rnd == 0)
+                    StartCoroutine(Mina());
+                else
+                    StartCoroutine(CuchillaFloor());
+            }
+        }
+        else
+        {
+            if (_bossHealth.health > (_bossHealth.maxHealth / 2))
+            {
+                if (rnd == 0)
+                    StartCoroutine(Walk());
+                else
+                    StartCoroutine(SaltoVert());
+            }
+            else
+            {
+                if (rnd == 0)
+                    StartCoroutine(SaltoVert());
+                else
+                    StartCoroutine(Embestida());
+            }
+        }
+    }
     #endregion
 
     private void Awake()
@@ -285,14 +339,14 @@ public class FaunoManager : MonoBehaviour
         {
             _minas[i].SetActive(false);
         }
-        
-        StartCoroutine(Mina());
+
+        StartCoroutine(Rugido());
+        StartCoroutine(FaunoAI());
     }
 
     // Update is called once per frame
     void Update()
     {
-        //WalkTowards(Time.deltaTime);
-        
+        Distancia();
     }
 }
