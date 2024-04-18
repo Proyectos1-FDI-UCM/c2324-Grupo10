@@ -265,11 +265,9 @@ public class FaunoManager : MonoBehaviour
     #endregion
 
     #region AI
-
-    #endregion
     private IEnumerator FaunoAI()
     {
-        int rnd = Random.Range(0,3);
+        int rnd = Random.Range(0, 3);
         yield return new WaitForSeconds(0.5f);
 
         if (Distancia() <= _configuration.CloseRange)
@@ -311,6 +309,8 @@ public class FaunoManager : MonoBehaviour
             }
         }
     }
+    #endregion
+
     #endregion
 
     private void Awake()
