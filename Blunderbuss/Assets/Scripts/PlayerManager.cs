@@ -151,7 +151,7 @@ public class PlayerManager : MonoBehaviour
         float impulse;
         bool dispSuelo;
 
-        if (shotEnable && _balasManager.BalaQuantity > 0)
+        if (shotEnable && _balasManager.BalaQuantity > 0 && !invulnerable)
         {
             if (state != 2)
             {
@@ -265,7 +265,7 @@ public class PlayerManager : MonoBehaviour
     public IEnumerator BallBlow(bool chargeFinish)
     {
         SetBoolBB(false);
-        if (chargeFinish && ballBlowEnable && _balasManager.BalaQuantity > 0)
+        if (chargeFinish && ballBlowEnable && _balasManager.BalaQuantity > 0 && !invulnerable)
         {
             ballBlowEnable = false;
             state = 6;
@@ -396,6 +396,8 @@ public class PlayerManager : MonoBehaviour
         float reloadCD = 0.75f;
         if (state == 0 && _balasManager.BalaQuantity != _balasManager.maxBalas)
         {
+            SetBoolBB(false);
+            _UIManager.Rojo(false);
             state = 3;
             playerRB.velocity = Vector2.zero;
             StartCoroutine(_balasManager.Recargar());

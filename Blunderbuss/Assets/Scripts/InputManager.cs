@@ -36,7 +36,12 @@ public class InputManager : MonoBehaviour
         };
 
         //Dani
-        _inputActions.Player.Recharge.started += ctx =>  StartCoroutine(_playerManager.Recarga());
+        _inputActions.Player.Recharge.started += ctx =>
+        {
+            if(BBT != null)
+                StopCoroutine(BBT);
+            StartCoroutine(_playerManager.Recarga());
+        };
         _inputActions.Player.Potion.started += ctx => StartCoroutine(_playerManager.Cura());
         _inputActions.Player.Pause.started += ctx => _pauseMenu.pause();
     }

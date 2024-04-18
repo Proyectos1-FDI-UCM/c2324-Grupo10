@@ -42,8 +42,10 @@ public class VidaManager : MonoBehaviour
 
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
-        _playerManager.Aturdimiento(false);
+
         _playerManager.Invulnerable(true);
+        _playerManager.Aturdimiento(false);
+        
         StartCoroutine(_playerManager.Parpadeo());
         _UIManager.actualizaVida();
         yield return new WaitForSeconds(tiempoAturdido);
