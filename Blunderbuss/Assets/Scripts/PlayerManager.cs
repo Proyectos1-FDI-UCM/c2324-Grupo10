@@ -60,6 +60,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(state < 3)
             Move(_inputManager.axisX);
+        print(chargeFinish);
     }
 
     public void Move(float axis)
@@ -151,7 +152,7 @@ public class PlayerManager : MonoBehaviour
         float impulse;
         bool dispSuelo;
 
-        if (shotEnable && _balasManager.BalaQuantity > 0 && !invulnerable)
+        if (shotEnable && _balasManager.BalaQuantity > 0)
         {
             if (state != 2)
             {
@@ -257,7 +258,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void SetBoolBB(bool eq)
+    public void SetBoolBB(bool eq)
     {
         chargeFinish = eq;
     }

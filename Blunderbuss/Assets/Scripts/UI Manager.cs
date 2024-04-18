@@ -18,12 +18,12 @@ public class UIManager : MonoBehaviour
     GameObject DeathCanvas;
 
     private SpriteRenderer _spriteRendererRam;
-    private SpriteRenderer [] _spriteRendererSac;
+    public SpriteRenderer[] spriteRendererSac;
+    public SpriteRenderer[] spriteRendererSacC;
     private Transform _transformVida;
 
     public GameObject _healthBar;
     public GameObject  _rambutan;
-    public GameObject [] _sacos;
     #endregion
 
     #region parameters
@@ -60,14 +60,15 @@ public class UIManager : MonoBehaviour
     }  
     public void quitaBala()
     {     
-          _spriteRendererSac[sacosAviable].enabled = false;  // test orden sacos
+          spriteRendererSac[sacosAviable].enabled = false;  // test orden sacos
+          spriteRendererSacC[sacosAviable].enabled = false;  // test orden sacos
           sacosAviable--;         
     }
     public void reiniciaBalas()
     {
         for (int i = 0; i < balas.Length; i++)
         {
-            _spriteRendererSac[i].enabled = true;
+            spriteRendererSac[i].enabled = true;
         }
         sacosAviable = _balasManager.maxBalas-1;
     }
@@ -80,14 +81,19 @@ public class UIManager : MonoBehaviour
     {
         if (_balasManager.BalaQuantity > 0)
         {
-            SpriteRenderer spriteR = _sacos[_balasManager.BalaQuantity - 1].GetComponent<SpriteRenderer>();
-
-            string colorT;
+            SpriteRenderer spriteR = spriteRendererSac[_balasManager.BalaQuantity - 1];
+            SpriteRenderer spriteRC = spriteRendererSacC[_balasManager.BalaQuantity - 1];
 
             if (eq)
-                spriteR.color = new Color(1, 0.1f, 0, 1);
+            {
+                spriteR.enabled = false;
+                spriteRC.enabled = true;
+            }
             else
-                spriteR.color = new Color(0.8f, 0.33f, 0, 1);
+            {
+                spriteR.enabled = true;
+                spriteRC.enabled = false;
+            }
         }
     }
 
@@ -112,12 +118,6 @@ public class UIManager : MonoBehaviour
         _transformVida = _healthBar.transform;
 
         sacosAviable = _balasManager.maxBalas - 1;
-
-        _spriteRendererSac = new SpriteRenderer[_sacos.Length];
-        for (int i = 0;i < _sacos.Length; i++)
-        {
-            _spriteRendererSac[i] = _sacos[i].GetComponent<SpriteRenderer>();
-        }
     }
 
     // Update is called once per frame

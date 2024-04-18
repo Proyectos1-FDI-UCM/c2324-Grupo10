@@ -7,6 +7,8 @@ public class BalasManager : MonoBehaviour
     #region references
     [SerializeField]
     UIManager _UIManager;
+    PlayerManager _playerManager;
+    InputManager _inputManager;
     #endregion
 
     #region parameters
@@ -22,9 +24,10 @@ public class BalasManager : MonoBehaviour
 
     public void restaBala()
     {
-        SpriteRenderer spriteR = _UIManager._sacos[BalaQuantity-1].GetComponent<SpriteRenderer>();
+        SpriteRenderer spriteR = _UIManager.spriteRendererSac[BalaQuantity-1];
+        SpriteRenderer spriteRC = _UIManager.spriteRendererSacC[BalaQuantity-1];
         bool aux = false;
-        if (spriteR.color == new Color (1, 0.1f, 0, 1))
+        if (spriteRC.enabled)
         {
             _UIManager.Rojo(false);
             aux = true;
@@ -40,6 +43,9 @@ public class BalasManager : MonoBehaviour
     public IEnumerator Recargar()
     {
         yield return new WaitForSeconds(reloadTime);  // Tiempo mientras se ejecuta la animacion de recarga
+        _playerManager.SetBoolBB(false);
+        _UIManager.Rojo(false);
+        _inputManager.DesactivarBBT();
         BalaQuantity = maxBalas;                      // Se puede volver a disparar
         _UIManager.reiniciaBalas();                   // Puedes ver que puedes disparar otra vez
     }
@@ -56,6 +62,8 @@ public class BalasManager : MonoBehaviour
     void Start()
     {
         BalaQuantity = maxBalas;
+        _playerManager = GetComponent<PlayerManager>();
+        _inputManager = GameManager.Instance.InputManager;
     }
 
     // Update is called once per frame
