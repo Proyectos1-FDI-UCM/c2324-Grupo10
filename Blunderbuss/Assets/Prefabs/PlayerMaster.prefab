@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 2877830730610705115}
   m_Layer: 0
   m_Name: FuegoSuelo
-  m_TagString: Untagged
+  m_TagString: Fuego
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,8 +408,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.36, y: 0.36, z: 0.36}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 927215594833495654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -451,9 +451,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1846971227
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -535021303, guid: 75cda7a48933e58489edbab1c3afd3c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 6902459560145417696}
   m_Layer: 0
   m_Name: FuegoNormal
-  m_TagString: Untagged
+  m_TagString: Fuego
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,8 +560,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 927215594833495654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -603,9 +603,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1846971227
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 935117271, guid: 21a61c8a768f9b34f9ca123b86da768e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5038,7 +5038,7 @@ PrefabInstance:
       objectReference: {fileID: 475144425948208288}
     - target: {fileID: 2047886542944496760, guid: d6bf8fabf36ca6b44b5809ccde73e5ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.1
+      value: -20.74
       objectReference: {fileID: 0}
     - target: {fileID: 2047886542944496760, guid: d6bf8fabf36ca6b44b5809ccde73e5ac, type: 3}
       propertyPath: m_LocalPosition.y

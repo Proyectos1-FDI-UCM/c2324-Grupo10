@@ -52,12 +52,13 @@ public class ShotManager : MonoBehaviour
     {
         float _faDistx = 3.3f;
         float _faDisty = 3.8f;
-        float _fsDist = 0.8f;
+        float _fsDistx = 1.5f;
+        float _fsDisty = 1.7f;
         float intervalo = 0.3f;
 
         if (!suelo)
         {
-            _fuegoAire.transform.position = _myTransform.position + new Vector3(position.x * _faDistx, position.y * _faDisty, -1f);
+            _fuegoAire.transform.position = _myTransform.position + new Vector3(position.x * _faDistx, position.y * _faDisty, 0f);
             _fuegoAire.transform.rotation = rotation;
             _spriteRFA.flipX = flip;
             _fuegoAire.SetActive(true);
@@ -66,7 +67,7 @@ public class ShotManager : MonoBehaviour
         }
         else
         {
-            _fuegoSuelo.transform.position = _myTransform.position + new Vector3(position.x * _fsDist, position.y * _fsDist, -1f);
+            _fuegoSuelo.transform.position = _myTransform.position + new Vector3(position.x * _fsDistx, position.y * _fsDisty, 0f);
             _fuegoSuelo.transform.rotation = rotation;
             _spriteRFS.flipY = flip;
             _fuegoSuelo.SetActive(true);
