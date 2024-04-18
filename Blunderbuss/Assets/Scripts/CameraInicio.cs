@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class CalmBreathing : MonoBehaviour
+public class CameraInicio : MonoBehaviour
 {
-    public float breathSpeed = 1.0f; // Speed of breathing
-    public float maxRotationAngle = 5f; // Maximum rotation angle
+    public float breathSpeed = 0.1f; // Speed of breathing
+    public float maxRotationAngle = 0.1f; // Maximum rotation angle
 
     private Quaternion originalRotation;
     private bool inhaling = true;
