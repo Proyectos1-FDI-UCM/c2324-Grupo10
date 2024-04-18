@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     private ShotManager _shotManager;
     [SerializeField]
     UIManager _UIManager;
+    private PlayerVFX _vfx;
     public PlayerAnim playerAnim;
 
     public Transform myTransform;
@@ -53,6 +54,7 @@ public class PlayerManager : MonoBehaviour
         _vidaManager = GetComponent<VidaManager>();
         _shotManager = GetComponent<ShotManager>();
         playerAnim = GetComponent<PlayerAnim>();
+        _vfx = GetComponent<PlayerVFX>();
     }
 
     // Update is called once per frame
@@ -251,11 +253,13 @@ public class PlayerManager : MonoBehaviour
     {
         if (ballBlowEnable && _balasManager.BalaQuantity > 0)
         {
+            _vfx.ActivaLLama();
             _UIManager.Rojo(true);
             int count = 3;
 
             yield return new WaitForSeconds(count);
 
+            _vfx.DetonaLLama();
             SetBoolBB(true);
         }
     }

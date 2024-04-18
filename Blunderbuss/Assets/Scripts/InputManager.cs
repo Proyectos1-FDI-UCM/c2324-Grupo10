@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     private PlayerManager _playerManager;
     private VidaManager _vidaManager;
     private PauseMenu _pauseMenu;
+    private PlayerVFX _vfx;
 
     public Coroutine BBT;
 
@@ -52,6 +53,8 @@ public class InputManager : MonoBehaviour
         _playerManager = _gameManager.Player.GetComponent<PlayerManager>();
         _vidaManager = _gameManager.Player.GetComponent<VidaManager>();
         _pauseMenu = EventSystem.current.GetComponent<PauseMenu>();
+        _vfx = _gameManager.Player.GetComponent<PlayerVFX>();
+
     }
 
     // Update is called once per frame
@@ -63,7 +66,10 @@ public class InputManager : MonoBehaviour
     public void DesactivarBBT()
     {
         if (BBT != null)
+        {
             StopCoroutine(BBT);
+            _vfx.DesactivaLLama();
+        }
     }
 
     private void OnEnable()

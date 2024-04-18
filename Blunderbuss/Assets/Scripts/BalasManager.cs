@@ -9,6 +9,7 @@ public class BalasManager : MonoBehaviour
     UIManager _UIManager;
     PlayerManager _playerManager;
     InputManager _inputManager;
+    private PlayerVFX _vfx;
     #endregion
 
     #region parameters
@@ -34,6 +35,8 @@ public class BalasManager : MonoBehaviour
         }
         _UIManager.Rojo(false);
         BalaQuantity--;
+        if (BalaQuantity == 0)
+            _vfx.DesactivaLLama();
         _UIManager.quitaBala();
         if (aux)
         {
@@ -43,6 +46,8 @@ public class BalasManager : MonoBehaviour
     public IEnumerator Recargar()
     {
         yield return new WaitForSeconds(reloadTime);  // Tiempo mientras se ejecuta la animacion de recarga
+        if (!_playerManager.invulnerable)
+            StartCoroutine(_vfx.RecargaVFX());
         _playerManager.SetBoolBB(false);
         _UIManager.Rojo(false);
         _inputManager.DesactivarBBT();
@@ -64,6 +69,7 @@ public class BalasManager : MonoBehaviour
         BalaQuantity = maxBalas;
         _playerManager = GetComponent<PlayerManager>();
         _inputManager = GameManager.Instance.InputManager;
+        _vfx = GetComponent<PlayerVFX>();
     }
 
     // Update is called once per frame

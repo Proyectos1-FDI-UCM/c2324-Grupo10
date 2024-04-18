@@ -7,6 +7,7 @@ public class VidaManager : MonoBehaviour
     #region references
     [SerializeField]
     UIManager _UIManager;
+    private PlayerVFX _vfx;
     private PlayerManager _playerManager;
     #endregion
 
@@ -26,6 +27,7 @@ public class VidaManager : MonoBehaviour
         health = Mathf.Clamp(health, 0, maxHealth);
         HealQuantity--;
         _UIManager.gestionRambutan(true);
+        StartCoroutine(_vfx.CuraVFX());
         _UIManager.actualizaVida();
     }
 
@@ -77,11 +79,13 @@ public class VidaManager : MonoBehaviour
             _UIManager.actualizaVida();
         }
     }
+
     #endregion
     // Start is called before the first frame update
     void Start()
     {
         _playerManager = GameManager.Instance.Player.GetComponent<PlayerManager>();
+        _vfx = GetComponent<PlayerVFX>();
         HealQuantity = maxHeal;
         maxHealth = 100f;
         health = maxHealth;
