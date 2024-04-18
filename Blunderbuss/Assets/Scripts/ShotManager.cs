@@ -13,6 +13,7 @@ public class ShotManager : MonoBehaviour
 
     private PlayerManager _playerManager;
     private PelotazoManager _pelotazoManager;
+    private SFXCorsoManager _sfxCorso;
 
     private SpriteRenderer _spriteRFA;
     private SpriteRenderer _spriteRFS;
@@ -31,6 +32,7 @@ public class ShotManager : MonoBehaviour
     {
         _myTransform = transform;
         _playerManager = GetComponent<PlayerManager>();
+        _sfxCorso = GetComponent<SFXCorsoManager>();
         _pelotazoManager = _pelotazo.GetComponent<PelotazoManager>();
 
         _spriteRFA = _fuegoAire.GetComponent<SpriteRenderer>();
@@ -55,7 +57,7 @@ public class ShotManager : MonoBehaviour
         float _fsDistx = 1.5f;
         float _fsDisty = 1.7f;
         float intervalo = 0.3f;
-
+        _sfxCorso.DisparoSFX(suelo);
         if (!suelo)
         {
             _fuegoAire.transform.position = _myTransform.position + new Vector3(position.x * _faDistx, position.y * _faDisty, 0f);

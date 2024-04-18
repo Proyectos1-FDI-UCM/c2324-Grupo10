@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     UIManager _UIManager;
     private PlayerVFX _vfx;
+    private SFXCorsoManager _sfxCorso;
     public PlayerAnim playerAnim;
 
     public Transform myTransform;
@@ -55,6 +57,7 @@ public class PlayerManager : MonoBehaviour
         _shotManager = GetComponent<ShotManager>();
         playerAnim = GetComponent<PlayerAnim>();
         _vfx = GetComponent<PlayerVFX>();
+        _sfxCorso = GetComponent<SFXCorsoManager>();
     }
 
     // Update is called once per frame
@@ -106,8 +109,10 @@ public class PlayerManager : MonoBehaviour
             state = 4;
             _slideEnable = false;
             playerAnim.Slide();
-            
-            if(!spriteR.flipX)
+            _sfxCorso.DeslizSFX();
+
+
+            if (!spriteR.flipX)
             {
                 playerRB.AddForce(new Vector2(_impulse, 0), ForceMode2D.Impulse);
             }
