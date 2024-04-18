@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,1372 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee52171221a2ed24c892c040f1e95494
+      internalID: -1440451001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_1
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 415d0749aa714474f93d794658455ae2
+      internalID: 1054999728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_2
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b497513c001440c458e3b3ed77e1e9cf
+      internalID: 747928377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_3
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb7db616b227c6b418496251051fc01b
+      internalID: 14298193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_4
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f1abf3a61e3a7479013e1f4516fab7
+      internalID: 98861494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_5
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d4c1468e86a5864589e8894d40cc6dd
+      internalID: 583340111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_6
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff00fd81ddf94be41a63f4cb699eea9a
+      internalID: -1754342883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_7
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2eab3a4374f68c4780f487140d3dcc5
+      internalID: 1784543146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_8
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1d9d98009214b844be1150fdda708ae
+      internalID: 1361884869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_9
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b87081b480f6b7047914b30e3fa0d866
+      internalID: -355663441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_10
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f258cdce6d1551b48b4af943dbb87d5f
+      internalID: -1834131000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_11
+      rect:
+        serializedVersion: 2
+        x: 11000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef1ac10a32cc474c8a1e04e707d7ac8
+      internalID: 1418944612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_12
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 3866.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53076a6f2f5be11418dbcfb0c6221176
+      internalID: -1396835646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51bf2554afde157469c708080fb2ed18
+      internalID: 2007488853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_14
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e527bc8967e3ce54c8644525a20c9687
+      internalID: -461304986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_15
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12035cf139ad1474fbfe8c6c63e8840d
+      internalID: 1719497971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_16
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8426904f8e64ad447adee3196ba39cd6
+      internalID: -1186615411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_17
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac2855233c13bcb4b882a0c1d15efac2
+      internalID: -1142303533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_18
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7977f17f1da8b2543bd6ddb6bcb85f6b
+      internalID: 565701446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_19
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f6c212e88c9a934d85ffd3180843b07
+      internalID: 831817898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_20
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 155e7bffb2a152d4ab8119d590c97dec
+      internalID: 1835153085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_21
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 486ac9dd081af434bb0eed462ca04916
+      internalID: -1208632879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_22
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0467fcb22c967f845aba1b733480d844
+      internalID: -1996014608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_23
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad1927e302d350e4c8a6a2c4a7da6833
+      internalID: 921300788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_24
+      rect:
+        serializedVersion: 2
+        x: 11000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1ec978809ab7af4ba8e578a5c48a782
+      internalID: -1142109058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_25
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 2900.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1765f9947f71dd409caa0dee06035fa
+      internalID: 1050966123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb03095282433e241955064be70979ed
+      internalID: 184350856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_27
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4573e34d8ab765c41ad8aa20058603e2
+      internalID: -1157556631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_28
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30f33f6fef5af7745969064647880362
+      internalID: 1551552804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_29
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07de417368a22544fadef719364b017b
+      internalID: -692195266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_30
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 657301193098b83488a8c8e1a880e6ad
+      internalID: -1052561929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_31
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f735a1722d218041a30fe6591c80c7c
+      internalID: 1941986352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_32
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5c0e1866ed11274ca9a0f53e4564c2d
+      internalID: -1164356931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_33
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7f71575a9381a34b891ed8441dbdd27
+      internalID: -1541645870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_34
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce16deb06c8e0444cb4a4c0327954573
+      internalID: 177719940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_35
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 643c27a6f942b364c9c55a682cbe6c0f
+      internalID: -966444145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_36
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a41d34cc78a9ec48943c9247768ba96
+      internalID: 857766099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_37
+      rect:
+        serializedVersion: 2
+        x: 11000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a98c15a7fab5d0e40b2d7ff6e1597010
+      internalID: 386183115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_38
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 1934.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd9e74f63d1489945b2deef3959bc624
+      internalID: 1520299240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0741b159e2dc92441818f46ee1f06c1d
+      internalID: 360160837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_40
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970b3aefdb268c44c85ebfbefa2337bf
+      internalID: -1772226421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_41
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7080dbc517293f43b74986571fc4fc2
+      internalID: 19395764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_42
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2672d8e89224f0a40b7caf3c366a6a6c
+      internalID: -800159944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_43
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f0e9ebabaf06247ae9376c804b3452
+      internalID: -234057578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_44
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6a66ba20c4a304198bad87695b3f48
+      internalID: -596789804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_45
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f124818635a40af4e8a15a20c3f28bbb
+      internalID: -84767926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_46
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c50406dfc73ece42bd461528b171763
+      internalID: -1859838408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_47
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c9e97a11c4f3ed46ab3dd7d18d7b5bc
+      internalID: 2118024361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_48
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f4c24752c0bc634eab34167c9788118
+      internalID: 1450470191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_49
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715745f935f3ed449bf4fe9e83db7ff7
+      internalID: -1018548715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_50
+      rect:
+        serializedVersion: 2
+        x: 11000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f27b6c36b99094fa0feb93a4ef6e5c
+      internalID: -1086521372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_51
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 968.4
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4a3dc622eac8b9438ca9c66cde2ddb4
+      internalID: -578818499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8fc9bdd9218d394093b6adeac0689a2
+      internalID: 1278009388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_53
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1330f60a16085db449090a4e077b0798
+      internalID: -1038950808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_54
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 814227d11abefc946b6c08b7b3cd8d44
+      internalID: -237172244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_55
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e94bcf90b75fb3141a7be257ee9b85d2
+      internalID: -1804892682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_56
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2b629c9ec19415439dbb222a6d5948a
+      internalID: 1924152517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_57
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57250018f902a9c45bd08cff5d67b363
+      internalID: 573581074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_58
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc8a68de32d85c748b627ccf1ca1670c
+      internalID: 1753044729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_59
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fc3212313dd7104997b2751b0fa7bca
+      internalID: -1893075126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_60
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a8c71206030e83428282e07bc96ac65
+      internalID: -342721336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_61
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42cacf9580b96f240810213d66fd41eb
+      internalID: -2112476710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_62
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cc9bc70d7ab9d14791b9fc3912c8823
+      internalID: -2046852305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_63
+      rect:
+        serializedVersion: 2
+        x: 11000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7afa4cd59d99e04aaddcda8fffd8f36
+      internalID: -1573830372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CorsoSpriteSheet2_64
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 2.4000244
+        width: 1000
+        height: 966.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecea7f13f4d275340be3740b677621f5
+      internalID: -983537881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +1484,72 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CorsoSpriteSheet2_0: -1440451001
+      CorsoSpriteSheet2_1: 1054999728
+      CorsoSpriteSheet2_10: -1834131000
+      CorsoSpriteSheet2_11: 1418944612
+      CorsoSpriteSheet2_12: -1396835646
+      CorsoSpriteSheet2_13: 2007488853
+      CorsoSpriteSheet2_14: -461304986
+      CorsoSpriteSheet2_15: 1719497971
+      CorsoSpriteSheet2_16: -1186615411
+      CorsoSpriteSheet2_17: -1142303533
+      CorsoSpriteSheet2_18: 565701446
+      CorsoSpriteSheet2_19: 831817898
+      CorsoSpriteSheet2_2: 747928377
+      CorsoSpriteSheet2_20: 1835153085
+      CorsoSpriteSheet2_21: -1208632879
+      CorsoSpriteSheet2_22: -1996014608
+      CorsoSpriteSheet2_23: 921300788
+      CorsoSpriteSheet2_24: -1142109058
+      CorsoSpriteSheet2_25: 1050966123
+      CorsoSpriteSheet2_26: 184350856
+      CorsoSpriteSheet2_27: -1157556631
+      CorsoSpriteSheet2_28: 1551552804
+      CorsoSpriteSheet2_29: -692195266
+      CorsoSpriteSheet2_3: 14298193
+      CorsoSpriteSheet2_30: -1052561929
+      CorsoSpriteSheet2_31: 1941986352
+      CorsoSpriteSheet2_32: -1164356931
+      CorsoSpriteSheet2_33: -1541645870
+      CorsoSpriteSheet2_34: 177719940
+      CorsoSpriteSheet2_35: -966444145
+      CorsoSpriteSheet2_36: 857766099
+      CorsoSpriteSheet2_37: 386183115
+      CorsoSpriteSheet2_38: 1520299240
+      CorsoSpriteSheet2_39: 360160837
+      CorsoSpriteSheet2_4: 98861494
+      CorsoSpriteSheet2_40: -1772226421
+      CorsoSpriteSheet2_41: 19395764
+      CorsoSpriteSheet2_42: -800159944
+      CorsoSpriteSheet2_43: -234057578
+      CorsoSpriteSheet2_44: -596789804
+      CorsoSpriteSheet2_45: -84767926
+      CorsoSpriteSheet2_46: -1859838408
+      CorsoSpriteSheet2_47: 2118024361
+      CorsoSpriteSheet2_48: 1450470191
+      CorsoSpriteSheet2_49: -1018548715
+      CorsoSpriteSheet2_5: 583340111
+      CorsoSpriteSheet2_50: -1086521372
+      CorsoSpriteSheet2_51: -578818499
+      CorsoSpriteSheet2_52: 1278009388
+      CorsoSpriteSheet2_53: -1038950808
+      CorsoSpriteSheet2_54: -237172244
+      CorsoSpriteSheet2_55: -1804892682
+      CorsoSpriteSheet2_56: 1924152517
+      CorsoSpriteSheet2_57: 573581074
+      CorsoSpriteSheet2_58: 1753044729
+      CorsoSpriteSheet2_59: -1893075126
+      CorsoSpriteSheet2_6: -1754342883
+      CorsoSpriteSheet2_60: -342721336
+      CorsoSpriteSheet2_61: -2112476710
+      CorsoSpriteSheet2_62: -2046852305
+      CorsoSpriteSheet2_63: -1573830372
+      CorsoSpriteSheet2_64: -983537881
+      CorsoSpriteSheet2_7: 1784543146
+      CorsoSpriteSheet2_8: 1361884869
+      CorsoSpriteSheet2_9: -355663441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
