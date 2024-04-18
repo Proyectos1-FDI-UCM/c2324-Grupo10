@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class PlayerVFX : MonoBehaviour
 {
+    #region references
     [SerializeField] GameObject _cura;
     [SerializeField] GameObject _recarga;
     [SerializeField] GameObject _pelotazo;
     [SerializeField] Animator _pelotazoAnim;
+
+    private SFXCorsoManager _sfxCorso;
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _sfxCorso = GetComponent<SFXCorsoManager>();
     }
 
     public IEnumerator CuraVFX()
@@ -30,18 +28,20 @@ public class PlayerVFX : MonoBehaviour
     public IEnumerator RecargaVFX()
     {
         _recarga.SetActive(true);
-        yield return new WaitForSeconds(0.41f);
+        yield return new WaitForSeconds(0.31f);
         _recarga.SetActive(false);
     }
 
     public void ActivaLLama()
     {
         _pelotazo.SetActive(true);
+        _sfxCorso.CargaASFX();
     }
 
     public void DetonaLLama()
     {
         _pelotazoAnim.SetTrigger("CargadoFinal");
+        _sfxCorso.CargaBSFX();
     }
 
     public void DesactivaLLama()

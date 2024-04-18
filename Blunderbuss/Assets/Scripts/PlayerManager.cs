@@ -317,6 +317,7 @@ public class PlayerManager : MonoBehaviour
             suelo = false;
             playerAnim.Grounded(false);
             playerAnim.Pelotazo();
+            _sfxCorso.PelotazoSFX();
             if (suelo)
             {
                 playerRB.AddForce(new Vector2(0, smallJump), ForceMode2D.Impulse);
@@ -414,6 +415,7 @@ public class PlayerManager : MonoBehaviour
             playerRB.velocity = Vector2.zero;
             StartCoroutine(_balasManager.Recargar());
             playerAnim.Reload();
+            _sfxCorso.RecargaSFX();
             yield return new WaitForSeconds(reloadCD);
             state = 0;
         }
@@ -427,6 +429,7 @@ public class PlayerManager : MonoBehaviour
             state = 3;
             playerRB.velocity = Vector2.zero;
             playerAnim.Heal();
+            _sfxCorso.HealSFX();
             yield return new WaitForSeconds(healCD);
             if(!invulnerable)
                 _vidaManager.Curarse();

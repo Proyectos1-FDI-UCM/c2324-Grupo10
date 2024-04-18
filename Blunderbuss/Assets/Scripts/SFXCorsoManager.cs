@@ -6,6 +6,7 @@ public class SFXCorsoManager : MonoBehaviour
 {
     #region references
     private BalasManager _balasManager;
+    private PlayerVFX _vfx;
 
     public AudioSource _sfxCorsoAS;
     [SerializeField] public AudioClip _sfxDisparoAire;
@@ -15,11 +16,13 @@ public class SFXCorsoManager : MonoBehaviour
     [SerializeField] public AudioClip _sfxCargaPelotazoA;
     [SerializeField] public AudioClip _sfxCargaPelotazoB;
     [SerializeField] public AudioClip _sfxDesliz;
+    [SerializeField] public AudioClip _sfxRecarga;
     #endregion
 
     void Start()
     {
         _balasManager = GetComponent<BalasManager>();
+        _vfx = GetComponent<PlayerVFX>();
     }
 
     public void DeslizSFX()
@@ -39,6 +42,10 @@ public class SFXCorsoManager : MonoBehaviour
                 _sfxCorsoAS.PlayOneShot(_sfxDisparoAire, 1f);
             }
         }
+    }
+    public void RecargaSFX()
+    {
+        _sfxCorsoAS.PlayOneShot(_sfxRecarga, 1f);
     }
     public void HealSFX()
     {
