@@ -172,12 +172,12 @@ public class PlayerManager : MonoBehaviour
 
                         if (!spriteR.flipX)
                         {
-                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.right, Quaternion.Euler(0, 0, 90)));
+                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, new Vector2 (1f, 0.1f), Quaternion.identity, false));
                             StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-impulse, 0), dir));
                         }
                         else
                         {
-                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.left, Quaternion.Euler(0 ,0, -90)));
+                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, new Vector2(-1f, 0.1f), Quaternion.identity, true));
                             StartCoroutine(ShotTemp(Vector2.zero, new Vector2(impulse, 0), dir));
                         }
                         break;
@@ -188,6 +188,7 @@ public class PlayerManager : MonoBehaviour
                             playerAnim.Grounded(false);
                             dispSuelo = true;
                             impulse = 1000;
+                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.down, Quaternion.identity, false));
                         }
                         else if (state == 4)
                         {
@@ -195,14 +196,15 @@ public class PlayerManager : MonoBehaviour
                             playerAnim.Grounded(false);
                             dispSuelo = true;
                             impulse = 1300f;
+                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.down, Quaternion.identity, false));
                         }
                         else
                         {
                             dispSuelo = false;
                             impulse = 800f;
+                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.down, Quaternion.Euler(0, 0, -90), false));
                         }
-
-                        StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.down, Quaternion.identity));
+ 
                         StartCoroutine(ShotTemp(new Vector2(playerRB.velocity.x, 0), new Vector2(0, impulse), dir));
 
                         break;
@@ -211,13 +213,13 @@ public class PlayerManager : MonoBehaviour
                         if (state == 1)
                         {
                             dispSuelo = false;
-                            StartCoroutine (_shotManager.FireSpawn(dispSuelo, Vector2.up, Quaternion.Euler(0, 0, 180)));
+                            StartCoroutine (_shotManager.FireSpawn(dispSuelo, Vector2.up, Quaternion.Euler(0, 0, 90), false));
                             StartCoroutine (ShotTemp(Vector2.zero, new Vector2(0, -impulse), dir));
                         }
                         else if (state == 0)
                         {
                             dispSuelo = false;
-                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.up, Quaternion.Euler(0, 0, 180)));
+                            StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.up, Quaternion.Euler(0, 0, 90), false));
                             StartCoroutine(ShotTemp(Vector2.zero, Vector2.zero, dir));
                         }
                         break;
@@ -230,14 +232,14 @@ public class PlayerManager : MonoBehaviour
 
                 if (spriteR.flipX)
                 {
-                    StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.left, Quaternion.Euler(0, 0, -90)));
+                    StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.left, Quaternion.Euler(0, 0, 90), true));
                     StartCoroutine(ShotTemp(Vector2.zero, new Vector2(impulse, impulse / 2f), dir));
                 }
 
 
                 else
                 {
-                    StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.right, Quaternion.Euler(0, 0, 90)));
+                    StartCoroutine(_shotManager.FireSpawn(dispSuelo, Vector2.right, Quaternion.Euler(0, 0, 90), false));
                     StartCoroutine(ShotTemp(Vector2.zero, new Vector2(-impulse, impulse / 2f), dir));
                 }
                     

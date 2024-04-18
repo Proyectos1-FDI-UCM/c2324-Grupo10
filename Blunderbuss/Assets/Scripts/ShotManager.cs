@@ -48,31 +48,30 @@ public class ShotManager : MonoBehaviour
 
     }
 
-    public IEnumerator FireSpawn(bool suelo, Vector2 position, Quaternion rotation)
+    public IEnumerator FireSpawn(bool suelo, Vector2 position, Quaternion rotation, bool flip)
     {
-        float _faDist = 1.6f;
+        float _faDistx = 3.3f;
+        float _faDisty = 3.8f;
         float _fsDist = 0.8f;
         float intervalo = 0.3f;
 
         if (!suelo)
         {
-            _fuegoAire.transform.position = _myTransform.position + new Vector3(position.x * _faDist, position.y * _faDist, -1f);
+            _fuegoAire.transform.position = _myTransform.position + new Vector3(position.x * _faDistx, position.y * _faDisty, -1f);
             _fuegoAire.transform.rotation = rotation;
-            _boxCollFA.enabled = true;
-            _spriteRFA.enabled = true;
+            _spriteRFA.flipX = flip;
+            _fuegoAire.SetActive(true);
             yield return new WaitForSeconds(intervalo);
-            _boxCollFA.enabled = false;
-            _spriteRFA.enabled = false;
+            _fuegoAire.SetActive(false);
         }
         else
         {
             _fuegoSuelo.transform.position = _myTransform.position + new Vector3(position.x * _fsDist, position.y * _fsDist, -1f);
             _fuegoSuelo.transform.rotation = rotation;
-            _boxCollFS.enabled = true;
-            _spriteRFS.enabled = true;
+            _spriteRFS.flipY = flip;
+            _fuegoSuelo.SetActive(true);
             yield return new WaitForSeconds(intervalo);
-            _boxCollFS.enabled = false;
-            _spriteRFS.enabled = false;
+            _fuegoSuelo.SetActive(false);
         }
     }
 
