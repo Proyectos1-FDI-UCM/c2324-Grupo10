@@ -47,9 +47,8 @@ public class FaunoManager : MonoBehaviour
     private bool _hitGround = true;//choca con suelo?
 
     private int _state = 0; //variable de control de estados del fauno
-                            //=0 ; blablabla
-                            //=1 ; blablabla
-                            //=2 ; blablabla
+                            //=0 ; en ataque
+                            //=1 ; caminando
     #endregion
 
     #region methods
@@ -125,13 +124,14 @@ public class FaunoManager : MonoBehaviour
     #region attacks
     private IEnumerator Walk()
     {
+        _state = 1;
         while (Distancia() > _configuration.CloseRange)
         {
-            Vector3 newPos = Vector3.zero;
-            newPos = new Vector3((SetDirection() * _configuration.WalkSpeed * Time.deltaTime), 0, 0);
+            Vector3 newPos = new Vector3((SetDirection() * _configuration.WalkSpeed * Time.deltaTime), 0, 0);
             _myTransform.position += newPos;
             yield return null;
         }
+        _state = 0;
         StartCoroutine(FaunoAI());
     }
 
