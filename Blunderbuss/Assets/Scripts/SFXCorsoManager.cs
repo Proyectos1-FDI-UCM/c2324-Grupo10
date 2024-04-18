@@ -35,33 +35,33 @@ public class SFXCorsoManager : MonoBehaviour
         {
             if (suelo)
             {
-                _sfxCorsoAS.PlayOneShot(_sfxDisparoSuelo, 1f);
+                _sfxCorsoAS.PlayOneShot(_sfxDisparoSuelo, 0.6f);
             }
             else
             {
-                _sfxCorsoAS.PlayOneShot(_sfxDisparoAire, 1f);
+                _sfxCorsoAS.PlayOneShot(_sfxDisparoAire, 0.6f);
             }
         }
     }
     public void RecargaSFX()
     {
-        _sfxCorsoAS.PlayOneShot(_sfxRecarga, 1f);
+        _sfxCorsoAS.PlayOneShot(_sfxRecarga, 0.7f);
     }
     public void HealSFX()
     {
-        _sfxCorsoAS.PlayOneShot(_sfxHeal, 1f);
+        _sfxCorsoAS.PlayOneShot(_sfxHeal, 0.8f);
     }
     public void PelotazoSFX()
     {
-        _sfxCorsoAS.PlayOneShot(_sfxPelotazo, 1f);
+        _sfxCorsoAS.PlayOneShot(_sfxPelotazo, 0.8f);
     }
     public void CargaASFX()
     {
-        _sfxCorsoAS.PlayOneShot(_sfxCargaPelotazoA, 1f);
+        _sfxCorsoAS.PlayOneShot(_sfxCargaPelotazoA, 0.1f);
     }
     public void CargaBSFX()
     {
-        _sfxCorsoAS.PlayOneShot(_sfxCargaPelotazoB, 1f);
+        _sfxCorsoAS.PlayOneShot(_sfxCargaPelotazoB, 0.2f);
     }
 }
 

@@ -5482,9 +5482,9 @@ MonoBehaviour:
   _sfxDisparoAire: {fileID: 8300000, guid: a32ab82a6bd1ef24382deb63ab887554, type: 3}
   _sfxDisparoSuelo: {fileID: 8300000, guid: 481db319fbaeec741bfcf9c7f2084a65, type: 3}
   _sfxPelotazo: {fileID: 8300000, guid: ec812097020751f47b33c98b017623eb, type: 3}
-  _sfxHeal: {fileID: 8300000, guid: f2aa18b1582f8024ca294694a99c2715, type: 3}
+  _sfxHeal: {fileID: 8300000, guid: c2020bd0c7fc6ac4985e9cdcdca66b0c, type: 3}
   _sfxCargaPelotazoA: {fileID: 8300000, guid: da3de00c589713940a5123ce8941300f, type: 3}
-  _sfxCargaPelotazoB: {fileID: 8300000, guid: a876d2c4b21f2824f9da8ed01af1be9c, type: 3}
+  _sfxCargaPelotazoB: {fileID: 8300000, guid: 50672e6978f054c49a989c16bcd75e7a, type: 3}
   _sfxDesliz: {fileID: 8300000, guid: 98887c22e5a344c4ba5267ce99f0ee15, type: 3}
   _sfxRecarga: {fileID: 8300000, guid: 3cb10de376f21844d9c8bf28dc058ea2, type: 3}
 --- !u!82 &3646951765748431384
