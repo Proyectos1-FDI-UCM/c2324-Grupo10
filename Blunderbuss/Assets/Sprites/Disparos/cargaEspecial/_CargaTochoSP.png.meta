@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 100b6b663cc007140b313318b9ced0a8
+guid: 5f56d66ad9070254ea934e525e8d3529
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_0
+      name: _CargaTochoSP_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 014146b22018086499b2b1ea1fcbc783
-      internalID: 1951128806
+      spriteID: c964b1d6d853c0d479749f0ad2bb2571
+      internalID: 1352740255
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_1
+      name: _CargaTochoSP_1
       rect:
         serializedVersion: 2
         x: 200
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c602122c3f3af134a854a37571fbd509
-      internalID: -2058048990
+      spriteID: 49d1061205cf65f41921428c2a591b1e
+      internalID: 1961346675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_2
+      name: _CargaTochoSP_2
       rect:
         serializedVersion: 2
         x: 400
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08f17cbe272e3df42998d8212634bef6
-      internalID: 1365246618
+      spriteID: 87f29cd845e144845b76424694c3d7c6
+      internalID: 2100813212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_3
+      name: _CargaTochoSP_3
       rect:
         serializedVersion: 2
         x: 600
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2693735a812e10445ba63c806173333d
-      internalID: 575422485
+      spriteID: 53e9761c394b5a44583a8fc8c3e00abb
+      internalID: -956407281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_4
+      name: _CargaTochoSP_4
       rect:
         serializedVersion: 2
         x: 800
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 820b7d9127b053641a6066125d20b07c
-      internalID: 1376786722
+      spriteID: 2eca549cb3d3b734bbddae0cf2247bf3
+      internalID: 1076138705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_5
+      name: _CargaTochoSP_5
       rect:
         serializedVersion: 2
         x: 1000
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 537ebf2a5d1b4e94194a39e5865119f3
-      internalID: -316757591
+      spriteID: e91135370ebbec44b95281a4e13165bf
+      internalID: -297915089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_6
+      name: _CargaTochoSP_6
       rect:
         serializedVersion: 2
         x: 1200
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99579c854fe1b9849968173d0b7e0d6a
-      internalID: -1849966044
+      spriteID: 4bf6c4590b02fe14c85d0c6dbfe1d2c8
+      internalID: -1851484013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_7
+      name: _CargaTochoSP_7
       rect:
         serializedVersion: 2
         x: 1400
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a56af40534f713f42bb1e856480d7e5b
-      internalID: -280177433
+      spriteID: 73ace4ebe60355d4fb98bb0ede6bf92a
+      internalID: -87832661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_8
+      name: _CargaTochoSP_8
       rect:
         serializedVersion: 2
         x: 1600
@@ -292,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45e3edc1209c2804386f1acf12bbb0e6
-      internalID: 1696353288
+      spriteID: 650df7ac06c825d4aa9b6bb47268b75f
+      internalID: 210551611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_9
+      name: _CargaTochoSP_9
       rect:
         serializedVersion: 2
         x: 1800
@@ -313,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ff8b2aac632def4098055a5146a44d9
-      internalID: 1105169568
+      spriteID: b7b30b799bd34d44aa32f155a4757e64
+      internalID: 668652766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_10
+      name: _CargaTochoSP_10
       rect:
         serializedVersion: 2
         x: 2000
@@ -334,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca19522cb66e6f74a947cadfcbb7062f
-      internalID: 477179905
+      spriteID: 4cb767d480b369747ac6492b91abca00
+      internalID: -2028724490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_11
+      name: _CargaTochoSP_11
       rect:
         serializedVersion: 2
         x: 2200
@@ -355,14 +355,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f2f8d8e852e59b469177c2229786b3e
-      internalID: 1935664084
+      spriteID: 445096155c564a24997dfd7b75479c4a
+      internalID: -518795325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_12
+      name: _CargaTochoSP_12
       rect:
         serializedVersion: 2
         x: 2400
@@ -376,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa7b6c5b8d43d6d45be9c92217056841
-      internalID: 2028328883
+      spriteID: 4f2e5253c2affb74881b53782331a814
+      internalID: 1786488466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_13
+      name: _CargaTochoSP_13
       rect:
         serializedVersion: 2
         x: 2600
@@ -397,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d5fe4f2426cd2248b40a9a09a18e0fb
-      internalID: -1183893476
+      spriteID: d3aa31390af1873439be8c6e471fd86a
+      internalID: 1419971594
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_14
+      name: _CargaTochoSP_14
       rect:
         serializedVersion: 2
         x: 2800
@@ -418,14 +418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3058012948520ac4192935333ef0bc29
-      internalID: -362876867
+      spriteID: 19691512102a7dd4fb6907652ee0c7a6
+      internalID: -1757970411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_15
+      name: _CargaTochoSP_15
       rect:
         serializedVersion: 2
         x: 3000
@@ -439,14 +439,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dd7d8530638e5649afba75b96bade61
-      internalID: 1285734663
+      spriteID: bc42190aed5ac1048a20ecce7d47ab2b
+      internalID: -624116186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_16
+      name: _CargaTochoSP_16
       rect:
         serializedVersion: 2
         x: 3200
@@ -460,14 +460,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65b3693fda32c6846b31c64e2c55e28e
-      internalID: 537437103
+      spriteID: 9968c95f4b4915243a2ed5db2bbefdbd
+      internalID: 1367952180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_17
+      name: _CargaTochoSP_17
       rect:
         serializedVersion: 2
         x: 3400
@@ -481,14 +481,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42f673539fb67274c992e3ca2ab5ec70
-      internalID: -1578227341
+      spriteID: 67846f28776f17443b1235fe58b0b4d7
+      internalID: 1977157515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_18
+      name: _CargaTochoSP_18
       rect:
         serializedVersion: 2
         x: 3600
@@ -502,14 +502,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4e21198ea61ec84db2bb38eb73a48a4
-      internalID: 700122261
+      spriteID: c5da0b5bf05cf984cba4908a2005acf7
+      internalID: 1617373885
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_19
+      name: _CargaTochoSP_19
       rect:
         serializedVersion: 2
         x: 3800
@@ -523,14 +523,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f16505b3b61eb1d40a363ed11c3c2a5b
-      internalID: 1746272409
+      spriteID: d9a2279c576236241ad8332c6b0c83a4
+      internalID: -168594897
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_20
+      name: _CargaTochoSP_20
       rect:
         serializedVersion: 2
         x: 4000
@@ -544,14 +544,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9ec70deca4aabc4facd2490faa64071
-      internalID: -224272358
+      spriteID: 460a843f1218ac3408cb05f60cc1470f
+      internalID: -905333059
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_21
+      name: _CargaTochoSP_21
       rect:
         serializedVersion: 2
         x: 4200
@@ -565,14 +565,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf376c490e43aa04b8d70c19b2c27b32
-      internalID: 397247456
+      spriteID: 7a0b6b60c6b6afa40834def451af1e8e
+      internalID: 2090041146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_22
+      name: _CargaTochoSP_22
       rect:
         serializedVersion: 2
         x: 4400
@@ -586,14 +586,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19cad5e34ea6b54469d2d818951f42fb
-      internalID: 475743886
+      spriteID: 8e354432eea01f74ab79260c24021fb4
+      internalID: 1984935686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_23
+      name: _CargaTochoSP_23
       rect:
         serializedVersion: 2
         x: 4600
@@ -607,14 +607,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49edef58e9641ca4a9529f2c3d320eef
-      internalID: 2013141499
+      spriteID: 1fb1dfad9612ead498131721636b8a5b
+      internalID: 423684447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_24
+      name: _CargaTochoSP_24
       rect:
         serializedVersion: 2
         x: 4800
@@ -628,14 +628,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75cfae1bc64858545a6b397abfdaaa2c
-      internalID: -1385307363
+      spriteID: 42d59c39e3c11b048bbfe48b735e07fc
+      internalID: -1678286427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_25
+      name: _CargaTochoSP_25
       rect:
         serializedVersion: 2
         x: 5000
@@ -649,14 +649,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5eb756b5fe306c64981ceb086ce33861
-      internalID: 74050229
+      spriteID: a1653dacb70fc1a46b4092bdf75cc296
+      internalID: 1460821560
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_26
+      name: _CargaTochoSP_26
       rect:
         serializedVersion: 2
         x: 5200
@@ -670,14 +670,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 653ca38a103c9d0418479e53c5181f30
-      internalID: 514776822
+      spriteID: 47ccd9b5b7e7b7340a13e0447f50c36c
+      internalID: -1441633056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_27
+      name: _CargaTochoSP_27
       rect:
         serializedVersion: 2
         x: 5400
@@ -691,14 +691,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f952f39ec9ad9e143bcf5e1fc07f6b01
-      internalID: 1669035836
+      spriteID: f6c20e92f2199ad439dc094e56157f99
+      internalID: -262793178
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_28
+      name: _CargaTochoSP_28
       rect:
         serializedVersion: 2
         x: 5600
@@ -712,14 +712,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5171d56792796a14eafe9ac3e660abc7
-      internalID: 465464592
+      spriteID: 109ef1e435071ef4f94abc39d990d08d
+      internalID: -1798782184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_29
+      name: _CargaTochoSP_29
       rect:
         serializedVersion: 2
         x: 5800
@@ -733,14 +733,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a42d31f1198c9342b245e8e2b03743a
-      internalID: -1425940865
+      spriteID: c309fa5cfd75d6542b5b3756e828874e
+      internalID: -368957233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_30
+      name: _CargaTochoSP_30
       rect:
         serializedVersion: 2
         x: 6000
@@ -754,14 +754,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9406d2a4be800be4bb70f9139aa1fe3b
-      internalID: 1700528368
+      spriteID: e5d049e6c012f8d4283c8ad10a98b5b6
+      internalID: -1352023712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_31
+      name: _CargaTochoSP_31
       rect:
         serializedVersion: 2
         x: 6200
@@ -775,14 +775,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b010bcc78c4b4d45b4eabf010c34cc1
-      internalID: -779356143
+      spriteID: 06f1c5e32c575db49ac46cca61797b46
+      internalID: -1189539743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_32
+      name: _CargaTochoSP_32
       rect:
         serializedVersion: 2
         x: 6400
@@ -796,14 +796,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18961858d31c58247b5cd0ef33b3b8a0
-      internalID: 1842442408
+      spriteID: 878d4e71e1171f843a3a8f384de0903d
+      internalID: 111257693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_33
+      name: _CargaTochoSP_33
       rect:
         serializedVersion: 2
         x: 6600
@@ -817,14 +817,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ece42470e32afe49ab92e63ada76811
-      internalID: -1008417104
+      spriteID: 0bb19f223d42bcf4fb4ac5971c868705
+      internalID: 535446873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_34
+      name: _CargaTochoSP_34
       rect:
         serializedVersion: 2
         x: 6800
@@ -838,14 +838,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4eca4726f7d0e9f418b1da7255be00f6
-      internalID: 1916143427
+      spriteID: 26550d384ed80414e9c4cc9a30eac33e
+      internalID: -405839301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_35
+      name: _CargaTochoSP_35
       rect:
         serializedVersion: 2
         x: 7000
@@ -859,14 +859,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75a0954d24bebc644b34a1ad853ffc58
-      internalID: -2124604171
+      spriteID: 6ed486a863dcac749acce48f7b6be2b1
+      internalID: 1085678570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_36
+      name: _CargaTochoSP_36
       rect:
         serializedVersion: 2
         x: 7200
@@ -880,14 +880,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 660b24374d36cfc4a8643a5528d7b832
-      internalID: 1638753626
+      spriteID: 446cf373cc280e04d8669d4c24c56f65
+      internalID: 1367002643
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_37
+      name: _CargaTochoSP_37
       rect:
         serializedVersion: 2
         x: 7400
@@ -901,14 +901,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c6b974914727d542b32a205ecb5bacd
-      internalID: 100246510
+      spriteID: 58f7b3ef6098a5f4fa3231b613965061
+      internalID: 2037457173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_38
+      name: _CargaTochoSP_38
       rect:
         serializedVersion: 2
         x: 7600
@@ -922,14 +922,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34d633bcc906ee44d9b8a8c27a34d440
-      internalID: 1348843037
+      spriteID: c574b188ac31ee643847349183661efb
+      internalID: 1042957937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_39
+      name: _CargaTochoSP_39
       rect:
         serializedVersion: 2
         x: 7800
@@ -943,14 +943,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8ded771498daa5468ee3060f297139c
-      internalID: -2127620329
+      spriteID: c66494b7dcf71284e829f4c87af4d027
+      internalID: 531777904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_40
+      name: _CargaTochoSP_40
       rect:
         serializedVersion: 2
         x: 8000
@@ -964,14 +964,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 226f78b66c119f54fa843b9c88262928
-      internalID: -1726676593
+      spriteID: c3f4213a19560f34eafb09e3a882b7f5
+      internalID: 1480914145
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_41
+      name: _CargaTochoSP_41
       rect:
         serializedVersion: 2
         x: 8200
@@ -985,14 +985,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6e2853c17c03ee459fc192e509c6c46
-      internalID: -1555677229
+      spriteID: 429b1bf0ab8c6d7469dd80bdbe4ca819
+      internalID: 372659179
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_42
+      name: _CargaTochoSP_42
       rect:
         serializedVersion: 2
         x: 8400
@@ -1006,14 +1006,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad97170bb820b3741943e614d0af69bc
-      internalID: -657272631
+      spriteID: 59fb0bc17fb66d049842a0f53aef728c
+      internalID: 1066697688
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_43
+      name: _CargaTochoSP_43
       rect:
         serializedVersion: 2
         x: 8600
@@ -1027,14 +1027,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d7b289969c80b54d8ce3e2229533614
-      internalID: 1185404405
+      spriteID: a67030f6444fdc0488dee19663871c30
+      internalID: -1640166888
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_44
+      name: _CargaTochoSP_44
       rect:
         serializedVersion: 2
         x: 8800
@@ -1048,14 +1048,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7ba43048618bdc4da349d802c733c82
-      internalID: -193922191
+      spriteID: 86d059ea32f176846a03aeab5d05f0f7
+      internalID: -1960431648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_45
+      name: _CargaTochoSP_45
       rect:
         serializedVersion: 2
         x: 9000
@@ -1069,14 +1069,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edf0a57eb4f88f54fb7fd4fc966cd6e0
-      internalID: -758493705
+      spriteID: 17816066118746f479dfd62f0a5c4f41
+      internalID: -1502941553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_46
+      name: _CargaTochoSP_46
       rect:
         serializedVersion: 2
         x: 9200
@@ -1090,14 +1090,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dda413c5f14b11448711e5004a5128b
-      internalID: -1566503546
+      spriteID: ccda006222b694e4caeb133ed8013f84
+      internalID: -443030321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_47
+      name: _CargaTochoSP_47
       rect:
         serializedVersion: 2
         x: 9400
@@ -1111,14 +1111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e051d8fb70cd6d34cae7cac84440aa54
-      internalID: 564015705
+      spriteID: 2b8d3b1ab26aaef42bcb0b4850fcf297
+      internalID: 17564822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_48
+      name: _CargaTochoSP_48
       rect:
         serializedVersion: 2
         x: 9600
@@ -1132,14 +1132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef2e3a0ca02c279439dbac1108d49146
-      internalID: 1062193827
+      spriteID: 797e5124c7cd90c4c819f8beea1b42ce
+      internalID: 1248731157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_49
+      name: _CargaTochoSP_49
       rect:
         serializedVersion: 2
         x: 9800
@@ -1153,14 +1153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b34f2bc80ce83e4b8bc130a35d40dd4
-      internalID: 299502409
+      spriteID: b4698c9c927ed0947b63ad376b38c619
+      internalID: 633688563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_50
+      name: _CargaTochoSP_50
       rect:
         serializedVersion: 2
         x: 10000
@@ -1174,14 +1174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d8546fe89cdf354f8d4864451f73def
-      internalID: 140026934
+      spriteID: 6c77e6b6267cb9040a09a0a5ee968e29
+      internalID: -156178238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_51
+      name: _CargaTochoSP_51
       rect:
         serializedVersion: 2
         x: 10200
@@ -1195,14 +1195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8373efdf7341abd4586ef26aeb00abca
-      internalID: -568083632
+      spriteID: f032c67bdcd263044b86c8bf0858bca2
+      internalID: 37186842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_52
+      name: _CargaTochoSP_52
       rect:
         serializedVersion: 2
         x: 10400
@@ -1216,14 +1216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 863a897b7a1115647a34d0ebfecc829f
-      internalID: -989428005
+      spriteID: c96d99b746868544982bbdf1e6837a17
+      internalID: 1978380547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_53
+      name: _CargaTochoSP_53
       rect:
         serializedVersion: 2
         x: 10600
@@ -1237,14 +1237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4da3aaaf4c7567d418d3065dd376cca7
-      internalID: -1492841680
+      spriteID: c4056c28747dcbd40a0b6f78ccb7f49f
+      internalID: 394155711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_54
+      name: _CargaTochoSP_54
       rect:
         serializedVersion: 2
         x: 10800
@@ -1258,14 +1258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ea6f6458e779674182cf9610b08ce4b
-      internalID: 1114524144
+      spriteID: 5311d48ed75c30041a6621490a655197
+      internalID: -742102919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_55
+      name: _CargaTochoSP_55
       rect:
         serializedVersion: 2
         x: 11000
@@ -1279,14 +1279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8de7f7ee35ceb5f4dacc5c30c89dbf89
-      internalID: -1203508458
+      spriteID: 013f53a0ba55f974694a7c187c673ae1
+      internalID: -943803054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_56
+      name: _CargaTochoSP_56
       rect:
         serializedVersion: 2
         x: 11200
@@ -1300,14 +1300,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3d2e86705e08e44c9004b7908f90a14
-      internalID: -1170032269
+      spriteID: 1e25dc1435d752544b56507800fe1327
+      internalID: -208997142
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_57
+      name: _CargaTochoSP_57
       rect:
         serializedVersion: 2
         x: 11400
@@ -1321,14 +1321,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99afb9f076c87fc4eae8880ba6f50be1
-      internalID: 2147409774
+      spriteID: e78dd2f0ce3e0eb4f9b3f4a4ae4b36b7
+      internalID: 607113363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_58
+      name: _CargaTochoSP_58
       rect:
         serializedVersion: 2
         x: 11600
@@ -1342,14 +1342,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ac5d3b50070c9f4cab63e143194588c
-      internalID: 1131213534
+      spriteID: 45b94ffec649a4946979ac23562790ba
+      internalID: -719470749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_59
+      name: _CargaTochoSP_59
       rect:
         serializedVersion: 2
         x: 11800
@@ -1363,14 +1363,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff8e9ff65a909d54e93da9cbca15ebcb
-      internalID: 1159809260
+      spriteID: 9a5010df721f4f647acc6bcc8a471803
+      internalID: 524194913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_60
+      name: _CargaTochoSP_60
       rect:
         serializedVersion: 2
         x: 12000
@@ -1384,14 +1384,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 146c23fe38caa9549b1ea5ecd9283a36
-      internalID: 1537953566
+      spriteID: adc7dfdbea63e6c458ce163abbeb17d8
+      internalID: 623351374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_61
+      name: _CargaTochoSP_61
       rect:
         serializedVersion: 2
         x: 12200
@@ -1405,14 +1405,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c7cb0fcd45487346b87202027688a83
-      internalID: 2056737850
+      spriteID: 16096fd18b2dfea4ba22154be1b91bde
+      internalID: 940459180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_62
+      name: _CargaTochoSP_62
       rect:
         serializedVersion: 2
         x: 12400
@@ -1426,14 +1426,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 037632cc7fde84947a1336047dfd1440
-      internalID: -1395666661
+      spriteID: b32219397412cb34a84410a8b1b89859
+      internalID: -315904463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_63
+      name: _CargaTochoSP_63
       rect:
         serializedVersion: 2
         x: 12600
@@ -1447,14 +1447,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec3898137193be940bc049e82948eca2
-      internalID: 2061497131
+      spriteID: 0899f131c58f4f84ba2e9eabd5a1f925
+      internalID: -683320058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_64
+      name: _CargaTochoSP_64
       rect:
         serializedVersion: 2
         x: 12800
@@ -1468,14 +1468,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d501ecb2c29532a41a915ddf7fc19cda
-      internalID: -873059705
+      spriteID: 274184f67fb089f4e8e20c8dd6039146
+      internalID: 1346266822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_65
+      name: _CargaTochoSP_65
       rect:
         serializedVersion: 2
         x: 13000
@@ -1489,14 +1489,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 811f2c5c89034d1428babd533c712052
-      internalID: 1752623097
+      spriteID: e83cc275c67e69546856c7d883fcb498
+      internalID: 1199857212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: _IndicadorDispTochoSP_66
+      name: _CargaTochoSP_66
       rect:
         serializedVersion: 2
         x: 13200
@@ -1510,8 +1510,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9372d72671d4b7643acdf5e148255d0e
-      internalID: -792963503
+      spriteID: f462491f8f87bb64881d51bf4ef0a473
+      internalID: -1052661841
       vertices: []
       indices: 
       edges: []
@@ -1527,73 +1527,73 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      _IndicadorDispTochoSP_0: 1951128806
-      _IndicadorDispTochoSP_1: -2058048990
-      _IndicadorDispTochoSP_10: 477179905
-      _IndicadorDispTochoSP_11: 1935664084
-      _IndicadorDispTochoSP_12: 2028328883
-      _IndicadorDispTochoSP_13: -1183893476
-      _IndicadorDispTochoSP_14: -362876867
-      _IndicadorDispTochoSP_15: 1285734663
-      _IndicadorDispTochoSP_16: 537437103
-      _IndicadorDispTochoSP_17: -1578227341
-      _IndicadorDispTochoSP_18: 700122261
-      _IndicadorDispTochoSP_19: 1746272409
-      _IndicadorDispTochoSP_2: 1365246618
-      _IndicadorDispTochoSP_20: -224272358
-      _IndicadorDispTochoSP_21: 397247456
-      _IndicadorDispTochoSP_22: 475743886
-      _IndicadorDispTochoSP_23: 2013141499
-      _IndicadorDispTochoSP_24: -1385307363
-      _IndicadorDispTochoSP_25: 74050229
-      _IndicadorDispTochoSP_26: 514776822
-      _IndicadorDispTochoSP_27: 1669035836
-      _IndicadorDispTochoSP_28: 465464592
-      _IndicadorDispTochoSP_29: -1425940865
-      _IndicadorDispTochoSP_3: 575422485
-      _IndicadorDispTochoSP_30: 1700528368
-      _IndicadorDispTochoSP_31: -779356143
-      _IndicadorDispTochoSP_32: 1842442408
-      _IndicadorDispTochoSP_33: -1008417104
-      _IndicadorDispTochoSP_34: 1916143427
-      _IndicadorDispTochoSP_35: -2124604171
-      _IndicadorDispTochoSP_36: 1638753626
-      _IndicadorDispTochoSP_37: 100246510
-      _IndicadorDispTochoSP_38: 1348843037
-      _IndicadorDispTochoSP_39: -2127620329
-      _IndicadorDispTochoSP_4: 1376786722
-      _IndicadorDispTochoSP_40: -1726676593
-      _IndicadorDispTochoSP_41: -1555677229
-      _IndicadorDispTochoSP_42: -657272631
-      _IndicadorDispTochoSP_43: 1185404405
-      _IndicadorDispTochoSP_44: -193922191
-      _IndicadorDispTochoSP_45: -758493705
-      _IndicadorDispTochoSP_46: -1566503546
-      _IndicadorDispTochoSP_47: 564015705
-      _IndicadorDispTochoSP_48: 1062193827
-      _IndicadorDispTochoSP_49: 299502409
-      _IndicadorDispTochoSP_5: -316757591
-      _IndicadorDispTochoSP_50: 140026934
-      _IndicadorDispTochoSP_51: -568083632
-      _IndicadorDispTochoSP_52: -989428005
-      _IndicadorDispTochoSP_53: -1492841680
-      _IndicadorDispTochoSP_54: 1114524144
-      _IndicadorDispTochoSP_55: -1203508458
-      _IndicadorDispTochoSP_56: -1170032269
-      _IndicadorDispTochoSP_57: 2147409774
-      _IndicadorDispTochoSP_58: 1131213534
-      _IndicadorDispTochoSP_59: 1159809260
-      _IndicadorDispTochoSP_6: -1849966044
-      _IndicadorDispTochoSP_60: 1537953566
-      _IndicadorDispTochoSP_61: 2056737850
-      _IndicadorDispTochoSP_62: -1395666661
-      _IndicadorDispTochoSP_63: 2061497131
-      _IndicadorDispTochoSP_64: -873059705
-      _IndicadorDispTochoSP_65: 1752623097
-      _IndicadorDispTochoSP_66: -792963503
-      _IndicadorDispTochoSP_7: -280177433
-      _IndicadorDispTochoSP_8: 1696353288
-      _IndicadorDispTochoSP_9: 1105169568
+      _CargaTochoSP_0: 1352740255
+      _CargaTochoSP_1: 1961346675
+      _CargaTochoSP_10: -2028724490
+      _CargaTochoSP_11: -518795325
+      _CargaTochoSP_12: 1786488466
+      _CargaTochoSP_13: 1419971594
+      _CargaTochoSP_14: -1757970411
+      _CargaTochoSP_15: -624116186
+      _CargaTochoSP_16: 1367952180
+      _CargaTochoSP_17: 1977157515
+      _CargaTochoSP_18: 1617373885
+      _CargaTochoSP_19: -168594897
+      _CargaTochoSP_2: 2100813212
+      _CargaTochoSP_20: -905333059
+      _CargaTochoSP_21: 2090041146
+      _CargaTochoSP_22: 1984935686
+      _CargaTochoSP_23: 423684447
+      _CargaTochoSP_24: -1678286427
+      _CargaTochoSP_25: 1460821560
+      _CargaTochoSP_26: -1441633056
+      _CargaTochoSP_27: -262793178
+      _CargaTochoSP_28: -1798782184
+      _CargaTochoSP_29: -368957233
+      _CargaTochoSP_3: -956407281
+      _CargaTochoSP_30: -1352023712
+      _CargaTochoSP_31: -1189539743
+      _CargaTochoSP_32: 111257693
+      _CargaTochoSP_33: 535446873
+      _CargaTochoSP_34: -405839301
+      _CargaTochoSP_35: 1085678570
+      _CargaTochoSP_36: 1367002643
+      _CargaTochoSP_37: 2037457173
+      _CargaTochoSP_38: 1042957937
+      _CargaTochoSP_39: 531777904
+      _CargaTochoSP_4: 1076138705
+      _CargaTochoSP_40: 1480914145
+      _CargaTochoSP_41: 372659179
+      _CargaTochoSP_42: 1066697688
+      _CargaTochoSP_43: -1640166888
+      _CargaTochoSP_44: -1960431648
+      _CargaTochoSP_45: -1502941553
+      _CargaTochoSP_46: -443030321
+      _CargaTochoSP_47: 17564822
+      _CargaTochoSP_48: 1248731157
+      _CargaTochoSP_49: 633688563
+      _CargaTochoSP_5: -297915089
+      _CargaTochoSP_50: -156178238
+      _CargaTochoSP_51: 37186842
+      _CargaTochoSP_52: 1978380547
+      _CargaTochoSP_53: 394155711
+      _CargaTochoSP_54: -742102919
+      _CargaTochoSP_55: -943803054
+      _CargaTochoSP_56: -208997142
+      _CargaTochoSP_57: 607113363
+      _CargaTochoSP_58: -719470749
+      _CargaTochoSP_59: 524194913
+      _CargaTochoSP_6: -1851484013
+      _CargaTochoSP_60: 623351374
+      _CargaTochoSP_61: 940459180
+      _CargaTochoSP_62: -315904463
+      _CargaTochoSP_63: -683320058
+      _CargaTochoSP_64: 1346266822
+      _CargaTochoSP_65: 1199857212
+      _CargaTochoSP_66: -1052661841
+      _CargaTochoSP_7: -87832661
+      _CargaTochoSP_8: 210551611
+      _CargaTochoSP_9: 668652766
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
