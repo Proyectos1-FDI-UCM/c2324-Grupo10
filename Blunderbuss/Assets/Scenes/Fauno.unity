@@ -1717,6 +1717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fauno
       objectReference: {fileID: 0}
+    - target: {fileID: 5184325022539985131, guid: 8a3384381c077254a91634e2317128e5, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 5316745796829169042, guid: 8a3384381c077254a91634e2317128e5, type: 3}
       propertyPath: pDamage
       value: 5
