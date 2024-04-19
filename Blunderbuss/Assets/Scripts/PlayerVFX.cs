@@ -35,7 +35,7 @@ public class PlayerVFX : MonoBehaviour
     public void ActivaLLama()
     {
         _pelotazo.SetActive(true);
-        _sfxCorso.CargaASFX();
+        //_sfxCorso.CargaASFX();
     }
 
     public void DetonaLLama()

@@ -236,10 +236,15 @@ public class FaunoManager : MonoBehaviour
 
         _faunoAnimator.CuchilladaSuelo();
 
+        yield return new WaitForSeconds(1.2f);
+
         for(int i = 0; i < _cuchillaManagers.Length; i++)
         {
             yield return new WaitForSeconds(0.2f);
-            StartCoroutine(_cuchillaManagers[i].SacaCuchilla());
+            if (!_spriteF.flipX)
+                StartCoroutine(_cuchillaManagers[i].SacaCuchilla());
+            else
+                StartCoroutine(_cuchillaManagers[_cuchillaManagers.Length-1-i].SacaCuchilla());
         }
 
         StartCoroutine(FaunoAI());
