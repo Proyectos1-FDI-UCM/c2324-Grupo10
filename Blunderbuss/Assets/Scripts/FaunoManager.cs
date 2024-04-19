@@ -46,6 +46,7 @@ public class FaunoManager : MonoBehaviour
     private bool _hitWall = false; //choca con pared?
     private bool _hitGround = true;//choca con suelo?
     private bool _first = true;
+    Vector3 vectorPosCuchilla;
 
     private int _state = 0; //variable de control de estados del fauno
                             //=0 ; en ataque
@@ -227,12 +228,20 @@ public class FaunoManager : MonoBehaviour
         StartCoroutine(FaunoAI());
     }
 
-    private IEnumerator CuchillaFloor()
+    private IEnumerator CuchillaFloor(Vector3 vectorPosCuchilla)
     {
         //hacer que surjan a lo largo del mapa varias hitboxes verticales con un poco de retraso
         int dir = SetDirection();
 
-        _conjCuch.transform.position = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla*dir), -7, 0);
+        if(!_spriteF.flipX)
+        {
+            _conjCuch.transform.position = vectorPosCuchilla;
+        }
+        else
+        {
+            _conjCuch.transform.position = vectorPosCuchilla;
+        }
+        
 
         _faunoAnimator.CuchilladaSuelo();
 
@@ -260,13 +269,13 @@ public class FaunoManager : MonoBehaviour
         int dir = SetDirection();
 
         int i = 0;
-        while(i<_minas.Length-1 && _minas[i].activeSelf == false)
+        while(i<_minas.Length-1 && _minas[i].activeSelf == true)
         {
             i++;
         }
 
         _faunoAnimator.Aliento();
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
 
         _minas[i].SetActive(true);
         _minas[i].transform.position = _escupeMina.transform.position;
@@ -297,7 +306,7 @@ public class FaunoManager : MonoBehaviour
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
                 if (rnd == 0)
-                    StartCoroutine(CuchillaFloor());
+                    StartCoroutine(CuchillaFloor(vectorPosCuchilla));
                 else
                     StartCoroutine(Mina());
             }
@@ -306,7 +315,7 @@ public class FaunoManager : MonoBehaviour
                 if (rnd == 0)
                     StartCoroutine(Mina());
                 else
-                    StartCoroutine(CuchillaFloor());
+                    StartCoroutine(CuchillaFloor(vectorPosCuchilla));
             }
         }
         else
@@ -374,5 +383,6 @@ public class FaunoManager : MonoBehaviour
     {
         Distancia();
         Orient();
+        vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla*SetDirection()), -7, 0);
     }
 }

@@ -16,7 +16,7 @@ MonoBehaviour:
   _runSpeed: 10
   _airTime: 5
   _jumpForce: 10000
-  _distCuchilla: 3.75
+  _distCuchilla: 7
   _subeSpeed: 50
   _bajaSpeed: 3
   _vectMina: {x: 8, y: 10}
