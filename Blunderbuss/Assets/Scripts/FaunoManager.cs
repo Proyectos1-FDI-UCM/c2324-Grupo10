@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class FaunoManager : MonoBehaviour
 {
@@ -169,7 +166,7 @@ public class FaunoManager : MonoBehaviour
             _myTransform.position += newPos;
             yield return null;
         }
-        _camera.camState = 2;
+        //_camera.camState = 2;
         _faunoAnimator.CorrerEnd();
         _sfxFauno.ParedSFX();
         _obstacleComponent.pDamage = 5;
@@ -307,9 +304,11 @@ public class FaunoManager : MonoBehaviour
 
         _minas[i].SetActive(true);
         CircleCollider2D _coll = _minas[i].GetComponent<CircleCollider2D>();
+        MinaComponent _mc = _minas[i].GetComponent<MinaComponent>();
         _coll.enabled = true;
         _minas[i].transform.position = _escupeMina.transform.position;
         _minasRB[i].AddForce(new Vector2(_configuration.VectMina.x*dir, _configuration.VectMina.y), ForceMode2D.Impulse);
+        _mc.Activa();
 
         StartCoroutine(FaunoAI());
 

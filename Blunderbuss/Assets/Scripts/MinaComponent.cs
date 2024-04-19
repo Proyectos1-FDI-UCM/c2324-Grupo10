@@ -32,7 +32,11 @@ public class MinaComponent : MonoBehaviour
         }
     }
 
-
+    public void Activa()
+    {
+        _spriteRenderer.enabled = true;
+        _collTrigger.enabled = true;
+    }
     private IEnumerator ExplotaMina()
     {
         _spriteRenderer.enabled = false;
