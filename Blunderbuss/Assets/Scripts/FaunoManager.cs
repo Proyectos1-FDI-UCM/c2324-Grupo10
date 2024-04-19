@@ -158,6 +158,7 @@ public class FaunoManager : MonoBehaviour
         yield return new WaitForSeconds(6);
 
         _obstacleComponent.pDamage = 20;
+        _obstacleComponent.multiplier = 1.5f;
         while (!_hitWall)
         {
             Vector3 newPos = Vector3.zero;
@@ -167,6 +168,7 @@ public class FaunoManager : MonoBehaviour
         }
         _faunoAnimator.CorrerEnd();
         _obstacleComponent.pDamage = 5;
+        _obstacleComponent.multiplier = 1;
         _hitWall = false;
         yield return new WaitForSeconds(0.5f);
         _myTransform.position += SeparaPared(dir);
