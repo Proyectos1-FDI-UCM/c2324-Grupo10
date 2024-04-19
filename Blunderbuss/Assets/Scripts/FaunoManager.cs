@@ -89,6 +89,13 @@ public class FaunoManager : MonoBehaviour
         _spriteF.flipX = !_spriteF.flipX;
     }
 
+    private Vector3 SeparaPared(int dir)
+    {
+        Vector3 aux = new Vector3 (-dir * 2, 0, 0);
+
+        return aux;
+    }
+
     private int SetDirection() // calcula si el jugador esta a la derecha o izq del fauno.
     {
         float setDir = (_player.transform.position.x - _myTransform.position.x);
@@ -144,19 +151,22 @@ public class FaunoManager : MonoBehaviour
     {
         //determina si el jugador está a su derecha o izq, coge la posición de la pared específica y embiste hacia ese lado
         //es un ataque de larga distancia 
+        
         StartCoroutine(Rugido());
         _faunoAnimator.Correr();
-        yield return new WaitForSeconds(3);
+        int dir = SetDirection();
+        yield return new WaitForSeconds(6);
 
         while(!_hitWall)
         {
             Vector3 newPos = Vector3.zero;
-            newPos = new Vector3((SetDirection() * _configuration.RunSpeed * Time.deltaTime), 0, 0);
+            newPos = new Vector3((dir * _configuration.RunSpeed * Time.deltaTime), 0, 0);
             _myTransform.position += newPos;
             yield return null;
         }
         _faunoAnimator.CorrerEnd();
-        yield return new WaitUntil(() => _hitWall == true);
+        yield return new WaitForSeconds(0.3f);
+        _myTransform.position += SeparaPared(dir);
 
         StartCoroutine(FaunoAI());
     }
@@ -327,16 +337,19 @@ public class FaunoManager : MonoBehaviour
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
                 if (rnd == 0)
-                    StartCoroutine(Walk());
+                    //StartCoroutine(Walk());
+                    StartCoroutine(Embestida());
                 else
+                    StartCoroutine(Embestida());
                     //StartCoroutine(SaltoVert());
-                    StartCoroutine(Walk());
+                    //StartCoroutine(Walk());
+
             }
             else
             {
                 if (rnd == 0)
                     StartCoroutine(Embestida());
-                //StartCoroutine(SaltoVert());
+                    //StartCoroutine(SaltoVert());
                 else
                     StartCoroutine(Embestida());
             }
