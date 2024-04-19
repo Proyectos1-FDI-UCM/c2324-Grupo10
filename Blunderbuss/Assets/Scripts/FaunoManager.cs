@@ -169,6 +169,7 @@ public class FaunoManager : MonoBehaviour
             _myTransform.position += newPos;
             yield return null;
         }
+        _camera.camState = 2;
         _faunoAnimator.CorrerEnd();
         _sfxFauno.ParedSFX();
         _obstacleComponent.pDamage = 5;
