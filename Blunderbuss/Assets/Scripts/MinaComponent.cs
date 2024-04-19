@@ -10,6 +10,7 @@ public class MinaComponent : MonoBehaviour
     public Rigidbody2D rb;
     private CircleCollider2D _collTrigger;
     private ObstacleComponent _obstacle;
+    private SpriteRenderer _spriteRenderer;
     #endregion
 
     #region parameters
@@ -24,7 +25,25 @@ public class MinaComponent : MonoBehaviour
             _obstacle.enabled = true;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             state = 1;
-        }  
+        }
+        else if(collision.gameObject.CompareTag("Player") && state == 1)
+        {
+            StartCoroutine(ExplotaMina());
+        }
+    }
+
+
+    private IEnumerator ExplotaMina()
+    {
+        _spriteRenderer.enabled = false;
+
+        yield return new WaitForSeconds(0.1f);
+
+        _collTrigger.enabled = false;
+ 
+        yield return new WaitForSeconds(3);
+
+        gameObject.SetActive(false);
     }
     #endregion
 
@@ -34,6 +53,7 @@ public class MinaComponent : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         _collTrigger = GetComponent<CircleCollider2D>();
         _obstacle = GetComponent<ObstacleComponent>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnDisable()

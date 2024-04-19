@@ -306,7 +306,7 @@ public class FaunoManager : MonoBehaviour
 
         yield return new WaitForSeconds(_configuration.MinaTime);
 
-        _minas[i].SetActive(false);
+        if (_minas[i].active == true) _minas[i].SetActive(false);
     }
 
 
