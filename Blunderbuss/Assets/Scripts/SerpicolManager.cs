@@ -239,6 +239,7 @@ public class SerpicolManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         _obstacleComponent.multiplier = 1.5f;
+        _serpicolSFX.CaracolaSFX();
         while (vueltas != 5)
         {
             _myTransform.position = Vector3.MoveTowards(_myTransform.position, transVec, transSpeed * Time.deltaTime);
@@ -334,6 +335,7 @@ public class SerpicolManager : MonoBehaviour
         float limitLeftH = -15;
         float limitRightH = 15;
 
+        _serpicolSFX.PrerrayoSFX();
         _serpicolAnimator.HipnosisAnimation();
 
         float currentPos = _myTransform.position.x + (directionAux * initPos);
@@ -363,6 +365,7 @@ public class SerpicolManager : MonoBehaviour
         currentPos = _myTransform.position.x + (directionAux * initPos);
         currentPos2 = _myTransform.position.x + (-directionAux * initPos2);
         yield return new WaitForSeconds(wait * 2.5f);
+        _serpicolSFX.RayoSFX();
 
         for (int i = 0; i < spawnQ; i++)
         {
@@ -455,6 +458,8 @@ public class SerpicolManager : MonoBehaviour
         _serpicolAnimator.Suelo(false);
 
         Vector3 impulse;
+
+        _serpicolSFX.GolpeParedSFX();
 
         if (!_spriteS.flipX)
             impulse = new Vector3(-2100, 5300, 0);

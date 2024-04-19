@@ -18,4 +18,20 @@ public class SFXSerpicolManager : MonoBehaviour
     {
         _sfxSerpicolAS.PlayOneShot(_sfxBocao, 0.7f);
     }
+    public void GolpeParedSFX()
+    {
+        _sfxSerpicolAS.PlayOneShot(_sfxGolpePared, 0.2f);
+    }
+    public void PrerrayoSFX()
+    {
+        _sfxSerpicolAS.PlayOneShot(_sfxPrerrayo, 0.7f);
+    }
+    public void RayoSFX()
+    {
+        _sfxSerpicolAS.PlayOneShot(_sfxRayo, 0.7f);
+    }
+    public void CaracolaSFX()
+    {
+        _sfxSerpicolAS.PlayOneShot(_sfxCaracola, 0.7f);
+    }
 }
