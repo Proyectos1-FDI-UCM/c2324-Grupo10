@@ -191,7 +191,7 @@ public class FaunoManager : MonoBehaviour
         int dir = SetDirection();
 
         Vector2 scBase = _boxColl.size;
-        Vector2 scDest = _boxColl.size * new Vector2(2f, 0.7f);
+        Vector2 scDest = _boxColl.size * new Vector2(8f, 3.5f);
 
         Vector2 offBase = _boxColl.offset;
         Vector2 offDest = _boxColl.offset * new Vector2(dir * 2f, -0.5f);
