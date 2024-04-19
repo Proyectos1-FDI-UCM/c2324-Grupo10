@@ -292,7 +292,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 433452894480383823, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
       propertyPath: Escena
-      value: Inicio
+      value: Lobby
       objectReference: {fileID: 0}
     - target: {fileID: 1539192227583054048, guid: f0c876764e53ee144aa74b4a00b07e58, type: 3}
       propertyPath: HealthBar
