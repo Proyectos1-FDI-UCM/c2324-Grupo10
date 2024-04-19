@@ -25,6 +25,7 @@ public class FaunoManager : MonoBehaviour
     [SerializeField] private Rigidbody2D[] _minasRB = new Rigidbody2D[4];
 
     private ObstacleComponent _obstacleComponent;
+    private SFXFaunoManager _sfxFauno;
     private BossHealth _bossHealth;
     private Rigidbody2D _faunoRB;
     private Transform _myTransform;
@@ -144,6 +145,8 @@ public class FaunoManager : MonoBehaviour
 
     private IEnumerator Rugido()
     {
+        yield return new WaitForSeconds(0.4f);
+        _sfxFauno.Rugido1SFX();
         yield return new WaitForSeconds(3);
     }
 
@@ -167,6 +170,7 @@ public class FaunoManager : MonoBehaviour
             yield return null;
         }
         _faunoAnimator.CorrerEnd();
+        _sfxFauno.ParedSFX();
         _obstacleComponent.pDamage = 5;
         _obstacleComponent.multiplier = 1;
         _hitWall = false;
@@ -233,8 +237,8 @@ public class FaunoManager : MonoBehaviour
             yield return null;
         }
         
-        yield return new WaitForSeconds(0.2f);
-
+        yield return new WaitForSeconds(0.4f);
+        _sfxFauno.CuchilladaSFX();
 
         while (_boxColl.offset != offBase)
         {
@@ -262,8 +266,8 @@ public class FaunoManager : MonoBehaviour
         {
             _conjCuch.transform.position = vectorPosCuchilla;
         }
-        
 
+        _sfxFauno.Rugido2SFX();
         _faunoAnimator.CuchilladaSuelo();
 
         yield return new WaitForSeconds(1.2f);
@@ -271,6 +275,7 @@ public class FaunoManager : MonoBehaviour
         for(int i = 0; i < _cuchillaManagers.Length; i++)
         {
             yield return new WaitForSeconds(0.2f);
+            _sfxFauno.CuchillaSFX();
             if (!_spriteF.flipX)
                 StartCoroutine(_cuchillaManagers[i].SacaCuchilla());
             else
@@ -296,6 +301,7 @@ public class FaunoManager : MonoBehaviour
         }
 
         _faunoAnimator.Aliento();
+        _sfxFauno.MinaSFX();
         yield return new WaitForSeconds(0.5f);
 
         _minas[i].SetActive(true);
@@ -382,6 +388,7 @@ public class FaunoManager : MonoBehaviour
         _boxColl = GetComponent<BoxCollider2D>();
         _spriteF = GetComponent<SpriteRenderer>();
         _faunoAnimator = GetComponent<FaunoAnimator>();
+        _sfxFauno = GetComponent<SFXFaunoManager>();
 
         for(int i = 0; i<_minasRB.Length; i++)
         {

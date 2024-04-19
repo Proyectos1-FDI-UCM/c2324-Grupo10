@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: e802a1c520a6ab7458680c163ef3323b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _sfxFaunoAS: {instanceID: 0}
+  - _sfxCuchilla: {instanceID: 0}
+  - _sfxCuchillada: {instanceID: 0}
+  - _sfxMina: {instanceID: 0}
+  - _sfxRujido1: {instanceID: 0}
+  - _sfxRujido2: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
