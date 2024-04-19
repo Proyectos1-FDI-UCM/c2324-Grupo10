@@ -9,6 +9,7 @@ public class MinaComponent : MonoBehaviour
     private Transform _myTransform;
     public Rigidbody2D rb;
     private CircleCollider2D _collTrigger;
+    private ObstacleComponent _obstacle;
     #endregion
 
     #region parameters
@@ -20,15 +21,10 @@ public class MinaComponent : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Suelo") || collision.gameObject.CompareTag("Pared"))
         {
-            _collTrigger.enabled = false;
+            _obstacle.enabled = true;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             state = 1;
-        }
-        else if(collision.gameObject.CompareTag("Player") && state == 1)
-        {
-            //daño o lo q sea
-        }
-        
+        }  
     }
     #endregion
 
@@ -37,11 +33,13 @@ public class MinaComponent : MonoBehaviour
         _myTransform = transform;
         rb = GetComponent<Rigidbody2D>();
         _collTrigger = GetComponent<CircleCollider2D>();
+        _obstacle = GetComponent<ObstacleComponent>();
     }
 
     private void OnDisable()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        _obstacle.enabled = false;
         state = 0;
     }
 
