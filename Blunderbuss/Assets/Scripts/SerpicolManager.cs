@@ -27,6 +27,7 @@ public class SerpicolManager : MonoBehaviour
 
     private CameraController _camera;
     private SerpicolAnimator _serpicolAnimator;
+    private SFXSerpicolManager _serpicolSFX;
 
     private GameObject[] _babas = new GameObject[25];
     [SerializeField]
@@ -290,6 +291,7 @@ public class SerpicolManager : MonoBehaviour
         float scSpeed = 10f;
         float offSpeed = 5f;
 
+        _serpicolSFX.BocaoSFX();
         _serpicolAnimator.BocaoAnimation();
 
         _obstacleComponent.pDamage = 15;
@@ -598,6 +600,7 @@ public class SerpicolManager : MonoBehaviour
         _serpiRB = GetComponent<Rigidbody2D>();
         _myTransform = transform;
         _serpicolAnimator = GetComponent<SerpicolAnimator>();
+        _serpicolSFX = GetComponent<SFXSerpicolManager>();
         _spriteS = GetComponent<SpriteRenderer>();
         _boxColl = GetComponent<BoxCollider2D>();
         _cirColl = GetComponent<CircleCollider2D>();
