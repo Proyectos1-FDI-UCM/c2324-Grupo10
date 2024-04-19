@@ -103,10 +103,7 @@ public class FaunoManager : MonoBehaviour
         return _player.transform.position.x - _myTransform.position.x;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="other"></param>
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Pared"))
@@ -117,6 +114,7 @@ public class FaunoManager : MonoBehaviour
         {
             _faunoRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             _hitGround = true;
+            _faunoAnimator.SaltarEnd();
         }
     }
 
@@ -145,6 +143,7 @@ public class FaunoManager : MonoBehaviour
         //determina si el jugador está a su derecha o izq, coge la posición de la pared específica y embiste hacia ese lado
         //es un ataque de larga distancia 
         StartCoroutine(Rugido());
+        _faunoAnimator.Correr();
         yield return new WaitForSeconds(3);
 
         while(!_hitWall)
@@ -154,7 +153,7 @@ public class FaunoManager : MonoBehaviour
             _myTransform.position += newPos;
             yield return null;
         }
-
+        _faunoAnimator.CorrerEnd();
         yield return new WaitUntil(() => _hitWall == true);
 
         StartCoroutine(FaunoAI());
@@ -168,6 +167,9 @@ public class FaunoManager : MonoBehaviour
         //sombra movetowards
         _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;
         _faunoRB.AddForce(transform.up*_configuration.JumpForce, ForceMode2D.Impulse);
+
+        _faunoAnimator.Saltar();
+
         yield return new WaitForSeconds(0.2f);
         _faunoRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
  
@@ -196,6 +198,8 @@ public class FaunoManager : MonoBehaviour
 
         float scSpeed = 10f;
         float offSpeed = 5f;
+
+        _faunoAnimator.Cuchillada();
 
         while (_boxColl.offset != offDest)
         {
@@ -226,6 +230,8 @@ public class FaunoManager : MonoBehaviour
 
         _conjCuch.transform.position = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla*dir), -7, 0);
 
+        _faunoAnimator.CuchilladaSuelo();
+
         for(int i = 0; i < _cuchillaManagers.Length; i++)
         {
             yield return new WaitForSeconds(0.2f);
@@ -249,6 +255,9 @@ public class FaunoManager : MonoBehaviour
         {
             i++;
         }
+
+        _faunoAnimator.Aliento();
+        yield return new WaitForSeconds(0.3f);
 
         _minas[i].SetActive(true);
         _minas[i].transform.position = _escupeMina.transform.position;

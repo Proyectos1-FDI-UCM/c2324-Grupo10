@@ -14,7 +14,7 @@ public class FaunoAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Cuchillada()
@@ -22,5 +22,34 @@ public class FaunoAnimator : MonoBehaviour
         _faunoAnim.SetTrigger("Cuchillada");
     }
 
-    
+    public void CuchilladaSuelo()
+    {
+        _faunoAnim.SetTrigger("CuchilladaSuelo");
+    }
+
+    public void Correr()
+    {
+        _faunoAnim.SetTrigger("Correr");
+    }
+
+    public void Saltar()
+    {
+        _faunoAnim.SetTrigger("Saltar");
+    }
+
+    public void SaltarEnd()
+    {
+        _faunoAnim.SetTrigger("Saltar_End");
+    }
+
+    public void CorrerEnd()
+    {
+        _faunoAnim.SetTrigger("Correr_End");
+    }
+
+    public void Aliento()
+    {
+        _faunoAnim.SetTrigger("Aliento");
+    }
 }
+
