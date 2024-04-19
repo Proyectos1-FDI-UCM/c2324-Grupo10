@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class FaunoAnimator : MonoBehaviour
 {
-    private Animator _faunoAnim;
+    public Animator faunoAnim;
     // Start is called before the first frame update
     void Start()
     {
-        _faunoAnim = GetComponent<Animator>();
+        faunoAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -19,37 +19,42 @@ public class FaunoAnimator : MonoBehaviour
 
     public void Cuchillada()
     {
-        _faunoAnim.SetTrigger("Cuchillada");
+        faunoAnim.SetTrigger("Cuchillada");
     }
 
     public void CuchilladaSuelo()
     {
-        _faunoAnim.SetTrigger("CuchilladaSuelo");
+        faunoAnim.SetTrigger("CuchilladaSuelo");
     }
 
     public void Correr()
     {
-        _faunoAnim.SetTrigger("Correr");
+        faunoAnim.SetTrigger("Correr");
     }
 
     public void Saltar()
     {
-        _faunoAnim.SetTrigger("Saltar");
+        faunoAnim.SetTrigger("Saltar");
     }
 
     public void SaltarEnd()
     {
-        _faunoAnim.SetTrigger("Saltar_End");
+        faunoAnim.SetTrigger("Saltar_End");
     }
 
     public void CorrerEnd()
     {
-        _faunoAnim.SetTrigger("Correr_End");
+        faunoAnim.SetTrigger("Correr_End");
     }
 
     public void Aliento()
     {
-        _faunoAnim.SetTrigger("Aliento");
+        faunoAnim.SetTrigger("Aliento");
+    }
+
+    public void Camina()
+    {
+        faunoAnim.SetTrigger("Walk");
     }
 }
 

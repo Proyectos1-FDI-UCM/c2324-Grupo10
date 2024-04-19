@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 4126671952162516662}
   - component: {fileID: 2067832621470619758}
   - component: {fileID: 2877830730610705115}
+  - component: {fileID: 6733997829011159718}
   m_Layer: 0
   m_Name: FuegoSuelo
   m_TagString: Fuego
@@ -531,6 +532,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.601481, y: 5.5699997}
   m_EdgeRadius: 0
+--- !u!50 &6733997829011159718
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504177865217305949}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &583106997588562678
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,6 +571,7 @@ GameObject:
   - component: {fileID: 8113367752932957243}
   - component: {fileID: 6845132532441595030}
   - component: {fileID: 6902459560145417696}
+  - component: {fileID: 2614182830916009952}
   m_Layer: 0
   m_Name: FuegoNormal
   m_TagString: Fuego
@@ -683,6 +712,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.0517645, y: 5.34}
   m_EdgeRadius: 0
+--- !u!50 &2614182830916009952
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583106997588562678}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &939918099397174055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,8 +1081,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camState: 0
-  limitLeft: -9
-  limitRight: 9
+  limitLeft: -9.7
+  limitRight: 45.89
 --- !u!1 &1226551123374820990
 GameObject:
   m_ObjectHideFlags: 0
@@ -3968,7 +4024,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -126708145
   m_SortingOrder: 0
@@ -5356,11 +5412,11 @@ PrefabInstance:
       objectReference: {fileID: 475144425948208288}
     - target: {fileID: 2047886542944496760, guid: d6bf8fabf36ca6b44b5809ccde73e5ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.46
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 2047886542944496760, guid: d6bf8fabf36ca6b44b5809ccde73e5ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.08
+      value: 6.3
       objectReference: {fileID: 0}
     - target: {fileID: 2047886542944496760, guid: d6bf8fabf36ca6b44b5809ccde73e5ac, type: 3}
       propertyPath: m_LocalPosition.z

@@ -677,6 +677,7 @@ GameObject:
   - component: {fileID: 444558440}
   - component: {fileID: 444558439}
   - component: {fileID: 444558442}
+  - component: {fileID: 444558443}
   m_Layer: 0
   m_Name: Fauno
   m_TagString: Untagged
@@ -868,6 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4518ca64beff1cf4fbe37eca50f759ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faunoAnim: {fileID: 0}
 --- !u!114 &444558441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,6 +909,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &444558443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444558434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d7f0826f4e91a47a9157343b9499c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pDamage: 0
+  multiplier: 1
+  currLay: -1
 --- !u!1 &451893965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,6 +1189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ecd2fe236b42f429fcb18f7557b9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   _collFisico: {fileID: 495441085}
   _collTrigger: {fileID: 495441086}
 --- !u!212 &495441088
@@ -2629,6 +2647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ecd2fe236b42f429fcb18f7557b9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   _collFisico: {fileID: 1612654519}
   _collTrigger: {fileID: 1612654520}
 --- !u!212 &1612654522
@@ -3033,6 +3052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ecd2fe236b42f429fcb18f7557b9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   _collFisico: {fileID: 1746697611}
   _collTrigger: {fileID: 1746697612}
 --- !u!212 &1746697614
@@ -3978,6 +3998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ecd2fe236b42f429fcb18f7557b9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   _collFisico: {fileID: 2106736399}
   _collTrigger: {fileID: 2106736400}
 --- !u!212 &2106736402

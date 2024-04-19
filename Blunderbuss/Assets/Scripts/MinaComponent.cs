@@ -6,7 +6,7 @@ public class MinaComponent : MonoBehaviour
 {
     #region references
     private Transform _myTransform;
-    private Rigidbody2D _rb;
+    public Rigidbody2D rb;
     [SerializeField] private CircleCollider2D _collFisico;
     [SerializeField] private CircleCollider2D _collTrigger;
     #endregion
@@ -21,7 +21,7 @@ public class MinaComponent : MonoBehaviour
         {
             _collFisico.enabled = true;
             _collTrigger.enabled = false;
-            _rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
         else if (collision.gameObject.CompareTag("Pared"))
         {
@@ -34,8 +34,15 @@ public class MinaComponent : MonoBehaviour
     private void Awake()
     {
         _myTransform = transform;
-        _rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
+
+    private void OnDisable()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        _collFisico.enabled = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
