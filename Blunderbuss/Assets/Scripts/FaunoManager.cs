@@ -157,7 +157,8 @@ public class FaunoManager : MonoBehaviour
         int dir = SetDirection();
         yield return new WaitForSeconds(6);
 
-        while(!_hitWall)
+        _obstacleComponent.pDamage = 20;
+        while (!_hitWall)
         {
             Vector3 newPos = Vector3.zero;
             newPos = new Vector3((dir * _configuration.RunSpeed * Time.deltaTime), 0, 0);
@@ -165,7 +166,9 @@ public class FaunoManager : MonoBehaviour
             yield return null;
         }
         _faunoAnimator.CorrerEnd();
-        yield return new WaitForSeconds(0.3f);
+        _obstacleComponent.pDamage = 5;
+        _hitWall = false;
+        yield return new WaitForSeconds(0.5f);
         _myTransform.position += SeparaPared(dir);
 
         StartCoroutine(FaunoAI());
@@ -216,6 +219,8 @@ public class FaunoManager : MonoBehaviour
         float scSpeed = 10f;
         float offSpeed = 5f;
 
+        _obstacleComponent.pDamage = 15;
+
         _faunoAnimator.Cuchillada();
 
         while (_boxColl.offset != offDest)
@@ -236,7 +241,9 @@ public class FaunoManager : MonoBehaviour
 
             yield return null;
         }
-        
+
+        _obstacleComponent.pDamage = 5;
+
         StartCoroutine(FaunoAI());
     }
 
@@ -391,7 +398,7 @@ public class FaunoManager : MonoBehaviour
         {
             _minas[i].SetActive(false);
         }
-
+        _obstacleComponent.pDamage = 5;
         StartCoroutine(StartC());
     }
 
