@@ -18,6 +18,8 @@ public class FaunoManager : MonoBehaviour
 
     [SerializeField] private CuchillaManager[] _cuchillaManagers = new CuchillaManager[4];
 
+    [SerializeField] private MinaComponent _minaComponent = new MinaComponent();
+
     [SerializeField] private GameObject[] _minas = new GameObject[4];
 
     [SerializeField] private Rigidbody2D[] _minasRB = new Rigidbody2D[4];
@@ -278,6 +280,8 @@ public class FaunoManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         _minas[i].SetActive(true);
+        CircleCollider2D _coll = _minas[i].GetComponent<CircleCollider2D>();
+        _coll.enabled = true;
         _minas[i].transform.position = _escupeMina.transform.position;
         _minasRB[i].AddForce(new Vector2(_configuration.VectMina.x*dir, _configuration.VectMina.y), ForceMode2D.Impulse);
 
