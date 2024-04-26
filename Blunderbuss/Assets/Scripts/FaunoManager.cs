@@ -48,6 +48,8 @@ public class FaunoManager : MonoBehaviour
     private bool _first = true;
     Vector3 vectorPosCuchilla;
 
+    private int _minaActivas = 0;
+
     private int _state = 0; //variable de control de estados del fauno
                             //=0 ; en ataque
                             //=1 ; caminando
@@ -302,6 +304,7 @@ public class FaunoManager : MonoBehaviour
         _sfxFauno.MinaSFX();
         yield return new WaitForSeconds(0.5f);
 
+        _minaActivas++;
         _minas[i].SetActive(true);
         CircleCollider2D _coll = _minas[i].GetComponent<CircleCollider2D>();
         MinaComponent _mc = _minas[i].GetComponent<MinaComponent>();
@@ -314,7 +317,11 @@ public class FaunoManager : MonoBehaviour
 
         yield return new WaitForSeconds(_configuration.MinaTime);
 
-        if (_minas[i].active == true) _minas[i].SetActive(false);
+        if (_minas[i].active == true)
+        {
+            _minas[i].SetActive(false);
+            _minaActivas--;
+        }
     }
 
 
@@ -334,7 +341,7 @@ public class FaunoManager : MonoBehaviour
         {
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
-                if (rnd == 0)
+                if (rnd == 0 || _minaActivas == 3)
                 {
                     vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla * SetDirection()), -7, 0);
                     StartCoroutine(CuchillaFloor(vectorPosCuchilla));
@@ -344,7 +351,7 @@ public class FaunoManager : MonoBehaviour
             }
             else
             {
-                if (rnd == 0)
+                if (rnd == 0 && _minaActivas < 3)
                     StartCoroutine(Mina());
                 else
                 {
