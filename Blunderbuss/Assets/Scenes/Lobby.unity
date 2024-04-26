@@ -618,6 +618,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 688940659}
+    - target: {fileID: 6112868548027090731, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -157.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112868548027090731, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 187.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6812938101534534271, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.8
@@ -662,14 +670,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -11.62
       objectReference: {fileID: 0}
-    - target: {fileID: 8601217242305700036, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
-      propertyPath: _sfxHeal
-      value: 
-      objectReference: {fileID: 8300000, guid: c2020bd0c7fc6ac4985e9cdcdca66b0c, type: 3}
-    - target: {fileID: 8601217242305700036, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
-      propertyPath: _sfxCargaPelotazoB
-      value: 
-      objectReference: {fileID: 8300000, guid: 50672e6978f054c49a989c16bcd75e7a, type: 3}
     - target: {fileID: 8989252438564626591, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
