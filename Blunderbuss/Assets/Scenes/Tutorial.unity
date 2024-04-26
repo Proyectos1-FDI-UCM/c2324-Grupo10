@@ -166,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 4272446710734214802, guid: 06d4bd5f6b4cc674482ef98042aea1fd, type: 3}
       propertyPath: m_text
       value: "Durante cualquier momento de la partida, puedes cargar un pelotazo.\n\nMant\xE9n
-        presionado U o RB y su\xE9ltalo cuando est\xE9 listo. Se necesita munici\xF3n."
+        presionado K o RB y su\xE9ltalo cuando est\xE9 listo. Se necesita munici\xF3n."
       objectReference: {fileID: 0}
     - target: {fileID: 4272446710734214802, guid: 06d4bd5f6b4cc674482ef98042aea1fd, type: 3}
       propertyPath: m_fontAsset
@@ -674,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 570856284}
     - target: {fileID: 4272446710734214802, guid: 06d4bd5f6b4cc674482ef98042aea1fd, type: 3}
       propertyPath: m_text
-      value: "Utiliza P o RT para disparar. \n\nDisparar afecta tambi\xE9n a tu impulso.\n\nRecarga
+      value: "Utiliza J o RT para disparar. \n\nDisparar afecta tambi\xE9n a tu impulso.\n\nRecarga
         con la tecla R o el bot\xF3n X."
       objectReference: {fileID: 0}
     - target: {fileID: 4272446710734214802, guid: 06d4bd5f6b4cc674482ef98042aea1fd, type: 3}
@@ -4215,7 +4215,7 @@ PrefabInstance:
     - target: {fileID: 4272446710734214802, guid: 06d4bd5f6b4cc674482ef98042aea1fd, type: 3}
       propertyPath: m_text
       value: "En caso de tener poca salud, Corso se puede curar comiendo un rambut\xE1n.
-        Tendr\xE1s uno por partida.\n\nUtiliza la tecla O o LB para consumirlo."
+        Tendr\xE1s uno por partida.\n\nUtiliza la tecla L o LB para consumirlo."
       objectReference: {fileID: 0}
     - target: {fileID: 4272446710734214802, guid: 06d4bd5f6b4cc674482ef98042aea1fd, type: 3}
       propertyPath: m_fontAsset

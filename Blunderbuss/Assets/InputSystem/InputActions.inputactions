@@ -168,7 +168,7 @@
                 {
                     "name": "binding",
                     "id": "e5f68ab4-11da-4a7a-96c5-6cefe50296aa",
-                    "path": "<Keyboard>/p",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -188,7 +188,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Down Shot Log mando",
+                    "name": "Down_Shot_Log mando",
                     "id": "ea7d4d6f-d686-4762-9046-c2964835d8f1",
                     "path": "TwoModifiers",
                     "interactions": "",
@@ -256,7 +256,7 @@
                 {
                     "name": "binding",
                     "id": "f1bc2613-ff7b-45e5-9f45-1e9ecc3332b5",
-                    "path": "<Keyboard>/p",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -322,7 +322,7 @@
                 {
                     "name": "",
                     "id": "efb63828-e6b7-4b38-8c94-647f38fa53d4",
-                    "path": "<Keyboard>/o",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -366,7 +366,7 @@
                 {
                     "name": "",
                     "id": "1400a6c9-8f8a-4f2d-891a-ee9c66713dae",
-                    "path": "<Keyboard>/p",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -410,7 +410,7 @@
                 {
                     "name": "",
                     "id": "093b0f4a-297c-4197-a03a-43fad6b7d9d7",
-                    "path": "<Keyboard>/u",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
