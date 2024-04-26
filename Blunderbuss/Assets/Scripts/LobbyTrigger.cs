@@ -16,7 +16,8 @@ public class LobbyTrigger : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CargarEscena();
+        if (collision.CompareTag("Player"))
+            CargarEscena();
     }
     #endregion
 
