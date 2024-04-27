@@ -311,6 +311,7 @@ public class FaunoManager : MonoBehaviour
         //addforce con un vector y luego que lo maneja 
         //se queda donde aterrize x segundos y se desactiva(setactive = false)
         int dir = SetDirection();
+        int rnd = Random.Range(1, 4);
 
         int i = 0;
         while(i<_minas.Length-1 && _minas[i].activeSelf == true)
@@ -328,7 +329,19 @@ public class FaunoManager : MonoBehaviour
         MinaComponent _mc = _minas[i].GetComponent<MinaComponent>();
         _coll.enabled = true;
         _minas[i].transform.position = _escupeMina.transform.position;
-        _minasRB[i].AddForce(new Vector2(_configuration.VectMina.x*dir, _configuration.VectMina.y), ForceMode2D.Impulse);
+
+        if(rnd == 1)
+        {
+            _minasRB[i].AddForce(new Vector2(_configuration.VectMina1.x * dir, _configuration.VectMina1.y), ForceMode2D.Impulse);
+        }
+        else if(rnd == 2)
+        {
+            _minasRB[i].AddForce(new Vector2(_configuration.VectMina2.x * dir, _configuration.VectMina2.y), ForceMode2D.Impulse);
+        }
+        else
+        {
+            _minasRB[i].AddForce(new Vector2(_configuration.VectMina3.x * dir, _configuration.VectMina3.y), ForceMode2D.Impulse);
+        }
         _mc.Activa();
 
         StartCoroutine(FaunoAI());

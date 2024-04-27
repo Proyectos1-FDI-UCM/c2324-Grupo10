@@ -29,8 +29,14 @@ public class FaunoConfig : ScriptableObject
     [SerializeField] private int _bajaSpeed;
     public int BajaSpeed => _bajaSpeed;
 
-    [SerializeField] private Vector2 _vectMina;
-    public Vector2 VectMina => _vectMina;
+    [SerializeField] private Vector2 _vectMina1;
+    public Vector2 VectMina1 => _vectMina1;
+
+    [SerializeField] private Vector2 _vectMina2;
+    public Vector2 VectMina2 => _vectMina2;
+
+    [SerializeField] private Vector2 _vectMina3;
+    public Vector2 VectMina3 => _vectMina3;
 
     [SerializeField][Range(5f, 20f)] private int _minaTime;
     public int MinaTime => _minaTime;
