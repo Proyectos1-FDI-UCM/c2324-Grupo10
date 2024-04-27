@@ -17,6 +17,9 @@ public class FaunoConfig : ScriptableObject
     [SerializeField][Range(10000f, 30000f)] private float _jumpForce;
     public float JumpForce => _jumpForce;
 
+    [SerializeField][Range(-1000f, -10000f)] private float _dropForce;
+    public float DropForce => _dropForce;
+
     [SerializeField][Range(2f,15f)] private float _distCuchilla;
     public float DistCuchilla => _distCuchilla;
 

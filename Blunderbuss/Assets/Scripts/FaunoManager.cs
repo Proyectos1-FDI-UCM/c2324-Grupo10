@@ -193,10 +193,10 @@ public class FaunoManager : MonoBehaviour
         _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;
         _faunoRB.AddForce(transform.up*_configuration.JumpForce, ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
         _faunoRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
- 
-        float finalTime = Time.time + _configuration.AirTime;
+
+        /*float finalTime = Time.time + _configuration.AirTime;
         print(finalTime);
         while (Time.time < finalTime)
         {
@@ -204,7 +204,14 @@ public class FaunoManager : MonoBehaviour
             yield return null;
             print(Time.time);
         }
+        _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;*/
+
+        yield return new WaitForSeconds(5);
+        float Xpos = _player.transform.position.x;
+        Vector3 NewPos = new Vector3(Xpos, _myTransform.position.y, 0f);
+        _myTransform.position = NewPos;
         _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+        _faunoRB.AddForce(transform.up * _configuration.DropForce, ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(3);
         StartCoroutine(FaunoAI());
@@ -212,7 +219,6 @@ public class FaunoManager : MonoBehaviour
 
     private IEnumerator Cuchillada()
     {
-        //a ver no se la verdad
         //expandir el hitbox del fauno para simular el tajo
         int dir = SetDirection();
 
@@ -234,6 +240,8 @@ public class FaunoManager : MonoBehaviour
             _boxColl.size = Vector3.MoveTowards(_boxColl.size, scDest, scSpeed * Time.deltaTime);
             _boxColl.offset = Vector3.MoveTowards(_boxColl.offset, offDest, offSpeed * Time.deltaTime);
 
+            Debug.Log("Polla");
+
             yield return null;
         }
         
@@ -244,6 +252,8 @@ public class FaunoManager : MonoBehaviour
         {
             _boxColl.size = Vector3.MoveTowards(_boxColl.size, scBase, scSpeed * Time.deltaTime);
             _boxColl.offset = Vector3.MoveTowards(_boxColl.offset, offBase, offSpeed * Time.deltaTime);
+
+            Debug.Log("Coño");
 
             yield return null;
         }
@@ -267,7 +277,7 @@ public class FaunoManager : MonoBehaviour
         {   
             for (int i = _cuchillaManagers.Length - 1; i >= 0; i--)
             {
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.15f);
                 _sfxFauno.CuchillaSFX();
 
                 if (_cuchillaManagers[i].transform.position.x < _myTransform.position.x)
@@ -278,7 +288,7 @@ public class FaunoManager : MonoBehaviour
         {
             for (int i = 0; i < _cuchillaManagers.Length; i++)
             {
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.15f);
                 _sfxFauno.CuchillaSFX();
 
                 if (_cuchillaManagers[i].transform.position.x > _myTransform.position.x)
@@ -370,19 +380,19 @@ public class FaunoManager : MonoBehaviour
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
                 if (rnd == 0)
-                    //StartCoroutine(Walk());
-                    StartCoroutine(Embestida());
+                    StartCoroutine(Walk());
+                    //StartCoroutine(Embestida());
                 else
-                    StartCoroutine(Embestida());
-                    //StartCoroutine(SaltoVert());
+                    //StartCoroutine(Embestida());
+                    StartCoroutine(SaltoVert());
                     //StartCoroutine(Walk());
 
             }
             else
             {
                 if (rnd == 0)
-                    StartCoroutine(Embestida());
-                    //StartCoroutine(SaltoVert());
+                    //StartCoroutine(Embestida());
+                    StartCoroutine(SaltoVert());
                 else
                     StartCoroutine(Embestida());
             }
