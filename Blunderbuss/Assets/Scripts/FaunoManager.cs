@@ -13,7 +13,7 @@ public class FaunoManager : MonoBehaviour
 
     [SerializeField] private GameObject _escupeMina;
 
-    [SerializeField] private CuchillaManager[] _cuchillaManagers = new CuchillaManager[4];
+    [SerializeField] private CuchillaManager[] _cuchillaManagers = new CuchillaManager[14];
 
     [SerializeField] private MinaComponent _minaComponent = new MinaComponent();
 
@@ -258,31 +258,44 @@ public class FaunoManager : MonoBehaviour
         //hacer que surjan a lo largo del mapa varias hitboxes verticales con un poco de retraso
         int dir = SetDirection();
 
-        if(!_spriteF.flipX)
+        /*if(!_spriteF.flipX)
         {
             _conjCuch.transform.position = vectorPosCuchilla;
         }
         else
         {
             _conjCuch.transform.position = vectorPosCuchilla;
-        }
+        }*/
 
         _sfxFauno.Rugido2SFX();
         _faunoAnimator.CuchilladaSuelo();
 
         yield return new WaitForSeconds(1.2f);
 
-        for(int i = 0; i < _cuchillaManagers.Length; i++)
+        if (!_spriteF.flipX)
+        {   
+            for (int i = _cuchillaManagers.Length - 1; i >= 0; i--)
+            {
+                yield return new WaitForSeconds(0.2f);
+                _sfxFauno.CuchillaSFX();
+
+                if (_cuchillaManagers[i].transform.position.x < _myTransform.position.x)
+                    StartCoroutine(_cuchillaManagers[i].SacaCuchilla());
+            }
+        }
+        else
         {
-            yield return new WaitForSeconds(0.2f);
-            _sfxFauno.CuchillaSFX();
-            if (!_spriteF.flipX)
-                StartCoroutine(_cuchillaManagers[i].SacaCuchilla());
-            else
-                StartCoroutine(_cuchillaManagers[_cuchillaManagers.Length-1-i].SacaCuchilla());
+            for (int i = 0; i < _cuchillaManagers.Length; i++)
+            {
+                yield return new WaitForSeconds(0.2f);
+                _sfxFauno.CuchillaSFX();
+
+                if (_cuchillaManagers[i].transform.position.x > _myTransform.position.x)
+                    StartCoroutine(_cuchillaManagers[i].SacaCuchilla());
+            }
         }
 
-        StartCoroutine(FaunoAI());
+            StartCoroutine(FaunoAI());
     }
 
     private IEnumerator Mina()
