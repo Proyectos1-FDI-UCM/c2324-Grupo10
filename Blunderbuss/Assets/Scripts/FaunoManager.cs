@@ -188,6 +188,8 @@ public class FaunoManager : MonoBehaviour
         //sombra movetowards
         _faunoAnimator.Saltar();
 
+        _obstacleComponent.pDamage = 15;
+
         yield return new WaitForSeconds(0.5f);
 
         _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -214,6 +216,8 @@ public class FaunoManager : MonoBehaviour
         _faunoRB.AddForce(transform.up * _configuration.DropForce, ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(3);
+        _obstacleComponent.pDamage = 5;
+
         StartCoroutine(FaunoAI());
     }
 
@@ -372,12 +376,12 @@ public class FaunoManager : MonoBehaviour
         {
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
-                if (rnd == 0 || _minaActivas == 3)
+                /*if (rnd == 0 || _minaActivas == 3)
                 {
                     vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla * SetDirection()), -7, 0);
                     StartCoroutine(CuchillaFloor(vectorPosCuchilla));
                 }     
-                else
+                else*/
                     StartCoroutine(Mina());
             }
             else
