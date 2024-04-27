@@ -258,15 +258,6 @@ public class FaunoManager : MonoBehaviour
         //hacer que surjan a lo largo del mapa varias hitboxes verticales con un poco de retraso
         int dir = SetDirection();
 
-        /*if(!_spriteF.flipX)
-        {
-            _conjCuch.transform.position = vectorPosCuchilla;
-        }
-        else
-        {
-            _conjCuch.transform.position = vectorPosCuchilla;
-        }*/
-
         _sfxFauno.Rugido2SFX();
         _faunoAnimator.CuchilladaSuelo();
 
