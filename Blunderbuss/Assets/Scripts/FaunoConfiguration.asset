@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: FaunoConfiguration
   m_EditorClassIdentifier: 
   _walkSpeed: 2
-  _runSpeed: 10
+  _runSpeed: 12
   _airTime: 5
   _jumpForce: 10000
+  _dropForce: -5000
   _distCuchilla: 7
   _subeSpeed: 50
   _bajaSpeed: 3

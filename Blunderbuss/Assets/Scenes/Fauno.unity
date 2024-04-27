@@ -481,6 +481,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3126636034461246701, guid: f844956758e543d4ca89827bd66fd860, type: 3}
   m_PrefabInstance: {fileID: 80081575}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &248077957 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 3780256286904039710, guid: f844956758e543d4ca89827bd66fd860, type: 3}
+  m_PrefabInstance: {fileID: 80081575}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &293083424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1794199912763966449, guid: b9320e3fb5dd1ca4dbbb01bf8680ea2b, type: 3}
@@ -859,6 +864,11 @@ PrefabInstance:
 --- !u!1 &475822540 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8455342190222382902, guid: 917906edad14e8845b617a5acbcd5996, type: 3}
+  m_PrefabInstance: {fileID: 1489332239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &475822542 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 2649222520111362960, guid: 917906edad14e8845b617a5acbcd5996, type: 3}
   m_PrefabInstance: {fileID: 1489332239}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &586905314
@@ -1309,6 +1319,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1187344688341606867, guid: 906bed18817c76149b5488df42b775d5, type: 3}
   m_PrefabInstance: {fileID: 1504568658}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &925360172 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 7098421934027141971, guid: 906bed18817c76149b5488df42b775d5, type: 3}
+  m_PrefabInstance: {fileID: 1504568658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &950673321 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 382288054174469943, guid: a958ddea69032854faf43424279389e0, type: 3}
@@ -1654,6 +1669,22 @@ PrefabInstance:
       propertyPath: _minas.Array.data[3]
       value: 
       objectReference: {fileID: 475822540}
+    - target: {fileID: 131950774889032920, guid: 8a3384381c077254a91634e2317128e5, type: 3}
+      propertyPath: _minasRB.Array.data[0]
+      value: 
+      objectReference: {fileID: 248077957}
+    - target: {fileID: 131950774889032920, guid: 8a3384381c077254a91634e2317128e5, type: 3}
+      propertyPath: _minasRB.Array.data[1]
+      value: 
+      objectReference: {fileID: 248077957}
+    - target: {fileID: 131950774889032920, guid: 8a3384381c077254a91634e2317128e5, type: 3}
+      propertyPath: _minasRB.Array.data[2]
+      value: 
+      objectReference: {fileID: 925360172}
+    - target: {fileID: 131950774889032920, guid: 8a3384381c077254a91634e2317128e5, type: 3}
+      propertyPath: _minasRB.Array.data[3]
+      value: 
+      objectReference: {fileID: 475822542}
     - target: {fileID: 131950774889032920, guid: 8a3384381c077254a91634e2317128e5, type: 3}
       propertyPath: _cuchillaManagers.Array.size
       value: 14

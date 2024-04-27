@@ -278,10 +278,12 @@ public class FaunoManager : MonoBehaviour
             for (int i = _cuchillaManagers.Length - 1; i >= 0; i--)
             {
                 yield return new WaitForSeconds(0.15f);
-                _sfxFauno.CuchillaSFX();
-
+                
                 if (_cuchillaManagers[i].transform.position.x < _myTransform.position.x)
+                {
+                    _sfxFauno.CuchillaSFX();
                     StartCoroutine(_cuchillaManagers[i].SacaCuchilla());
+                }
             }
         }
         else
@@ -289,10 +291,12 @@ public class FaunoManager : MonoBehaviour
             for (int i = 0; i < _cuchillaManagers.Length; i++)
             {
                 yield return new WaitForSeconds(0.15f);
-                _sfxFauno.CuchillaSFX();
 
                 if (_cuchillaManagers[i].transform.position.x > _myTransform.position.x)
+                {
+                    _sfxFauno.CuchillaSFX();
                     StartCoroutine(_cuchillaManagers[i].SacaCuchilla());
+                }
             }
         }
 
