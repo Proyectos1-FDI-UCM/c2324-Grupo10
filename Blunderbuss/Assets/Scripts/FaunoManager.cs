@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FaunoManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class FaunoManager : MonoBehaviour
     private SpriteRenderer _spriteF;
     private BoxCollider2D _boxColl;
     private GameObject _player;
+    private SceneManagerS _sceneManagerS;
 
     [SerializeField]
     float _paredIzq;
@@ -94,6 +96,42 @@ public class FaunoManager : MonoBehaviour
         Vector3 aux = new Vector3 (-dir * 2, 0, 0);
 
         return aux;
+    }
+
+    public void Muerte()
+    {
+        _alive = false;
+
+        GameManager.Instance.faunoDead = true;
+        StopAllCoroutines();
+
+        StartCoroutine(MuerteAnim());
+    }
+
+    private IEnumerator MuerteAnim()
+    {
+        _boxColl.enabled = false;
+
+        StartCoroutine(Rugido());
+
+        yield return new WaitForSeconds(3f);
+
+        Vector3 tumba = new Vector3(_myTransform.position.x, _myTransform.position.y - 7, 0);
+        float tumbaSpeed = 1.2f;
+
+        while (_myTransform.position.y != tumba.y)
+        {
+            _myTransform.position = Vector3.MoveTowards(_myTransform.position, tumba, tumbaSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(2);
+
+        if (GameManager.Instance.serpicolDead)
+        {
+            _sceneManagerS.Escena = "EscenaFin";
+        }
+        _sceneManagerS.CargarEscena();
     }
 
     private int SetDirection() // calcula si el jugador esta a la derecha o izq del fauno.
@@ -438,8 +476,9 @@ public class FaunoManager : MonoBehaviour
         _spriteF = GetComponent<SpriteRenderer>();
         _faunoAnimator = GetComponent<FaunoAnimator>();
         _sfxFauno = GetComponent<SFXFaunoManager>();
+        _sceneManagerS = GetComponent<SceneManagerS>();
 
-        for(int i = 0; i<_minasRB.Length; i++)
+        for (int i = 0; i<_minasRB.Length; i++)
         {
             _minasRB[i] = _minas[i].GetComponent<Rigidbody2D>(); 
         }
