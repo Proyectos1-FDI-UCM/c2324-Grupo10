@@ -16,13 +16,13 @@ MonoBehaviour:
   _runSpeed: 12
   _airTime: 5
   _jumpForce: 10000
-  _dropForce: -5000
+  _dropForce: -7000
   _distCuchilla: 7
   _subeSpeed: 50
-  _bajaSpeed: 3
-  _vectMina1: {x: 5, y: 5}
-  _vectMina2: {x: 10, y: 3}
-  _vectMina3: {x: 3, y: 10}
+  _bajaSpeed: 5
+  _vectMina1: {x: 10, y: 10}
+  _vectMina2: {x: 15, y: 6}
+  _vectMina3: {x: 15, y: 15}
   _minaTime: 15
   _closeRange: 3
   _longRange: 10
