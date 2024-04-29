@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneManagerS : MonoBehaviour
 {
     #region parameters
-    [SerializeField] private string Escena;
+    public string Escena;
     #endregion
 
     #region methods

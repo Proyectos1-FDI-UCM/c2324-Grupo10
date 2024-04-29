@@ -26,6 +26,7 @@ public class SerpicolManager : MonoBehaviour
     private GapoManager[] _gapoManager = new GapoManager[3];
 
     private CameraController _camera;
+    private SceneManagerS _sceneManagerS;
     private SerpicolAnimator _serpicolAnimator;
     private SFXSerpicolManager _serpicolSFX;
 
@@ -135,6 +136,7 @@ public class SerpicolManager : MonoBehaviour
             return;
         }
 
+        GameManager.Instance.serpicolDead = true;
         StopAllCoroutines();
 
         StartCoroutine(MuerteAnim());
@@ -198,7 +200,11 @@ public class SerpicolManager : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
-        SendMessage("CargarEscena");
+        if (GameManager.Instance.faunoDead)
+        {
+            _sceneManagerS.Escena = "EscenaFin";
+        }
+        _sceneManagerS.CargarEscena();
     }
 
     #region attacks
@@ -601,6 +607,7 @@ public class SerpicolManager : MonoBehaviour
     {
         _camera = Camera.main.GetComponent<CameraController>();
         _obstacleComponent = GetComponent<ObstacleComponent>();
+        _sceneManagerS = GetComponent<SceneManagerS>();
         _bossHealth = GetComponent<BossHealth>();
         _serpiRB = GetComponent<Rigidbody2D>();
         _myTransform = transform;

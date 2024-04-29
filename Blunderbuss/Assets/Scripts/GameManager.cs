@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
 
     #region parameters
     bool first = true;
+
+    public bool serpicolDead = false;
+    public bool faunoDead = false;
     #endregion
 
     private void Awake()
@@ -65,50 +68,6 @@ public class GameManager : MonoBehaviour
             vidaManager.ResetVida();
             balasManager.RecargarInsta();
             playerManager.ResetColisiones();
-
-            if (SceneManager.GetActiveScene().buildIndex == 0)
-            {
-                Destroy(gameObject);
-            }
-
-            if (SceneManager.GetActiveScene().buildIndex == 2)
-            {
-                Player.transform.position = initPos.transform.position;
-                cameraController.limitLeft = -9.7f;
-                cameraController.limitRight = 45.89f;
-                playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
-                playerManager.invulnerable = false;
-                _inputManager.enabled = true;
-            }
-
-            if (SceneManager.GetActiveScene().buildIndex == 3)
-            {
-                Player.transform.position = initPos.transform.position;
-                cameraController.limitLeft = 0;
-                cameraController.limitRight = 0;
-            }
-
-            if (SceneManager.GetActiveScene().buildIndex == 4)
-            {
-                Player.transform.position = initPos.transform.position;
-                playerManager.spriteR.flipX = false;
-                cameraController.limitLeft = -9;
-                cameraController.limitRight = 9;
-                playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
-                playerManager.invulnerable = false;
-                _inputManager.enabled = true;
-            }
-
-            if (SceneManager.GetActiveScene().buildIndex == 5)
-            {
-                Player.transform.position = initPos.transform.position;
-                playerManager.spriteR.flipX = false;
-                cameraController.limitLeft = -9;
-                cameraController.limitRight = 9;
-                playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
-                playerManager.invulnerable = false;
-                _inputManager.enabled = true;
-            }
         }
         else
         {
@@ -117,17 +76,70 @@ public class GameManager : MonoBehaviour
             balasManager = Player.GetComponent<BalasManager>();
             cameraController = Camera.main.GetComponent<CameraController>();
 
-            if (SceneManager.GetActiveScene().buildIndex == 2)
+            first = false;
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Destroy(gameObject);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            Player.transform.position = initPos.transform.position;
+            cameraController.limitLeft = -9.7f;
+            cameraController.limitRight = 45.89f;
+            playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
+            playerManager.invulnerable = false;
+            _inputManager.enabled = true;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            Player.transform.position = initPos.transform.position;
+            cameraController.limitLeft = 0;
+            cameraController.limitRight = 0;
+
+            if(serpicolDead)
             {
-                Player.transform.position = new Vector3(-16, 6.3f, 0);
-                cameraController.limitLeft = -9.7f;
-                cameraController.limitRight = 45.89f;
-                playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
-                playerManager.invulnerable = false;
-                _inputManager.enabled = true;
+                GameObject serpicolP = GameObject.FindGameObjectWithTag("Serpicol");
+
+                BoxCollider2D serpicolPBC = serpicolP.GetComponent<BoxCollider2D>();
+                SpriteRenderer serpicolPS = serpicolP.GetComponent<SpriteRenderer>();
+
+                serpicolPBC.enabled = false;
+                serpicolPS.color = new Color(0, 0, 0);
+            }
+
+            if (faunoDead)
+            {
+                GameObject faunoP = GameObject.FindGameObjectWithTag("Fauno");
+
+                BoxCollider2D faunoPBC = faunoP.GetComponent<BoxCollider2D>();
+                SpriteRenderer faunoPS = faunoP.GetComponent<SpriteRenderer>();
+
+                faunoPBC.enabled = false;
+                faunoPS.color = new Color(0, 0, 0);
             }
         }
-        first = false;
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            Player.transform.position = initPos.transform.position;
+            playerManager.spriteR.flipX = false;
+            cameraController.limitLeft = -9;
+            cameraController.limitRight = 9;
+            playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
+            playerManager.invulnerable = false;
+            _inputManager.enabled = true;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            Player.transform.position = initPos.transform.position;
+            playerManager.spriteR.flipX = false;
+            cameraController.limitLeft = -9;
+            cameraController.limitRight = 9;
+            playerManager.targetEnemy = GameObject.FindGameObjectWithTag("Boss").transform;
+            playerManager.invulnerable = false;
+            _inputManager.enabled = true;
+        }
     }
 
     // Start is called before the first frame update
