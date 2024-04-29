@@ -99,9 +99,17 @@ public class UIManager : MonoBehaviour
 
     public void hasMuerto()
     {
+        StartCoroutine(PantallaMuerte());
+    }
+
+    private IEnumerator PantallaMuerte()
+    {
+        yield return new WaitForSeconds(2);
+
         DeathCanvas.SetActive(true);
         _inputManager.enabled = false;
     }
+
     #endregion
 
     // Start is called before the first frame update

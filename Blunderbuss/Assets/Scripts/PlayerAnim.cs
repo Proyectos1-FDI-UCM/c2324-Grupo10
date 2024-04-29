@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAnim : MonoBehaviour
 {
@@ -42,7 +43,22 @@ public class PlayerAnim : MonoBehaviour
         CheckMov();
     }
 
-    private void Orient()
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Grounded(false);
+    }
+
+        private void Orient()
     {
         if(_playerManager.state < 2)
         {
@@ -117,5 +133,10 @@ public class PlayerAnim : MonoBehaviour
     public void Pelotazo()
     {
         corsoAnim.SetTrigger("Pelotazo");
+    }
+
+    public void Respawn()
+    {
+        corsoAnim.SetTrigger("Respawn");
     }
 }
