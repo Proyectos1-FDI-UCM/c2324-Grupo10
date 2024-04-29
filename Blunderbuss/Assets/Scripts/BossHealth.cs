@@ -56,6 +56,12 @@ public class BossHealth : MonoBehaviour
             SendMessage("Muerte");
         }
     }
+
+    public void AdminInput()
+    {
+        health = maxHealth / 2;
+        ActualizaVida(0);
+    }
     #endregion
 
     private void Awake()

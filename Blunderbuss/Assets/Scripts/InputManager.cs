@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     private VidaManager _vidaManager;
     private PauseMenu _pauseMenu;
     private PlayerVFX _vfx;
+    public BossHealth bh;
 
     public Coroutine BBT;
 
@@ -44,6 +45,11 @@ public class InputManager : MonoBehaviour
         };
         _inputActions.Player.Potion.started += ctx => StartCoroutine(_playerManager.Cura());
         _inputActions.Player.Pause.started += ctx => _pauseMenu.pause();
+        _inputActions.Player.AdminButton.started += ctx =>
+        {
+            if (bh)
+                bh.AdminInput();
+        };
     }
 
     // Start is called before the first frame update

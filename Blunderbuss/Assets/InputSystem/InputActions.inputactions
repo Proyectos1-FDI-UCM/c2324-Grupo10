@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AdminButton",
+                    "type": "Button",
+                    "id": "7f360152-d9ea-4f10-888f-ea5fdf67e3d6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -426,6 +435,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Ball_Blow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "82bb9a91-76be-4109-ad5d-50cf05eb5e0b",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AdminButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

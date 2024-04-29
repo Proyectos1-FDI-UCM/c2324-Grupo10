@@ -56,5 +56,10 @@ public class FaunoAnimator : MonoBehaviour
     {
         faunoAnim.SetTrigger("Walk");
     }
+
+    public void Grito()
+    {
+        faunoAnim.SetTrigger("Grito");
+    }
 }
 

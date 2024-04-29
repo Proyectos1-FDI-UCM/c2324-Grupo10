@@ -107,6 +107,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AdminButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""7f360152-d9ea-4f10-888f-ea5fdf67e3d6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -450,6 +459,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Ball_Blow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82bb9a91-76be-4109-ad5d-50cf05eb5e0b"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AdminButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -467,6 +487,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_Recharge = m_Player.FindAction("Recharge", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Ball_Blow = m_Player.FindAction("Ball_Blow", throwIfNotFound: true);
+        m_Player_AdminButton = m_Player.FindAction("AdminButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -537,6 +558,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Recharge;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Ball_Blow;
+    private readonly InputAction m_Player_AdminButton;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -550,6 +572,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Recharge => m_Wrapper.m_Player_Recharge;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Ball_Blow => m_Wrapper.m_Player_Ball_Blow;
+        public InputAction @AdminButton => m_Wrapper.m_Player_AdminButton;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -586,6 +609,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Ball_Blow.started += instance.OnBall_Blow;
             @Ball_Blow.performed += instance.OnBall_Blow;
             @Ball_Blow.canceled += instance.OnBall_Blow;
+            @AdminButton.started += instance.OnAdminButton;
+            @AdminButton.performed += instance.OnAdminButton;
+            @AdminButton.canceled += instance.OnAdminButton;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -617,6 +643,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Ball_Blow.started -= instance.OnBall_Blow;
             @Ball_Blow.performed -= instance.OnBall_Blow;
             @Ball_Blow.canceled -= instance.OnBall_Blow;
+            @AdminButton.started -= instance.OnAdminButton;
+            @AdminButton.performed -= instance.OnAdminButton;
+            @AdminButton.canceled -= instance.OnAdminButton;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -645,5 +674,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnRecharge(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnBall_Blow(InputAction.CallbackContext context);
+        void OnAdminButton(InputAction.CallbackContext context);
     }
 }

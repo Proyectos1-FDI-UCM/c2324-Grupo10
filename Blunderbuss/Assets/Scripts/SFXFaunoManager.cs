@@ -29,7 +29,7 @@ public class SFXFaunoManager : MonoBehaviour
     }
     public void Rugido1SFX()
     {
-        _sfxFaunoAS.PlayOneShot(_sfxRujido1, 0.4f);
+        _sfxFaunoAS.PlayOneShot(_sfxRujido1, 0.1f);
     }
     public void Rugido2SFX()
     {

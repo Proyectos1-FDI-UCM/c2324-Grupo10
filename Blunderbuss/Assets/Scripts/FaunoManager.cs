@@ -49,6 +49,7 @@ public class FaunoManager : MonoBehaviour
     private bool _hitGround = true;//choca con suelo?
     private bool _first = true;
     Vector3 vectorPosCuchilla;
+    private bool _cuchillasSuelo = false;
 
     private int _minaActivas = 0;
 
@@ -103,6 +104,12 @@ public class FaunoManager : MonoBehaviour
         _alive = false;
 
         GameManager.Instance.faunoDead = true;
+
+        while(_cuchillasSuelo && !_hitGround)
+        {
+            return;
+        }
+
         StopAllCoroutines();
 
         StartCoroutine(MuerteAnim());
@@ -112,6 +119,9 @@ public class FaunoManager : MonoBehaviour
     {
         _boxColl.enabled = false;
 
+        _faunoAnimator.Grito();
+
+        yield return new WaitForSeconds(3);
         StartCoroutine(Rugido());
 
         yield return new WaitForSeconds(3f);
@@ -230,6 +240,8 @@ public class FaunoManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        _hitGround = false;
+
         _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;
         _faunoRB.AddForce(transform.up*_configuration.JumpForce, ForceMode2D.Impulse);
 
@@ -310,10 +322,13 @@ public class FaunoManager : MonoBehaviour
         //hacer que surjan a lo largo del mapa varias hitboxes verticales con un poco de retraso
         int dir = SetDirection();
 
+
         _sfxFauno.Rugido2SFX();
         _faunoAnimator.CuchilladaSuelo();
 
         yield return new WaitForSeconds(1.2f);
+
+        _cuchillasSuelo = true;
 
         if (!_spriteF.flipX)
         {   
@@ -342,7 +357,8 @@ public class FaunoManager : MonoBehaviour
             }
         }
 
-            StartCoroutine(FaunoAI());
+        _cuchillasSuelo = false;
+        StartCoroutine(FaunoAI());
     }
 
     private IEnumerator Mina()

@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fauno.unity
     guid: 16efe5ef58879304eaf80ed397f356d5
+  - enabled: 1
+    path: Assets/Scenes/EscenaFin.unity
+    guid: 10ba76e57c797a648aba96ab26054254
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2cd9b13feeed0b148ac2362555d94360, type: 2}
