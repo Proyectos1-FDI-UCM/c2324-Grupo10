@@ -10,14 +10,14 @@ public class SFXFaunoManager : MonoBehaviour
     [SerializeField] public AudioClip _sfxCuchilla;
     [SerializeField] public AudioClip _sfxCuchillada;
     [SerializeField] public AudioClip _sfxMina;
-    [SerializeField] public AudioClip _sfxRujido1;
-    [SerializeField] public AudioClip _sfxRujido2;
+    [SerializeField] public AudioClip _sfxRugido1;
+    [SerializeField] public AudioClip _sfxRugido2;
     [SerializeField] public AudioClip _sfxPared;
     #endregion
 
     public void CuchillaSFX()
     {
-        _sfxFaunoAS.PlayOneShot(_sfxCuchilla, 1);
+        _sfxFaunoAS.PlayOneShot(_sfxCuchilla, 1f);
     }
     public void CuchilladaSFX()
     {
@@ -29,11 +29,11 @@ public class SFXFaunoManager : MonoBehaviour
     }
     public void Rugido1SFX()
     {
-        _sfxFaunoAS.PlayOneShot(_sfxRujido1, 0.1f);
+        _sfxFaunoAS.PlayOneShot(_sfxRugido1, 0.1f);
     }
     public void Rugido2SFX()
     {
-        _sfxFaunoAS.PlayOneShot(_sfxRujido2, 0.4f);
+        _sfxFaunoAS.PlayOneShot(_sfxRugido2, 0.4f);
     }
 
     public void ParedSFX()

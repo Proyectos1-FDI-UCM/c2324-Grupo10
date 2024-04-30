@@ -437,7 +437,7 @@ public class SerpicolManager : MonoBehaviour
             turn = false;
         else
             turn = true;
-        //aqui
+
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < Gapo.Length; i++)
         {

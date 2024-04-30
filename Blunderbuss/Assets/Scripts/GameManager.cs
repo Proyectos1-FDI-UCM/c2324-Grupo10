@@ -96,28 +96,6 @@ public class GameManager : MonoBehaviour
                 Player.transform.position = initPos.transform.position;
                 cameraController.limitLeft = 0;
                 cameraController.limitRight = 0;
-
-                if (serpicolDead)
-                {
-                    GameObject serpicolP = GameObject.FindGameObjectWithTag("Serpicol");
-
-                    BoxCollider2D serpicolPBC = serpicolP.GetComponent<BoxCollider2D>();
-                    SpriteRenderer serpicolPS = serpicolP.GetComponent<SpriteRenderer>();
-
-                    serpicolPBC.enabled = false;
-                    serpicolPS.color = new Color(0, 0, 0);
-                }
-
-                if (faunoDead)
-                {
-                    GameObject faunoP = GameObject.FindGameObjectWithTag("Fauno");
-
-                    BoxCollider2D faunoPBC = faunoP.GetComponent<BoxCollider2D>();
-                    SpriteRenderer faunoPS = faunoP.GetComponent<SpriteRenderer>();
-
-                    faunoPBC.enabled = false;
-                    faunoPS.color = new Color(0, 0, 0);
-                }
                 break;
             case 4:
                 Player.transform.position = initPos.transform.position;
