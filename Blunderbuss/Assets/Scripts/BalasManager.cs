@@ -57,6 +57,9 @@ public class BalasManager : MonoBehaviour
 
     public void RecargarInsta()
     {
+        _playerManager.SetBoolBB(false);
+        _UIManager.Rojo(false);
+        _inputManager.DesactivarBBT();
         BalaQuantity = maxBalas;                      // Se puede volver a disparar
         _UIManager.reiniciaBalas();                   // Puedes ver que puedes disparar otra vez
     }

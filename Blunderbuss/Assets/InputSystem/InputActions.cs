@@ -219,7 +219,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Down_Shot_Log mando"",
+                    ""name"": ""Down_Shot_Log D-Pad"",
                     ""id"": ""ea7d4d6f-d686-4762-9046-c2964835d8f1"",
                     ""path"": ""TwoModifiers"",
                     ""interactions"": """",
@@ -243,6 +243,39 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""binding"",
                     ""id"": ""19821b71-258c-40d8-8519-da0ba916a765"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down_Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down_Shot_Log Joystick"",
+                    ""id"": ""c308d81c-785c-42a3-bab5-833128428934"",
+                    ""path"": ""TwoModifiers"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down_Shot"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier1"",
+                    ""id"": ""38b12547-b32e-4136-8b68-8ead34182219"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down_Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""2978af2c-30fb-4041-b66e-5525e5a005c5"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -296,7 +329,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Up_Shot_Log mando"",
+                    ""name"": ""Up_Shot_Log D-Pad"",
                     ""id"": ""2d35f060-bd86-463e-b5de-50c4fabdfd3d"",
                     ""path"": ""OneModifier"",
                     ""interactions"": """",
@@ -320,6 +353,39 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""binding"",
                     ""id"": ""a81ae78a-8dfb-4ed3-ab31-0a72c18da50b"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up_Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Up_Shot_Log Joystick"",
+                    ""id"": ""64017e85-3021-40a1-9d91-d138f7742084"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up_Shot"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""28feae16-dce4-4b63-94fe-de7ebe6a4063"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up_Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""c2d13d80-2301-47f9-8613-68f5a6809869"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",

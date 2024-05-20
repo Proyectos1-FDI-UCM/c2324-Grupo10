@@ -20,7 +20,7 @@ public class PlayerAnim : MonoBehaviour
 
     private void Awake()
     {
-        
+        corsoAnim = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -32,8 +32,6 @@ public class PlayerAnim : MonoBehaviour
         _gameManager = GameManager.Instance;
         _inputManager = _gameManager.InputManager;
         _vidaManager = GetComponent<VidaManager>();
-
-        corsoAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
