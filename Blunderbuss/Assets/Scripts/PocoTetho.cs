@@ -1,12 +1,15 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PocoTehto : MonoBehaviour
 {
     #region references
     private VidaManager _vidaManager;
+    [SerializeField]
+    GameObject _firstButton;
     #endregion
 
     #region parameters
@@ -21,6 +24,7 @@ public class PocoTehto : MonoBehaviour
     #region methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Time.timeScale = 0f;
         if (collision.CompareTag("Player"))
         {
             _canvas.SetActive(true);
@@ -32,10 +36,12 @@ public class PocoTehto : MonoBehaviour
                 _vidaManager.RambutanTutorial();
             }
         }
+        EventSystem.current.SetSelectedGameObject(_firstButton);
     }
 
    public void Desactiva()
     {
+        Time.timeScale = 1f;
         _canvas.SetActive(false);
         _trigger.SetActive(false);
         _inputManager.enabled = true;

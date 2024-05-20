@@ -27,15 +27,27 @@ public class PlayerMaster : MonoBehaviour
             _playerMaster = gameObject;
             DontDestroyOnLoad(gameObject);
         }
-
-        SceneManager.activeSceneChanged += DestruirMenu;
     }
 
-    void DestruirMenu(Scene oldScene, Scene newScene)
+    private void OnEnable()
     {
-        if (newScene.buildIndex == 0)
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (SceneManager.GetActiveScene().buildIndex)
         {
-            Destroy(gameObject);
+            case 0:
+                Destroy(gameObject);
+                break;
+            default:
+                break;
         }
     }
 
