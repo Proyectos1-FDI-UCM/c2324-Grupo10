@@ -64,29 +64,4 @@ public class PauseMenu : MonoBehaviour
     {
         
     }
-
-    private void Awake()
-    {
-        CanvasPausa.SetActive(false);
-        //CanvasOpcionesPausa.SetActive(false) ;
-        if (_playerMaster != null && _playerMaster != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _playerMaster = gameObject;
-            DontDestroyOnLoad(gameObject);
-        }
-
-        SceneManager.activeSceneChanged += DestruirMenu;
-    }
-
-    void DestruirMenu(Scene oldScene, Scene newScene)
-    {
-        if (newScene.buildIndex == 0)
-        {
-            Destroy(gameObject);
-        }
-    }
 }
