@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
     public VidaManager vidaManager;
     public BalasManager balasManager;
+    private ShotManager _shotManager;
     public PlayerManager playerManager;
     public CameraController cameraController;
 
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
             vidaManager.ResetVida();
             balasManager.RecargarInsta();
             playerManager.ResetColisiones();
+            _shotManager.DesactivaFuego();
         }
         else
         {
@@ -75,6 +77,7 @@ public class GameManager : MonoBehaviour
             vidaManager = Player.GetComponent<VidaManager>();
             balasManager = Player.GetComponent<BalasManager>();
             cameraController = Camera.main.GetComponent<CameraController>();
+            _shotManager = Player.GetComponent<ShotManager>();
 
             first = false;
         }

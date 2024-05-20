@@ -78,6 +78,12 @@ public class ShotManager : MonoBehaviour
         }
     }
 
+    public void DesactivaFuego()
+    {
+        _fuegoAire.SetActive(false);
+        _fuegoSuelo.SetActive(false);
+    }
+
     public void BallBlowSpawn(Vector3 impDir)
     {
         float _pDist = 1.5f;
