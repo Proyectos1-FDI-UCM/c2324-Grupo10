@@ -263,8 +263,10 @@ public class FaunoManager : MonoBehaviour
         _myTransform.position = NewPos;
         _faunoRB.constraints = RigidbodyConstraints2D.FreezeRotation;
         _faunoRB.AddForce(transform.up * _configuration.DropForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(1);
+        _myTransform.position = new Vector3 (_myTransform.position.x, -1.94f, 0f);
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         _obstacleComponent.pDamage = 5;
 
         StartCoroutine(FaunoAI());
@@ -439,14 +441,13 @@ public class FaunoManager : MonoBehaviour
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
                 if (rnd == 0)
-                    //StartCoroutine(Walk());
-                    //StartCoroutine(Embestida());
-                    StartCoroutine(Cuchillada());
-                else
+                    StartCoroutine(Walk());
                     //StartCoroutine(Embestida());
                     //StartCoroutine(SaltoVert());
+                else
+                    //StartCoroutine(Embestida());
+                    StartCoroutine(SaltoVert());
                     //StartCoroutine(Walk());
-                    StartCoroutine(Cuchillada());
             }
             else
             {
