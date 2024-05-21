@@ -276,10 +276,10 @@ public class FaunoManager : MonoBehaviour
         int dir = SetDirection();
 
         Vector2 scBase = _boxColl.size;
-        Vector2 scDest = _boxColl.size * new Vector2(8f, 3.5f);
+        Vector2 scDest = _boxColl.size * new Vector2(1.5f, 1.2f);
 
         Vector2 offBase = _boxColl.offset;
-        Vector2 offDest = _boxColl.offset * new Vector2(dir * 2f, -0.5f);
+        Vector2 offDest = new Vector2(dir * 1f, 0.5f);
 
         _obstacleComponent.pDamage = 15;
 
@@ -439,13 +439,14 @@ public class FaunoManager : MonoBehaviour
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
                 if (rnd == 0)
-                    StartCoroutine(Walk());
+                    //StartCoroutine(Walk());
                     //StartCoroutine(Embestida());
+                    StartCoroutine(Cuchillada());
                 else
                     //StartCoroutine(Embestida());
-                    StartCoroutine(SaltoVert());
+                    //StartCoroutine(SaltoVert());
                     //StartCoroutine(Walk());
-
+                    StartCoroutine(Cuchillada());
             }
             else
             {
