@@ -1666,7 +1666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1547170441511754311, guid: 8a3384381c077254a91634e2317128e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.940744
+      value: -1.94
       objectReference: {fileID: 0}
     - target: {fileID: 1547170441511754311, guid: 8a3384381c077254a91634e2317128e5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1711,6 +1711,14 @@ PrefabInstance:
     - target: {fileID: 5184325022539985131, guid: 8a3384381c077254a91634e2317128e5, type: 3}
       propertyPath: m_Name
       value: Fauno
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322125828741718746, guid: 8a3384381c077254a91634e2317128e5, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322125828741718746, guid: 8a3384381c077254a91634e2317128e5, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8136586316093847734, guid: 8a3384381c077254a91634e2317128e5, type: 3}
       propertyPath: HealthBar
