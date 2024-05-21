@@ -40,6 +40,7 @@ public class PlayerManager : MonoBehaviour
     public bool shotEnable = true;
     public bool ballBlowEnable = true;
     public bool chargeFinish = false;
+    private bool wallAble = true;
     #endregion
 
     // Start is called before the first frame update
@@ -490,7 +491,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pared" && !suelo && state != 6)
+        if (collision.gameObject.CompareTag("Pared") && !suelo && state != 6 && wallAble && !playerAnim.corsoAnim.GetCurrentAnimatorStateInfo(0).IsName("Corso_Death"))
         {
             playerAnim.Wall(true);
             state = 2;
@@ -509,11 +510,19 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Pared")
         {
-            playerAnim.Wall(false);
             if (state != 0 && state != 4 && state != 6)
             {
+                StartCoroutine(MiniDesactiva());
                 state = 1;
             }
+            playerAnim.Wall(false);
         }
+    }
+
+    private IEnumerator MiniDesactiva()
+    {
+        wallAble = false;
+        yield return new WaitForSeconds(0.1f);
+        wallAble = true;
     }
 }

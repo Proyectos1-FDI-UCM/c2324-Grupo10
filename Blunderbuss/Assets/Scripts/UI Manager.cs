@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -16,6 +17,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     GameObject DeathCanvas;
+
+    [SerializeField]
+    GameObject _firstButton;
 
     private SpriteRenderer _spriteRendererRam;
     public SpriteRenderer[] spriteRendererSac;
@@ -104,10 +108,11 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator PantallaMuerte()
     {
+        _inputManager.enabled = false;
         yield return new WaitForSeconds(2);
 
         DeathCanvas.SetActive(true);
-        _inputManager.enabled = false;
+        EventSystem.current.SetSelectedGameObject(_firstButton);
     }
 
     #endregion
