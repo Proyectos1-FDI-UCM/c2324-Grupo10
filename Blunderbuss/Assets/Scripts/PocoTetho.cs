@@ -24,9 +24,9 @@ public class PocoTehto : MonoBehaviour
     #region methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Time.timeScale = 0f;
         if (collision.CompareTag("Player"))
         {
+            Time.timeScale = 0f;
             _canvas.SetActive(true);
             _trigger.SetActive(true);
             _inputManager.enabled = false;

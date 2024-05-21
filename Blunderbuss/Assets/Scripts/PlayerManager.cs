@@ -486,16 +486,13 @@ public class PlayerManager : MonoBehaviour
                 _slideEnable = true;
             }
         }
-        if (collision.gameObject.CompareTag("Pared"))
-        {
-            playerAnim.Wall(true);
-        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Pared" && !suelo && state != 6)
         {
+            playerAnim.Wall(true);
             state = 2;
 
             if (playerRB.velocity.y < 0)
