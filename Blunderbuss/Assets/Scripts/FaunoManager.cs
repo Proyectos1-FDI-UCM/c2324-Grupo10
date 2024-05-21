@@ -192,7 +192,7 @@ public class FaunoManager : MonoBehaviour
 
     private IEnumerator Rugido()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
         _sfxFauno.Rugido1SFX();
         yield return new WaitForSeconds(3);
     }
@@ -202,10 +202,9 @@ public class FaunoManager : MonoBehaviour
         //determina si el jugador está a su derecha o izq, coge la posición de la pared específica y embiste hacia ese lado
         //es un ataque de larga distancia 
         
-        StartCoroutine(Rugido());
         _faunoAnimator.Correr();
         int dir = SetDirection();
-        yield return new WaitForSeconds(6);
+        //yield return new WaitForSeconds(6);
 
         _obstacleComponent.pDamage = 20;
         _obstacleComponent.multiplier = 1.5f;
@@ -282,35 +281,20 @@ public class FaunoManager : MonoBehaviour
         Vector2 offBase = _boxColl.offset;
         Vector2 offDest = _boxColl.offset * new Vector2(dir * 2f, -0.5f);
 
-        float scSpeed = 10f;
-        float offSpeed = 5f;
-
         _obstacleComponent.pDamage = 15;
 
         _faunoAnimator.Cuchillada();
 
-        while (_boxColl.offset != offDest)
-        {
-            _boxColl.size = Vector3.MoveTowards(_boxColl.size, scDest, scSpeed * Time.deltaTime);
-            _boxColl.offset = Vector3.MoveTowards(_boxColl.offset, offDest, offSpeed * Time.deltaTime);
+        yield return new WaitForSeconds(1.2f);
 
-            Debug.Log("Polla");
-
-            yield return null;
-        }
+        _boxColl.size = scDest;
+        _boxColl.offset = offDest;
         
         yield return new WaitForSeconds(0.4f);
         _sfxFauno.CuchilladaSFX();
 
-        while (_boxColl.offset != offBase)
-        {
-            _boxColl.size = Vector3.MoveTowards(_boxColl.size, scBase, scSpeed * Time.deltaTime);
-            _boxColl.offset = Vector3.MoveTowards(_boxColl.offset, offBase, offSpeed * Time.deltaTime);
-
-            Debug.Log("Coño");
-
-            yield return null;
-        }
+        _boxColl.size = scBase;
+        _boxColl.offset = offBase;
 
         _obstacleComponent.pDamage = 5;
 
@@ -430,12 +414,12 @@ public class FaunoManager : MonoBehaviour
         {
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
-                /*if (rnd == 0 || _minaActivas == 3)
+                if (rnd == 0 || _minaActivas == 3)
                 {
                     vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla * SetDirection()), -7, 0);
                     StartCoroutine(CuchillaFloor(vectorPosCuchilla));
                 }     
-                else*/
+                else
                     StartCoroutine(Mina());
             }
             else
@@ -476,7 +460,7 @@ public class FaunoManager : MonoBehaviour
     private IEnumerator StartC()
     {
         StartCoroutine(Rugido());
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(4);
         StartCoroutine(FaunoAI());
     }
     #endregion
