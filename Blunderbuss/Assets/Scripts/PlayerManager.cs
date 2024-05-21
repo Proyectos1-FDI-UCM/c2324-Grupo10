@@ -499,9 +499,9 @@ public class PlayerManager : MonoBehaviour
                 playerRB.velocity = new Vector2(playerRB.velocity.x, -_speedWall);
 
             if (collision.contacts[0].normal.x < 0)
-                spriteR.flipX = false;
+                playerAnim.Flip(false);
             else if (!suelo && state != 6)
-                spriteR.flipX = true;
+                playerAnim.Flip(true);
         }
     }
 

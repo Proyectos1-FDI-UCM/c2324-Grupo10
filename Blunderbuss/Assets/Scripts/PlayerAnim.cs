@@ -11,6 +11,7 @@ public class PlayerAnim : MonoBehaviour
     private InputManager _inputManager;
     private GameManager _gameManager;
     private SpriteRenderer _spriteR;
+    private BoxCollider2D _boxColl;
     private VidaManager _vidaManager;
     #endregion
 
@@ -28,6 +29,7 @@ public class PlayerAnim : MonoBehaviour
     {
         _playerManager = GetComponent<PlayerManager>();
         _spriteR = GetComponent<SpriteRenderer>();
+        _boxColl = GetComponent<BoxCollider2D>();
 
         _gameManager = GameManager.Instance;
         _inputManager = _gameManager.InputManager;
@@ -56,19 +58,34 @@ public class PlayerAnim : MonoBehaviour
         Grounded(false);
     }
 
-        private void Orient()
+    private void Orient()
     {
         if(_playerManager.state < 2)
         {
             if (_inputManager.axisX > 0)
             {
-                _spriteR.flipX = false;
+                Flip(false);
             }
             else if (_inputManager.axisX < 0)
             {
-                _spriteR.flipX = true;
+                Flip(true);
             }
         }
+    }
+
+    public void Flip(bool right)
+    {
+        if(right)
+        {
+            _spriteR.flipX = true;
+            _boxColl.offset = new Vector2(Mathf.Abs(_boxColl.offset.x), _boxColl.offset.y);
+        }
+        else
+        {
+            _spriteR.flipX = false;
+            _boxColl.offset = new Vector2(-Mathf.Abs(_boxColl.offset.x), _boxColl.offset.y);
+        }
+
     }
 
     private void CheckMov()
@@ -108,6 +125,24 @@ public class PlayerAnim : MonoBehaviour
     public void Slide()
     {
         corsoAnim.SetTrigger("Slide");
+        StartCoroutine(SlideBox());
+    }
+
+    private IEnumerator SlideBox()
+    {
+        Vector2 preOffset = _boxColl.offset;
+        Vector2 preSize = _boxColl.size;
+
+        Vector2 postOffset = new Vector2(_boxColl.offset.x * 1.8f, -1.59f);
+        Vector2 postSize = new Vector2(4.93f, 2.58f);
+
+        _boxColl.offset = postOffset;
+        _boxColl.size = postSize;
+
+        yield return new WaitForSeconds(0.4f);
+
+        _boxColl.offset = preOffset;
+        _boxColl.size = preSize;
     }
 
     public void Reload()

@@ -5736,7 +5736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8929112278991454163, guid: d6bf8fabf36ca6b44b5809ccde73e5ac, type: 3}
       propertyPath: m_Offset.x
-      value: -0.7
+      value: -0.36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
