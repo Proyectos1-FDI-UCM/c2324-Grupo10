@@ -421,8 +421,14 @@ public class FaunoManager : MonoBehaviour
                     vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla * SetDirection()), -7, 0);
                     StartCoroutine(CuchillaFloor(vectorPosCuchilla));
                 }     
-                else
+                else if(rnd == 2)
+                {
                     StartCoroutine(Mina());
+                }
+                else
+                {
+                    StartCoroutine(Walk());
+                }
             }
             else
             {
@@ -433,21 +439,13 @@ public class FaunoManager : MonoBehaviour
                     vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla * SetDirection()), -7, 0);
                     StartCoroutine(CuchillaFloor(vectorPosCuchilla));
                 }
-                    
             }
         }
         else
         {
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
-                if (rnd == 0)
-                    StartCoroutine(Walk());
-                    //StartCoroutine(Embestida());
-                    //StartCoroutine(SaltoVert());
-                else
-                    //StartCoroutine(Embestida());
-                    StartCoroutine(SaltoVert());
-                    //StartCoroutine(Walk());
+                StartCoroutine(SaltoVert());
             }
             else
             {
