@@ -416,18 +416,21 @@ public class FaunoManager : MonoBehaviour
         {
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
-                if (rnd == 0 || _minaActivas == 3)
-                {
-                    vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla * SetDirection()), -7, 0);
-                    StartCoroutine(CuchillaFloor(vectorPosCuchilla));
-                }     
-                else if(rnd == 2)
+                if(rnd == 2 && _minaActivas < 3)
                 {
                     StartCoroutine(Mina());
                 }
                 else
                 {
-                    StartCoroutine(Walk());
+                    if(rnd == 0)
+                    {
+                        vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla * SetDirection()), -7, 0);
+                        StartCoroutine(CuchillaFloor(vectorPosCuchilla));
+                    }
+                    else
+                    {
+                        StartCoroutine(Walk());
+                    }
                 }
             }
             else
