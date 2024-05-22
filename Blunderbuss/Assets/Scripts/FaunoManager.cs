@@ -16,11 +16,7 @@ public class FaunoManager : MonoBehaviour
 
     [SerializeField] private CuchillaManager[] _cuchillaManagers = new CuchillaManager[14];
 
-    [SerializeField] private MinaComponent _minaComponent = new MinaComponent();
-
-    [SerializeField] private GameObject[] _minas = new GameObject[4];
-
-    [SerializeField] private Rigidbody2D[] _minasRB = new Rigidbody2D[4];
+    [SerializeField] private GameObject _mina;
 
     private ObstacleComponent _obstacleComponent;
     private SFXFaunoManager _sfxFauno;
@@ -349,54 +345,26 @@ public class FaunoManager : MonoBehaviour
 
     private IEnumerator Mina()
     {
-        //Doble collider (trigger suelo/fisico player)
-        //Se activa fisico al tocar el suelo
-        //llevar la mina a la pos de escupeMina
-        //addforce con un vector y luego que lo maneja 
-        //se queda donde aterrize x segundos y se desactiva(setactive = false)
+        //proyectil
+
         int dir = SetDirection();
         int rnd = Random.Range(1, 4);
-
-        int i = 0;
-        while(i<_minas.Length-1 && _minas[i].activeSelf == true)
-        {
-            i++;
-        }
 
         _faunoAnimator.Aliento();
         _sfxFauno.MinaSFX();
         yield return new WaitForSeconds(0.5f);
 
         _minaActivas++;
-        _minas[i].SetActive(true);
-        CircleCollider2D _coll = _minas[i].GetComponent<CircleCollider2D>();
-        MinaComponent _mc = _minas[i].GetComponent<MinaComponent>();
-        _coll.enabled = true;
-        _minas[i].transform.position = _escupeMina.transform.position;
 
-        if(rnd == 1)
-        {
-            _minasRB[i].AddForce(new Vector2(_configuration.VectMina1.x * dir, _configuration.VectMina1.y), ForceMode2D.Impulse);
-        }
-        else if(rnd == 2)
-        {
-            _minasRB[i].AddForce(new Vector2(_configuration.VectMina2.x * dir, _configuration.VectMina2.y), ForceMode2D.Impulse);
-        }
-        else
-        {
-            _minasRB[i].AddForce(new Vector2(_configuration.VectMina3.x * dir, _configuration.VectMina3.y), ForceMode2D.Impulse);
-        }
-        _mc.Activa();
+        GameObject minaPrefab = Instantiate(_mina, _escupeMina.transform.position, Quaternion.identity);
+
+        minaPrefab.GetComponent<Rigidbody2D>().AddForce(new Vector2(_configuration.VectMina.x * dir, _configuration.VectMina.y), ForceMode2D.Impulse);
 
         StartCoroutine(FaunoAI());
 
-        yield return new WaitForSeconds(_configuration.MinaTime);
+        yield return new WaitForSeconds(1f);
 
-        if (_minas[i].active == true)
-        {
-            _minas[i].SetActive(false);
-            _minaActivas--;
-        }
+        minaPrefab.GetComponent<Rigidbody2D>().IsDestroyed();
     }
 
 
@@ -425,11 +393,13 @@ public class FaunoManager : MonoBehaviour
                     if(rnd == 0)
                     {
                         vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla * SetDirection()), -7, 0);
-                        StartCoroutine(CuchillaFloor(vectorPosCuchilla));
+                        //StartCoroutine(CuchillaFloor(vectorPosCuchilla));
+                        StartCoroutine(Mina());
                     }
                     else
                     {
-                        StartCoroutine(Walk());
+                        //StartCoroutine(Walk());
+                        StartCoroutine(Mina());
                     }
                 }
             }
@@ -448,12 +418,12 @@ public class FaunoManager : MonoBehaviour
         {
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
-                StartCoroutine(SaltoVert());
+                //StartCoroutine(SaltoVert());
+                StartCoroutine(Mina());
             }
             else
             {
                 if (rnd == 0)
-                    //StartCoroutine(Embestida());
                     StartCoroutine(SaltoVert());
                 else
                     StartCoroutine(Embestida());
@@ -480,11 +450,6 @@ public class FaunoManager : MonoBehaviour
         _faunoAnimator = GetComponent<FaunoAnimator>();
         _sfxFauno = GetComponent<SFXFaunoManager>();
         _sceneManagerS = GetComponent<SceneManagerS>();
-
-        for (int i = 0; i<_minasRB.Length; i++)
-        {
-            _minasRB[i] = _minas[i].GetComponent<Rigidbody2D>(); 
-        }
       
         _obstacleComponent = GetComponent<ObstacleComponent>();
     }
@@ -494,10 +459,7 @@ public class FaunoManager : MonoBehaviour
     void Start()
     {
         _player = GameManager.Instance.Player;
-        for (int i = 0; i < _minas.Length; i++)
-        {
-            _minas[i].SetActive(false);
-        }
+        
         _obstacleComponent.pDamage = 5;
         StartCoroutine(StartC());
     }

@@ -6,6 +6,8 @@ using UnityEngine;
 public class MinaComponent : MonoBehaviour
 {
     #region references
+    [SerializeField] private GameObject _mina;
+
     private Transform _myTransform;
     public Rigidbody2D rb;
     private CircleCollider2D _collTrigger;
@@ -25,6 +27,7 @@ public class MinaComponent : MonoBehaviour
             _obstacle.enabled = true;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             state = 1;
+            StartCoroutine(EsperaYPeta());
         }
         else if(collision.gameObject.CompareTag("Player") && state == 1)
         {
@@ -32,11 +35,7 @@ public class MinaComponent : MonoBehaviour
         }
     }
 
-    public void Activa()
-    {
-        _spriteRenderer.enabled = true;
-        _collTrigger.enabled = true;
-    }
+    
     private IEnumerator ExplotaMina()
     {
         _spriteRenderer.enabled = false;
@@ -47,7 +46,22 @@ public class MinaComponent : MonoBehaviour
  
         yield return new WaitForSeconds(3);
 
-        gameObject.SetActive(false);
+        Destroy(_mina);
+    }
+
+    private IEnumerator EsperaYPeta()
+    {
+        yield return new WaitForSeconds(5f);
+        
+        _spriteRenderer.enabled = false;
+
+        yield return new WaitForSeconds(0.1f);
+
+        _collTrigger.enabled = false;
+
+        yield return new WaitForSeconds(3);
+
+        Destroy(_mina);
     }
     #endregion
 
