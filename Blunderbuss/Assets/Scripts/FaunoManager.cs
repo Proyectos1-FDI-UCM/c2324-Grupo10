@@ -362,9 +362,6 @@ public class FaunoManager : MonoBehaviour
 
         StartCoroutine(FaunoAI());
 
-        yield return new WaitForSeconds(1f);
-
-        minaPrefab.GetComponent<Rigidbody2D>().IsDestroyed();
     }
 
 
@@ -393,13 +390,11 @@ public class FaunoManager : MonoBehaviour
                     if(rnd == 0)
                     {
                         vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla * SetDirection()), -7, 0);
-                        //StartCoroutine(CuchillaFloor(vectorPosCuchilla));
-                        StartCoroutine(Mina());
+                        StartCoroutine(CuchillaFloor(vectorPosCuchilla));
                     }
                     else
                     {
-                        //StartCoroutine(Walk());
-                        StartCoroutine(Mina());
+                        StartCoroutine(Walk());
                     }
                 }
             }
@@ -418,8 +413,7 @@ public class FaunoManager : MonoBehaviour
         {
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
-                //StartCoroutine(SaltoVert());
-                StartCoroutine(Mina());
+                StartCoroutine(SaltoVert());
             }
             else
             {
