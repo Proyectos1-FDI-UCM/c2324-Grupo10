@@ -20,9 +20,6 @@ MonoBehaviour:
   _distCuchilla: 7
   _subeSpeed: 50
   _bajaSpeed: 5
-  _vectMina1: {x: 10, y: 10}
-  _vectMina2: {x: 15, y: 6}
-  _vectMina3: {x: 15, y: 15}
-  _minaTime: 15
+  _vectMina: {x: 12, y: 6}
   _closeRange: 3
   _longRange: 10
