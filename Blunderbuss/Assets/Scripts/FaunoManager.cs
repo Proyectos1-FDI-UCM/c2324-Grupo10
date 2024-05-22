@@ -420,7 +420,7 @@ public class FaunoManager : MonoBehaviour
             }
             else
             {
-                    StartCoroutine(Embestida());
+                StartCoroutine(Embestida());
             }
         }
     }
