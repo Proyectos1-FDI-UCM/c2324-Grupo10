@@ -119,7 +119,7 @@ public class FaunoManager : MonoBehaviour
 
         _faunoAnimator.Grito();
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         StartCoroutine(Rugido());
 
         yield return new WaitForSeconds(3f);
