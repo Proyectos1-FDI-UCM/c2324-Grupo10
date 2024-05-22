@@ -29,9 +29,6 @@ public class FaunoConfig : ScriptableObject
     [SerializeField] private int _bajaSpeed;
     public int BajaSpeed => _bajaSpeed;
 
-    [SerializeField] private Vector2 _vectMina;
-    public Vector2 VectMina => _vectMina;
-
     [SerializeField][Range(1f, 3.5f)] private float _closeRange;
     public float CloseRange => _closeRange;
 

@@ -16,6 +16,8 @@ public class FaunoManager : MonoBehaviour
 
     [SerializeField] private CuchillaManager[] _cuchillaManagers = new CuchillaManager[14];
 
+    [SerializeField] private Vector2[] _vectsMina = new Vector2[4];
+
     [SerializeField] private GameObject _mina;
 
     private ObstacleComponent _obstacleComponent;
@@ -47,7 +49,7 @@ public class FaunoManager : MonoBehaviour
     Vector3 vectorPosCuchilla;
     private bool _cuchillasSuelo = false;
 
-    private int _minaActivas = 0;
+    private int _numVectMinas = 0;
 
     private int _state = 0; //variable de control de estados del fauno
                             //=0 ; en ataque
@@ -348,17 +350,21 @@ public class FaunoManager : MonoBehaviour
         //proyectil
 
         int dir = SetDirection();
-        int rnd = Random.Range(1, 4);
 
         _faunoAnimator.Aliento();
         _sfxFauno.MinaSFX();
         yield return new WaitForSeconds(0.5f);
 
-        _minaActivas++;
-
         GameObject minaPrefab = Instantiate(_mina, _escupeMina.transform.position, Quaternion.identity);
 
-        minaPrefab.GetComponent<Rigidbody2D>().AddForce(new Vector2(_configuration.VectMina.x * dir, _configuration.VectMina.y), ForceMode2D.Impulse);
+        minaPrefab.GetComponent<Rigidbody2D>().AddForce(new Vector2(_vectsMina[_numVectMinas].x * dir, _vectsMina[_numVectMinas].y), ForceMode2D.Impulse);
+        Debug.Log(_numVectMinas.ToString());
+        _numVectMinas++;
+
+        if (_numVectMinas > 3)
+        {
+            _numVectMinas = 0;
+        }
 
         StartCoroutine(FaunoAI());
 
@@ -381,26 +387,23 @@ public class FaunoManager : MonoBehaviour
         {
             if (_bossHealth.health > (_bossHealth.maxHealth / 2))
             {
-                if(rnd == 2 && _minaActivas < 3)
+                if(rnd == 2)
                 {
                     StartCoroutine(Mina());
                 }
+                else if (rnd == 0)
+                {
+                    vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla * SetDirection()), -7, 0);
+                    StartCoroutine(CuchillaFloor(vectorPosCuchilla));
+                }
                 else
                 {
-                    if(rnd == 0)
-                    {
-                        vectorPosCuchilla = new Vector3(_myTransform.position.x + (_configuration.DistCuchilla * SetDirection()), -7, 0);
-                        StartCoroutine(CuchillaFloor(vectorPosCuchilla));
-                    }
-                    else
-                    {
-                        StartCoroutine(Walk());
-                    }
+                    StartCoroutine(Walk());
                 }
             }
             else
             {
-                if (rnd == 0 && _minaActivas < 3)
+                if (rnd == 0)
                     StartCoroutine(Mina());
                 else
                 {

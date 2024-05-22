@@ -259,6 +259,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _vectsMina:
+  - {x: 12, y: 6}
+  - {x: 18, y: 0}
+  - {x: 15, y: 7}
+  - {x: 10, y: 10}
   _mina: {fileID: 0}
   _paredIzq: -14.41
   _paredDer: 21.37
