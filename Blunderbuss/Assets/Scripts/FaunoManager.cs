@@ -420,9 +420,6 @@ public class FaunoManager : MonoBehaviour
             }
             else
             {
-                if (rnd == 0)
-                    StartCoroutine(SaltoVert());
-                else
                     StartCoroutine(Embestida());
             }
         }
