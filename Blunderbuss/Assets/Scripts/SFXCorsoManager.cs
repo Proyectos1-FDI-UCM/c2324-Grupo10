@@ -27,7 +27,7 @@ public class SFXCorsoManager : MonoBehaviour
 
     public void DeslizSFX()
     {
-        _sfxCorsoAS.PlayOneShot(_sfxDesliz, 1f);
+        _sfxCorsoAS.PlayOneShot(_sfxDesliz, 2f);
     }
     public void DisparoSFX(bool suelo)
     {
@@ -61,7 +61,7 @@ public class SFXCorsoManager : MonoBehaviour
     }
     public void CargaBSFX()
     {
-        _sfxCorsoAS.PlayOneShot(_sfxCargaPelotazoB, 0.2f);
+        _sfxCorsoAS.PlayOneShot(_sfxCargaPelotazoB, 0.75f);
     }
 }
 

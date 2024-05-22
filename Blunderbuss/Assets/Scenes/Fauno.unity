@@ -1700,26 +1700,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1773049078687889431, guid: 8a3384381c077254a91634e2317128e5, type: 3}
-      propertyPath: _sfxRugido1
-      value: 
-      objectReference: {fileID: 8300000, guid: c9e22d5a0053dd5428fc84dc63da2665, type: 3}
-    - target: {fileID: 1773049078687889431, guid: 8a3384381c077254a91634e2317128e5, type: 3}
-      propertyPath: _sfxRugido2
-      value: 
-      objectReference: {fileID: 8300000, guid: 30166c1f72e19844ab8837c09d889978, type: 3}
     - target: {fileID: 5184325022539985131, guid: 8a3384381c077254a91634e2317128e5, type: 3}
       propertyPath: m_Name
       value: Fauno
       objectReference: {fileID: 0}
-    - target: {fileID: 7322125828741718746, guid: 8a3384381c077254a91634e2317128e5, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7322125828741718746, guid: 8a3384381c077254a91634e2317128e5, type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 5699872224648664203, guid: 8a3384381c077254a91634e2317128e5, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 3447374915067072804, guid: cda4e2a40abfe7f45a956cb3bb12311f, type: 2}
     - target: {fileID: 8136586316093847734, guid: 8a3384381c077254a91634e2317128e5, type: 3}
       propertyPath: HealthBar
       value: 
