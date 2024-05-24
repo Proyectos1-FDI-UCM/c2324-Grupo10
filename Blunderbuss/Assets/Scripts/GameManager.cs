@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
             first = false;
         }
 
+        playerManager.state = 1;
         switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 0:
